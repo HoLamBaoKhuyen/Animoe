@@ -489,3 +489,26 @@ export const OPENING = [
     eps: "1-13",
   },
 ];
+
+export const REVIEWS = [
+  {
+    id: 1,
+    avatar: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    name: "Sorrowful",
+    date: "Oct 2, 2014",
+    score: 10,
+    liked: 1580,
+    review:
+      "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
+  },
+  {
+    id: 2,
+    avatar: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    name: "Sorrowful",
+    date: "Oct 2, 2014",
+    score: 10,
+    liked: 1580,
+    review:
+      "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
+  },
+];

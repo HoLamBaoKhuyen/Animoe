@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { DETAIL_DATA, VOICE_ACTORS } from "../../data/detail";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
 type VoiceActorsProps = {
   children?: ReactNode;
