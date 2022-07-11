@@ -7,6 +7,7 @@ import Information from "../components/details/information";
 import { DETAIL_DATA } from "../data/detail";
 import Trailers from "../components/details/trailers";
 import VoiceActors from "../components/details/voice_actors";
+import Staff from "../components/details/staff";
 
 const DetailPage = () => {
   return (
@@ -34,6 +35,9 @@ const DetailPage = () => {
         </Box>
         <Box mt={4}>
           <VoiceActors />
+        </Box>
+        <Box mt={4}>
+          <Staff />
         </Box>
       </Container>
     </Layout>

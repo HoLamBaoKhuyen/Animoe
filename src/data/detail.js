@@ -453,3 +453,24 @@ export const VOICE_ACTORS = [
     },
   },
 ];
+
+export const STAFF = [
+  {
+    id: 1,
+    name: "Wada, Yoji",
+    role: "Producer",
+    img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+  },
+  {
+    id: 2,
+    name: "Wada, Yoji",
+    role: "Producer",
+    img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+  },
+  {
+    id: 3,
+    name: "Wada, Yoji",
+    role: "Producer",
+    img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+  },
+];
