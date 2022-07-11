@@ -10,6 +10,7 @@ import VoiceActors from "../components/details/voice_actors";
 import Staff from "../components/details/staff";
 import Theme from "../components/details/theme";
 import Reviews from "../components/details/reviews";
+import Recommendations from "../components/details/recommendations";
 
 const DetailPage = () => {
   return (
@@ -46,6 +47,9 @@ const DetailPage = () => {
         </Box>
         <Box mt={4}>
           <Reviews />
+        </Box>
+        <Box mt={4} pb={10}>
+          <Recommendations />
         </Box>
       </Container>
     </Layout>

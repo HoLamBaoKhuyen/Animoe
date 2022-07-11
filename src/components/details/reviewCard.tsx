@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { Avatar, avatarClasses, Box, Button, Typography } from "@mui/material";
+import { Avatar, Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
