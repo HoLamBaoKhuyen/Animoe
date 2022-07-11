@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import Layout from "../components/layout";
 import { theme } from "../theme";
 import Poster from "../components/details/poster";
 import Information from "../components/details/information";
 import { DETAIL_DATA } from "../data/detail";
+import Trailers from "../components/details/trailers";
 
 const DetailPage = () => {
   return (
@@ -27,6 +28,9 @@ const DetailPage = () => {
             <Information />
           </Grid>
         </Grid>
+        <Box mt={4}>
+          <Trailers />
+        </Box>
       </Container>
     </Layout>
   );
