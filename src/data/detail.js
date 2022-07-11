@@ -474,3 +474,18 @@ export const STAFF = [
     img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
   },
 ];
+
+export const OPENING = [
+  {
+    id: 1,
+    name: "Guren no Yumiya (紅蓮の弓矢)",
+    singer: "Linked Horizon",
+    eps: "1-13",
+  },
+  {
+    id: 2,
+    name: "Guren no Yumiya (紅蓮の弓矢)",
+    singer: "Linked Horizon",
+    eps: "1-13",
+  },
+];

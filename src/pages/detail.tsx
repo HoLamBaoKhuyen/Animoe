@@ -8,6 +8,7 @@ import { DETAIL_DATA } from "../data/detail";
 import Trailers from "../components/details/trailers";
 import VoiceActors from "../components/details/voice_actors";
 import Staff from "../components/details/staff";
+import Theme from "../components/details/theme";
 
 const DetailPage = () => {
   return (
@@ -38,6 +39,9 @@ const DetailPage = () => {
         </Box>
         <Box mt={4}>
           <Staff />
+        </Box>
+        <Box mt={4}>
+          <Theme />
         </Box>
       </Container>
     </Layout>
