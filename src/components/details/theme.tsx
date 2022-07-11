@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 import { theme } from "../../theme";
 import { OPENING } from "../../data/detail";
@@ -13,7 +13,7 @@ type ThemeProps = {
 const Theme: React.FC<ThemeProps> = ({ children }) => {
   return (
     <Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={15}>
         <Grid item xs={12} md={6}>
           <Typography variant="h3">Opening Theme</Typography>
           {OPENING.map((song, key) => (

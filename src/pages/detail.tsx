@@ -9,6 +9,7 @@ import Trailers from "../components/details/trailers";
 import VoiceActors from "../components/details/voice_actors";
 import Staff from "../components/details/staff";
 import Theme from "../components/details/theme";
+import Reviews from "../components/details/reviews";
 
 const DetailPage = () => {
   return (
@@ -42,6 +43,9 @@ const DetailPage = () => {
         </Box>
         <Box mt={4}>
           <Theme />
+        </Box>
+        <Box mt={4}>
+          <Reviews />
         </Box>
       </Container>
     </Layout>
