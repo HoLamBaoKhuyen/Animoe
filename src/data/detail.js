@@ -384,3 +384,72 @@ export const DETAIL_DATA = {
     num_list_users: 3460193,
   },
 };
+
+export const VOICE_ACTORS = [
+  {
+    id: 1,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 2,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 3,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 4,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 5,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 6,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+];

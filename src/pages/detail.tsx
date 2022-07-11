@@ -6,6 +6,7 @@ import Poster from "../components/details/poster";
 import Information from "../components/details/information";
 import { DETAIL_DATA } from "../data/detail";
 import Trailers from "../components/details/trailers";
+import VoiceActors from "../components/details/voice_actors";
 
 const DetailPage = () => {
   return (
@@ -30,6 +31,9 @@ const DetailPage = () => {
         </Grid>
         <Box mt={4}>
           <Trailers />
+        </Box>
+        <Box mt={4}>
+          <VoiceActors />
         </Box>
       </Container>
     </Layout>
