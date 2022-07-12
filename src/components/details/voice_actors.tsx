@@ -70,7 +70,7 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
                 <Box
                   sx={{ height: "100%", display: "flex", alignItems: "center" }}
                 >
-                  <Box mr={2}>
+                  <Box mr={2} textAlign={"right"}>
                     <Typography variant="body1">{actor.actor}</Typography>
                     <Typography variant="body2" sx={{ fontSize: 13 }}>
                       {actor.nationality}
