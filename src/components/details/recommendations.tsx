@@ -1,35 +1,13 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA, REVIEWS } from "../../data/detail";
-import ReviewCard from "./reviewCard";
+import { DETAIL_DATA } from "../../data/detail";
 
 type RecommendationsProps = {
   children?: ReactNode;
   title?: string;
   englistTitle?: string;
   image?: string;
-};
-
-const Top5 = (list: any) => {
-  let top5list = [];
-  for (let i = 0; i < list.length; i++) {
-    top5list.push(
-      <Box textAlign="center">
-        <img
-          alt="recommend_anime"
-          src={list.node.main_picture.large}
-          width="200px"
-          height="auto"
-          style={{ borderRadius: 10 }}
-        />
-        <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
-          {list.node.title}
-        </Typography>
-      </Box>
-    );
-  }
-  return top5list;
 };
 
 const Recommendations: React.FC<RecommendationsProps> = ({ children }) => {

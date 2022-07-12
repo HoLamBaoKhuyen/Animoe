@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA, STAFF } from "../../data/detail";
+import { STAFF } from "../../data/detail";
 
 type StaffProps = {
   children?: ReactNode;
