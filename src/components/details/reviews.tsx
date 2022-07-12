@@ -29,9 +29,9 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
           View more
         </Button>
       </Box>
-      <Grid container spacing={15}>
+      <Grid container spacing={{ md: 15, xs: 3 }}>
         {REVIEWS.map((review) => (
-          <Grid item xs={6} key={review.id}>
+          <Grid item xs={12} sm={6} key={review.id}>
             <ReviewCard {...review} />
           </Grid>
         ))}

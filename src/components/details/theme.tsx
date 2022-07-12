@@ -13,7 +13,7 @@ type ThemeProps = {
 const Theme: React.FC<ThemeProps> = ({ children }) => {
   return (
     <Box>
-      <Grid container spacing={15}>
+      <Grid container spacing={{ md: 15, sm: 3 }}>
         <Grid item xs={12} md={6}>
           <Typography variant="h3">Opening Theme</Typography>
           {OPENING.map((song, key) => (

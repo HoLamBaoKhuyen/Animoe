@@ -16,18 +16,27 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
       <Box>
         <Box
           sx={{
-            borderRadius: 4,
             overflow: "hidden",
-            height: "400px",
-            width: "100%",
-            backgroundImage: `url(${DETAIL_DATA.main_picture.large})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
+            px: {
+              sm: 0,
+              xs: 10,
+            },
           }}
-        ></Box>
+        >
+          <img
+            alt="poster"
+            src={DETAIL_DATA.main_picture.large}
+            width="100%"
+            height="100%"
+            style={{ borderRadius: 10 }}
+          />
+        </Box>
         <Box sx={{ textAlign: "center" }} my={2}>
-          <Button sx={{ px: { md: 5, xs: 3 } }}>Add to list</Button>
+          <Button
+            sx={{ px: { md: 5, sm: 2, xs: 3 }, fontSize: { md: 20, sm: 17 } }}
+          >
+            Add to list
+          </Button>
         </Box>
       </Box>
       <Box>
