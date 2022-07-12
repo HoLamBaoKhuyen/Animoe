@@ -30,7 +30,7 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
       <Grid
         container
         columnSpacing={{ md: 15, sm: 3 }}
-        rowSpacing={{ md: 4, sm: 2 }}
+        rowSpacing={{ md: 4, xs: 2 }}
       >
         {VOICE_ACTORS.map((actor) => (
           <Grid item xs={12} sm={6} key={actor.id}>

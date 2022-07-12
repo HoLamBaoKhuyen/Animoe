@@ -27,9 +27,13 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
           View more
         </Button>
       </Box>
-      <Grid container columnSpacing={10} rowSpacing={4}>
+      <Grid
+        container
+        columnSpacing={{ md: 10, sm: 3 }}
+        rowSpacing={{ md: 4, xs: 2 }}
+      >
         {STAFF.map((s) => (
-          <Grid item xs={4} key={s.id}>
+          <Grid item xs={12} sm={4} key={s.id}>
             <Box
               sx={{
                 position: "relative",
