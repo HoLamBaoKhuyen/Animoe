@@ -384,3 +384,131 @@ export const DETAIL_DATA = {
     num_list_users: 3460193,
   },
 };
+
+export const VOICE_ACTORS = [
+  {
+    id: 1,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 2,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 3,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 4,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 5,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 6,
+    character: "Yeager, Eren",
+    role: "main",
+    actor: "Kaiji, Yuki",
+    nationality: "Japanese",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      actor: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+];
+
+export const STAFF = [
+  {
+    id: 1,
+    name: "Wada, Yoji",
+    role: "Producer",
+    img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+  },
+  {
+    id: 2,
+    name: "Wada, Yoji",
+    role: "Producer",
+    img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+  },
+  {
+    id: 3,
+    name: "Wada, Yoji",
+    role: "Producer",
+    img: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+  },
+];
+
+export const OPENING = [
+  {
+    id: 1,
+    name: "Guren no Yumiya (紅蓮の弓矢)",
+    singer: "Linked Horizon",
+    eps: "1-13",
+  },
+  {
+    id: 2,
+    name: "Guren no Yumiya (紅蓮の弓矢)",
+    singer: "Linked Horizon",
+    eps: "1-13",
+  },
+];
+
+export const REVIEWS = [
+  {
+    id: 1,
+    avatar: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    name: "Sorrowful",
+    date: "Oct 2, 2014",
+    score: 10,
+    liked: 1580,
+    review:
+      "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
+  },
+  {
+    id: 2,
+    avatar: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    name: "Sorrowful",
+    date: "Oct 2, 2014",
+    score: 10,
+    liked: 1580,
+    review:
+      "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
+  },
+];

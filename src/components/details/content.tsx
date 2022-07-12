@@ -34,8 +34,8 @@ const Content: React.FC<ContentProps> = ({ children }) => {
       <Box mt={3}>
         <Typography variant="subtitle1">Genres</Typography>
         <Stack direction="row" spacing={1}>
-          {DETAIL_DATA.genres.map((genre) => (
-            <Box>
+          {DETAIL_DATA.genres.map((genre, key) => (
+            <Box key={key}>
               <Chip key={genre.id} label={genre.name} />
             </Box>
           ))}
