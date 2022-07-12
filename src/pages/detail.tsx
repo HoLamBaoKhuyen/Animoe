@@ -16,7 +16,7 @@ const DetailPage = () => {
   return (
     <Layout>
       <Container disableGutters>
-        <Grid container rowSpacing={2} columnSpacing={3}>
+        <Grid container rowSpacing={2} columnSpacing={{ md: 4, sm: 2 }}>
           <Grid item xs={12}>
             <Typography variant="h2">{DETAIL_DATA.title}</Typography>
             <Typography
@@ -26,10 +26,10 @@ const DetailPage = () => {
               {DETAIL_DATA.alternative_titles.en}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={3} md={3}>
             <Poster />
           </Grid>
-          <Grid item xs={12} sm={9}>
+          <Grid item xs={12} sm={9} md={9}>
             <Information />
           </Grid>
         </Grid>
