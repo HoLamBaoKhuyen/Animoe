@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA, REVIEWS } from "../../data/detail";
-import ReviewCard from "./reviewCard";
+import { DETAIL_DATA } from "../../data/detail";
 
 type RecommendationsProps = {
   children?: ReactNode;
@@ -11,69 +10,64 @@ type RecommendationsProps = {
   image?: string;
 };
 
-const Top5 = (list: any) => {
-  let top5list = [];
-  for (let i = 0; i < list.length; i++) {
-    top5list.push(
-      <Box textAlign="center">
-        <img
-          alt="recommend_anime"
-          src={list.node.main_picture.large}
-          width="200px"
-          height="auto"
-          style={{ borderRadius: 10 }}
-        />
-        <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
-          {list.node.title}
-        </Typography>
-      </Box>
-    );
-  }
-  return top5list;
-};
-
 const Recommendations: React.FC<RecommendationsProps> = ({ children }) => {
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }} mb={1}>
-        <Typography variant="h3">Recommendations</Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            border: 0,
-            color: theme.palette.common.white,
-            padding: `0 10px`,
-            fontWeight: 400,
-            "&:hover": { border: 0 },
-          }}
-        >
-          View more
-        </Button>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h4" sx={{ fontWeight: 700 }}>
+          Recommendations
+        </Typography>
+        <Box>
+          <Link
+            href="#"
+            sx={{
+              fontSize: { md: 20, sm: 18, xs: 15 },
+            }}
+          >
+            View more
+          </Link>
+        </Box>
       </Box>
+
       <Box display="flex" justifyContent="space-between">
         {DETAIL_DATA.recommendations.slice(0, 5).map((item) => (
           <Box
             textAlign="center"
             key={item.node.id}
-            width={{ md: "15vw", xs: "18vw" }}
+            width={{ md: "15vw", xs: "16vw" }}
             // height={{ md: "400px" }}
           >
-            <img
-              alt="recommend_anime"
-              src={item.node.main_picture.large}
-              width="100%"
-              height="auto"
-              style={{ borderRadius: 10 }}
-            />
-            <Typography
-              variant="subtitle1"
+            <Link
+              href="#"
               sx={{
-                color: theme.color._100,
-                fontSize: { md: 18, sm: 15, xs: 12 },
+                ".title": {
+                  transition: "all 0.2s",
+                },
+                "&:hover": {
+                  ".title": {
+                    color: theme.color._400,
+                  },
+                },
               }}
             >
-              {item.node.title}
-            </Typography>
+              <img
+                alt="recommend_anime"
+                src={item.node.main_picture.large}
+                width="100%"
+                height="auto"
+                style={{ borderRadius: 10 }}
+              />
+              <Typography
+                className="title"
+                variant="subtitle1"
+                sx={{
+                  color: theme.color._100,
+                  fontSize: { md: 18, sm: 15, xs: 12 },
+                }}
+              >
+                {item.node.title}
+              </Typography>
+            </Link>
           </Box>
         ))}
       </Box>

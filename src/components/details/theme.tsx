@@ -15,7 +15,9 @@ const Theme: React.FC<ThemeProps> = ({ children }) => {
     <Box>
       <Grid container spacing={{ md: 15, sm: 3 }}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h3">Opening Theme</Typography>
+          <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            Opening Theme
+          </Typography>
           {OPENING.map((song, key) => (
             <Box
               key={song.id}
@@ -28,23 +30,16 @@ const Theme: React.FC<ThemeProps> = ({ children }) => {
             >
               <HeadphonesIcon fontSize="large" />
               <Typography variant="body1" sx={{ color: theme.color._100 }}>
-                {key + 1}:{" "}
-                <Link
-                  href="#"
-                  sx={{
-                    color: theme.color._100,
-                    textDecorationColor: theme.color._100,
-                  }}
-                >
-                  {song.name}
-                </Link>{" "}
-                by {song.singer} (eps {song.eps})
+                {key + 1}: <Link href="#">{song.name}</Link> by {song.singer}{" "}
+                (eps {song.eps})
               </Typography>
             </Box>
           ))}
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant="h3">Ending Theme</Typography>
+          <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            Ending Theme
+          </Typography>
           {OPENING.map((song, key) => (
             <Box
               key={song.id}
@@ -57,17 +52,8 @@ const Theme: React.FC<ThemeProps> = ({ children }) => {
             >
               <HeadphonesIcon fontSize="large" />
               <Typography variant="body1" sx={{ color: theme.color._100 }}>
-                {key + 1}:{" "}
-                <Link
-                  href="#"
-                  sx={{
-                    color: theme.color._100,
-                    textDecorationColor: theme.color._100,
-                  }}
-                >
-                  {song.name}
-                </Link>{" "}
-                by {song.singer} (eps {song.eps})
+                {key + 1}: <Link href="#">{song.name}</Link> by {song.singer}{" "}
+                (eps {song.eps})
               </Typography>
             </Box>
           ))}
