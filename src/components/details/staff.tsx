@@ -23,14 +23,14 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
               Staff
             </Typography>
             <Box>
-            <Link
-            href="#"
-            sx={{
-              fontSize: { md: 20, sm: 18, xs: 15 },
-            }}
-          >
-            View more
-          </Link>
+              <Link
+                href="#"
+                sx={{
+                  fontSize: { md: 20, sm: 18, xs: 15 },
+                }}
+              >
+                View more
+              </Link>
             </Box>
           </Box>
         </Grid>
@@ -41,7 +41,7 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
                 position: "relative",
                 width: "100%",
                 height: "100px",
-                background: theme.color._800,
+                background: theme.color._850,
                 borderRadius: 3,
                 display: "flex",
                 justifyContent: "space-between",

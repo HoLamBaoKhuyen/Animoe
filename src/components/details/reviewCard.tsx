@@ -54,7 +54,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
               {name}
             </Typography>
-            <Typography variant="body2" sx={{ color: theme.color._100 }}>
+            <Typography
+              variant="body2"
+              sx={{ color: theme.color._100, fontSize: 13, fontWeight: 200 }}
+            >
               {date}
             </Typography>
           </Box>

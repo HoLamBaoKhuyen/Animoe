@@ -44,7 +44,7 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
                   position: "relative",
                   width: "100%",
                   height: "100px",
-                  background: theme.color._800,
+                  background: theme.color._850,
                   borderRadius: 3,
                   display: "flex",
                   justifyContent: "space-between",
