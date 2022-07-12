@@ -14,16 +14,33 @@ const Content: React.FC<ContentProps> = ({ children }) => {
   return (
     <Box>
       <Box mt={3}>
-        <Typography variant="subtitle1">Synopsis</Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 700,
+          }}
+        >
+          Synopsis
+        </Typography>
         <Typography
           variant="body1"
-          sx={{ whiteSpace: "pre-line", color: theme.color._100 }}
+          sx={{
+            whiteSpace: "pre-line",
+            color: theme.color._100,
+          }}
         >
           {`${DETAIL_DATA.synopsis}`}
         </Typography>
       </Box>
       <Box mt={3}>
-        <Typography variant="subtitle1">Background</Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 700,
+          }}
+        >
+          Background
+        </Typography>
         <Typography
           variant="body1"
           sx={{ whiteSpace: "pre-line", color: theme.color._100 }}
@@ -32,7 +49,14 @@ const Content: React.FC<ContentProps> = ({ children }) => {
         </Typography>
       </Box>
       <Box mt={3}>
-        <Typography variant="subtitle1">Genres</Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            fontWeight: 700,
+          }}
+        >
+          Genres
+        </Typography>
         <Box>
           {DETAIL_DATA.genres.map((genre, key) => (
             <Button

@@ -15,7 +15,9 @@ const Theme: React.FC<ThemeProps> = ({ children }) => {
     <Box>
       <Grid container spacing={{ md: 15, sm: 3 }}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h3">Opening Theme</Typography>
+          <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            Opening Theme
+          </Typography>
           {OPENING.map((song, key) => (
             <Box
               key={song.id}
@@ -44,7 +46,9 @@ const Theme: React.FC<ThemeProps> = ({ children }) => {
           ))}
         </Grid>
         <Grid item xs={12} md={6}>
-          <Typography variant="h3">Ending Theme</Typography>
+          <Typography variant="h4" sx={{ fontWeight: 700 }} >
+            Ending Theme
+          </Typography>
           {OPENING.map((song, key) => (
             <Box
               key={song.id}

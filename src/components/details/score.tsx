@@ -49,7 +49,10 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
           >
             {DETAIL_DATA.mean}
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: { md: 18, xs: 0 } }}>
+          <Typography
+            variant="body2"
+            sx={{ fontSize: { md: 15, xs: 0 }, fontWeight: 200 }}
+          >
             {format_number(DETAIL_DATA.num_scoring_users)} users
           </Typography>
         </Box>

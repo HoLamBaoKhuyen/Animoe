@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { DETAIL_DATA } from "../../data/detail";
 
@@ -13,21 +13,29 @@ type RecommendationsProps = {
 const Recommendations: React.FC<RecommendationsProps> = ({ children }) => {
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }} mb={1}>
-        <Typography variant="h3">Recommendations</Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            border: 0,
-            color: theme.palette.common.white,
-            padding: `0 10px`,
-            fontWeight: 400,
-            "&:hover": { border: 0 },
-          }}
-        >
-          View more
-        </Button>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h4" sx={{ fontWeight: 700 }}>
+          Recommendations
+        </Typography>
+        <Box>
+          <Link
+            href="#"
+            sx={{
+              fontFamily: "Poppins",
+              textDecoration: "none",
+              color: theme.color._100,
+              fontSize: { md: 20, sm: 18, xs: 15 },
+              fontWeight: 500,
+              "&:hover": {
+                color: theme.palette.common.white,
+              },
+            }}
+          >
+            View more
+          </Link>
+        </Box>
       </Box>
+
       <Box display="flex" justifyContent="space-between">
         {DETAIL_DATA.recommendations.slice(0, 5).map((item) => (
           <Box

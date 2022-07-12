@@ -25,7 +25,7 @@ const DetailPage = () => {
               {DETAIL_DATA.title}
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant="h2"
               sx={{
                 color: theme.palette.grey[400],
                 fontSize: { md: 23, xs: 18 },

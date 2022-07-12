@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { DETAIL_DATA, TRAILERS } from "../../data/detail";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
@@ -14,22 +14,35 @@ type TrailersProps = {
 const Trailers: React.FC<TrailersProps> = ({ children }) => {
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }} mb={1}>
-        <Typography variant="h3">Trailers</Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            border: 0,
-            color: theme.palette.common.white,
-            padding: `0 10px`,
-            fontWeight: 400,
-            "&:hover": { border: 0 },
-          }}
-        >
-          View more
-        </Button>
-      </Box>
-      <Grid container spacing={{ md: 10, sm: 2, xs: 3 }}>
+      <Grid
+        container
+        columnSpacing={{ md: 10, sm: 2, xs: 3 }}
+        rowSpacing={{ md: 0, xs: 2 }}
+      >
+        <Grid item xs={12}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Trailers
+            </Typography>
+            <Box>
+              <Link
+                href="#"
+                sx={{
+                  fontFamily: "Poppins",
+                  textDecoration: "none",
+                  color: theme.color._100,
+                  fontSize: { md: 20, sm: 18, xs: 15 },
+                  fontWeight: 500,
+                  "&:hover": {
+                    color: theme.palette.common.white,
+                  },
+                }}
+              >
+                View more
+              </Link>
+            </Box>
+          </Box>
+        </Grid>
         {TRAILERS.map((trailer) => (
           <Grid item xs={12} sm={4} key={trailer.id}>
             <Box
