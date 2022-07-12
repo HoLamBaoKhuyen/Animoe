@@ -512,3 +512,21 @@ export const REVIEWS = [
       "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
   },
 ];
+
+export const TRAILERS = [
+  {
+    id: 1,
+    name: "PV1",
+    src: "https://www.youtube.com/watch?v=T3I_bUwoQOM",
+  },
+  {
+    id: 2,
+    name: "PV1",
+    src: "https://www.youtube.com/watch?v=T3I_bUwoQOM",
+  },
+  {
+    id: 3,
+    name: "PV1",
+    src: "https://www.youtube.com/watch?v=T3I_bUwoQOM",
+  },
+];

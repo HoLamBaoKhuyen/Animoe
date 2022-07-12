@@ -1,8 +1,9 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA } from "../../data/detail";
+import { DETAIL_DATA, TRAILERS } from "../../data/detail";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import ReactPlayer from "react-player";
 
 type TrailersProps = {
   children?: ReactNode;
@@ -28,184 +29,70 @@ const Trailers: React.FC<TrailersProps> = ({ children }) => {
           View more
         </Button>
       </Box>
-      <Grid container spacing={10}>
-        <Grid item xs={4}>
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              minHeight: "220px",
-              background: `url(${DETAIL_DATA.main_picture.medium})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              borderRadius: 3,
-              cursor: "pointer",
-              transition: "all 0.5s",
-              "&:hover": {
-                "& .bg-hover": { display: "block" },
-              },
-            }}
-          >
+      <Grid container spacing={{ md: 10, sm: 2, xs: 3 }}>
+        {TRAILERS.map((trailer) => (
+          <Grid item xs={12} sm={4} key={trailer.id}>
             <Box
               sx={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%,-50%)",
-                color: theme.palette.common.white,
-                display: "flex",
-                alignItems: "center",
-                border: `2px solid ${theme.palette.common.white}`,
-                width: "fit-content",
-                px: 3,
-                py: 1,
-                borderRadius: 2,
-                background: `rgba(0,0,0,0.2)`,
-                zIndex: 10,
+                position: "relative",
+                maxWidth: { md: "400px", xs: "300px" },
+                height: { md: "220px", sm: "150px", xs: "180px" },
+                borderRadius: 3,
+                overflow: "hidden",
+                // "&:hover": {
+                //   "& .bg-hover": { display: "block" },
+                // },
               }}
             >
-              <PlayCircleOutlineIcon />
-              <Typography variant="subtitle2">Play</Typography>
+              <ReactPlayer
+                url={trailer.src}
+                width="100%"
+                height="100%"
+                playing={false}
+                controls={true}
+              />
+              {/* <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%,-50%)",
+                  color: theme.palette.common.white,
+                  display: "flex",
+                  alignItems: "center",
+                  border: `2px solid ${theme.palette.common.white}`,
+                  width: "fit-content",
+                  px: 3,
+                  py: 1,
+                  borderRadius: 2,
+                  background: `rgba(0,0,0,0.2)`,
+                  zIndex: 10,
+                }}
+              >
+                <PlayCircleOutlineIcon />
+                <Typography variant="subtitle2">Play</Typography>
+              </Box>
+              <Typography
+                variant="h4"
+                sx={{ position: "absolute", bottom: 10, left: 10, zIndex: 10 }}
+              >
+                PV1
+              </Typography>
+              <Box
+                className="bg-hover"
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  background: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5))`,
+                  width: "100%",
+                  minHeight: "220px",
+                  display: "none",
+                }}
+              ></Box> */}
             </Box>
-            <Typography
-              variant="h4"
-              sx={{ position: "absolute", bottom: 10, left: 10, zIndex: 10 }}
-            >
-              PV1
-            </Typography>
-            <Box
-              className="bg-hover"
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                background: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5))`,
-                width: "100%",
-                minHeight: "220px",
-                display: "none",
-              }}
-            ></Box>
-          </Box>
-        </Grid>
-        <Grid item xs={4}>
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              minHeight: "220px",
-              background: `url(${DETAIL_DATA.main_picture.medium})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              borderRadius: 3,
-              cursor: "pointer",
-              transition: "all 0.5s",
-              "&:hover": {
-                "& .bg-hover": { display: "block" },
-              },
-            }}
-          >
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%,-50%)",
-                color: theme.palette.common.white,
-                display: "flex",
-                alignItems: "center",
-                border: `2px solid ${theme.palette.common.white}`,
-                width: "fit-content",
-                px: 3,
-                py: 1,
-                borderRadius: 2,
-                background: `rgba(0,0,0,0.2)`,
-                zIndex: 10,
-              }}
-            >
-              <PlayCircleOutlineIcon />
-              <Typography variant="subtitle2">Play</Typography>
-            </Box>
-            <Typography
-              variant="h4"
-              sx={{ position: "absolute", bottom: 10, left: 10, zIndex: 10 }}
-            >
-              PV1
-            </Typography>
-            <Box
-              className="bg-hover"
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                background: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5))`,
-                width: "100%",
-                minHeight: "220px",
-                display: "none",
-              }}
-            ></Box>
-          </Box>
-        </Grid>
-        <Grid item xs={4}>
-          <Box
-            sx={{
-              position: "relative",
-              width: "100%",
-              minHeight: "220px",
-              background: `url(${DETAIL_DATA.main_picture.medium})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              borderRadius: 3,
-              cursor: "pointer",
-              transition: "all 0.5s",
-              "&:hover": {
-                "& .bg-hover": { display: "block" },
-              },
-            }}
-          >
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%,-50%)",
-                color: theme.palette.common.white,
-                display: "flex",
-                alignItems: "center",
-                border: `2px solid ${theme.palette.common.white}`,
-                width: "fit-content",
-                px: 3,
-                py: 1,
-                borderRadius: 2,
-                background: `rgba(0,0,0,0.2)`,
-                zIndex: 10,
-              }}
-            >
-              <PlayCircleOutlineIcon />
-              <Typography variant="subtitle2">Play</Typography>
-            </Box>
-            <Typography
-              variant="h4"
-              sx={{ position: "absolute", bottom: 10, left: 10, zIndex: 10 }}
-            >
-              PV1
-            </Typography>
-            <Box
-              className="bg-hover"
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                background: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5))`,
-                width: "100%",
-                minHeight: "220px",
-                display: "none",
-              }}
-            ></Box>
-          </Box>
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );
