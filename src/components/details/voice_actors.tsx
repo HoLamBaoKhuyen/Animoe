@@ -26,14 +26,7 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
               <Link
                 href="#"
                 sx={{
-                  fontFamily: "Poppins",
-                  textDecoration: "none",
-                  color: theme.color._100,
                   fontSize: { md: 20, sm: 18, xs: 15 },
-                  fontWeight: 500,
-                  "&:hover": {
-                    color: theme.palette.common.white,
-                  },
                 }}
               >
                 View more
@@ -65,12 +58,7 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
                   style={{ borderRadius: 10 }}
                 />
                 <Box ml={2}>
-                  <Typography
-                    variant="body2"
-                    sx={{ textDecorationLine: "underline" }}
-                  >
-                    {actor.character}
-                  </Typography>
+                  <Typography variant="body1">{actor.character}</Typography>
                   <Typography variant="body2" sx={{ fontSize: 13 }}>
                     {actor.role}
                   </Typography>
@@ -80,12 +68,7 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
                 sx={{ height: "100%", display: "flex", alignItems: "center" }}
               >
                 <Box mr={2}>
-                  <Typography
-                    variant="body2"
-                    sx={{ textDecorationLine: "underline" }}
-                  >
-                    {actor.actor}
-                  </Typography>
+                  <Typography variant="body1">{actor.actor}</Typography>
                   <Typography variant="body2" sx={{ fontSize: 13 }}>
                     {actor.nationality}
                   </Typography>

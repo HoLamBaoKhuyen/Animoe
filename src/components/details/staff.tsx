@@ -23,21 +23,14 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
               Staff
             </Typography>
             <Box>
-              <Link
-                href="#"
-                sx={{
-                  fontFamily: "Poppins",
-                  textDecoration: "none",
-                  color: theme.color._100,
-                  fontSize: { md: 20, sm: 18, xs: 15 },
-                  fontWeight: 500,
-                  "&:hover": {
-                    color: theme.palette.common.white,
-                  },
-                }}
-              >
-                View more
-              </Link>
+            <Link
+            href="#"
+            sx={{
+              fontSize: { md: 20, sm: 18, xs: 15 },
+            }}
+          >
+            View more
+          </Link>
             </Box>
           </Box>
         </Grid>
@@ -65,12 +58,7 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
                   style={{ borderRadius: 10 }}
                 />
                 <Box ml={2}>
-                  <Typography
-                    variant="body2"
-                    sx={{ textDecorationLine: "underline" }}
-                  >
-                    {s.name}
-                  </Typography>
+                  <Typography variant="body1">{s.name}</Typography>
                   <Typography variant="body2" sx={{ fontSize: 13 }}>
                     {s.role}
                   </Typography>

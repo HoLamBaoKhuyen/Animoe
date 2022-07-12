@@ -28,14 +28,7 @@ const Trailers: React.FC<TrailersProps> = ({ children }) => {
               <Link
                 href="#"
                 sx={{
-                  fontFamily: "Poppins",
-                  textDecoration: "none",
-                  color: theme.color._100,
                   fontSize: { md: 20, sm: 18, xs: 15 },
-                  fontWeight: 500,
-                  "&:hover": {
-                    color: theme.palette.common.white,
-                  },
                 }}
               >
                 View more

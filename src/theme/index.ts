@@ -126,6 +126,22 @@ const themeOptions: ThemeOptionsOld = {
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          cursor: "pointer",
+          textDecoration: "none",
+          color: themeColors.color._100,
+          fontWeight: 600,
+          fontFamily: "Poppins",
+          transition: "all 0.2s",
+          "&:hover": {
+            color: themeColors.color._400,
+            textDecoration: "none",
+          },
+        },
+      },
+    },
   },
 };
 
