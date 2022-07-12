@@ -27,6 +27,7 @@ const Content: React.FC<ContentProps> = ({ children }) => {
           sx={{
             whiteSpace: "pre-line",
             color: theme.color._100,
+            textAlign: "justify",
           }}
         >
           {`${DETAIL_DATA.synopsis}`}
@@ -43,7 +44,11 @@ const Content: React.FC<ContentProps> = ({ children }) => {
         </Typography>
         <Typography
           variant="body1"
-          sx={{ whiteSpace: "pre-line", color: theme.color._100 }}
+          sx={{
+            whiteSpace: "pre-line",
+            color: theme.color._100,
+            textAlign: "justify",
+          }}
         >
           {`${DETAIL_DATA.background}`}
         </Typography>

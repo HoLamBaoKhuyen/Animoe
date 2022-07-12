@@ -40,7 +40,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
         </Box>
       </Box>
       <Box>
-        <Typography variant="subtitle1" mt={1}>
+        <Typography variant="subtitle1" mt={1} fontWeight={700}>
           Information
         </Typography>
         <Typography
