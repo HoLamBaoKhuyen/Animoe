@@ -32,7 +32,11 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
           />
         </Box>
         <Box sx={{ textAlign: "center" }} my={2}>
-          <Button sx={{ px: { md: 5, xs: 3 } }}>Add to list</Button>
+          <Button
+            sx={{ px: { md: 5, sm: 2, xs: 3 }, fontSize: { md: 20, sm: 17 } }}
+          >
+            Add to list
+          </Button>
         </Box>
       </Box>
       <Box>
