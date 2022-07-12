@@ -52,15 +52,26 @@ const Recommendations: React.FC<RecommendationsProps> = ({ children }) => {
       </Box>
       <Box display="flex" justifyContent="space-between">
         {DETAIL_DATA.recommendations.slice(0, 5).map((item) => (
-          <Box textAlign="center" key={item.node.id}>
+          <Box
+            textAlign="center"
+            key={item.node.id}
+            width={{ md: "15vw", xs: "18vw" }}
+            // height={{ md: "400px" }}
+          >
             <img
               alt="recommend_anime"
               src={item.node.main_picture.large}
-              width="210px"
+              width="100%"
               height="auto"
               style={{ borderRadius: 10 }}
             />
-            <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                color: theme.color._100,
+                fontSize: { md: 18, sm: 15, xs: 12 },
+              }}
+            >
               {item.node.title}
             </Typography>
           </Box>
