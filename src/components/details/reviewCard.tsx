@@ -88,10 +88,9 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             fontSize: 17,
             fontWeight: 400,
             borderRadius: 1,
-            textDecoration: "underline",
             "&:hover": {
               border: 0,
-              textDecoration: "underline",
+              color: theme.color._400,
             },
           }}
           onClick={handleReadMore}

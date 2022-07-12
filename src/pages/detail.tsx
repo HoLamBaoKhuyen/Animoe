@@ -15,7 +15,15 @@ import Recommendations from "../components/details/recommendations";
 const DetailPage = () => {
   return (
     <Layout>
-      <Container disableGutters>
+      <Container
+        disableGutters
+        sx={{
+          paddingX: {
+            sm: 3,
+            xs: 2,
+          },
+        }}
+      >
         <Grid container rowSpacing={2} columnSpacing={{ md: 4, sm: 2 }}>
           <Grid item xs={12}>
             <Typography

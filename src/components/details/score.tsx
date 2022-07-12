@@ -33,7 +33,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
       >
         <Typography
           variant="h3"
-          sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 20, xs: 18 } }}
+          sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
         >
           Score:
         </Typography>
@@ -60,7 +60,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
 
       <Typography
         variant="h3"
-        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 20, xs: 18 } }}
+        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
         pl={1}
       >
         Rank{" "}
@@ -75,7 +75,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
 
       <Typography
         variant="h3"
-        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 20, xs: 18 } }}
+        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
       >
         Popularity{" "}
         <Typography
@@ -88,7 +88,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
       </Typography>
       <Typography
         variant="h3"
-        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 20, xs: 18 } }}
+        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
       >
         Members{" "}
         <Typography
