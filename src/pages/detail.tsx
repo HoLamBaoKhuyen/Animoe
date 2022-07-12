@@ -18,10 +18,18 @@ const DetailPage = () => {
       <Container disableGutters>
         <Grid container rowSpacing={2} columnSpacing={{ md: 4, sm: 2 }}>
           <Grid item xs={12}>
-            <Typography variant="h2">{DETAIL_DATA.title}</Typography>
+            <Typography
+              variant="h2"
+              sx={{ fontSize: { md: 32, sm: 28, xs: 22 } }}
+            >
+              {DETAIL_DATA.title}
+            </Typography>
             <Typography
               variant="subtitle1"
-              sx={{ color: theme.palette.grey[400], fontSize: 23 }}
+              sx={{
+                color: theme.palette.grey[400],
+                fontSize: { md: 23, xs: 18 },
+              }}
             >
               {DETAIL_DATA.alternative_titles.en}
             </Typography>
