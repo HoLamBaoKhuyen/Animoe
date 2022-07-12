@@ -29,7 +29,7 @@ const Recommendations: React.FC<RecommendationsProps> = ({ children }) => {
         </Box>
       </Box>
 
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" mt={2}>
         {DETAIL_DATA.recommendations.slice(0, 5).map((item) => (
           <Box
             textAlign="center"

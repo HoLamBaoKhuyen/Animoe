@@ -86,7 +86,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             border: 0,
             p: 0,
             fontSize: 17,
-            fontWeight: 400,
+            fontWeight: 500,
             borderRadius: 1,
             "&:hover": {
               border: 0,
