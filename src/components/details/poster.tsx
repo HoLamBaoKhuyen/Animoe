@@ -16,114 +16,150 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
       <Box>
         <Box
           sx={{
-            borderRadius: 4,
             overflow: "hidden",
-            height: "400px",
-            width: "100%",
-            backgroundImage: `url(${DETAIL_DATA.main_picture.large})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
+            px: {
+              sm: 0,
+              xs: 10,
+            },
           }}
-        ></Box>
+        >
+          <img
+            alt="poster"
+            src={DETAIL_DATA.main_picture.large}
+            width="100%"
+            height="100%"
+            style={{ borderRadius: 10 }}
+          />
+        </Box>
         <Box sx={{ textAlign: "center" }} my={2}>
-          <Button sx={{ px: { md: 5, xs: 3 } }}>Add to list</Button>
+          <Button
+            sx={{ px: { md: 5, sm: 2, xs: 3 }, fontSize: { md: 20, sm: 17 } }}
+          >
+            Add to list
+          </Button>
         </Box>
       </Box>
       <Box>
-        <Typography variant="subtitle1" mt={1}>
+        <Typography variant="subtitle1" mt={1} fontWeight={700}>
           Information
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Type:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {format_string(DETAIL_DATA.media_type)}
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Episodes:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {DETAIL_DATA.num_episodes}
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Status:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {format_string(DETAIL_DATA.status)}
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Aired:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {DETAIL_DATA.start_date}
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Premiered:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {format_string(DETAIL_DATA.start_season.season)}{" "}
             {DETAIL_DATA.start_season.year}
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Broadcast:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {format_string(DETAIL_DATA.broadcast.day_of_the_week)}s at{" "}
             {DETAIL_DATA.broadcast.start_time} (JST)
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Studios:{" "}
           {DETAIL_DATA.studios.map((studio) => (
             <Typography
               key={studio.id}
               component="span"
-              variant="body2"
+              variant="body1"
               sx={{ color: theme.color._100 }}
             >
               {studio.name}{" "}
             </Typography>
           ))}
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Source:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100 }}
           >
             {format_string(DETAIL_DATA.source)}
           </Typography>
         </Typography>
-        <Typography variant="subtitle2" sx={{ color: theme.color._100 }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
           Rating:{" "}
           <Typography
             component="span"
-            variant="body2"
+            variant="body1"
             sx={{ color: theme.color._100, textTransform: "uppercase" }}
           >
             {DETAIL_DATA.rating}

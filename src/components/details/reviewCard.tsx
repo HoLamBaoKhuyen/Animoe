@@ -54,7 +54,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
               {name}
             </Typography>
-            <Typography variant="body2" sx={{ color: theme.color._100 }}>
+            <Typography
+              variant="body2"
+              sx={{ color: theme.color._100, fontSize: 13, fontWeight: 200 }}
+            >
               {date}
             </Typography>
           </Box>
@@ -85,13 +88,12 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             color: theme.color._100,
             border: 0,
             p: 0,
-            fontSize: 18,
-            fontWeight: 500,
+            fontSize: 17,
+            fontWeight: 600,
             borderRadius: 1,
-            textDecoration: "underline",
             "&:hover": {
               border: 0,
-              textDecoration: "underline",
+              color: theme.color._400,
             },
           }}
           onClick={handleReadMore}

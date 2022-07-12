@@ -47,7 +47,7 @@ const themeOptions: ThemeOptionsOld = {
     },
     h2: {
       fontSize: 32,
-      fontWeight: 600,
+      fontWeight: 700,
       color: themeColors.color.white,
     },
     h3: {
@@ -66,6 +66,7 @@ const themeOptions: ThemeOptionsOld = {
     h6: {
       color: themeColors.color.white,
       fontSize: 16,
+      fontWeight: 200,
     },
     body1: {
       color: themeColors.color.white,
@@ -96,7 +97,7 @@ const themeOptions: ThemeOptionsOld = {
         root: {
           borderRadius: 10,
           textTransform: "none",
-          fontWeight: 600,
+          fontWeight: 500,
           fontSize: 23,
         },
       },
@@ -122,6 +123,22 @@ const themeOptions: ThemeOptionsOld = {
           fontWeight: 600,
           background: themeColors.color._600,
           borderRadius: 10,
+        },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          cursor: "pointer",
+          textDecoration: "none",
+          color: themeColors.color._100,
+          fontWeight: 600,
+          fontFamily: "Poppins",
+          transition: "all 0.2s",
+          "&:hover": {
+            color: themeColors.color._400,
+            textDecoration: "none",
+          },
         },
       },
     },
