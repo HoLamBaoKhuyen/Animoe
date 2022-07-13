@@ -1,9 +1,7 @@
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { Box, Container, Pagination, Stack, Tab, Typography } from '@mui/material'
 import * as React from 'react'
-import { useDispatch } from 'react-redux'
 import Layout from '../../components/layout'
-import { apiSlice } from '../../redux/slices/apiSlice'
 import { FilterRankingList, TypeRankingList } from './RankingList'
 
 export default function TopAnime() {

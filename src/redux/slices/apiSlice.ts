@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const apiSlice = createApi({
-	reducerPath: 'animeApi',
+	reducerPath: 'api',
 	baseQuery: fetchBaseQuery({
 		baseUrl: 'https://api.jikan.moe/v4/',
 	}),
