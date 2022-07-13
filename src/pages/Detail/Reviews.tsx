@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { REVIEWS } from "../../data/detail";
-import ReviewCard from "./reviewCard";
+import ReviewCard from "./ReviewCard";
 
 type ReviewsProps = {
   children?: ReactNode;

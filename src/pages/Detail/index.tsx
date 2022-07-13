@@ -1,16 +1,17 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import Layout from "../components/layout";
-import { theme } from "../theme";
-import Poster from "../components/details/poster";
-import Information from "../components/details/information";
-import { DETAIL_DATA } from "../data/detail";
-import Trailers from "../components/details/trailers";
-import VoiceActors from "../components/details/voice_actors";
-import Staff from "../components/details/staff";
-import Theme from "../components/details/theme";
-import Reviews from "../components/details/reviews";
-import Recommendations from "../components/details/recommendations";
+import Layout from "../../components/layout";
+import { theme } from "../../theme";
+import Poster from "./Poster";
+import Information from "./Information";
+import { DETAIL_DATA } from "../../data/detail";
+import Trailers from "./Trailers";
+import VoiceActors from "./VoiceActors";
+import Staff from "./Staff";
+import Theme from "./Theme";
+import Reviews from "./Reviews";
+import Recommendations from "./Recommendations";
+import Footer from "../../components/layout/Footer";
 
 const DetailPage = () => {
   return (
@@ -68,6 +69,7 @@ const DetailPage = () => {
           <Recommendations />
         </Box>
       </Container>
+      <Footer />
     </Layout>
   );
 };

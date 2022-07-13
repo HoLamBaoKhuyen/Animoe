@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 export const CustomTab = styled(Tab)({
   textTransform: "none",
   fontWeight: 600,
-  color: theme.color.white,
+  color: theme.color._100,
   padding: 5,
   marginRight: 10,
   minHeight: 0,
@@ -11,7 +11,9 @@ export const CustomTab = styled(Tab)({
     borderRadius: 10,
   },
   "&:hover": {},
-  "&:active": {},
+  "&:active": {
+    color: theme.color.white,
+  },
   "&:focus": {},
   "&.Mui-selected": {
     color: theme.color.white,

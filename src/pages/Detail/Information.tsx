@@ -1,10 +1,10 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { CustomTab } from "../Tabs/CustomTab";
+import { CustomTab } from "../../components/tabs/CustomTab";
 import { Typography } from "@mui/material";
-import { CustomTabs } from "../Tabs/CustomTabs";
-import Score from "./score";
-import Content from "./content";
+import { CustomTabs } from "../../components/tabs/CustomTabs";
+import Score from "./Score";
+import Content from "./Content";
 
 interface TabPanelProps {
   children?: React.ReactNode;
