@@ -12,13 +12,13 @@ const List = ({ data }: { data: Array<any> }) => {
 					<Card key={item.mal_id}>
 						<CardContent>
 							<Grid container spacing={2} alignItems='center' textAlign='center'>
-								<Grid item sm={1} md={1}>
+								<Grid item xs={12} sm={2} md={1}>
 									<WorkspacePremiumIcon fontSize='large' sx={{ color: index === 0 ? 'gold' : index === 1 ? 'silver' : 'brown' }} />
 								</Grid>
-								<Grid item sm={2} md={1}>
+								<Grid item xs={12} sm={2} md={1}>
 									<img alt='Poster' src={item.images.jpg.image_url} width='100%' style={{ borderRadius: 10 }} />
 								</Grid>
-								<Grid item sm={7} md={9} textAlign='left'>
+								<Grid item xs={9} sm={6} md={9} textAlign='left'>
 									<Stack spacing={1}>
 										<Typography variant='h4'>{item.title}</Typography>
 										<Typography variant='body1' color={(theme) => theme.color._100}>
@@ -32,7 +32,7 @@ const List = ({ data }: { data: Array<any> }) => {
 										</Typography>
 									</Stack>
 								</Grid>
-								<Grid item sm={2} md={1}>
+								<Grid item xs={3} sm={2} md={1}>
 									<IconButton sx={{ color: (theme) => theme.color._100 }}>
 										<AddBoxIcon />
 									</IconButton>
