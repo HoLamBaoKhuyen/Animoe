@@ -1,6 +1,6 @@
 import React from "react";
 import { theme } from "../../theme";
-import {Box, Typography} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Footer = () => {
     return (

@@ -41,7 +41,7 @@ const themeOptions: ThemeOptionsOld = {
     fontFamily: ["Poppins", "sans-serif"].join(","),
     fontSize: 17,
     h1: {
-      fontSize: 45,
+      fontSize: 40,
       fontWeight: 700,
       color: themeColors.color.white,
     },
@@ -89,13 +89,30 @@ const themeOptions: ThemeOptionsOld = {
     },
   },
   components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: themeColors.color._850,
+        },
+      }
+    },
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          borderColor: 'white',
+        },
+        icon: {
+          fill: 'white',
+        },
+      }
+    },
     MuiButton: {
       defaultProps: {
         variant: "contained",
       },
       styleOverrides: {
         root: {
-          borderRadius: 10,
+          borderRadius: 12,
           textTransform: "none",
           fontWeight: 500,
           fontSize: 23,

@@ -12,10 +12,12 @@ import Theme from "./Theme";
 import Reviews from "./Reviews";
 import Recommendations from "./Recommendations";
 import Footer from "../../components/layout/Footer";
+import NavBar from "../../components/layout/NavBar/NavBar";
 
 const DetailPage = () => {
   return (
     <Layout>
+      <NavBar />
       <Container
         disableGutters
         sx={{
