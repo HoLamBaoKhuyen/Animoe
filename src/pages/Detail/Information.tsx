@@ -1,8 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { CustomTab } from "../../components/tabs/CustomTab";
+import { CustomTab } from "../../components/Tabs/CustomTab";
 import { Typography } from "@mui/material";
-import { CustomTabs } from "../../components/tabs/CustomTabs";
+import { CustomTabs } from "../../components/Tabs/CustomTabs";
 import Score from "./Score";
 import Content from "./Content";
 

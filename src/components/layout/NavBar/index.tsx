@@ -96,10 +96,13 @@ const NavBar = () => {
 
             <NavBarMenuItem>
                 <Typography
+                    component="a"
+                    href="/login"
                     sx={{
                         fontSize: {sm: 16, xs: 12},
                         fontWeight: 600,
                         color: theme.color._100,
+                        textDecoration: 'none',
                     }}
                 >
                     Log In
@@ -108,10 +111,13 @@ const NavBar = () => {
 
             <NavBarMenuItem>
                 <Typography
+                    component="a"
+                    href="/signup"
                     sx={{
                         fontSize: {sm: 16, xs: 12},
                         fontWeight: 600,
                         color: theme.color._100,
+                        textDecoration: 'none',
                     }}
                 >
                     Sign Up
