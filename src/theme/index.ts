@@ -41,7 +41,7 @@ const themeOptions: ThemeOptionsOld = {
 		fontFamily: ['Poppins', 'sans-serif'].join(','),
 		fontSize: 17,
 		h1: {
-			fontSize: 45,
+			fontSize: 40,
 			fontWeight: 700,
 			color: themeColors.color.white,
 		},
@@ -89,13 +89,30 @@ const themeOptions: ThemeOptionsOld = {
 		},
 	},
 	components: {
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					backgroundColor: themeColors.color._850,
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				select: {
+					borderColor: 'white',
+				},
+				icon: {
+					fill: 'white',
+				},
+			},
+		},
 		MuiButton: {
 			defaultProps: {
 				variant: 'contained',
 			},
 			styleOverrides: {
 				root: {
-					borderRadius: 10,
+					borderRadius: 12,
 					textTransform: 'none',
 					fontWeight: 500,
 					fontSize: 23,
@@ -146,13 +163,20 @@ const themeOptions: ThemeOptionsOld = {
 			styleOverrides: {
 				root: {
 					color: themeColors.color.white,
+					textTransform: 'none',
+				},
+				selected: {
+					color: themeColors.color.green_400,
 				},
 			},
 		},
-		MuiButtonBase: {
+		MuiTabs: {
 			styleOverrides: {
-				root: {
-					color: themeColors.color.white,
+				indicator: {
+					display: 'none',
+				},
+				flexContainer: {
+					justifyContent: 'space-between',
 				},
 			},
 		},
@@ -161,6 +185,7 @@ const themeOptions: ThemeOptionsOld = {
 				root: {
 					background: themeColors.color._850,
 					color: themeColors.color.white,
+					borderRadius: 10,
 				},
 			},
 		},
@@ -168,6 +193,19 @@ const themeOptions: ThemeOptionsOld = {
 			styleOverrides: {
 				root: {
 					color: themeColors.color.white,
+					fontWeight: 400,
+					border: 'none',
+				},
+				icon: {
+					fontSize: 20,
+				},
+			},
+		},
+		MuiPagination: {
+			styleOverrides: {
+				root: {
+					backgroundColor: themeColors.color._850,
+					borderRadius: 5,
 				},
 			},
 		},
