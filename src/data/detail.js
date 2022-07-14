@@ -13,7 +13,7 @@ export const DETAIL_DATA = {
   start_date: "2013-04-07",
   end_date: "2013-09-29",
   synopsis:
-    "Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.\n\nAfter witnessing a horrific personal loss at the hands of the invading creatures, Eren Yeager dedicates his life to their eradication by enlisting into the Survey Corps, an elite military unit that combats the merciless humanoids outside the protection of the walls. Eren, his adopted sister Mikasa Ackerman, and his childhood friend Armin Arlert join the brutal war against the Titans and race to discover a way of defeating them before the last walls are breached.\n\n[Written by MAL Rewrite]",
+      "Centuries ago, mankind was slaughtered to near extinction by monstrous humanoid creatures called Titans, forcing humans to hide in fear behind enormous concentric walls. What makes these giants truly terrifying is that their taste for human flesh is not born out of hunger but what appears to be out of pleasure. To ensure their survival, the remnants of humanity began living within defensive barriers, resulting in one hundred years without a single titan encounter. However, that fragile calm is soon shattered when a colossal Titan manages to breach the supposedly impregnable outer wall, reigniting the fight for survival against the man-eating abominations.\n\nAfter witnessing a horrific personal loss at the hands of the invading creatures, Eren Yeager dedicates his life to their eradication by enlisting into the Survey Corps, an elite military unit that combats the merciless humanoids outside the protection of the walls. Eren, his adopted sister Mikasa Ackerman, and his childhood friend Armin Arlert join the brutal war against the Titans and race to discover a way of defeating them before the last walls are breached.\n\n[Written by MAL Rewrite]",
   mean: 8.53,
   rank: 104,
   popularity: 1,
@@ -101,7 +101,7 @@ export const DETAIL_DATA = {
     },
   ],
   background:
-    "Shingeki no Kyojin adapts content from the first 8 volumes of Hajime Isayama's award-winning manga of the same name.\n\nThe last episode received a pre-airing in Tokyo, Marunouchi Piccadilly 1 theater on Saturday, September 28, 2013. TV broadcast took place after midnight, a few hours later.",
+      "Shingeki no Kyojin adapts content from the first 8 volumes of Hajime Isayama's award-winning manga of the same name.\n\nThe last episode received a pre-airing in Tokyo, Marunouchi Piccadilly 1 theater on Saturday, September 28, 2013. TV broadcast took place after midnight, a few hours later.",
   related_anime: [
     {
       node: {
@@ -229,9 +229,9 @@ export const DETAIL_DATA = {
         title: "Shingeki no Kyojin: Chronicle",
         main_picture: {
           medium:
-            "https://api-cdn.myanimelist.net/images/anime/1786/110717.jpg",
+              "https://api-cdn.myanimelist.net/images/anime/1786/110717.jpg",
           large:
-            "https://api-cdn.myanimelist.net/images/anime/1786/110717l.jpg",
+              "https://api-cdn.myanimelist.net/images/anime/1786/110717l.jpg",
         },
       },
       relation_type: "summary",
@@ -243,9 +243,9 @@ export const DETAIL_DATA = {
         title: "Snickers x Shingeki no Kyojin",
         main_picture: {
           medium:
-            "https://api-cdn.myanimelist.net/images/anime/1305/123620.jpg",
+              "https://api-cdn.myanimelist.net/images/anime/1305/123620.jpg",
           large:
-            "https://api-cdn.myanimelist.net/images/anime/1305/123620l.jpg",
+              "https://api-cdn.myanimelist.net/images/anime/1305/123620l.jpg",
         },
       },
       relation_type: "character",
@@ -282,9 +282,9 @@ export const DETAIL_DATA = {
         title: "Yakusoku no Neverland",
         main_picture: {
           medium:
-            "https://api-cdn.myanimelist.net/images/anime/1830/118780.jpg",
+              "https://api-cdn.myanimelist.net/images/anime/1830/118780.jpg",
           large:
-            "https://api-cdn.myanimelist.net/images/anime/1830/118780l.jpg",
+              "https://api-cdn.myanimelist.net/images/anime/1830/118780l.jpg",
         },
       },
       num_recommendations: 49,
@@ -499,7 +499,7 @@ export const REVIEWS = [
     score: 10,
     liked: 1580,
     review:
-      "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
+        "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
   },
   {
     id: 2,
@@ -509,7 +509,7 @@ export const REVIEWS = [
     score: 10,
     liked: 1580,
     review:
-      "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
+        "Oh dear Shingeki no Kyojin, where do I even begin. If you've talked with your friends about anime, then the couple anime that everyone talks about are Naruto, Bleach, One Piece, Dragon Ball, and... Shingeki no Kyojin. What's the difference between Shingeki and the rest? Shingeki only has 25 episodes so far yet it's on par in popularity with the other",
   },
 ];
 
@@ -529,4 +529,124 @@ export const TRAILERS = [
     name: "PV1",
     src: "https://www.youtube.com/watch?v=T3I_bUwoQOM",
   },
+];
+
+export const SEARCH_RESULTS =  [
+  {
+    id: 1,
+    name: "Tokyo Ghoul:re",
+    eps: "TV(12 eps)",
+    scores: "Scored 6.38",
+    members: "1,014,737 members",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 2,
+    name: "Tokyo Ghoul: 'Jack'",
+    eps: "OVA(1 ep)",
+    scores: "Scored 7.32",
+    members: "227,353 members",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 3,
+    name: "Tokyo Ghoul:re 2nd Season",
+    eps: "TV(12 eps)",
+    scores: "Scored 6.40",
+    members: "734,959 members",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 4,
+    name: "Tokyo Ghoul: 'Pinto'",
+    eps: "OVA(1 ep)",
+    scores: "Scored 7.21",
+    members: "191,555 members",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  },
+  {
+    id: 5,
+    name: "Tokyo Ghoul: A",
+    eps: "TV(12 eps)",
+    scores: "Scored 7.03",
+    members: "1,592,033 members",
+    img: {
+      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+    },
+  }
+];
+export const FILTER =  [
+  {
+    id: 1,
+    name: "Type",
+    type: [
+      "TV", "OVA", "Movie", "Special", "ONA", "Music"
+    ]
+  },
+  {
+    id: 2,
+    name: "Score",
+    type: [
+      "(1)", "(2)", "(3)", "(4)", "(5)", "(6)", "(7)", "(8)", "(9)", "10"
+    ]
+  },
+  {
+    id: 3,
+    name: "Status",
+    type: [
+      "Finished Airing","Currently Airing","Not yet Aired"
+    ]
+  },
+  {
+    id: 4,
+    name: "Rated",
+    type: [
+      "G","PG","PG-13","R","R+", "Rx"
+    ]
+  },
+  {
+    id: 5,
+    name: "Producer",
+    type: [
+      "Youth Film Studio","10 Gauge","1TheK","1st Place","12 Diary Holders"
+    ]
+  }
+];
+export const CONTENT_FILTER =  [
+  {
+    id: 1,
+    name: "Genres",
+    type: [
+      "Josei","Kids","Seinen","Shoujo","Shounen"
+    ]
+  },
+  {
+    id: 2,
+    name: "Explicit Genres",
+    type: [
+      "Josei","Kids","Seinen","Shoujo","Shounen"
+    ]
+  },
+  {
+    id: 3,
+    name: "Themes",
+    type: [
+      "Josei","Kids","Seinen","Shoujo","Shounen"
+    ]
+  },
+  {
+    id: 4,
+    name: "Demographics",
+    type: [
+      "Josei","Kids","Seinen","Shoujo","Shounen"
+    ]
+  }
 ];
