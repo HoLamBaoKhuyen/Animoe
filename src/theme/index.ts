@@ -1,25 +1,25 @@
-import { createTheme } from "@mui/material/styles";
-import { ThemeOptions as ThemeOptionsOld } from "@mui/material/styles/createTheme";
+import { createTheme } from '@mui/material/styles'
+import { ThemeOptions as ThemeOptionsOld } from '@mui/material/styles/createTheme'
 
 // Custom theme: Colors
 const themeColors = {
 	color: {
-		primary: "#646FD4",
-		secondary: "#202449",
-		_100: "#DFE3FF",
-		_400: "#9BA3EB",
-		_600: "#646FD4",
-		_700: "#242F9B",
-		_800: "#21205C",
-		_850: "#272F5D",
-		_900: "#202449",
-		_950: "#130E35",
-		red_800: "#7A2222",
-		green_400: "#0FB45B",
-		green_800: "#287141",
-		white: "#ffffff",
+		primary: '#646FD4',
+		secondary: '#202449',
+		_100: '#DFE3FF',
+		_400: '#9BA3EB',
+		_600: '#646FD4',
+		_700: '#242F9B',
+		_800: '#21205C',
+		_850: '#272F5D',
+		_900: '#202449',
+		_950: '#130E35',
+		red_800: '#7A2222',
+		green_400: '#0FB45B',
+		green_800: '#287141',
+		white: '#ffffff',
 	},
-} as const;
+} as const
 
 // Override style Mui
 const themeOptions: ThemeOptionsOld = {
@@ -30,15 +30,15 @@ const themeOptions: ThemeOptionsOld = {
 			contrastText: themeColors.color.white,
 		},
 		secondary: {
-			main: "#9BA3EB",
+			main: '#9BA3EB',
 			contrastText: themeColors.color.white,
 		},
 		grey: {
-			200: "#cccccc",
+			200: '#cccccc',
 		},
 	},
 	typography: {
-		fontFamily: ["Poppins", "sans-serif"].join(","),
+		fontFamily: ['Poppins', 'sans-serif'].join(','),
 		fontSize: 17,
 		h1: {
 			fontSize: 40,
@@ -94,7 +94,7 @@ const themeOptions: ThemeOptionsOld = {
 				root: {
 					backgroundColor: themeColors.color._850,
 				},
-			}
+			},
 		},
 		MuiSelect: {
 			styleOverrides: {
@@ -104,16 +104,16 @@ const themeOptions: ThemeOptionsOld = {
 				icon: {
 					fill: 'white',
 				},
-			}
+			},
 		},
 		MuiButton: {
 			defaultProps: {
-				variant: "contained",
+				variant: 'contained',
 			},
 			styleOverrides: {
 				root: {
 					borderRadius: 12,
-					textTransform: "none",
+					textTransform: 'none',
 					fontWeight: 500,
 					fontSize: 23,
 				},
@@ -129,7 +129,7 @@ const themeOptions: ThemeOptionsOld = {
 		MuiContainer: {
 			styleOverrides: {
 				root: {
-					maxWidth: "1300px !important",
+					maxWidth: '1300px !important',
 				},
 			},
 		},
@@ -146,15 +146,15 @@ const themeOptions: ThemeOptionsOld = {
 		MuiLink: {
 			styleOverrides: {
 				root: {
-					cursor: "pointer",
-					textDecoration: "none",
+					cursor: 'pointer',
+					textDecoration: 'none',
 					color: themeColors.color._100,
 					fontWeight: 600,
-					fontFamily: "Poppins",
-					transition: "all 0.2s",
-					"&:hover": {
+					fontFamily: 'Poppins',
+					transition: 'all 0.2s',
+					'&:hover': {
 						color: themeColors.color._400,
-						textDecoration: "none",
+						textDecoration: 'none',
 					},
 				},
 			},
@@ -163,13 +163,20 @@ const themeOptions: ThemeOptionsOld = {
 			styleOverrides: {
 				root: {
 					color: themeColors.color.white,
+					textTransform: 'none',
+				},
+				selected: {
+					color: themeColors.color.green_400,
 				},
 			},
 		},
-		MuiButtonBase: {
+		MuiTabs: {
 			styleOverrides: {
-				root: {
-					color: themeColors.color.white,
+				indicator: {
+					display: 'none',
+				},
+				flexContainer: {
+					justifyContent: 'space-between',
 				},
 			},
 		},
@@ -178,6 +185,7 @@ const themeOptions: ThemeOptionsOld = {
 				root: {
 					background: themeColors.color._850,
 					color: themeColors.color.white,
+					borderRadius: 10,
 				},
 			},
 		},
@@ -185,20 +193,33 @@ const themeOptions: ThemeOptionsOld = {
 			styleOverrides: {
 				root: {
 					color: themeColors.color.white,
+					fontWeight: 400,
+					border: 'none',
+				},
+				icon: {
+					fontSize: 20,
+				},
+			},
+		},
+		MuiPagination: {
+			styleOverrides: {
+				root: {
+					backgroundColor: themeColors.color._850,
+					borderRadius: 5,
 				},
 			},
 		},
 	},
-};
+}
 
 // Update for Typescript
 type CustomTheme = {
-	[Key in keyof typeof themeColors]: typeof themeColors[Key];
-};
-declare module "@mui/material/styles/createTheme" {
+	[Key in keyof typeof themeColors]: typeof themeColors[Key]
+}
+declare module '@mui/material/styles/createTheme' {
 	interface Theme extends CustomTheme {}
 	interface ThemeOptions extends CustomTheme {}
 }
 
 // Create theme
-export const theme = createTheme({ ...themeColors, ...themeOptions });
+export const theme = createTheme({ ...themeColors, ...themeOptions })
