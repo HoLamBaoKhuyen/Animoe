@@ -99,11 +99,18 @@ const themeOptions: ThemeOptionsOld = {
 		MuiSelect: {
 			styleOverrides: {
 				select: {
-					borderColor: 'white',
+					borderColor: themeColors.color._100,
 				},
 				icon: {
-					fill: 'white',
+					fill: themeColors.color._100,
 				},
+			}
+		},
+		MuiPopover: {
+			styleOverrides: {
+				root: {
+					marginLeft: 10,
+				}
 			}
 		},
 		MuiButton: {

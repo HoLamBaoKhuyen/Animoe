@@ -67,7 +67,7 @@ const DetailPage = () => {
         <Box mt={4}>
           <Reviews />
         </Box>
-        <Box mt={4} pb={10}>
+        <Box mt={4}>
           <Recommendations />
         </Box>
       </Container>
