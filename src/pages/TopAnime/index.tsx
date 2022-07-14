@@ -1,5 +1,5 @@
-import { TabContext, TabList, TabPanel } from '@mui/lab'
-import { Box, Container, Pagination, PaginationItem, Stack, Tab, Typography } from '@mui/material'
+import { TabContext, TabList } from '@mui/lab'
+import { Box, Container, Pagination, PaginationItem, Stack, Typography } from '@mui/material'
 import * as React from 'react'
 import Layout from '../../components/layout'
 import { CustomTab } from '../../components/Tabs/CustomTab'

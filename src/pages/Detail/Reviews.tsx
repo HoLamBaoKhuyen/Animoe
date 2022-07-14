@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
-import { theme } from "../../theme";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import { REVIEWS } from "../../data/detail";
 import ReviewCard from "./ReviewCard";
 

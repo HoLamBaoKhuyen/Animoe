@@ -2,9 +2,10 @@ import React from 'react';
 import { theme } from "../../../theme";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Menu } from '@mui/material';
+import { Link, Menu } from '@mui/material';
 import { NavBarMenuItem } from "./NavBarMenuItem";
 import { styled } from "@mui/material/styles";
+import { format_navlink } from "../../../helpers/format";
 
 const CustomPaper = styled('div')(() => ({
     background: theme.color._850,
@@ -16,7 +17,7 @@ interface BasicMenuProps {
 }
 
 const NavBarMenu = (props: BasicMenuProps) => {
-    const { menuName, menuItems, ...other } = props;
+    const { menuName, menuItems } = props;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
     const open = Boolean(anchorEl);
@@ -63,7 +64,9 @@ const NavBarMenu = (props: BasicMenuProps) => {
                                 fontSize: {md: 20, sm: 16, xs: 12},
                             }}
                         >
-                            {item}
+                            <Link href={format_navlink(item)} underline="none">
+                                {item}
+                            </Link>
                         </NavBarMenuItem>
                     ))}
                 </Menu>

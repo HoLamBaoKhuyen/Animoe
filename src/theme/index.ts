@@ -171,9 +171,9 @@ const themeOptions: ThemeOptionsOld = {
 				root: {
 					color: themeColors.color.white,
 					textTransform: 'none',
-				},
-				selected: {
-					color: themeColors.color.green_400,
+					"&.Mui-selected": {
+						color: themeColors.color.green_400,
+					}
 				},
 			},
 		},

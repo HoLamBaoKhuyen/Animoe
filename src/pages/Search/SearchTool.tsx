@@ -1,12 +1,11 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import  Filter  from "./filter";
-import  ContentFilter from "./content_filter";
-import { CustomTab } from "../Tabs/CustomTab";
-import { CustomTabs } from "../Tabs/CustomTabs";
+import  Filter  from "./Filter";
+import  ContentFilter from "./ContenFilter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 type SearchToolProps = {
   children?: ReactNode;
   title?: string;

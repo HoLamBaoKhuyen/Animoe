@@ -1,11 +1,8 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import Layout from "../components/layout";
-import { theme } from "../theme";
-import Poster from "../components/details/poster";
-import Information from "../components/details/information";
-import SearchResults from "../components/details/search_result";
-import SearchTools from  "../components/details/search_tool";
+import { Box, Container  } from "@mui/material";
+import Layout from "../../components/layout";
+import SearchResults from "./SearchResult";
+import SearchTools from "./SearchTool";
 
 const DetailPage = () => {
   return (

@@ -5,7 +5,7 @@ import { Box, Typography } from "@mui/material";
 const Footer = () => {
     return (
         <Box
-            mt={10}
+            mt={8}
             sx={{
                 height: { md: 120, sm: 100, xs: 80 },
                 display: "flex",

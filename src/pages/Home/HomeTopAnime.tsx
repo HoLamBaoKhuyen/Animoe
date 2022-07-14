@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Box, Grid, Link, Skeleton, Typography, Stack, Popover, CardContent, Card} from "@mui/material";
+import React from "react";
+import {Box, Grid, Link, Skeleton, Typography, Stack } from "@mui/material";
 import { theme } from "../../theme";
 import { useGetTopFiveAnimeQuery } from "../../redux/slices/animeSlice";
 
@@ -13,15 +13,9 @@ const HomeTopAnime = (props: HomeTopAnimeProps) => {
     const { data } = useGetTopFiveAnimeQuery(filter);
 
     return data ? (
-        <>
-            <Box mt={2}
-                 sx={{
-                     display: 'flex',
-                     alignItems: 'center',
-                     justifyContent: 'space-between',
-                 }}
-            >
-                <Typography variant="h3" sx={{ fontWeight: 800 }}>
+        <Box>
+            <Box mt={2} display="flex" justifyContent="space-between" alignItems='center'>
+                <Typography variant="h3" sx={{ fontWeight: 800, fontSize: { md: 20, sm: 18, xs: 15 }, }}>
                     {title}
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
@@ -35,9 +29,9 @@ const HomeTopAnime = (props: HomeTopAnimeProps) => {
                 </Link>
             </Box>
             <Box display="flex" justifyContent="space-between" mt={2}>
-                {data.data.map((item: any) => (
+                {data.map((item: any) => (
                         <Link
-                        href="#"
+                        href={`anime/${item.mal_id}`}
                         sx={{
                             ".title": {
                                 transition: "all 0.2s",
@@ -79,7 +73,7 @@ const HomeTopAnime = (props: HomeTopAnimeProps) => {
                     </Link>
                 ))}
             </Box>
-        </>
+        </Box>
     ) : (
         <>
             <Box mt={2}

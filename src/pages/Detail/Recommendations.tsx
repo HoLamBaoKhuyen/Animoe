@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { DETAIL_DATA } from "../../data/detail";
 

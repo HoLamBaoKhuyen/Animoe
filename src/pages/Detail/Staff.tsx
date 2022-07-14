@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { STAFF } from "../../data/detail";
 
