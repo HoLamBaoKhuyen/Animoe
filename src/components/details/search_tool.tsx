@@ -59,7 +59,14 @@ const SearchResults: React.FC<SearchToolProps> = ({ children }) => {
             >
               Search
             </Button>
+            <Box
+              sx={{ fontSize: { md: 30, sm: 17 }, height: 90, width: 90,
+               position: "absolute", left: "90%", mt: 2,
+               backgroundImage: "url(https://i.ibb.co/vxFVq81/Administrative-Tools.png)" }}
+            >
+            </Box>
           </Box>
+
         </Grid>
         
       </Grid>

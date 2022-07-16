@@ -43,9 +43,9 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
                                 style={{height:40, minWidth: 200, paddingLeft: 10, borderRadius: 10, fontSize: 20, 
                                     color:theme.color.white, backgroundColor: "rgba(100, 111, 212, 0.67)"}}>
                                 
-                                <option selected>Select {result.name}</option>
-                                {result.type.map((type) => (
-                                    <option value="1">{type}</option>
+                                <option selected>Select {result.typeName}</option>
+                                {result.typeOptions.map((typeOption) => (
+                                    <option value="1">{typeOption}</option>
                                 ))}
                             </select>
                         </Box>
@@ -60,7 +60,7 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
                         <Box sx={{float: "left", pl: 3 }}>
                             <input style={{ height:40, minWidth: 200, paddingLeft: 10, borderRadius: 10, fontSize: 20, 
                                         color:theme.color.white, backgroundColor: "rgba(100, 111, 212, 0.67)"}} 
-                                type="date" id="startDate" placeholder="Select Date"/>
+                                type="date" id="startDate" placeholder="Select date"/>
                         </Box>
                     </Grid>
                 </Grid>
@@ -72,7 +72,7 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
                         <Box sx={{float: "left", pl: 3 }}>
                             <input style={{ height:40,  minWidth: 200, paddingLeft: 10, borderRadius: 10, fontSize: 20, 
                                         color:theme.color.white, backgroundColor: "rgba(100, 111, 212, 0.67)"}} 
-                                type="date" id="endDate" placeholder="Select Date"/>
+                                type="date" id="endDate" placeholder="Select date"/>
                         </Box>
                     </Grid>
                 </Grid>
