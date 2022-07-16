@@ -4,6 +4,7 @@ import DetailPage from "./pages/Detail";
 import HomePage from "./pages/Home";
 import TopAnime from "./pages/TopAnime";
 import SearchPage from './pages/Search';
+import ManagePage from "./pages/Manage";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 			<Route path="/anime/:id" element={<DetailPage />} />
 			<Route path='/search' element={<SearchPage />} />
 			<Route path='/top-anime' element={<TopAnime />} />
+			<Route path='/manage' element={<ManagePage />} />
 		</Routes>
 	);
 }
