@@ -5,7 +5,7 @@ export const NavBarMenuItem = styled(MenuItem)({
     background: theme.color._850,
     color: theme.color._100,
     "&:hover": {
-        color: theme.color.white,
+        color: theme.color._400,
         background: theme.color._800,
     },
     "&:focus": {
@@ -17,7 +17,7 @@ export const NavBarMenuItem = styled(MenuItem)({
         background: theme.color._900,
     },
     "&.Mui-selected:hover": {
-        color: theme.color.white,
+        color: theme.color._400,
         background: theme.color._800,
     },
 });

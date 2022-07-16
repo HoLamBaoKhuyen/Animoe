@@ -18,7 +18,7 @@ const DetailPage = () => {
         }}
       >
         
-        <Box  sx={{backgroundImage: "url('https://i.ibb.co/NZmWtF6/background-search.jpg')",
+        <Box sx={{backgroundImage: "url('https://i.ibb.co/NZmWtF6/background-search.jpg')",
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'}}>
           <SearchTools />

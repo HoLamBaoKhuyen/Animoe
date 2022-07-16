@@ -20,7 +20,18 @@ const NavBarSelect = (props: CustomSelectProps) => {
 
     return (
         <Box>
-            <FormControl sx={{ minWidth: {md: 120, sm: 100, xs: 80} }} size="small">
+            <FormControl size="small"
+                sx={{
+                    minWidth: {md: 120, sm: 100, xs: 80},
+                    "& .MuiOutlinedInput-notchedOutline": {
+                        border: "none"
+                    },
+                    "&.Mui-focused": {
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: "none"
+                        }
+                    }
+                }}>
                 <Select
                     MenuProps={{
                         disableAutoFocusItem: true,
