@@ -6,6 +6,7 @@ import { CustomTab } from "../Tabs/CustomTab";
 import { CustomTabs } from "../Tabs/CustomTabs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import AddIcon from '@mui/icons-material/Add';
 import "../css/search_result.css";
 type SearchResultsProps = {
   children?: ReactNode;
@@ -22,14 +23,14 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
     <Box>
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
               Search Result for "Tokyo Ghoul"
             </Typography>
           </Box>
         </Grid>
 
-        <CustomTabs sx={{ pt: "10px" }}
+        <CustomTabs sx={{ py: 2 }}
             value={value}
             onChange={handleChange}
             variant="scrollable"
@@ -45,7 +46,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
           xs={12}
           container
           columnSpacing={{ md: 15, sm: 3 }}
-          rowSpacing={{ md: 4, xs: 2 }}
+          rowSpacing={{ md: 2, xs: 2 }}
         >
           {SEARCH_RESULTS.map((result) => (
             <Grid item xs={12} key={result.id}>
@@ -65,25 +66,25 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
                 >
                   <img
                     alt="voice_actor"
-                    src={result.img.character}
+                    src={result.img.poster}
                     height="100%"
                     width="auto"
                     style={{ borderRadius: 10 }}
                   />
                   <Box ml={2}>
                     <Typography variant="h4" sx={{mb: "8px"}}>{result.name}</Typography>
-                    <Typography variant="body2" sx={{ fontSize: 16 }}>
+                    <Typography variant="subtitle2" sx={{fontFamily: 'Poppins', color: "rgba(255, 255, 255, 0.6)"}}>
                       {result.eps}
                     </Typography>
-                    <Typography variant="body2" sx={{ fontSize: 16 }}>
+                    <Typography variant="subtitle2" sx={{fontFamily: 'Poppins', color: "rgba(255, 255, 255, 0.6)"}}>
                       {result.scores}
                     </Typography>
-                    <Typography variant="body2" sx={{ fontSize: 16 }}>
+                    <Typography variant="subtitle2" sx={{fontFamily: 'Poppins', color: "rgba(255, 255, 255, 0.6)"}}>
                       {result.members}
                     </Typography>
                   </Box>
-                  <Box sx={{ position: "absolute",top: "0px", right: "4px", fontSize: 35, borderRadius: 10 }}>
-                    <FontAwesomeIcon icon={faPlusSquare} />
+                  <Box sx={{ position: "absolute",top: "5px", right: "10px", borderRadius: 10 }}>
+                    <AddIcon sx={{fontSize: 35, backgroundColor: theme.color._600, borderRadius: 1 }}/>
                   </Box>
                 </Box>
               </Box>

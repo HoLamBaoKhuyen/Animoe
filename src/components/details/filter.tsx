@@ -33,15 +33,15 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
                 rowSpacing={{ md: 4, xs: 2 }}
             >
                 {FILTER.map((result) => (
-                <Grid item xs={12} md={6} key={result.id} sx={{display: "flex"}}>
-                    <Grid item xs={3}>
+                <Grid item xs={12} md={5} key={result.id} sx={{display: "flex"}}>
+                    <Grid item xs={4}>
                         <Typography variant="h3" sx={{float: "right", py: 1}}>{result.name}:</Typography>
                     </Grid>
-                    <Grid item xs={9}  >
-                        <Box sx={{float: "left", paddingLeft: 3 }}>
-                            <select  aria-label="Default select example" 
-                                style={{height:40, maxWidth: 300, minWidth: 200, borderRadius: 10, 
-                                    color:theme.color.white, backgroundColor: theme.color._600}}>
+                    <Grid item xs={8}  >
+                        <Box sx={{float: "left", pl: 3 }}>
+                            <select  
+                                style={{height:40, minWidth: 200, paddingLeft: 10, borderRadius: 10, fontSize: 20, 
+                                    color:theme.color.white, backgroundColor: "rgba(100, 111, 212, 0.67)"}}>
                                 
                                 <option selected>Select {result.name}</option>
                                 {result.type.map((type) => (
@@ -52,26 +52,26 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
                     </Grid>
                 </Grid>
                 ))}
-                <Grid item xs={12} md={6} sx={{display: "flex"}}>
-                    <Grid item xs={3}>
+                <Grid item xs={12} md={5} sx={{display: "flex"}}>
+                    <Grid item xs={4}>
                         <Typography variant="h3" sx={{float: "right", py: 1}}>Start Date:</Typography>
                     </Grid>
-                    <Grid item xs={9}>
-                        <Box sx={{float: "left", paddingLeft: 3 }}>
-                            <input style={{ height:40, maxWidth: 300, minWidth: 200, paddingLeft: 5, borderRadius: 10, 
-                                        color:theme.color.white, backgroundColor: theme.color._600 }} 
+                    <Grid item xs={8}>
+                        <Box sx={{float: "left", pl: 3 }}>
+                            <input style={{ height:40, minWidth: 200, paddingLeft: 10, borderRadius: 10, fontSize: 20, 
+                                        color:theme.color.white, backgroundColor: "rgba(100, 111, 212, 0.67)"}} 
                                 type="date" id="startDate" placeholder="Select Date"/>
                         </Box>
                     </Grid>
                 </Grid>
-                <Grid item xs={12} md={6} sx={{display: "flex"}}>
-                    <Grid item xs={3}>
+                <Grid item xs={12} md={5} sx={{display: "flex"}}>
+                    <Grid item xs={4}>
                         <Typography variant="h3" sx={{float: "right", py: 1}}>End Date:</Typography>
                     </Grid>
-                    <Grid item xs={9}>
-                        <Box sx={{float: "left", paddingLeft: 3 }}>
-                            <input style={{ height:40, maxWidth: 300, minWidth: 200, paddingLeft: 5, borderRadius: 10, 
-                                        color:theme.color.white, backgroundColor: theme.color._600 }} 
+                    <Grid item xs={8}>
+                        <Box sx={{float: "left", pl: 3 }}>
+                            <input style={{ height:40,  minWidth: 200, paddingLeft: 10, borderRadius: 10, fontSize: 20, 
+                                        color:theme.color.white, backgroundColor: "rgba(100, 111, 212, 0.67)"}} 
                                 type="date" id="endDate" placeholder="Select Date"/>
                         </Box>
                     </Grid>

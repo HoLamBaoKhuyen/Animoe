@@ -3,11 +3,8 @@ import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import  Filter  from "./filter";
 import  ContentFilter from "./content_filter";
-import { CustomTab } from "../Tabs/CustomTab";
-import { CustomTabs } from "../Tabs/CustomTabs";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare, faSearch } from "@fortawesome/free-solid-svg-icons";
-type SearchToolProps = {
+import SettingsIcon from '@mui/icons-material/Settings';
+import SearchIcon from '@mui/icons-material/Search';type SearchToolProps = {
   children?: ReactNode;
   title?: string;
   englistTitle?: string;
@@ -23,7 +20,7 @@ const SearchResults: React.FC<SearchToolProps> = ({ children }) => {
     <Box >
       <Grid container rowSpacing={2} >
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5}}>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 10}}>
             <Typography variant="h2" sx={{ fontWeight: 700 }}>
               Enter Word, Enter World
             </Typography>
@@ -33,16 +30,15 @@ const SearchResults: React.FC<SearchToolProps> = ({ children }) => {
         <Grid item xs={12} zIndex={10}>
           <Box>
             <form action="/search" method="get">
-              <Box sx={{display: "flex",justifyContent: "center", }}>
-                <Box sx={{py: "15px",left: 40, fontSize: 30, position: "relative", color: theme.color.white,}}>
-                  <FontAwesomeIcon icon={faSearch}/> 
+              <Box sx={{display: "flex",justifyContent: "center" }}>
+                <Box sx={{py: "10px", left: 50, position: "relative", color: theme.color.white}}>
+                  <SearchIcon sx={{ fontSize: 40}}/> 
                 </Box>
                 <Box sx={{}}>
                   <input 
                       style={{ height: 60, width: 600, textIndent: 50, fontSize: 30,
-                        background: theme.color._600, color:theme.color.white, borderRadius: 10 }}
+                        background: "rgba(100, 111, 212, 0.47)", color:theme.color.white, borderRadius: 10 }}
                       id="header-search"
-                      placeholder="Tokyo Ghoul"
                       type="text"
                   />
                 </Box>
@@ -59,7 +55,7 @@ const SearchResults: React.FC<SearchToolProps> = ({ children }) => {
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "center" }} my={5}>
             <Button
-              sx={{ px: { md: 5, sm: 2, xs: 3 }, fontSize: { md: 20, sm: 17 } }}
+              sx={{ px: { md: 5, sm: 2, xs: 3 }, fontSize: { md: 30, sm: 17 }, height: 70 , backgroundColor:theme.color._700 }}
             >
               Search
             </Button>

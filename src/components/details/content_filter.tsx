@@ -24,7 +24,7 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
                 Content Filter
             </Typography>
         </Box>
-        <Box sx={{ mt: 5 }}>
+        <Box sx={{ mt: 5, width: "90%"}}>
             <Grid
                 item
                 xs={12}
@@ -34,17 +34,18 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
             >
                 {CONTENT_FILTER.map((result) => (
                 <Grid item xs={12} md={3} key={result.id} sx={{display: "flex"}}>
-                    <Box sx={{width: 200, display: "inline", backgroundColor: theme.color._600, borderRadius: 3}}>
+                    <Box sx={{width: 222, height: 322, display: "inline", borderRadius: 3,
+                    backgroundColor: "rgba(100, 111, 212, 0.75)",}}>
                         <Box>
-                            <Typography variant="h4" sx={{py:1,pl:3}}>{result.name}</Typography>
+                            <Typography variant="h4" sx={{fontWeight: 700,py:1,pl:3}}>{result.name}</Typography>
                         </Box>
                         <Box>
                             <hr/>
                         </Box>
                         {result.type.map((type) => (
-                            <Box sx={{pl: 2, display: "flex", justifyContent: "left"}}>
-                                <input type="checkbox" id={type} value={type}/>
-                                <Typography variant="body1" sx={{pl:2}}>{type}</Typography>
+                            <Box sx={{pl: 2, pt:1, display: "flex", justifyContent: "left"}}>
+                                <input type="checkbox" id={type} value={type} style={{height: "20px", width: "20px"}}/>
+                                <Typography variant="subtitle2" sx={{pl:1, color: "rgba(255, 255, 255, 0.7)"}}>{type}</Typography>
                             </Box>
                         ))}
                     </Box>
