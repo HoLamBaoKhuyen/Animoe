@@ -1,8 +1,6 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
-import { theme } from "../../theme";
-import { DETAIL_DATA, TRAILERS } from "../../data/detail";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import { Box, Grid, Link, Typography } from "@mui/material";
+import { TRAILERS } from "../../data/detail";
 import ReactPlayer from "react-player";
 
 type TrailersProps = {

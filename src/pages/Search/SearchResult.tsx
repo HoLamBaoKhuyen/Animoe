@@ -1,11 +1,12 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { SEARCH_RESULTS } from "../../data/detail";
-import { CustomTab } from "../Tabs/CustomTab";
-import { CustomTabs } from "../Tabs/CustomTabs";
 import AddIcon from '@mui/icons-material/Add';
-import "../css/search_result.css";
+import { CustomTab } from "../../components/Tabs/CustomTab";
+import { CustomTabs } from "../../components/Tabs/CustomTabs";
+import "../../components/css/search_result.css";
+
 type SearchResultsProps = {
   children?: ReactNode;
   title?: string;
@@ -90,7 +91,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
           ))}
         </Grid>
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "center", my: 5}}>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 5}}>
             <div className="pagination">
               <a href="#">&laquo;</a>
               <a className="active" href="#">1</a>

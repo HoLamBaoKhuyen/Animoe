@@ -1,9 +1,7 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 type SearchResultsProps = {
   children?: ReactNode;

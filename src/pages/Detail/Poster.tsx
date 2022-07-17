@@ -1,16 +1,19 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA } from "../../data/detail";
 import { format_string } from "../../helpers/format";
 
 type PosterProps = {
   children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
+  title: string;
+  type: string,
+  englishTitle: string;
+  image: string;
+  episodes: number,
+  status: string,
 };
-const Poster: React.FC<PosterProps> = ({ children }) => {
+
+const Poster= ({ data }: { data: any }) => {
   return (
     <Box>
       <Box>
@@ -25,7 +28,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
         >
           <img
             alt="poster"
-            src={DETAIL_DATA.main_picture.large}
+            src={data.images.jpg.image_url}
             width="100%"
             height="100%"
             style={{ borderRadius: 10 }}
@@ -53,7 +56,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {format_string(DETAIL_DATA.media_type)}
+            {data.type}
           </Typography>
         </Typography>
         <Typography
@@ -66,7 +69,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {DETAIL_DATA.num_episodes}
+            {data.episodes}
           </Typography>
         </Typography>
         <Typography
@@ -79,7 +82,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {format_string(DETAIL_DATA.status)}
+            {data.status}
           </Typography>
         </Typography>
         <Typography
@@ -92,7 +95,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {DETAIL_DATA.start_date}
+            {data.aired.from}
           </Typography>
         </Typography>
         <Typography
@@ -105,8 +108,8 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {format_string(DETAIL_DATA.start_season.season)}{" "}
-            {DETAIL_DATA.start_season.year}
+            {data.season}{" "}
+            {data.year}
           </Typography>
         </Typography>
         <Typography
@@ -119,8 +122,8 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {format_string(DETAIL_DATA.broadcast.day_of_the_week)}s at{" "}
-            {DETAIL_DATA.broadcast.start_time} (JST)
+            {data.broadcast.day} at{" "}
+            {data.broadcast.time} (JST)
           </Typography>
         </Typography>
         <Typography
@@ -128,9 +131,9 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
           sx={{ color: theme.color._100, fontWeight: 700 }}
         >
           Studios:{" "}
-          {DETAIL_DATA.studios.map((studio) => (
+          {data.studios.map((studio: any) => (
             <Typography
-              key={studio.id}
+              key={studio.mal_id}
               component="span"
               variant="body1"
               sx={{ color: theme.color._100 }}
@@ -149,7 +152,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {format_string(DETAIL_DATA.source)}
+            {data.source}
           </Typography>
         </Typography>
         <Typography
@@ -162,7 +165,7 @@ const Poster: React.FC<PosterProps> = ({ children }) => {
             variant="body1"
             sx={{ color: theme.color._100, textTransform: "uppercase" }}
           >
-            {DETAIL_DATA.rating}
+            {data.rating}
           </Typography>
         </Typography>
       </Box>

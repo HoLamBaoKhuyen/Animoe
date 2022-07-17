@@ -11,7 +11,7 @@ interface CustomSelectProps {
 }
 
 const NavBarSelect = (props: CustomSelectProps) => {
-    const { defaultItem, selectItems, ...other } = props;
+    const { defaultItem, selectItems } = props;
     const [mode, setMode] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {

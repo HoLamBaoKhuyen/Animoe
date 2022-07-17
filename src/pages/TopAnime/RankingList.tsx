@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, IconButton, Skeleton, Stack, Typography } from '@mui/material'
+import { Card, CardContent, Grid, IconButton, Skeleton, Stack, Typography } from '@mui/material'
 import { useGetFilterRankingQuery, useGetTypeRankingQuery } from '../../redux/slices/animeSlice'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import StarIcon from '@mui/icons-material/Star'
@@ -63,7 +63,7 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 	const { data } = useGetTypeRankingQuery(type)
 	console.log(data)
 	return data ? (
-		<List data={data.data} />
+		<List data={data} />
 	) : (
 		<Stack spacing={2}>
 			<Skeleton variant='rectangular' height={200} />
@@ -79,7 +79,7 @@ export const FilterRankingList = ({ filter }: { filter: string }) => {
 	const { data } = useGetFilterRankingQuery(filter)
 	console.log(data)
 	return data ? (
-		<List data={data.data} />
+		<List data={data} />
 	) : (
 		<Stack spacing={2}>
 			<Skeleton variant='rectangular' height={200} />

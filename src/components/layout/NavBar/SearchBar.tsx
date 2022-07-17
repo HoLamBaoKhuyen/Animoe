@@ -1,5 +1,5 @@
 import React from "react";
-import { alpha, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { theme } from "../../../theme";
 import InputBase from "@mui/material/InputBase";
@@ -65,7 +65,7 @@ const SearchBar = () => {
                 }}
             />
             <Divider orientation="vertical" flexItem sx={{ bgcolor: theme.color._100 }} />
-            <NavBarSelect defaultItem="All" selectItems={["Anime", "Manga"]} />
+            <NavBarSelect defaultItem="Anime" selectItems={["Manga"]} />
         </Search>
     )
 }

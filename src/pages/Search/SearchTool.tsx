@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import Filter  from "./filter";
-import ContentFilter from "./content_filter";
 import SearchIcon from '@mui/icons-material/Search';
+import  Filter  from "./Filter";
+import  ContentFilter from "./ContenFilter";
 
 type SearchToolProps = {
   children?: ReactNode;
@@ -13,7 +13,6 @@ type SearchToolProps = {
 };
 
 const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
-
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
       setValue(newValue);
