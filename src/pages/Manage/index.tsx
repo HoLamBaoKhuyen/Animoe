@@ -1,7 +1,9 @@
 import React from "react";
 import Layout from "../../components/layout";
-import { Box, Container, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
+import { theme } from "../../theme";
+import StyledSelect from "./CustomSelect";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -45,42 +47,47 @@ const ManagePage = () => {
 
   return (
     <Layout>
-      <Box sx={{ width: "100%" }}>
-        <Box>
-          <StyledTabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-            scrollButtons
-            allowScrollButtonsMobile
-          >
-            <StyledTab label="All anime" {...a11yProps(0)} />
-            <StyledTab label="Currently watching" {...a11yProps(1)} />
-            <StyledTab label="Completed" {...a11yProps(2)} />
-            <StyledTab label="On hold" {...a11yProps(3)} />
-            <StyledTab label="Dropped" {...a11yProps(4)} />
-            <StyledTab label="Plan to watch" {...a11yProps(5)} />
-          </StyledTabs>
+      <Container sx={{ background: theme.color._800, borderRadius: 3 }}>
+        <Box sx={{ width: "100%" }}>
+          <Box>
+            <StyledTabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+              scrollButtons
+              allowScrollButtonsMobile
+            >
+              <StyledTab label="All anime" {...a11yProps(0)} />
+              <StyledTab label="Currently watching" {...a11yProps(1)} />
+              <StyledTab label="Completed" {...a11yProps(2)} />
+              <StyledTab label="On hold" {...a11yProps(3)} />
+              <StyledTab label="Dropped" {...a11yProps(4)} />
+              <StyledTab label="Plan to watch" {...a11yProps(5)} />
+            </StyledTabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            All anime
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            Currently watching
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            Completed
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            On hold
+          </TabPanel>
+          <TabPanel value={value} index={4}>
+            Dropped
+          </TabPanel>
+          <TabPanel value={value} index={5}>
+            Plan to watch
+          </TabPanel>
         </Box>
-        <TabPanel value={value} index={0}>
-          All anime
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Currently watching
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Completed
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          On hold
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          Dropped
-        </TabPanel>
-        <TabPanel value={value} index={5}>
-          Plan to watch
-        </TabPanel>
-      </Box>
+        <Box>
+          <StyledSelect placeHolder="Select Type" />
+        </Box>
+      </Container>
     </Layout>
   );
 };
