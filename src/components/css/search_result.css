@@ -1,16 +1,16 @@
 .pagination {
-    display: inline-block;
-  }
-  
+  display: inline-block;
+}
+
 .pagination a {
-    color: white;
-    background-color: #272F5D;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
+  color: white;
+  background-color: #272f5d;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
 .pagination a.active {
-    background-color: #9BA3EB;
-    color: white;
-  }
+  background-color: #9ba3eb;
+  color: white;
+}

@@ -3,13 +3,13 @@
 **Animoe** is an anime and manga platform that helps you search, discover and keep track of your favorite anime and manga.
 
 ## Features
-* Search for anime, manga (with filters)
-* View details information of anime, manga
-* View recommendations
-* View reviews of other users on an anime/manga
-* View top anime, manga based on your chosen criterion
-* Manage your anime, manga list in one place
 
+- Search for anime, manga (with filters)
+- View details information of anime, manga
+- View recommendations
+- View reviews of other users on an anime/manga
+- View top anime, manga based on your chosen criterion
+- Manage your anime, manga list in one place
 
 ## Available scripts for development
 

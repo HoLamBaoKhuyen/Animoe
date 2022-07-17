@@ -7,19 +7,20 @@ import ContentFilter from "./ContenFilter";
 import Slide from "@mui/material/Slide";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-type SearchToolProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
+const SearchTool = (props: any) => {
+  const { searchQuery } = props;
 
-const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
   const [checked, setChecked] = React.useState(false);
+  const [wordEntered, setWordEntered] = React.useState(searchQuery);
 
   const handleChange = () => {
     setChecked((prev) => !prev);
   };
+
+  const handleInputChange = (event: any) => {
+    setWordEntered(event.target.value);
+  };
+
   return (
     <Box>
       <Grid container rowSpacing={2}>
@@ -47,6 +48,11 @@ const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
                 </Box>
                 <Box sx={{ textAlign: "center" }}>
                   <InputBase
+                    inputProps={{
+                      value: wordEntered,
+                      onChange: handleInputChange,
+                      "aria-label": "search",
+                    }}
                     sx={{
                       height: 60,
                       width: { sm: 600, xs: "auto" },
@@ -155,4 +161,4 @@ const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
   );
 };
 
-export default SearchTools;
+export default SearchTool;

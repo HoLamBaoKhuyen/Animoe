@@ -16,6 +16,7 @@ import {
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { theme } from "../../theme";
+import { format_number } from "../../helpers/format";
 
 const List = ({ data }: { data: Array<any> }) => {
   return (
@@ -111,21 +112,21 @@ const List = ({ data }: { data: Array<any> }) => {
                         sx={{ fontWeight: 600, opacity: 0.7 }}
                         color={(theme) => theme.color._100}
                       >
-                        {item.episodes}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{ fontWeight: 600, opacity: 0.7 }}
-                        color={(theme) => theme.color._100}
-                      >
-                        {item.duration}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{ fontWeight: 600, opacity: 0.7 }}
-                        color={(theme) => theme.color._100}
-                      >
                         {item.status}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {item.type} ({item.episodes} eps)
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {format_number(item.members)} members
                       </Typography>
                     </Stack>
                   </Link>
@@ -159,7 +160,7 @@ const List = ({ data }: { data: Array<any> }) => {
                 >
                   <Typography
                     variant="h5"
-                    sx={{ fontWeight: 600, fontSize: 25 }}
+                    sx={{ fontWeight: 600, fontSize: 30 }}
                     color={(theme) => theme.color._100}
                   >
                     {item.score}

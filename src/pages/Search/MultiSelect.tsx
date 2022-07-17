@@ -78,15 +78,15 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
           renderValue={(selected) => {
             if (selected.length === 0) {
               return (
-                  <Typography
-                      sx={{
-                        color: theme.color._100,
-                        fontSize: 19,
-                        fontWeight: 500,
-                      }}
-                  >
-                    {placeholder}
-                  </Typography>
+                <Typography
+                  sx={{
+                    color: theme.color._100,
+                    fontSize: 19,
+                    fontWeight: 500,
+                  }}
+                >
+                  {placeholder}
+                </Typography>
               );
             }
 
@@ -95,12 +95,14 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem disabled value=""
-                    sx={{
-                      color: theme.color._100,
-                      fontSize: 19,
-                      fontWeight: 500,
-                    }}
+          <MenuItem
+            disabled
+            value=""
+            sx={{
+              color: theme.color._100,
+              fontSize: 19,
+              fontWeight: 500,
+            }}
           >
             {placeholder}
           </MenuItem>
@@ -111,12 +113,13 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
               style={getStyles(item, personName, theme)}
             >
               <Checkbox checked={personName.indexOf(item) > -1} />
-              <ListItemText primary={item}
-                            sx={{
-                              color: theme.color._100,
-                              fontSize: 19,
-                              fontWeight: 500,
-                            }}
+              <ListItemText
+                primary={item}
+                sx={{
+                  color: theme.color._100,
+                  fontSize: 19,
+                  fontWeight: 500,
+                }}
               />
             </MenuItem>
           ))}

@@ -23,7 +23,7 @@ const themeColors = {
 } as const;
 
 // Override style Mui
-const themeOptions: ThemeOptionsOld = {
+const themeOptions: any = {
   ...themeColors,
   palette: {
     // mode: "dark",

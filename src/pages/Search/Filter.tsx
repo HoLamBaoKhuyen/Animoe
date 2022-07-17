@@ -2,12 +2,6 @@ import React, { ReactNode } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { FILTER } from "../../data/detail";
-import { styled } from "@mui/material/styles";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import InputBase from "@mui/material/InputBase";
-import MenuItem from "@mui/material/MenuItem";
 import MultipleSelect from "./MultiSelect";
 import CustomDatePicker from "./CustomDatePicker";
 
