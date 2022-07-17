@@ -22,7 +22,7 @@ export const animeSlice = createSlice({
 	reducers: {},
 })
 
-const animeApi = apiSlice.injectEndpoints({
+export const animeApi = apiSlice.injectEndpoints({
 	endpoints: (build) => ({
 		getTypeRanking: build.query({
 			query: (type) => ({

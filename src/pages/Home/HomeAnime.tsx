@@ -28,7 +28,7 @@ const HomeAnime = ({ anime }: { anime: any }) => {
               onScroll={handlePopoverClose}
         >
             <Link
-                href={`anime/${anime.mal_id}`}
+                href={`/anime/${anime.mal_id}`}
                 sx={{
                     ".title": {
                         transition: "all 0.2s",
@@ -137,7 +137,7 @@ const HomeAnime = ({ anime }: { anime: any }) => {
                                 <Button
                                     variant="outlined"
                                     disabled
-                                    sx={{ width: "fit-content", p: 0, border: 0, mr: 1, mb: 1 }}
+                                    sx={{ width: "fit-content", p: 0, border: 0, ml:1, mr: 1, mb: 2 }}
                                     key={genre.mal_id}
                                 >
                                     <Chip key={genre.id} label={genre.name} />
