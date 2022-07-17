@@ -6,11 +6,9 @@ import {
   InputBase,
   ListItemText,
   MenuItem,
-  OutlinedInput,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { theme } from "../../theme";
 import { styled } from "@mui/material/styles";
 
 const ITEM_HEIGHT = 48;

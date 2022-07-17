@@ -1,11 +1,20 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Pagination,
+  PaginationItem,
+  Typography,
+} from "@mui/material";
 import { theme } from "../../theme";
 import { SEARCH_RESULTS } from "../../data/detail";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { CustomTab } from "../../components/Tabs/CustomTab";
 import { CustomTabs } from "../../components/Tabs/CustomTabs";
 import "../../components/css/search_result.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 type SearchResultsProps = {
   children?: ReactNode;
@@ -15,6 +24,15 @@ type SearchResultsProps = {
 };
 const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
   const [value, setValue] = React.useState(0);
+  const [page, setPage] = React.useState(1);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
+  };
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -136,18 +154,31 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
           ))}
         </Grid>
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
-            <div className="pagination">
-              <a href="#">&laquo;</a>
-              <a className="active" href="#">
-                1
-              </a>
-              <a href="#">2</a>
-              <a href="#">...</a>
-              <a href="#">8</a>
-              <a href="#">9</a>
-              <a href="#">&raquo;</a>
-            </div>
+          <Box style={{ margin: "10px auto", width: "fit-content" }}>
+            <Pagination
+              count={10}
+              shape="rounded"
+              variant="outlined"
+              color="primary"
+              page={page}
+              onChange={handlePageChange}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                  sx={{
+                    "&.Mui-selected": {
+                      backgroundColor: "#9BA3EB",
+                      color: "white",
+                      borderRadius: 0,
+                    },
+                  }}
+                />
+              )}
+            />
           </Box>
         </Grid>
       </Grid>

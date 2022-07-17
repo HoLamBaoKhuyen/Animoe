@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 import { ThemeOptions as ThemeOptionsOld } from "@mui/material/styles/createTheme";
-import { constants } from "crypto";
 
 // Custom theme: Colors
 const themeColors = {
