@@ -1,12 +1,17 @@
 import React from "react";
 import { Theme, useTheme } from "@mui/material/styles";
 import {
+  Checkbox,
   FormControl,
+  InputBase,
+  ListItemText,
   MenuItem,
   OutlinedInput,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import { theme } from "../../theme";
+import { styled } from "@mui/material/styles";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -41,7 +46,27 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
   };
 }
 
-export default function MultipleSelectPlaceholder() {
+const StyledInput = styled(InputBase)(({ theme }) => ({
+  "label + &": {
+    marginTop: theme.spacing(3),
+  },
+  "& .MuiInputBase-input": {
+    borderRadius: 5,
+    position: "relative",
+    color: theme.palette.common.white,
+    backgroundColor: "rgba(100, 111, 212, 0.67)",
+    fontSize: 18,
+    fontWeight: 500,
+    padding: "10px 26px 10px 12px",
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+  },
+}));
+
+type SelectProps = {
+  placeholder?: string;
+  list: string[];
+};
+const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
 
@@ -63,10 +88,10 @@ export default function MultipleSelectPlaceholder() {
           displayEmpty
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput />}
+          input={<StyledInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Placeholder</em>;
+              return <em>{placeholder}</em>;
             }
 
             return selected.join(", ");
@@ -75,19 +100,27 @@ export default function MultipleSelectPlaceholder() {
           inputProps={{ "aria-label": "Without label" }}
         >
           <MenuItem disabled value="">
-            <em>Placeholder</em>
+            <em>{placeholder}</em>
           </MenuItem>
-          {names.map((name) => (
+          {list.map((item, key) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
+              key={key}
+              value={item}
+              style={getStyles(item, personName, theme)}
             >
-              {name}
+              <Checkbox checked={personName.indexOf(item) > -1} />
+              <ListItemText primary={item} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
     </div>
   );
-}
+};
+
+MultipleSelect.defaultProps = {
+  placeholder: "Select",
+  list: ["Item1", "Item2", "Item3"],
+};
+
+export default MultipleSelect;
