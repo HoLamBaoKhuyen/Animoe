@@ -8,6 +8,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -76,7 +77,17 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
           input={<StyledInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>{placeholder}</em>;
+              return (
+                  <Typography
+                      sx={{
+                        color: theme.color._100,
+                        fontSize: 19,
+                        fontWeight: 500,
+                      }}
+                  >
+                    {placeholder}
+                  </Typography>
+              );
             }
 
             return selected.join(", ");
@@ -84,8 +95,14 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
           MenuProps={MenuProps}
           inputProps={{ "aria-label": "Without label" }}
         >
-          <MenuItem disabled value="">
-            <em>{placeholder}</em>
+          <MenuItem disabled value=""
+                    sx={{
+                      color: theme.color._100,
+                      fontSize: 19,
+                      fontWeight: 500,
+                    }}
+          >
+            {placeholder}
           </MenuItem>
           {list.map((item, key) => (
             <MenuItem
@@ -94,7 +111,13 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
               style={getStyles(item, personName, theme)}
             >
               <Checkbox checked={personName.indexOf(item) > -1} />
-              <ListItemText primary={item} />
+              <ListItemText primary={item}
+                            sx={{
+                              color: theme.color._100,
+                              fontSize: 19,
+                              fontWeight: 500,
+                            }}
+              />
             </MenuItem>
           ))}
         </Select>

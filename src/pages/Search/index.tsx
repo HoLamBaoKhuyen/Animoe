@@ -8,6 +8,7 @@ const DetailPage = () => {
   return (
     <Layout>
       <Box
+          mt={4}
         sx={{
           backgroundImage:
             "url('https://cdn.donmai.us/original/b5/ed/__bai_darker_than_black__b5edc31979f1fa6b7984f74ed47f4624.jpg')",

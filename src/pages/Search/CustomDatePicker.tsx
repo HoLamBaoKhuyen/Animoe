@@ -14,7 +14,7 @@ const StyledTextField = styled(TextField)(() => ({
     backgroundColor: "rgba(100, 111, 212, 0.67)",
     color: theme.palette.common.white,
     borderRadius: 5,
-    fontSize: 18,
+    fontSize: 19,
     fontWeight: 500,
     "&:hover": {
       border: "none",

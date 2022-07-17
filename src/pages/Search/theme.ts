@@ -32,6 +32,9 @@ const themeOptions: ThemeOptionsOld = {
       contrastText: themeColors.color.white,
     },
   },
+  typography: {
+    fontFamily: ["Poppins", "sans-serif"].join(","),
+  },
 };
 
 // Update for Typescript
