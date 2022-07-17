@@ -61,6 +61,7 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
                   sx={{
                     borderBottom: `1px solid ${theme.palette.common.white}`,
                   }}
+                  py={1}
                 >
                   <Typography
                     variant="h4"
