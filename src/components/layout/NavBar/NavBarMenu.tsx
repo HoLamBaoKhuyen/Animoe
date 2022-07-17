@@ -41,6 +41,10 @@ const NavBarMenu = (props: BasicMenuProps) => {
                     fontSize: {md: 20, sm: 16, xs: 12},
                     fontWeight: 600,
                     color: theme.color._100,
+                    cursor: 'pointer',
+                    '&:hover': {
+                        color: theme.color.white,
+                    },
                 }}
             >
                 {menuName}

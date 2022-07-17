@@ -22,7 +22,7 @@ export const animeSlice = createSlice({
 	reducers: {},
 })
 
-const animeApi = apiSlice.injectEndpoints({
+export const animeApi = apiSlice.injectEndpoints({
 	endpoints: (build) => ({
 		getTypeRanking: build.query({
 			query: (type) => ({
@@ -66,10 +66,19 @@ const animeApi = apiSlice.injectEndpoints({
 				return response.data;
 			},
 		}),
+		getAnimeEpisodes: build.query({
+			query: (id) => ({
+				url: `${ANIME_ENDPOINT}/${id}/episodes`,
+				method: 'GET',
+			}),
+			transformResponse: (response: { data: any }, meta: any, arg: any) => {
+				return response.data;
+			},
+		}),
 	}),
 })
 
 export default animeSlice.reducer
 
 export const { useGetTypeRankingQuery, useGetFilterRankingQuery,
-	useGetTopFiveAnimeQuery, useSearchAnimeQuery, useGetAnimeByIdQuery } = animeApi
+	useGetTopFiveAnimeQuery, useSearchAnimeQuery, useGetAnimeByIdQuery, useGetAnimeEpisodesQuery } = animeApi
