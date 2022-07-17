@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, InputBase, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import SearchIcon from "@mui/icons-material/Search";
 import Filter from "./Filter";
@@ -46,15 +46,16 @@ const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
                   <SearchIcon sx={{ fontSize: 40 }} />
                 </Box>
                 <Box sx={{ textAlign: "center" }}>
-                  <input
-                    style={{
+                  <InputBase
+                    sx={{
                       height: 60,
-                      width: 600,
+                      width: { sm: 600, xs: "auto" },
                       textIndent: 50,
                       fontSize: 30,
-                      borderRadius: 10,
+                      borderRadius: 2,
                       background: "rgba(100, 111, 212, 0.47)",
                       color: theme.color.white,
+                      pl: 7,
                     }}
                     id="header-search"
                     type="text"

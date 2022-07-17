@@ -49,7 +49,7 @@ export default function CustomDatePicker() {
               InputLabelProps={{ color: "success" }}
               fullWidth
               {...params}
-              sx={{ m: 1, width: 300 }}
+              sx={{ m: 1, width: { sm: 300, xs: "100%" } }}
             />
           )}
         />
