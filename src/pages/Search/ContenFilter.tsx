@@ -1,9 +1,17 @@
 import React, { ReactNode } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  Typography,
+} from "@mui/material";
+import SquareRoundedIcon from "@mui/icons-material/SquareRounded";
 import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
 
-  
 type SearchResultsProps = {
   children?: ReactNode;
   title?: string;
@@ -11,48 +19,87 @@ type SearchResultsProps = {
   image?: string;
 };
 const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
+  const [state, setState] = React.useState(false);
 
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-      setValue(newValue);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState(!state);
   };
   return (
     <Box>
-        <Box sx={{ display: "flex", mt: 3 }}>
-            <Typography variant="h2" sx={{ fontWeight: 700 }}>
-                Content Filter
-            </Typography>
-        </Box>
-        <Box sx={{ mt: 5, width: "100%"}}>
+      <Box sx={{ display: "flex", mt: 3 }}>
+        <Typography variant="h2" sx={{ fontWeight: 700 }}>
+          Content Filter
+        </Typography>
+      </Box>
+      <Box sx={{ mt: 5, width: "100%" }}>
+        <Grid
+          item
+          xs={12}
+          container
+          columnSpacing={{ md: 10, sm: 3 }}
+          rowSpacing={{ md: 2, xs: 2 }}
+        >
+          {CONTENT_FILTER.map((result) => (
             <Grid
-                item
-                xs={12}
-                container
-                columnSpacing={{ md: 10, sm: 3 }}
-                rowSpacing={{ md: 2, xs: 2 }}
+              item
+              xs={12}
+              lg={3}
+              sm={6}
+              key={result.id}
+              sx={{ display: "flex", justifyContent: "center" }}
             >
-                {CONTENT_FILTER.map((result) => (
-                <Grid item xs={12} lg={3} sm={6} key={result.id} sx={{display: "flex", justifyContent: "center"}}>
-                    <Box sx={{width: 222, height: 322, display: "inline", borderRadius: 3,
-                    backgroundColor: "rgba(100, 111, 212, 0.75)",}}>
-                        <Box>
-                            <Typography variant="h4" sx={{fontWeight: 700,py:1,pl:3}}>{result.name}</Typography>
-                        </Box>
-                        <Box>
-                            <hr/>
-                        </Box>
-                        {result.type.map((type) => (
-                            <Box sx={{pl: 2, pt:1, display: "flex", justifyContent: "left"}}>
-                                <input type="checkbox" id={type} value={type} style={{height: "20px", width: "20px"}}/>
-                                <Typography variant="subtitle2" sx={{pl:1, color: "rgba(255, 255, 255, 0.7)"}}>{type}</Typography>
-                            </Box>
-                        ))}
-                    </Box>
-                   
-                </Grid>
-                ))}
+              <Box
+                sx={{
+                  width: 222,
+                  height: 322,
+                  display: "inline",
+                  borderRadius: 3,
+                  backgroundColor: "rgba(100, 111, 212, 0.75)",
+                }}
+              >
+                <Box
+                  sx={{
+                    borderBottom: `1px solid ${theme.palette.common.white}`,
+                  }}
+                  py={1}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{ fontWeight: 700, py: 1, pl: 3 }}
+                  >
+                    {result.name}
+                  </Typography>
+                </Box>
+
+                <FormControl
+                  sx={{ mx: 3 }}
+                  component="fieldset"
+                  variant="standard"
+                >
+                  {result.type.map((type) => (
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            sx={{
+                              color: `${theme.color._100} `,
+                              "&.Mui-checked": {
+                                color: `${theme.color._800} !important`,
+                              },
+                            }}
+                            icon={<SquareRoundedIcon />}
+                          />
+                        }
+                        label={type}
+                      />
+                    </FormGroup>
+                  ))}
+                </FormControl>
+              </Box>
             </Grid>
-        </Box>
+          ))}
+        </Grid>
+      </Box>
     </Box>
   );
 };

@@ -110,8 +110,13 @@ const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
                 sx={{
                   px: { md: 5, sm: 2, xs: 3 },
                   fontSize: { md: 30, sm: 17 },
+                  fontWeight: 700,
                   height: 70,
-                  backgroundColor: theme.color._700,
+                  borderRadius: 5,
+                  boxShadow: 0,
+                  "&:hover": {
+                    boxShadow: 0,
+                  },
                 }}
               >
                 Search
