@@ -20,6 +20,7 @@ const themeColors = {
     white: "#ffffff",
     gold: "#b09755",
     bronze: "#a77c88",
+    yellow: "#ebc351",
   },
 } as const;
 
