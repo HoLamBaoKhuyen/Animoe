@@ -46,7 +46,10 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
               sx={{ display: "flex", alignItems: "center" }}
             >
               <Grid item xs={4}>
-                <Typography variant="h3" sx={{ float: "right", py: 1 }}>
+                <Typography
+                  variant="h3"
+                  sx={{ float: "right", py: 1, color: theme.color._100 }}
+                >
                   {result.name}:
                 </Typography>
               </Grid>
@@ -65,7 +68,10 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
             sx={{ display: "flex", alignItems: "center" }}
           >
             <Grid item xs={4}>
-              <Typography variant="h3" sx={{ float: "right", py: 1 }}>
+              <Typography
+                variant="h3"
+                sx={{ float: "right", py: 1, color: theme.color._100 }}
+              >
                 Start Date:
               </Typography>
             </Grid>
@@ -80,7 +86,10 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
             sx={{ display: "flex", alignItems: "center" }}
           >
             <Grid item xs={4}>
-              <Typography variant="h3" sx={{ float: "right", py: 1 }}>
+              <Typography
+                variant="h3"
+                sx={{ float: "right", py: 1, color: theme.color._100 }}
+              >
                 End Date:
               </Typography>
             </Grid>
