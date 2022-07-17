@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { SEARCH_RESULTS } from "../../data/detail";
-import AddIcon from '@mui/icons-material/Add';
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import { CustomTab } from "../../components/Tabs/CustomTab";
 import { CustomTabs } from "../../components/Tabs/CustomTabs";
 import "../../components/css/search_result.css";
@@ -16,7 +16,7 @@ type SearchResultsProps = {
 const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-      setValue(newValue);
+    setValue(newValue);
   };
   return (
     <Box>
@@ -29,15 +29,16 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
           </Box>
         </Grid>
 
-        <CustomTabs sx={{ py: 2 }}
-            value={value}
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs example"
+        <CustomTabs
+          sx={{ py: 2 }}
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
         >
-            <CustomTab label="Anime" />
-            <CustomTab label="Manga" />
+          <CustomTab label="Anime" />
+          <CustomTab label="Manga" />
         </CustomTabs>
 
         <Grid
@@ -61,7 +62,13 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
                 }}
               >
                 <Box
-                  sx={{ height: "90%", display: "flex", alignItems: "center", ml:"10px", my: "auto" }}
+                  sx={{
+                    height: "90%",
+                    display: "flex",
+                    alignItems: "center",
+                    ml: "10px",
+                    my: "auto",
+                  }}
                 >
                   <img
                     alt="voice_actor"
@@ -71,20 +78,57 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
                     style={{ borderRadius: 10 }}
                   />
                   <Box ml={2}>
-                    <Typography variant="h4" sx={{mb: "8px"}}>{result.name}</Typography>
-                    <Typography variant="subtitle2" sx={{fontFamily: 'Poppins', color: "rgba(255, 255, 255, 0.6)"}}>
+                    <Typography variant="h4" sx={{ mb: "8px" }}>
+                      {result.name}
+                    </Typography>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        fontFamily: "Poppins",
+                        color: "rgba(255, 255, 255, 0.6)",
+                      }}
+                    >
                       {result.eps}
                     </Typography>
-                    <Typography variant="subtitle2" sx={{fontFamily: 'Poppins', color: "rgba(255, 255, 255, 0.6)"}}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        fontFamily: "Poppins",
+                        color: "rgba(255, 255, 255, 0.6)",
+                      }}
+                    >
                       {result.scores}
                     </Typography>
-                    <Typography variant="subtitle2" sx={{fontFamily: 'Poppins', color: "rgba(255, 255, 255, 0.6)"}}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        fontFamily: "Poppins",
+                        color: "rgba(255, 255, 255, 0.6)",
+                      }}
+                    >
                       {result.members}
                     </Typography>
                   </Box>
-                  <Button  variant="text" sx={{ position: "absolute",top: "5px", right: "10px", minWidth: 0,
-                     height: 35, width: 35, borderRadius: 1, backgroundColor: "rgba(100, 111, 212, 0.67)"}}>
-                    <AddIcon sx={{fontSize: 30, color: theme.color.black}}/>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      position: "absolute",
+                      top: "5px",
+                      right: "10px",
+                      minWidth: 0,
+                      height: 35,
+                      width: 35,
+                      borderRadius: 1,
+                      color: theme.color._400,
+                      border: 0,
+                      transition: "all 0.2s",
+                      "&:hover": {
+                        border: 0,
+                        opacity: 0.7,
+                      },
+                    }}
+                  >
+                    <AddBoxIcon fontSize="large" />
                   </Button>
                 </Box>
               </Box>
@@ -92,10 +136,12 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
           ))}
         </Grid>
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "center", mt: 5}}>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
             <div className="pagination">
               <a href="#">&laquo;</a>
-              <a className="active" href="#">1</a>
+              <a className="active" href="#">
+                1
+              </a>
               <a href="#">2</a>
               <a href="#">...</a>
               <a href="#">8</a>
