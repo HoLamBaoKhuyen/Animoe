@@ -7,6 +7,22 @@ import SearchTools from "./SearchTool";
 const DetailPage = () => {
   return (
     <Layout>
+      <Box  sx={{backgroundImage: "url('https://i.ibb.co/NZmWtF6/background-search.jpg')",
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'}}>
+          <Container
+            disableGutters
+            sx={{
+              
+              paddingX: {
+                sm: 3,
+                xs: 2,
+              },
+            }}
+          >
+            <SearchTools />
+          </Container>
+        </Box>
       <Container
         disableGutters
         sx={{
@@ -18,12 +34,6 @@ const DetailPage = () => {
         }}
       >
         
-        <Box  sx={{backgroundImage: "url('https://i.ibb.co/NZmWtF6/background-search.jpg')",
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'}}>
-          <SearchTools />
-        </Box>
-
         <Box mt={4}>
           <SearchResults />
         </Box>

@@ -3,6 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
 
+  
 type SearchResultsProps = {
   children?: ReactNode;
   title?: string;
@@ -22,16 +23,16 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
                 Content Filter
             </Typography>
         </Box>
-        <Box sx={{ mt: 5, width: "90%"}}>
+        <Box sx={{ mt: 5, width: "100%"}}>
             <Grid
                 item
                 xs={12}
                 container
                 columnSpacing={{ md: 10, sm: 3 }}
-                rowSpacing={{ md: 4, xs: 2 }}
+                rowSpacing={{ md: 2, xs: 2 }}
             >
                 {CONTENT_FILTER.map((result) => (
-                <Grid item xs={12} md={3} key={result.id} sx={{display: "flex"}}>
+                <Grid item xs={12} lg={3} sm={6} key={result.id} sx={{display: "flex", justifyContent: "center"}}>
                     <Box sx={{width: 222, height: 322, display: "inline", borderRadius: 3,
                     backgroundColor: "rgba(100, 111, 212, 0.75)",}}>
                         <Box>

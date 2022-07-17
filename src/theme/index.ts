@@ -18,6 +18,7 @@ const themeColors = {
 		green_400: '#0FB45B',
 		green_800: '#287141',
 		white: '#ffffff',
+		black: '#000000'
 	},
 } as const
 

@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { SEARCH_RESULTS } from "../../data/detail";
 import AddIcon from '@mui/icons-material/Add';
@@ -82,9 +82,10 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
                       {result.members}
                     </Typography>
                   </Box>
-                  <Box sx={{ position: "absolute",top: "5px", right: "10px", borderRadius: 10 }}>
-                    <AddIcon sx={{fontSize: 35, backgroundColor: theme.color._600, borderRadius: 1 }}/>
-                  </Box>
+                  <Button  variant="text" sx={{ position: "absolute",top: "5px", right: "10px", minWidth: 0,
+                     height: 35, width: 35, borderRadius: 1, backgroundColor: "rgba(100, 111, 212, 0.67)"}}>
+                    <AddIcon sx={{fontSize: 30, color: theme.color.black}}/>
+                  </Button>
                 </Box>
               </Box>
             </Grid>
