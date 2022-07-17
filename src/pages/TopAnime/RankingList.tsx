@@ -4,6 +4,7 @@ import {
   CardContent,
   Grid,
   IconButton,
+  Link,
   Skeleton,
   Stack,
   Typography,
@@ -90,40 +91,44 @@ const List = ({ data }: { data: Array<any> }) => {
                   )}
                 </Grid>
                 <Grid item xs={12} sm={2} md={1}>
-                  <img
-                    alt="Poster"
-                    src={item.images.jpg.image_url}
-                    width="100%"
-                    style={{ borderRadius: 10 }}
-                  />
+                  <Link href={`/anime/1`}>
+                    <img
+                      alt="Poster"
+                      src={item.images.jpg.image_url}
+                      width="100%"
+                      style={{ borderRadius: 10 }}
+                    />
+                  </Link>
                 </Grid>
                 <Grid item xs={12} sm={7} md={9} textAlign="left">
-                  <Stack spacing={1}>
-                    <Typography variant="h4" sx={{ fontWeight: 600 }}>
-                      {item.title}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: 600, opacity: 0.7 }}
-                      color={(theme) => theme.color._100}
-                    >
-                      {item.episodes}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: 600, opacity: 0.7 }}
-                      color={(theme) => theme.color._100}
-                    >
-                      {item.duration}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: 600, opacity: 0.7 }}
-                      color={(theme) => theme.color._100}
-                    >
-                      {item.status}
-                    </Typography>
-                  </Stack>
+                  <Link href={`/anime/1`}>
+                    <Stack spacing={1} width={"fit-content"}>
+                      <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                        {item.title}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {item.episodes}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {item.duration}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {item.status}
+                      </Typography>
+                    </Stack>
+                  </Link>
                 </Grid>
                 <Button
                   variant="outlined"
