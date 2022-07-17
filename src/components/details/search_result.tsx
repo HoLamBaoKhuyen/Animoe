@@ -4,8 +4,6 @@ import { theme } from "../../theme";
 import { SEARCH_RESULTS } from "../../data/detail";
 import { CustomTab } from "../Tabs/CustomTab";
 import { CustomTabs } from "../Tabs/CustomTabs";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import AddIcon from '@mui/icons-material/Add';
 import "../css/search_result.css";
 type SearchResultsProps = {

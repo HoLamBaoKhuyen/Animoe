@@ -1,16 +1,18 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import  Filter  from "./filter";
-import  ContentFilter from "./content_filter";
-import SettingsIcon from '@mui/icons-material/Settings';
-import SearchIcon from '@mui/icons-material/Search';type SearchToolProps = {
+import Filter  from "./filter";
+import ContentFilter from "./content_filter";
+import SearchIcon from '@mui/icons-material/Search';
+
+type SearchToolProps = {
   children?: ReactNode;
   title?: string;
   englistTitle?: string;
   image?: string;
 };
-const SearchResults: React.FC<SearchToolProps> = ({ children }) => {
+
+const SearchTools: React.FC<SearchToolProps> = ({ children }) => {
 
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -73,4 +75,5 @@ const SearchResults: React.FC<SearchToolProps> = ({ children }) => {
     </Box>
   );
 };
-export default SearchResults;
+
+export default SearchTools;

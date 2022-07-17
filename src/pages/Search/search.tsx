@@ -1,9 +1,8 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Layout from "../../components/layout";
-import { theme } from "../../theme";
 import SearchResults from "../../components/details/search_result";
-import SearchTools from  "../../components/details/search_tool";
+import SearchTools from "../../components/details/search_tool";
 import Footer from "../../components/layout/Footer";
 
 const DetailPage = () => {
