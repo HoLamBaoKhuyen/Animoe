@@ -8,6 +8,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import SquareRoundedIcon from "@mui/icons-material/SquareRounded";
 import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
 
@@ -56,7 +57,11 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
                   backgroundColor: "rgba(100, 111, 212, 0.75)",
                 }}
               >
-                <Box>
+                <Box
+                  sx={{
+                    borderBottom: `1px solid ${theme.palette.common.white}`,
+                  }}
+                >
                   <Typography
                     variant="h4"
                     sx={{ fontWeight: 700, py: 1, pl: 3 }}
@@ -64,41 +69,24 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
                     {result.name}
                   </Typography>
                 </Box>
-                <Box>
-                  <hr />
-                </Box>
+
                 <FormControl
-                  sx={{ m: 3 }}
+                  sx={{ mx: 3 }}
                   component="fieldset"
                   variant="standard"
                 >
                   {result.type.map((type) => (
-                    //   <Box
-                    //     sx={{
-                    //       pl: 2,
-                    //       pt: 1,
-                    //       display: "flex",
-                    //       justifyContent: "left",
-                    //     }}
-                    //   >
-                    //     <input
-                    //       type="checkbox"
-                    //       id={type}
-                    //       value={type}
-                    //       style={{ height: "20px", width: "20px" }}
-                    //     />
-                    //     <Typography
-                    //       variant="subtitle2"
-                    //       sx={{ pl: 1, color: "rgba(255, 255, 255, 0.7)" }}
-                    //     >
-                    //       {type}
-                    //     </Typography>
-                    //   </Box>
                     <FormGroup>
                       <FormControlLabel
                         control={
                           <Checkbox
-                            sx={{ color: `${theme.color._800} !important` }}
+                            sx={{
+                              color: `${theme.color._100} `,
+                              "&.Mui-checked": {
+                                color: `${theme.color._800} !important`,
+                              },
+                            }}
+                            icon={<SquareRoundedIcon />}
                           />
                         }
                         label={type}
