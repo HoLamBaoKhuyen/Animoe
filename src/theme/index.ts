@@ -21,6 +21,7 @@ const themeColors = {
     gold: "#b09755",
     bronze: "#a77c88",
     yellow: "#ebc351",
+    black: "#000000",
   },
 } as const;
 
@@ -216,6 +217,15 @@ const themeOptions: ThemeOptionsOld = {
         root: {
           backgroundColor: themeColors.color._850,
           borderRadius: 5,
+        },
+      },
+    },
+    MuiInput: {
+      styleOverrides: {
+        input: {
+          "&::placeholder": {
+            color: themeColors.color.white,
+          },
         },
       },
     },
