@@ -18,6 +18,9 @@ const themeColors = {
     green_400: "#0FB45B",
     green_800: "#287141",
     white: "#ffffff",
+    gold: "#b09755",
+    bronze: "#a77c88",
+    yellow: "#ebc351",
     black: "#000000",
   },
 } as const;
