@@ -35,7 +35,14 @@ const HomeTopAnime = (props: HomeTopAnimeProps) => {
           View more
         </Link>
       </Box>
-      <Grid container display="flex" justifyContent="space-between" mt={2}>
+      <Grid
+        container
+        display="flex"
+        justifyContent="space-between"
+        mt={2}
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
         {data.map((item: any) => (
           <HomeAnime anime={item} />
         ))}

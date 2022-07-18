@@ -34,7 +34,7 @@ const SearchTool = (props: any) => {
 
         <Grid item xs={12} zIndex={10} sx={{ mb: 5 }}>
           <Box>
-            <form action="/search" method="get">
+            <form action="/anime-search" method="get">
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Box
                   sx={{
@@ -49,6 +49,8 @@ const SearchTool = (props: any) => {
                 <Box sx={{ textAlign: "center" }}>
                   <InputBase
                     inputProps={{
+                      name: "q",
+                      id: "q",
                       value: wordEntered,
                       onChange: handleInputChange,
                       "aria-label": "search",

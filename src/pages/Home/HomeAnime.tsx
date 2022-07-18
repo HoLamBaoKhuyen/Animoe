@@ -38,6 +38,9 @@ const HomeAnime = ({ anime }: { anime: any }) => {
       key={anime.mal_id}
       width={{ md: "15vw", xs: "16vw" }}
       onScroll={handlePopoverClose}
+      xs={2}
+      sm={4}
+      md={3}
     >
       <Link
         href={`/anime/${anime.mal_id}`}
