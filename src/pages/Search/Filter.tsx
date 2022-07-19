@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { FILTER } from "../../data/detail";
-import MultipleSelect from "./MultiSelect";
+import MultipleSelect from "../../components/Select/MultiSelect";
 import CustomDatePicker from "./CustomDatePicker";
 
 type SearchResultsProps = {

@@ -3,7 +3,7 @@ import Layout from "../../components/layout";
 import { Box, Container, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
-import StyledSelect from "./CustomSelect";
+import MultipleSelect from "../../components/Select/MultiSelect";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -64,6 +64,13 @@ const ManagePage = () => {
               <StyledTab label="Dropped" {...a11yProps(4)} />
               <StyledTab label="Plan to watch" {...a11yProps(5)} />
             </StyledTabs>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <MultipleSelect placeholder="Select status" background={theme.color._850} width={200} />
+              <MultipleSelect placeholder="Select year" background={theme.color._850} width={200} />
+              <MultipleSelect placeholder="Select season" background={theme.color._850} width={200} />
+              <MultipleSelect placeholder="Select type" background={theme.color._850} width={200} />
+              <MultipleSelect placeholder="Select producer" background={theme.color._850} width={300} />
+            </Box>
           </Box>
           <TabPanel value={value} index={0}>
             All anime
@@ -84,9 +91,7 @@ const ManagePage = () => {
             Plan to watch
           </TabPanel>
         </Box>
-        <Box>
-          <StyledSelect placeHolder="Select Type" />
-        </Box>
+
       </Container>
     </Layout>
   );
