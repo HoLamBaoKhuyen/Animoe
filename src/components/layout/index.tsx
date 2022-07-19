@@ -15,9 +15,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         minHeight: "100vh",
       }}
     >
-        <NavBar />
-            {children}
-        <Footer />
+      <NavBar />
+      {children}
+      <Footer />
     </Box>
   );
 };

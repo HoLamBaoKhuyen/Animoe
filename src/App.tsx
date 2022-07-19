@@ -11,7 +11,7 @@ function App() {
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/anime/:id" element={<DetailPage />} />
-			<Route path='/search' element={<SearchPage />} />
+			<Route path="/anime-search" element={<SearchPage />} />
 			<Route path='/top-anime' element={<TopAnime />} />
 			<Route path='/manage' element={<ManagePage />} />
 		</Routes>

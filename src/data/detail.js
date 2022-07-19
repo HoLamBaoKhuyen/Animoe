@@ -539,7 +539,7 @@ export const SEARCH_RESULTS =  [
     scores: "Scored 6.38",
     members: "1,014,737 members",
     img: {
-      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      poster: "https://api-cdn.myanimelist.net/images/anime/1063/95086.jpg",
     },
   },
   {
@@ -549,7 +549,7 @@ export const SEARCH_RESULTS =  [
     scores: "Scored 7.32",
     members: "227,353 members",
     img: {
-      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      poster: "https://api-cdn.myanimelist.net/images/anime/1739/123152.webp",
     },
   },
   {
@@ -559,7 +559,7 @@ export const SEARCH_RESULTS =  [
     scores: "Scored 6.40",
     members: "734,959 members",
     img: {
-      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      poster: "https://cdn.myanimelist.net/images/anime/1545/121995.webp",
     },
   },
   {
@@ -569,7 +569,7 @@ export const SEARCH_RESULTS =  [
     scores: "Scored 7.21",
     members: "191,555 members",
     img: {
-      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      poster: "https://cdn.myanimelist.net/images/anime/3/78666.webp",
     },
   },
   {
@@ -579,7 +579,7 @@ export const SEARCH_RESULTS =  [
     scores: "Scored 7.03",
     members: "1,592,033 members",
     img: {
-      character: "https://api-cdn.myanimelist.net/images/anime/10/47347.jpg",
+      poster: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
     },
   }
 ];
@@ -587,35 +587,40 @@ export const FILTER =  [
   {
     id: 1,
     name: "Type",
-    type: [
+    typeName: "type",
+    typeOptions: [
       "TV", "OVA", "Movie", "Special", "ONA", "Music"
     ]
   },
   {
     id: 2,
     name: "Score",
-    type: [
+    typeName: "score",
+    typeOptions: [
       "(1)", "(2)", "(3)", "(4)", "(5)", "(6)", "(7)", "(8)", "(9)", "10"
     ]
   },
   {
     id: 3,
     name: "Status",
-    type: [
+    typeName: "status",
+    typeOptions: [
       "Finished Airing","Currently Airing","Not yet Aired"
     ]
   },
   {
     id: 4,
     name: "Rated",
-    type: [
+    typeName: "rating",
+    typeOptions: [
       "G","PG","PG-13","R","R+", "Rx"
     ]
   },
   {
     id: 5,
     name: "Producer",
-    type: [
+    typeName: "producer",
+    typeOptions: [
       "Youth Film Studio","10 Gauge","1TheK","1st Place","12 Diary Holders"
     ]
   }

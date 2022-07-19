@@ -6,14 +6,14 @@ import { format_string } from "../../helpers/format";
 type PosterProps = {
   children?: ReactNode;
   title: string;
-  type: string,
+  type: string;
   englishTitle: string;
   image: string;
-  episodes: number,
-  status: string,
+  episodes: number;
+  status: string;
 };
 
-const Poster= ({ data }: { data: any }) => {
+const Poster = ({ data }: { data: any }) => {
   return (
     <Box>
       <Box>
@@ -36,7 +36,11 @@ const Poster= ({ data }: { data: any }) => {
         </Box>
         <Box sx={{ textAlign: "center" }} my={2}>
           <Button
-            sx={{ px: { md: 5, sm: 2, xs: 3 }, fontSize: { md: 20, sm: 17 }, fontWeight: 600 }}
+            sx={{
+              px: { md: 5, sm: 2, xs: 3 },
+              fontSize: { md: 20, sm: 17 },
+              fontWeight: 600,
+            }}
           >
             Add to list
           </Button>
@@ -108,8 +112,7 @@ const Poster= ({ data }: { data: any }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.season}{" "}
-            {data.year}
+            {data.season} {data.year}
           </Typography>
         </Typography>
         <Typography
@@ -122,8 +125,7 @@ const Poster= ({ data }: { data: any }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.broadcast.day} at{" "}
-            {data.broadcast.time} (JST)
+            {data.broadcast.day} at {data.broadcast.time} (JST)
           </Typography>
         </Typography>
         <Typography

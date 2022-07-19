@@ -1,55 +1,62 @@
 import React, { ReactNode } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Link,
+  Pagination,
+  PaginationItem,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { theme } from "../../theme";
 import { SEARCH_RESULTS } from "../../data/detail";
-import { CustomTab } from "../../components/Tabs/CustomTab";
-import { CustomTabs } from "../../components/Tabs/CustomTabs";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useSearchAnimeQuery } from "../../redux/slices/animeSlice";
+import { Skeleton } from "@mui/lab";
+import { format_number } from "../../helpers/format";
 
-type SearchResultsProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
+const SearchResults = ({ searchQuery }: any) => {
   const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-      setValue(newValue);
+  const [page, setPage] = React.useState(1);
+  const { data } = useSearchAnimeQuery(searchQuery);
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setPage(value);
   };
-  return (
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return data ? (
     <Box>
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Result for "Tokyo Ghoul"
+              Search Result for "{searchQuery}"
             </Typography>
           </Box>
         </Grid>
-
-        <CustomTabs sx={{ pt: "10px" }}
-            value={value}
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs example"
-        >
-            <CustomTab label="Anime" />
-            <CustomTab label="Manga" />
-        </CustomTabs>
 
         <Grid
           item
           xs={12}
           container
           columnSpacing={{ md: 15, sm: 3 }}
-          rowSpacing={{ md: 4, xs: 2 }}
+          rowSpacing={{ md: 2, xs: 2 }}
         >
-          {SEARCH_RESULTS.map((result) => (
-            <Grid item xs={12} key={result.id}>
+          {data.map((item: any) => (
+            <Grid item xs={12} key={item.mal_id}>
               <Box
                 sx={{
                   position: "relative",
@@ -62,48 +69,129 @@ const SearchResults: React.FC<SearchResultsProps> = ({ children }) => {
                 }}
               >
                 <Box
-                  sx={{ height: "90%", display: "flex", alignItems: "center", ml:"10px", my: "auto" }}
+                  sx={{
+                    height: "90%",
+                    display: "flex",
+                    alignItems: "center",
+                    ml: "10px",
+                    my: "auto",
+                  }}
                 >
-                  <img
-                    alt="voice_actor"
-                    src={result.img.character}
-                    height="100%"
-                    width="auto"
-                    style={{ borderRadius: 10 }}
-                  />
-                  <Box ml={2}>
-                    <Typography variant="h4" sx={{mb: "8px"}}>{result.name}</Typography>
-                    <Typography variant="body2" sx={{ fontSize: 16 }}>
-                      {result.eps}
-                    </Typography>
-                    <Typography variant="body2" sx={{ fontSize: 16 }}>
-                      {result.scores}
-                    </Typography>
-                    <Typography variant="body2" sx={{ fontSize: 16 }}>
-                      {result.members}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ position: "absolute",top: "0px", right: "4px", fontSize: 35, borderRadius: 10 }}>
-                    <FontAwesomeIcon icon={faPlusSquare} />
-                  </Box>
+                  <Link href={`/anime/${item.mal_id}`}>
+                    <img
+                      alt={item.mal_id}
+                      src={item.images.jpg.image_url}
+                      height="100%"
+                      width="auto"
+                      style={{
+                        borderRadius: 12,
+                        minWidth: 60,
+                        maxWidth: 80,
+                        maxHeight: 120,
+                      }}
+                    />
+                  </Link>
+                  <Link href={`/anime/${item.mal_id}`}>
+                    <Stack spacing={1} ml={2} width={"fit-content"}>
+                      <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                        {item.title}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {item.status}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {item.type} ({item.episodes} eps)
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {format_number(item.members)} members
+                      </Typography>
+                    </Stack>
+                  </Link>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      position: "absolute",
+                      top: "5px",
+                      right: "10px",
+                      minWidth: 0,
+                      height: 35,
+                      width: 35,
+                      borderRadius: 1,
+                      color: theme.color._400,
+                      border: 0,
+                      transition: "all 0.2s",
+                      "&:hover": {
+                        border: 0,
+                        opacity: 0.7,
+                      },
+                    }}
+                  >
+                    <AddBoxIcon fontSize="large" />
+                  </Button>
                 </Box>
               </Box>
             </Grid>
           ))}
         </Grid>
         <Grid item xs={12} zIndex={10}>
-          <Box sx={{ display: "flex", justifyContent: "center", my: 5}}>
-            <div className="pagination">
-              <a href="#">&laquo;</a>
-              <a className="active" href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">...</a>
-              <a href="#">8</a>
-              <a href="#">9</a>
-              <a href="#">&raquo;</a>
-            </div>
+          <Box style={{ margin: "10px auto", width: "fit-content" }}>
+            <Pagination
+              count={10}
+              shape="rounded"
+              variant="outlined"
+              color="primary"
+              page={page}
+              onChange={handlePageChange}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                  sx={{
+                    "&.Mui-selected": {
+                      backgroundColor: "#9BA3EB",
+                      color: "white",
+                      borderRadius: 0,
+                    },
+                  }}
+                />
+              )}
+            />
           </Box>
         </Grid>
+      </Grid>
+    </Box>
+  ) : (
+    <Box>
+      <Grid container rowSpacing={2}>
+        <Grid item xs={12} zIndex={10}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Search Results for "{searchQuery}"
+            </Typography>
+          </Box>
+        </Grid>
+        <Stack spacing={2}>
+          <Skeleton variant="rectangular" height={200} />
+          <Skeleton variant="rectangular" height={200} />
+          <Skeleton variant="rectangular" height={200} />
+          <Skeleton variant="rectangular" height={200} />
+          <Skeleton variant="rectangular" height={200} />
+        </Stack>
       </Grid>
     </Box>
   );

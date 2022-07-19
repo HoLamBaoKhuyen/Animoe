@@ -20,14 +20,14 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
               Reviews
             </Typography>
             <Box>
-            <Link
-            href="#"
-            sx={{
-              fontSize: { md: 20, sm: 18, xs: 15 },
-            }}
-          >
-            View more
-          </Link>
+              <Link
+                href="#"
+                sx={{
+                  fontSize: { md: 20, sm: 18, xs: 15 },
+                }}
+              >
+                View more
+              </Link>
             </Box>
           </Box>
         </Grid>
