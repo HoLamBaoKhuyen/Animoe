@@ -65,7 +65,8 @@ const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder, width }
         sx={{
           background: theme.color._850,
           width: width,
-          borderRadius: 2
+          borderRadius: 2,
+          fontWeight: 500,
         }}
         input={<StyledInput />}
       >

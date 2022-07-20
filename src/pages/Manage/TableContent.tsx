@@ -4,8 +4,6 @@ import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { theme } from '../../theme';
 
-
-
 const rows = [{
     id: 1,
     image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
@@ -63,11 +61,17 @@ const rows = [{
     progress: '1/12',
 
 }]
+
 export const StyledTableCell = styled(TableCell)({
     "&.MuiTableCell-root": {
         color: theme.palette.common.white,
         fontWeight: 500,
-        border: 0
+        border: 0,
+        fontSize: 18,
+        paddingY: 1,
+        "&.table-title": {
+            color: theme.color._100
+        }
     },
 });
 export default function TableContent() {
@@ -76,12 +80,12 @@ export default function TableContent() {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell width={150} align="right"></StyledTableCell>
-                        <StyledTableCell sx={{ color: theme.color._100 }}>Title</StyledTableCell>
-                        <StyledTableCell width={120} align="center" sx={{ color: theme.color._100 }}>Score</StyledTableCell>
-                        <StyledTableCell width={120} align="center" sx={{ color: theme.color._100 }}>Type</StyledTableCell>
-                        <StyledTableCell width={120} align="center" sx={{ color: theme.color._100 }}>Progress</StyledTableCell>
-                        <StyledTableCell width={150} align="center" sx={{ color: theme.color._100 }}>Action</StyledTableCell>
+                        <StyledTableCell className='table-title' width={150} align="center"></StyledTableCell>
+                        <StyledTableCell className='table-title' width={350} sx={{ color: theme.color._100 }}>Title</StyledTableCell>
+                        <StyledTableCell className='table-title' width={120} align="center" sx={{ color: theme.color._100 }}>Score</StyledTableCell>
+                        <StyledTableCell className='table-title' width={120} align="center" sx={{ color: theme.color._100 }}>Type</StyledTableCell>
+                        <StyledTableCell className='table-title' width={120} align="center" sx={{ color: theme.color._100 }}>Progress</StyledTableCell>
+                        <StyledTableCell className='table-title' width={150} align="center" sx={{ color: theme.color._100 }}>Action</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -90,16 +94,15 @@ export default function TableContent() {
                             key={row.id}
 
                         >
-                            <StyledTableCell width={150} align="right" component="th" scope="row">
+                            <StyledTableCell width={150} align="center" component="th" scope="row">
                                 <img alt='poster' src={row.image} height='100px' width='auto' style={{ borderRadius: 10 }} />
                             </StyledTableCell>
-                            <StyledTableCell >{row.title}</StyledTableCell>
+                            <StyledTableCell width={350} >{row.title}</StyledTableCell>
                             <StyledTableCell width={120} align="center">{row.score}</StyledTableCell>
                             <StyledTableCell width={120} align="center">{row.type}</StyledTableCell>
                             <StyledTableCell width={120} align="center">{row.progress}</StyledTableCell>
-                            <StyledTableCell width={120} align="center">{row.progress}</StyledTableCell>
-                            <StyledTableCell width={150} align="center">
-                                <Stack direction='row' spacing={1}>
+                            <StyledTableCell width={150} align="center" >
+                                <Stack direction='row' spacing={3} justifyContent='center'>
                                     <Button sx={{
                                         minWidth: 0, p: 0, width: 35, height: 35, borderRadius: 1,
                                         backgroundColor: theme.color.green_800,

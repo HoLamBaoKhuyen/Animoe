@@ -9,7 +9,7 @@ export const StyledTabs = styled(Tabs)({
 });
 export const StyledTab = styled(Tab)({
   color: theme.color._100,
-  //   borderBottom: "1px solid #e8e8e8",
+  fontWeight: 600,
   "& .MuiTabs-indicator": {
     backgroundColor: "#1890ff",
   },
