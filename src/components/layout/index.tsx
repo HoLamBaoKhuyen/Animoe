@@ -13,11 +13,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       sx={{
         background: theme.color._900,
         minHeight: "100vh",
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
-      <NavBar />
-      {children}
-      <Footer />
+      <Box sx={{ flexShrink: 0 }}>
+        <NavBar />
+      </Box>
+      <Box sx={{ flex: '1 0 auto' }}>
+        {children}</Box>
+      <Box sx={{ flexShrink: 0 }}>
+        <Footer /></Box>
     </Box>
   );
 };
