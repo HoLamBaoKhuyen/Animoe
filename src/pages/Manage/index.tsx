@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../components/layout";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
 import MultipleSelect from "../../components/Select/MultiSelect";
@@ -50,7 +50,7 @@ const ManagePage = () => {
   return (
     <Layout>
       <Container sx={{ background: theme.color._800, borderRadius: 3 }}>
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%" }} px={5} py={2}>
           <Box>
             <StyledTabs
               value={value}
@@ -66,13 +66,13 @@ const ManagePage = () => {
               <StyledTab label="Dropped" {...a11yProps(4)} />
               <StyledTab label="Plan to watch" {...a11yProps(5)} />
             </StyledTabs>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mt={2}>
-              <StyledSelect placeHolder="Select status" />
-              <StyledSelect placeHolder="Select year" />
-              <StyledSelect placeHolder="Select season" />
-              <StyledSelect placeHolder="Select type" />
-              <StyledSelect placeHolder="Select producer" width={300} />
-            </Box>
+            <Grid container spacing={3} mt={1}>
+              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select status" width={"100%"} /></Grid>
+              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select year" width={"100%"} /></Grid>
+              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select season" width={"100%"} /></Grid>
+              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select type" width={"100%"} /></Grid>
+              <Grid item xs={12} sm={8} md={4}><StyledSelect placeHolder="Select producer" width={"100%"} /></Grid>
+            </Grid>
           </Box>
           <TabPanel value={value} index={0}>
             <TableContent />

@@ -47,6 +47,7 @@ const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder, width }
     <FormControl
       sx={{
         minWidth: 120,
+        width: width,
         "&:hover": {
           "& .MuiInputBase": {
             outline: "none",
@@ -64,7 +65,6 @@ const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder, width }
         defaultValue={""}
         sx={{
           background: theme.color._850,
-          width: width,
           borderRadius: 2,
           fontWeight: 500,
         }}

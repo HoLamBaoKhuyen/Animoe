@@ -1,7 +1,9 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, Box, Button, Stack } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, Box, Button, Stack, PaginationItem, Pagination } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { theme } from '../../theme';
 
 const rows = [{
@@ -75,9 +77,19 @@ export const StyledTableCell = styled(TableCell)({
     },
 });
 export default function TableContent() {
+    const [page, setPage] = React.useState(1);
+
+    const handlePageChange = (
+
+        event: React.ChangeEvent<unknown>,
+        value: number
+    ) => {
+        setPage(value);
+    };
+
     return (
-        <TableContainer component={Paper} sx={{ borderRadius: 2 }}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer >
+            <Table sx={{ minWidth: 650, backgroundColor: theme.color._850, borderRadius: 2 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <StyledTableCell className='table-title' width={150} align="center"></StyledTableCell>
@@ -127,6 +139,32 @@ export default function TableContent() {
                     ))}
                 </TableBody>
             </Table>
+            <Box style={{ margin: "auto", width: "fit-content", marginTop: 20 }} >
+                <Pagination
+                    count={10}
+                    shape="rounded"
+                    variant="outlined"
+                    color="primary"
+                    page={page}
+                    onChange={handlePageChange}
+                    renderItem={(item) => (
+                        <PaginationItem
+                            components={{
+                                previous: ArrowBackIosNewIcon,
+                                next: ArrowForwardIosIcon,
+                            }}
+                            {...item}
+                            sx={{
+                                "&.Mui-selected": {
+                                    backgroundColor: "#9BA3EB",
+                                    color: "white",
+                                    borderRadius: 0,
+                                },
+                            }}
+                        />
+                    )}
+                />
+            </Box>
         </TableContainer >
     );
 }
