@@ -3,7 +3,6 @@ import Layout from "../../components/layout";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
-import MultipleSelect from "../../components/Select/MultiSelect";
 import StyledSelect from "../../components/Select/StyledSelect";
 import TableContent from "./TableContent";
 
@@ -78,19 +77,19 @@ const ManagePage = () => {
             <TableContent />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Currently watching
+            <Typography variant='body1'>Currently watching</Typography>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Completed
+            <Typography variant='body1'>Completed</Typography>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            On hold
+            <Typography variant='body1'>On hold</Typography>
           </TabPanel>
           <TabPanel value={value} index={4}>
-            Dropped
+            <Typography variant='body1'>Dropped</Typography>
           </TabPanel>
           <TabPanel value={value} index={5}>
-            Plan to watch
+            <Typography variant='body1'>Plan to watch</Typography>
           </TabPanel>
         </Box>
 
