@@ -34,8 +34,9 @@ type SelectProps = {
   list?: string[];
   label?: string;
   placeHolder?: string;
+  width?: string | number
 };
-const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder }) => {
+const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder, width }) => {
   const [value, setValue] = React.useState("-1");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -45,7 +46,6 @@ const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder }) => {
   return (
     <FormControl
       sx={{
-        m: 1,
         minWidth: 120,
         "&:hover": {
           "& .MuiInputBase": {
@@ -64,6 +64,8 @@ const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder }) => {
         defaultValue={""}
         sx={{
           background: theme.color._850,
+          width: width,
+          borderRadius: 2
         }}
         input={<StyledInput />}
       >
@@ -78,5 +80,6 @@ StyledSelect.defaultProps = {
   list: ["Item1", "Item2", "Item3"],
   label: "Label",
   placeHolder: "Vui lòng chọn",
+  width: 200
 };
 export default StyledSelect;

@@ -4,6 +4,8 @@ import { Box, Container, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
 import MultipleSelect from "../../components/Select/MultiSelect";
+import StyledSelect from "../../components/Select/StyledSelect";
+import TableContent from "./TableContent";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -23,8 +25,8 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ pt: 3 }}>
+          {children}
         </Box>
       )}
     </div>
@@ -64,16 +66,16 @@ const ManagePage = () => {
               <StyledTab label="Dropped" {...a11yProps(4)} />
               <StyledTab label="Plan to watch" {...a11yProps(5)} />
             </StyledTabs>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <MultipleSelect placeholder="Select status" background={theme.color._850} width={200} />
-              <MultipleSelect placeholder="Select year" background={theme.color._850} width={200} />
-              <MultipleSelect placeholder="Select season" background={theme.color._850} width={200} />
-              <MultipleSelect placeholder="Select type" background={theme.color._850} width={200} />
-              <MultipleSelect placeholder="Select producer" background={theme.color._850} width={300} />
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }} mt={2}>
+              <StyledSelect placeHolder="Select status" />
+              <StyledSelect placeHolder="Select year" />
+              <StyledSelect placeHolder="Select season" />
+              <StyledSelect placeHolder="Select type" />
+              <StyledSelect placeHolder="Select producer" width={300} />
             </Box>
           </Box>
           <TabPanel value={value} index={0}>
-            All anime
+            <TableContent />
           </TabPanel>
           <TabPanel value={value} index={1}>
             Currently watching
