@@ -12,30 +12,26 @@ import {
   Typography,
 } from "@mui/material";
 import { theme } from "../../theme";
-import { SEARCH_RESULTS } from "../../data/detail";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSearchAnimeQuery } from "../../redux/slices/animeSlice";
+import { useSearchMangaQuery } from "../../redux/slices/mangaSlice";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
 const SearchResults = ({ searchQuery }: any) => {
-  const [value, setValue] = React.useState(0);
   const [page, setPage] = React.useState(1);
-  const { data } = useSearchAnimeQuery(searchQuery);
+  const { data } = useSearchMangaQuery({strQuery: searchQuery.get("q"),offset: (page-1)*5});
 
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    event: any,
     value: number
   ) => {
     setPage(value);
+    console.log(page);
   };
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
 
   return data ? (
     <Box>
@@ -43,7 +39,7 @@ const SearchResults = ({ searchQuery }: any) => {
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Result for "{searchQuery}"
+              Search Result for "{searchQuery.get("q")}"
             </Typography>
           </Box>
         </Grid>
@@ -77,7 +73,7 @@ const SearchResults = ({ searchQuery }: any) => {
                     my: "auto",
                   }}
                 >
-                  <Link href={`/anime/${item.mal_id}`}>
+                  <Link href={`/manga/${item.mal_id}`}>
                     <img
                       alt={item.mal_id}
                       src={item.images.jpg.image_url}
@@ -91,7 +87,7 @@ const SearchResults = ({ searchQuery }: any) => {
                       }}
                     />
                   </Link>
-                  <Link href={`/anime/${item.mal_id}`}>
+                  <Link href={`/manga/${item.mal_id}`}>
                     <Stack spacing={1} ml={2} width={"fit-content"}>
                       <Typography variant="h4" sx={{ fontWeight: 600 }}>
                         {item.title}

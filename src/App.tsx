@@ -3,7 +3,7 @@ import "./App.css";
 import DetailPage from "./pages/Detail";
 import HomePage from "./pages/Home";
 import TopAnime from "./pages/TopAnime";
-import SearchPage from './pages/Search';
+import {AnimeSearchPage,MangaSearchPage} from './pages/Search';
 import ManagePage from "./pages/Manage";
 
 function App() {
@@ -11,7 +11,8 @@ function App() {
 		<Routes>
 			<Route path="/" element={<HomePage />} />
 			<Route path="/anime/:id" element={<DetailPage />} />
-			<Route path="/anime-search" element={<SearchPage />} />
+			<Route path="/anime-search" element={<AnimeSearchPage />} />
+			<Route path="/manga-search" element={<MangaSearchPage />} />
 			<Route path='/top-anime' element={<TopAnime />} />
 			<Route path='/manage' element={<ManagePage />} />
 		</Routes>
