@@ -23,10 +23,10 @@ const MenuProps = {
   },
 };
 
-function getStyles(name: string, personName: readonly string[], theme: Theme) {
+function getStyles(name: string, option: readonly string[], theme: Theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      option.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
@@ -50,17 +50,19 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
 
 type SelectProps = {
   placeholder?: string;
-  list: string[];
+  list?: string[];
+  background?: string
+  width?: string | number
 };
-const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
+const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list, background, width }) => {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [option, setOptionName] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof option>) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setOptionName(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
@@ -68,13 +70,15 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: { sm: 300, xs: "100%" } }}>
+      <FormControl sx={{ m: 1, width: { sm: width, xs: "100%" } }}>
         <Select
           multiple
           displayEmpty
-          value={personName}
+          value={option}
           onChange={handleChange}
-          input={<StyledInput />}
+          input={<StyledInput sx={{
+            "& .MuiInputBase-input": { background: background }
+          }} />}
           renderValue={(selected) => {
             if (selected.length === 0) {
               return (
@@ -106,13 +110,13 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
           >
             {placeholder}
           </MenuItem>
-          {list.map((item, key) => (
+          {list?.map((item, key) => (
             <MenuItem
               key={key}
               value={item}
-              style={getStyles(item, personName, theme)}
+              style={getStyles(item, option, theme)}
             >
-              <Checkbox checked={personName.indexOf(item) > -1} />
+              <Checkbox checked={option.indexOf(item) > -1} />
               <ListItemText
                 primary={item}
                 sx={{
@@ -132,6 +136,8 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list }) => {
 MultipleSelect.defaultProps = {
   placeholder: "Select",
   list: ["Item1", "Item2", "Item3"],
+  background: "rgba(100, 111, 212, 0.67)",
+  width: 300
 };
 
 export default MultipleSelect;
