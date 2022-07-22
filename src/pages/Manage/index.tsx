@@ -5,6 +5,7 @@ import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
 import StyledSelect from "../../components/Select/StyledSelect";
 import TableContent from "./TableContent";
+import CustomModal from "./CustomModal";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -78,6 +79,7 @@ const ManagePage = () => {
           </TabPanel>
           <TabPanel value={value} index={1}>
             <Typography variant='body1'>Currently watching</Typography>
+            <CustomModal />
           </TabPanel>
           <TabPanel value={value} index={2}>
             <Typography variant='body1'>Completed</Typography>
