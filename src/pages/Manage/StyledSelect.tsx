@@ -18,16 +18,16 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
     position: "relative",
     color: theme.palette.common.white,
     fontSize: 16,
-    padding: "10px 26px 10px 12px",
+    padding: "0 0 0 12px",
     height: '30px',
     lineHeight: '30px',
-    borderRadius: '10px',
+    borderRadius: 3,
     transition: theme.transitions.create(["border-color", "box-shadow"]),
   },
 }));
 const CreateList = (list: any) => {
   return list.map((item: any, index: number) => (
-    <MenuItem key={index} value={item}>
+    <MenuItem key={index} value={item} >
       {item}
     </MenuItem>
   ));
@@ -66,13 +66,13 @@ const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder, width }
         onChange={handleChange}
         defaultValue={""}
         sx={{
-          background: theme.color._850,
+          background: theme.color._950,
           borderRadius: 2,
           fontWeight: 500,
         }}
         input={<StyledInput />}
       >
-        {placeHolder && <MenuItem value="-1">{placeHolder}</MenuItem>}
+        {placeHolder && <MenuItem value="-1" disabled>{placeHolder}</MenuItem>}
         {CreateList(list)}
       </Select>
     </FormControl>

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, Box, Button, Stack, PaginationItem, Pagination } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, Box, Button, Stack, PaginationItem, Pagination } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { theme } from '../../theme';
 import DeleteModal from './DeleteModal';
+import AddModal from './AddModal';
 
 const rows = [{
     id: 1,
@@ -148,7 +149,8 @@ export default function TableContent() {
 
                                 </Stack>
                                 {/* Modal */}
-                                <DeleteModal open={openModal} onClose={handleClose} title={row.title} />
+                                {/* <DeleteModal open={openModal} onClose={handleClose} title={row.title} /> */}
+                                <AddModal open={openModal} onClose={handleClose} title={row.title} />
                             </StyledTableCell>
 
                         </TableRow>

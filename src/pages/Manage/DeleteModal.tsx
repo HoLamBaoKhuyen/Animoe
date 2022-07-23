@@ -1,8 +1,5 @@
 import React from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Stack, Typography, useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import CloseIcon from '@mui/icons-material/Close';
-import { styled } from '@mui/material'
+import { Box, Button, DialogContentText, Stack, Typography } from '@mui/material';
 import { theme } from '../../theme';
 import ModalLayout from './ModalLayout';
 

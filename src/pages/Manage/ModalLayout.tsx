@@ -14,10 +14,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
         borderRadius: 10, boxShadow: `0 2px 10px 1px ${theme.palette.grey[900]}`,
     },
     "& .MuiDialogTitle-root": {
-        paddingLeft: theme.spacing(3),
+        paddingLeft: { sm: theme.spacing(3), xs: theme.spacing(1) },
     },
     '& .MuiDialogContent-root': {
-        padding: theme.spacing(3),
+        padding: { sm: theme.spacing(3), xs: theme.spacing(1) }
     },
     '& .MuiDialogActions-root': {
         padding: theme.spacing(1),
