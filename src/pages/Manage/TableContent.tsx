@@ -81,6 +81,7 @@ export const StyledTableCell = styled(TableCell)({
 export default function TableContent() {
     const [page, setPage] = React.useState(1);
     const [openModal, setOpenModal] = React.useState<boolean>(false)
+    const [openAddModal, setOpenAddModal] = React.useState<boolean>(false)
 
     const handleClickOpen = () => {
         setOpenModal(true);
@@ -88,6 +89,14 @@ export default function TableContent() {
 
     const handleClose = () => {
         setOpenModal(false);
+    };
+
+    const handleClickOpenAddModal = () => {
+        setOpenAddModal(true);
+    };
+
+    const handleCloseAddModal = () => {
+        setOpenAddModal(false);
     };
 
     const handlePageChange = (
@@ -126,7 +135,7 @@ export default function TableContent() {
                             <StyledTableCell width={120} align="center">{row.progress}</StyledTableCell>
                             <StyledTableCell width={150} align="center" >
                                 <Stack direction='row' spacing={3} justifyContent='center'>
-                                    <Button sx={{
+                                    <Button onClick={() => handleClickOpenAddModal()} sx={{
                                         minWidth: 0, p: 0, width: 35, height: 35, borderRadius: 1,
                                         backgroundColor: theme.color.green_800,
                                         transition: 'all 0.1s',
@@ -149,8 +158,8 @@ export default function TableContent() {
 
                                 </Stack>
                                 {/* Modal */}
-                                {/* <DeleteModal open={openModal} onClose={handleClose} title={row.title} /> */}
-                                <AddModal open={openModal} onClose={handleClose} title={row.title} />
+                                <DeleteModal open={openModal} onClose={handleClose} title={row.title} />
+                                <AddModal open={openAddModal} onClose={handleCloseAddModal} title={row.title} />
                             </StyledTableCell>
 
                         </TableRow>
