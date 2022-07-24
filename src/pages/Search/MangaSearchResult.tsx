@@ -38,7 +38,7 @@ const SearchResults = ({ searchQuery }: any) => {
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+            <Typography variant="h3" sx={{ fontWeight: 700 }}>
               Search Result for "{searchQuery.get("q")}"
             </Typography>
           </Box>
