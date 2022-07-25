@@ -1,16 +1,8 @@
-import React, { ReactNode } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { format_number } from "../../helpers/format";
-import { DETAIL_DATA } from "../../data/detail";
 
-type ScoreProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const Score: React.FC<ScoreProps> = ({ children }) => {
+const Score = ({ data }: { data: any }) => {
   return (
     <Stack
       direction="row"
@@ -47,13 +39,13 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
             variant="h1"
             sx={{ fontSize: { md: 45, sm: 26, xs: 20 } }}
           >
-            {DETAIL_DATA.mean}
+            {data.score}
           </Typography>
           <Typography
             variant="body2"
             sx={{ fontSize: { md: 15, xs: 0 }, fontWeight: 200 }}
           >
-            {format_number(DETAIL_DATA.num_scoring_users)} users
+            {format_number(data.scored_by)} users
           </Typography>
         </Box>
       </Box>
@@ -69,7 +61,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
           component="span"
           sx={{ fontStyle: "normal", fontSize: { md: 32, sm: 26, xs: 20 } }}
         >
-          #{DETAIL_DATA.rank}
+          #{data.rank}
         </Typography>
       </Typography>
 
@@ -83,7 +75,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
           component="span"
           sx={{ fontStyle: "normal", fontSize: { md: 32, sm: 26, xs: 20 } }}
         >
-          #{DETAIL_DATA.popularity}
+          #{data.popularity}
         </Typography>
       </Typography>
       <Typography
@@ -96,7 +88,7 @@ const Score: React.FC<ScoreProps> = ({ children }) => {
           component="span"
           sx={{ fontStyle: "normal", fontSize: { md: 32, sm: 26, xs: 20 } }}
         >
-          {format_number(DETAIL_DATA.num_list_users)}
+          {format_number(data.members)}
         </Typography>
       </Typography>
     </Stack>

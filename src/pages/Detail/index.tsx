@@ -50,7 +50,7 @@ const DetailPage = () => {
             <Poster data={data} />
           </Grid>
           <Grid item xs={12} sm={9} md={9}>
-            <Information />
+            <Information data={data} />
           </Grid>
         </Grid>
         <Box mt={4}>

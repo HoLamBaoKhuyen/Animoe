@@ -28,14 +28,8 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
-// function a11yProps(index: number) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     "aria-controls": `simple-tabpanel-${index}`,
-//   };
-// }
 
-export default function ScrollableTabsButtonAuto() {
+export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -60,7 +54,7 @@ export default function ScrollableTabsButtonAuto() {
         <CustomTab label="Pictures" />
       </CustomTabs>
       <TabPanel value={value} index={0}>
-        <Score />
+        <Score data={data} />
         <Content />
       </TabPanel>
       <TabPanel value={value} index={1}>

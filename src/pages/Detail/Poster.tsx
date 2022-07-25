@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { format_string, format_studios } from "../../helpers/format";
