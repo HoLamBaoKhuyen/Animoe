@@ -1,17 +1,7 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { format_string } from "../../helpers/format";
-
-type PosterProps = {
-  children?: ReactNode;
-  title: string;
-  type: string;
-  englishTitle: string;
-  image: string;
-  episodes: number;
-  status: string;
-};
+import { format_string, format_studios } from "../../helpers/format";
 
 const Poster = ({ data }: { data: any }) => {
   return (
@@ -99,7 +89,7 @@ const Poster = ({ data }: { data: any }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.aired.from}
+            {data.aired.string}
           </Typography>
         </Typography>
         <Typography
@@ -112,7 +102,7 @@ const Poster = ({ data }: { data: any }) => {
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.season} {data.year}
+            {format_string(data.season)} {data.year}
           </Typography>
         </Typography>
         <Typography
@@ -128,22 +118,46 @@ const Poster = ({ data }: { data: any }) => {
             {data.broadcast.day} at {data.broadcast.time} (JST)
           </Typography>
         </Typography>
-        <Typography
+        {data.producers.length !== 0 ? (<Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
+          Producers:{" "}
+          <Typography
+            component="span"
+            variant="body1"
+            sx={{ color: theme.color._100 }}
+          >
+            {format_studios(data.producers)}
+          </Typography>
+        </Typography>) : <></>}
+        {data.licensors.length !== 0 ? (<Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
+          Licensors:{" "}
+          <Typography
+            component="span"
+            variant="body1"
+            sx={{ color: theme.color._100 }}
+          >
+            {format_studios(data.licensors)}
+          </Typography>
+        </Typography>) : <></>}
+        {data.studios.length !== 0 ? (<Typography
           variant="subtitle2"
           sx={{ color: theme.color._100, fontWeight: 700 }}
         >
           Studios:{" "}
-          {data.studios.map((studio: any) => (
-            <Typography
-              key={studio.mal_id}
-              component="span"
-              variant="body1"
-              sx={{ color: theme.color._100 }}
-            >
-              {studio.name}{" "}
-            </Typography>
-          ))}
+          <Typography
+            component="span"
+            variant="body1"
+            sx={{ color: theme.color._100 }}
+          >
+            {format_studios(data.studios)}
+          </Typography>
         </Typography>
+        ) : <></>}
         <Typography
           variant="subtitle2"
           sx={{ color: theme.color._100, fontWeight: 700 }}
@@ -157,6 +171,19 @@ const Poster = ({ data }: { data: any }) => {
             {data.source}
           </Typography>
         </Typography>
+        {data.demographics.length !== 0 ? (<Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
+          Demographic:{" "}
+          <Typography
+            component="span"
+            variant="body1"
+            sx={{ color: theme.color._100 }}
+          >
+            {format_studios(data.demographics)}
+          </Typography>
+        </Typography>) : <></>}
         <Typography
           variant="subtitle2"
           sx={{ color: theme.color._100, fontWeight: 700 }}
@@ -165,7 +192,7 @@ const Poster = ({ data }: { data: any }) => {
           <Typography
             component="span"
             variant="body1"
-            sx={{ color: theme.color._100, textTransform: "uppercase" }}
+            sx={{ color: theme.color._100 }}
           >
             {data.rating}
           </Typography>
