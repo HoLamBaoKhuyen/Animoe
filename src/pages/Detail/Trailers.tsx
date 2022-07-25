@@ -1,15 +1,9 @@
-import React, { ReactNode } from "react";
 import { Box, Grid, Link, Typography } from "@mui/material";
-import { TRAILERS } from "../../data/detail";
 import ReactPlayer from "react-player";
 
-type TrailersProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const Trailers: React.FC<TrailersProps> = ({ children }) => {
+const Trailers = ({ trailer }: { trailer: any }) => {
+  console.log(trailer);
+
   return (
     <Box>
       <Grid
@@ -34,69 +28,24 @@ const Trailers: React.FC<TrailersProps> = ({ children }) => {
             </Box>
           </Box>
         </Grid>
-        {TRAILERS.map((trailer) => (
-          <Grid item xs={12} sm={4} key={trailer.id}>
-            <Box
-              sx={{
-                position: "relative",
-                maxWidth: { md: "400px", xs: "300px" },
-                height: { md: "220px", sm: "150px", xs: "180px" },
-                borderRadius: 3,
-                overflow: "hidden",
-                // "&:hover": {
-                //   "& .bg-hover": { display: "block" },
-                // },
-              }}
-            >
-              <ReactPlayer
-                url={trailer.src}
-                width="100%"
-                height="100%"
-                playing={false}
-                controls={true}
-              />
-              {/* <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%,-50%)",
-                  color: theme.palette.common.white,
-                  display: "flex",
-                  alignItems: "center",
-                  border: `2px solid ${theme.palette.common.white}`,
-                  width: "fit-content",
-                  px: 3,
-                  py: 1,
-                  borderRadius: 2,
-                  background: `rgba(0,0,0,0.2)`,
-                  zIndex: 10,
-                }}
-              >
-                <PlayCircleOutlineIcon />
-                <Typography variant="subtitle2">Play</Typography>
-              </Box>
-              <Typography
-                variant="h4"
-                sx={{ position: "absolute", bottom: 10, left: 10, zIndex: 10 }}
-              >
-                PV1
-              </Typography>
-              <Box
-                className="bg-hover"
-                sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  background: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5))`,
-                  width: "100%",
-                  minHeight: "220px",
-                  display: "none",
-                }}
-              ></Box> */}
-            </Box>
-          </Grid>
-        ))}
+        <Box
+          sx={{
+            margin: 'auto',
+            width: { md: "500px", sm: "400px", xs: '300px' },
+            height: { md: "320px", sm: "250px", xs: "180px" },
+            borderRadius: 3,
+            overflow: "hidden",
+          }}
+        >
+          <ReactPlayer
+            url={trailer.url}
+            width="100%"
+            height="100%"
+            playing={false}
+            controls={true}
+            poster={trailer.images.medium_image_url}
+          />
+        </Box>
       </Grid>
     </Box>
   );

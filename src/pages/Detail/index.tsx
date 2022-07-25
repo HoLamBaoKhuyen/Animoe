@@ -54,7 +54,7 @@ const DetailPage = () => {
           </Grid>
         </Grid>
         <Box mt={4}>
-          <Trailers />
+          <Trailers trailer={data.trailer} />
         </Box>
         <Box mt={4}>
           <VoiceActors />
