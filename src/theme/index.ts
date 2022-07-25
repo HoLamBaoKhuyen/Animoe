@@ -22,6 +22,7 @@ const themeColors = {
     bronze: "#a77c88",
     yellow: "#ebc351",
     black: "#000000",
+    grey_300:"#4f5482"
   },
 } as const;
 
@@ -149,8 +150,7 @@ const themeOptions: ThemeOptionsOld = {
         root: {
           color: themeColors.color.white,
           fontWeight: 600,
-          background: themeColors.color._600,
-          borderRadius: 10,
+          background: themeColors.color.grey_300,
         },
       },
     },

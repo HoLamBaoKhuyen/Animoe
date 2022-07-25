@@ -55,7 +55,7 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
       </CustomTabs>
       <TabPanel value={value} index={0}>
         <Score data={data} />
-        <Content />
+        <Content  data={data} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Typography>Characters & Staff</Typography>

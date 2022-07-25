@@ -1,16 +1,7 @@
-import React, { ReactNode } from "react";
 import { Box, Button, Chip, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA } from "../../data/detail";
 
-type ContentProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-
-const Content: React.FC<ContentProps> = ({ children }) => {
+const Content = ({ data }: { data: any }) => {
   return (
     <Box>
       <Box mt={3}>
@@ -30,7 +21,7 @@ const Content: React.FC<ContentProps> = ({ children }) => {
             textAlign: "justify",
           }}
         >
-          {`${DETAIL_DATA.synopsis}`}
+          {`${data.synopsis}`}
         </Typography>
       </Box>
       <Box mt={3}>
@@ -50,7 +41,7 @@ const Content: React.FC<ContentProps> = ({ children }) => {
             textAlign: "justify",
           }}
         >
-          {`${DETAIL_DATA.background}`}
+          {`${data.background}`}
         </Typography>
       </Box>
       <Box mt={3}>
@@ -63,7 +54,7 @@ const Content: React.FC<ContentProps> = ({ children }) => {
           Genres
         </Typography>
         <Box>
-          {DETAIL_DATA.genres.map((genre, key) => (
+          {data.genres.map((genre: any, key: number) => (
             <Button
               variant="outlined"
               disabled
