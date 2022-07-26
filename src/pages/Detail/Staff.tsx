@@ -9,8 +9,8 @@ var Slider = require('react-slick').default
 
 const createStaff = (list: any) => {
   if (list.length !== 0)
-    return list.slice(0, 30).map((staff: any) => (
-      <Box py={1} pr={4}>
+    return list.slice(0, 30).map((staff: any, index: number) => (
+      <Box py={1} pr={4} key={index}>
         <Box
           sx={{
             position: "relative",

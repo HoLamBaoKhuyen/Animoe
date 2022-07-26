@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { CustomTab } from "../../components/Tabs/CustomTab";
-import { Typography } from "@mui/material";
 import { CustomTabs } from "../../components/Tabs/CustomTabs";
 import Score from "./Score";
 import Content from "./Content";
@@ -10,6 +9,7 @@ import VoiceActors from "./VoiceActors";
 import Staff from "./Staff";
 import Reviews from "./Reviews";
 import Recommendations from "./Recommendations";
+import Episodes from "./Episodes";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -72,7 +72,9 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
         </Box>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Typography> Episode</Typography>
+        <Box mt={4}>
+          <Episodes />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Box mt={4}>

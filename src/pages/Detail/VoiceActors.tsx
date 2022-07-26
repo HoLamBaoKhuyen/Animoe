@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, makeStyles, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useParams } from "react-router";
 import { useGetAnimeCharactersQuery } from "redux/slices/animeSlice";
@@ -22,8 +22,8 @@ const changeFormat = (list: any) => {
 
 const createVoiceActors = (list: any) => {
   if (list.length !== 0)
-    return list.slice(0, 30).map((actor: any) => (
-      <Box py={1} pr={4}>
+    return list.slice(0, 30).map((actor: any, index: number) => (
+      <Box py={1} pr={4} key={index}>
         <Box
           sx={{
             width: "100%",

@@ -1,97 +1,50 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Grid, Skeleton, Typography } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
 import { theme } from "../../theme";
-import { format_number } from "../../helpers/format";
+import { useGetAnimeEpisodesQuery } from "redux/slices/animeSlice";
+import { useParams } from "react-router";
 
-const Score = ({ data }: { data: any }) => {
-  return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing={{ md: 3, sm: 2, xs: 1 }}
-      sx={{
-        background: theme.color._850,
-        borderRadius: 3,
-        px: 2,
-      }}
-    >
-      <Box
-        sx={{
-          display: { md: "flex", xs: "block" },
-          alignItems: "center",
-          pr: 2,
-          my: 1,
-          borderRight: `1px solid ${theme.color.white}`,
-        }}
-      >
-        <Typography
-          variant="h3"
-          sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
-        >
-          Score:
-        </Typography>
-        <Box
-          sx={{
-            textAlign: "center",
-            display: { md: "block", xs: "flex" },
-          }}
-        >
-          <Typography
-            variant="h1"
-            sx={{ fontSize: { md: 45, sm: 26, xs: 20 } }}
-          >
-            {data.score}
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ fontSize: { md: 15, xs: 0 }, fontWeight: 200 }}
-          >
-            {format_number(data.scored_by)} users
-          </Typography>
-        </Box>
-      </Box>
+const Episodes = () => {
+  const { id } = useParams();
+  const { data } = useGetAnimeEpisodesQuery(id);
 
-      <Typography
-        variant="h3"
-        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
-        pl={1}
-      >
-        Rank{" "}
-        <Typography
-          variant="h2"
-          component="span"
-          sx={{ fontStyle: "normal", fontSize: { md: 32, sm: 26, xs: 20 } }}
-        >
-          #{data.rank}
-        </Typography>
-      </Typography>
+  return data && data.data ? (
+    <Box>
+      <Grid container rowSpacing={2}>
+        <Grid item xs={12}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Episodes (25//25)
+            </Typography>
+          </Box>
+        </Grid>
+        {data.data.map((ep: any, index: number) => <Box key={index}>
+          <Grid container sx={{ background: theme.color._850, borderRadius: 3 }} alignItems='center'>
+            <Grid item xs={1} textAlign='center'>
+              <Typography variant='h3'>1</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant='subtitle1' sx={{ color: theme.color._100 }}>To You Two Thousand Years Later</Typography>
+              <Typography variant='body1' sx={{ color: theme.color._100 }}>Ni Sen-Nen-Go no Kimi e (二千年後の君へ)</Typography>
 
-      <Typography
-        variant="h3"
-        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
-      >
-        Popularity{" "}
-        <Typography
-          variant="h2"
-          component="span"
-          sx={{ fontStyle: "normal", fontSize: { md: 32, sm: 26, xs: 20 } }}
-        >
-          #{data.popularity}
-        </Typography>
-      </Typography>
-      <Typography
-        variant="h3"
-        sx={{ fontStyle: "italic", fontSize: { md: 24, sm: 16, xs: 15 } }}
-      >
-        Members{" "}
-        <Typography
-          variant="h2"
-          component="span"
-          sx={{ fontStyle: "normal", fontSize: { md: 32, sm: 26, xs: 20 } }}
-        >
-          {format_number(data.members)}
-        </Typography>
-      </Typography>
-    </Stack>
+            </Grid>
+            <Grid item xs={3}>
+              <Typography variant='h3'>Apr 7, 2013</Typography>
+            </Grid>
+            <Grid item xs={2} >
+              <Box display='flex' alignItems={'center'} justifyContent='center'>
+                <Typography variant='h3'>4.8</Typography>
+                <StarIcon sx={{ color: theme.color.yellow }} />
+              </Box>
+            </Grid>
+          </Grid></Box>)}
+      </Grid>
+    </Box>
+
+
+
+  ) : (
+    <Skeleton variant="rectangular" height="100%" />
   );
 };
-export default Score;
+export default Episodes;
