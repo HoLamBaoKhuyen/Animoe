@@ -1,5 +1,7 @@
-import { Box, Grid, Link, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { theme } from "../../theme";
+import styles from './styles.module.css'
 import { useGetAnimeStaffQuery } from "redux/slices/animeSlice";
 import { useParams } from "react-router";
 import { format_string_array } from "helpers/format";
@@ -7,7 +9,7 @@ var Slider = require('react-slick').default
 
 const createStaff = (list: any) => {
   if (list.length !== 0)
-    return list.map((staff: any) => (
+    return list.slice(0, 60).map((staff: any) => (
       <Box py={1} pr={4}>
         <Box
           sx={{
@@ -55,7 +57,23 @@ const settings = {
   slidesPerRow: 1,
   dots: true,
   arrows: false,
-  initialSlide: 1
+  initialSlide: 1,
+  dotsClass: `${styles.styled_dots}`,
+  customPaging: function (i: any) {
+    return (
+      <IconButton>
+        <FiberManualRecordIcon sx={{ fontSize: 18 }} />
+      </IconButton>
+
+    );
+  },
+  appendDots: (dots: any) => (
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center' }}
+    >
+      {dots}
+    </Box>
+  ),
 }
 
 

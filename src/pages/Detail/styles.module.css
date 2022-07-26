@@ -19,13 +19,14 @@
 }
 .slider_character {
   width: 100%;
-  /* left: 10%; */
-  /* padding: 0; */
 }
-.slider_character .slick-list {
-  padding: 0 !important;
+.styled_dots {
+  list-style-type: none;
 }
-.slider_character .slick-slide.slick-active.slick-center.slick-current {
-  padding: 0 50px !important;
-  display: none;
+.styled_dots li button {
+  opacity: 0.4;
+  color: #646fd4;
+}
+.styled_dots :global(li.slick-active) button {
+  opacity: 1;
 }

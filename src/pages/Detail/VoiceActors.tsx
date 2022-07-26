@@ -1,7 +1,9 @@
-import { Box, Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, IconButton, makeStyles, Skeleton, Typography } from "@mui/material";
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useParams } from "react-router";
 import { useGetAnimeCharactersQuery } from "redux/slices/animeSlice";
 import { theme } from "theme";
+import styles from './styles.module.css'
 var Slider = require('react-slick').default
 
 const changeFormat = (list: any) => {
@@ -20,7 +22,7 @@ const changeFormat = (list: any) => {
 
 const createVoiceActors = (list: any) => {
   if (list.length !== 0)
-    return list.map((actor: any) => (
+    return list.slice(0, 60).map((actor: any) => (
       <Box py={1} pr={4}>
         <Box
           sx={{
@@ -84,7 +86,23 @@ const settings = {
   slidesPerRow: 1,
   dots: true,
   arrows: false,
-  initialSlide: 1
+  initialSlide: 1,
+  dotsClass: `${styles.styled_dots}`,
+  customPaging: function (i: any) {
+    return (
+      <IconButton>
+        <FiberManualRecordIcon sx={{ fontSize: 18 }} />
+      </IconButton>
+
+    );
+  },
+  appendDots: (dots: any) => (
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center' }}
+    >
+      {dots}
+    </Box>
+  ),
 }
 
 const VoiceActors = () => {
