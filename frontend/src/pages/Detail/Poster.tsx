@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { format_string } from "../../helpers/format";
 
 type PosterProps = {
   children?: ReactNode;
