@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, Link, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, Skeleton, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { useGetAnimeVideosQuery } from "../../redux/slices/animeSlice";
@@ -55,16 +55,6 @@ const Trailers = () => {
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
               Trailers
             </Typography>
-            <Box>
-              <Link
-                href="#"
-                sx={{
-                  fontSize: { md: 20, sm: 18, xs: 15 },
-                }}
-              >
-                View more
-              </Link>
-            </Box>
           </Box>
         </Grid>
         <Slider {...settings}>

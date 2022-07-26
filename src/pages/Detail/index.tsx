@@ -53,24 +53,6 @@ const DetailPage = () => {
             <Information data={data} />
           </Grid>
         </Grid>
-        <Box mt={4}>
-          <Trailers/>
-        </Box>
-        <Box mt={4}>
-          <VoiceActors/>
-        </Box>
-        <Box mt={4}>
-          <Staff />
-        </Box>
-        <Box mt={4}>
-          <Theme />
-        </Box>
-        <Box mt={4}>
-          <Reviews />
-        </Box>
-        <Box mt={4}>
-          <Recommendations />
-        </Box>
       </Container>
     </Layout>
   ) : (

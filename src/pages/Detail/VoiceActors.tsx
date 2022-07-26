@@ -1,7 +1,5 @@
-import React, { ReactNode } from "react";
 import { Box, Grid, Link, Skeleton, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { DETAIL_DATA, VOICE_ACTORS } from "../../data/detail";
 import { useGetAnimeCharactersQuery } from "redux/slices/animeSlice";
 import { useParams } from "react-router";
 
@@ -36,7 +34,7 @@ const VoiceActors = () => {
           rowSpacing={{ md: 4, xs: 2 }}
         >
           {data.map((actor: any, index: number) => (
-            actor.voice_actors.slice(0, 2).map((VA: any, key: number) => (<Grid item xs={12} sm={6} key={index}>
+            actor.voice_actors.filter((VA: any) => VA.language === "Japanese").map((VA: any, key: number) => (<Grid item xs={12} sm={6} key={index}>
               <Box
                 sx={{
                   position: "relative",

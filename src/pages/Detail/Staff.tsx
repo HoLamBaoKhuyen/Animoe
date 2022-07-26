@@ -1,10 +1,8 @@
 import { Box, Grid, Link, Skeleton, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { STAFF } from "../../data/detail";
 import { useGetAnimeStaffQuery } from "redux/slices/animeSlice";
 import { useParams } from "react-router";
-import { format_string_array, format_studios } from "helpers/format";
-
+import { format_string_array } from "helpers/format";
 
 const Staff = () => {
   const { id } = useParams();

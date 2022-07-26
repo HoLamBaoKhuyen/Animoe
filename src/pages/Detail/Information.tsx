@@ -5,6 +5,11 @@ import { Typography } from "@mui/material";
 import { CustomTabs } from "../../components/Tabs/CustomTabs";
 import Score from "./Score";
 import Content from "./Content";
+import Trailers from "./Trailers";
+import VoiceActors from "./VoiceActors";
+import Staff from "./Staff";
+import Reviews from "./Reviews";
+import Recommendations from "./Recommendations";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,33 +52,37 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
       >
         <CustomTab label="Details" />
         <CustomTab label="Characters & Staff" />
+        <CustomTab label="Episodes" />
         <CustomTab label="Reviews" />
         <CustomTab label="Recommendations" />
-        <CustomTab label="Videos" />
-        <CustomTab label="Forum" />
-        <CustomTab label="Pictures" />
       </CustomTabs>
       <TabPanel value={value} index={0}>
         <Score data={data} />
-        <Content  data={data} />
+        <Content data={data} />
+        <Box mt={4}>
+          <Trailers />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Typography>Characters & Staff</Typography>
+        <Box mt={4}>
+          <VoiceActors />
+        </Box>
+        <Box mt={4}>
+          <Staff />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Typography> Reviews</Typography>
+        <Typography> Episode</Typography>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Typography> Recommendations</Typography>
+        <Box mt={4}>
+          <Reviews />
+        </Box>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <Typography> Videos</Typography>
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <Typography> Forum</Typography>
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        <Typography> Pictures</Typography>
+        <Box mt={4}>
+          <Recommendations />
+        </Box>
       </TabPanel>
     </Box>
   );
