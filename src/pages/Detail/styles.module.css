@@ -1,0 +1,19 @@
+.slider_container {
+  width: 800px;
+  margin: auto;
+}
+@media only screen and (max-width: 900px) {
+  .slider_container {
+    width: 600px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .slider_container {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .slider_container {
+    width: 100%;
+  }
+}

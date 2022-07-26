@@ -81,6 +81,51 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
+    getAnimeCharacters: build.query({
+      query: (id) => ({
+        url: `${ANIME_ENDPOINT}/${id}/characters`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getAnimeStaff: build.query({
+      query: (id) => ({
+        url: `${ANIME_ENDPOINT}/${id}/staff`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getAnimeReviews: build.query({
+      query: (id) => ({
+        url: `${ANIME_ENDPOINT}/${id}/reviews`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getAnimeRecommendations: build.query({
+      query: (id) => ({
+        url: `${ANIME_ENDPOINT}/${id}/recommendations`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+     getAnimeVideos: build.query({
+      query: (id) => ({
+        url: `${ANIME_ENDPOINT}/${id}/videos`,
+        method: "GET",
+      }),
+       transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
   }),
 });
 
@@ -93,4 +138,9 @@ export const {
   useSearchAnimeQuery,
   useGetAnimeByIdQuery,
   useGetAnimeEpisodesQuery,
+  useGetAnimeCharactersQuery,
+  useGetAnimeStaffQuery,
+  useGetAnimeReviewsQuery,
+  useGetAnimeRecommendationsQuery,
+  useGetAnimeVideosQuery,
 } = animeApi;
