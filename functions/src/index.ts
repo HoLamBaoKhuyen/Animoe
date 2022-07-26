@@ -3,10 +3,8 @@ import * as admin from "firebase-admin";
 import * as express from "express";
 import * as cors from "cors";
 
-const serviceAccount = require("./permissions.json");
-
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert("./permissions.json")
 });
 
 const app = express();
