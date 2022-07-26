@@ -22,7 +22,7 @@ const changeFormat = (list: any) => {
 
 const createVoiceActors = (list: any) => {
   if (list.length !== 0)
-    return list.slice(0, 60).map((actor: any) => (
+    return list.slice(0, 30).map((actor: any) => (
       <Box py={1} pr={4}>
         <Box
           sx={{
@@ -80,14 +80,33 @@ const settings = {
   centerMode: true,
   infinite: true,
   centerPadding: 0,
-  slidesToShow: 2,
+  slidesToShow: 1,
   speed: 500,
   rows: 3,
-  slidesPerRow: 1,
+  slidesPerRow: 2,
   dots: true,
   arrows: false,
-  initialSlide: 1,
   dotsClass: `${styles.styled_dots}`,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesPerRow: 1, rows: 5,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesPerRow: 1, rows: 5,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesPerRow: 1, rows: 5,
+      }
+    }
+  ],
   customPaging: function (i: any) {
     return (
       <IconButton>
