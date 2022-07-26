@@ -1,15 +1,8 @@
-import React from "react";
-import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
+import {  Container, Grid, Skeleton, Typography } from "@mui/material";
 import Layout from "../../components/layout";
 import { theme } from "../../theme";
 import Poster from "./Poster";
 import Information from "./Information";
-import Trailers from "./Trailers";
-import VoiceActors from "./VoiceActors";
-import Staff from "./Staff";
-import Theme from "./Theme";
-import Reviews from "./Reviews";
-import Recommendations from "./Recommendations";
 import { useParams } from "react-router-dom";
 import { useGetAnimeByIdQuery } from "../../redux/slices/animeSlice";
 
