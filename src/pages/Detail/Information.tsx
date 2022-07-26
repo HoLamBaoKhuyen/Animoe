@@ -73,7 +73,7 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Box mt={4}>
-          <Episodes />
+          <Episodes episodes={data.episodes} />
         </Box>
       </TabPanel>
       <TabPanel value={value} index={3}>
