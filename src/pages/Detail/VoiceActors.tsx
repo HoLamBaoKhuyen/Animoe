@@ -55,8 +55,9 @@ const VoiceActors = () => {
                     alt="voice_actor"
                     src={actor.character.images.webp.image_url}
                     height="100%"
-                    width="auto"
-                    style={{ borderRadius: 10 }}
+                    width="70px"
+                    object-fit={"cover"}
+                    style={{ borderRadius: 10, objectFit: 'cover' }}
                   />
                   <Box ml={2}>
                     <Typography variant="body1">{actor.character.name}</Typography>
@@ -78,8 +79,9 @@ const VoiceActors = () => {
                     alt="voice_actor"
                     src={VA.person.images.jpg.image_url}
                     height="100%"
-                    width="auto"
-                    style={{ borderRadius: 10 }}
+                    width="70px"
+                    object-fit={"cover"}
+                    style={{ borderRadius: 10, objectFit: 'cover' }}
                   />
                 </Box>
               </Box>

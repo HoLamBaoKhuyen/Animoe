@@ -32,5 +32,10 @@ export const format_studios = (studios: any[]) => {
   studios.forEach((studio) => (studiosList += ", " + studio.name));
   return studiosList.slice(2);
 };
+export const format_string_array = (sArray: string[]) => {
+  let list: string = "";
+  sArray.forEach((s) => (list += ", " + s));
+  return list.slice(2);
+};
 export const format_title = (s: string) =>
   s.length <= 35 ? s : s.slice(0, 34) + "...";

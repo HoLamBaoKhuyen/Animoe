@@ -1,16 +1,17 @@
-import React, { ReactNode } from "react";
-import { Box, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Skeleton, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { STAFF } from "../../data/detail";
+import { useGetAnimeStaffQuery } from "redux/slices/animeSlice";
+import { useParams } from "react-router";
+import { format_string_array, format_studios } from "helpers/format";
 
-type StaffProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const Staff: React.FC<StaffProps> = ({ children }) => {
-  return (
+
+const Staff = () => {
+  const { id } = useParams();
+  const { data } = useGetAnimeStaffQuery(id);
+
+
+  return data ? (
     <Box>
       <Grid
         container
@@ -34,8 +35,8 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
             </Box>
           </Box>
         </Grid>
-        {STAFF.map((s) => (
-          <Grid item xs={12} sm={4} key={s.id}>
+        {data.map((staff: any, index: number) => (
+          <Grid item xs={12} sm={4} key={index}>
             <Box
               sx={{
                 position: "relative",
@@ -51,16 +52,17 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
                 sx={{ height: "100%", display: "flex", alignItems: "center" }}
               >
                 <img
-                  alt="voice_actor"
-                  src={s.img}
+                  alt="staff"
+                  src={staff.person.images.jpg.image_url}
                   height="100%"
-                  width="auto"
-                  style={{ borderRadius: 10 }}
+                  width="70px"
+                  object-fit={"cover"}
+                  style={{ borderRadius: 10, objectFit: 'cover' }}
                 />
                 <Box ml={2}>
-                  <Typography variant="body1">{s.name}</Typography>
+                  <Typography variant="body1">{staff.person.name}</Typography>
                   <Typography variant="body2" sx={{ fontSize: 13 }}>
-                    {s.role}
+                    {format_string_array(staff.positions)}
                   </Typography>
                 </Box>
               </Box>
@@ -69,6 +71,8 @@ const Staff: React.FC<StaffProps> = ({ children }) => {
         ))}
       </Grid>
     </Box>
+  ) : (
+    <Skeleton variant="rectangular" height="100%" />
   );
 };
 export default Staff;
