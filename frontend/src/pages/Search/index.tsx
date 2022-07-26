@@ -40,7 +40,7 @@ const DetailPage = () => {
           },
         }}
       >
-        <Box mt={4}>
+        <Box mt={4} mb={4}>
           <SearchResults searchQuery={searchQuery.get("q")} />
         </Box>
       </Container>
