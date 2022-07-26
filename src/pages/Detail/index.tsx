@@ -54,10 +54,10 @@ const DetailPage = () => {
           </Grid>
         </Grid>
         <Box mt={4}>
-          <Trailers trailer={data.trailer} />
+          <Trailers/>
         </Box>
         <Box mt={4}>
-          <VoiceActors />
+          <VoiceActors/>
         </Box>
         <Box mt={4}>
           <Staff />

@@ -1,16 +1,14 @@
 import React, { ReactNode } from "react";
-import { Box, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Skeleton, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { DETAIL_DATA, VOICE_ACTORS } from "../../data/detail";
+import { useGetAnimeCharactersQuery } from "redux/slices/animeSlice";
+import { useParams } from "react-router";
 
-type VoiceActorsProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
-  return (
+const VoiceActors = () => {
+  const { id } = useParams();
+  const { data } = useGetAnimeCharactersQuery(id);
+  return data ? (
     <Box>
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
@@ -37,8 +35,8 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
           columnSpacing={{ md: 15, sm: 3 }}
           rowSpacing={{ md: 4, xs: 2 }}
         >
-          {VOICE_ACTORS.map((actor) => (
-            <Grid item xs={12} sm={6} key={actor.id}>
+          {data.map((actor: any, index: number) => (
+            actor.voice_actors.slice(0, 2).map((VA: any, key: number) => (<Grid item xs={12} sm={6} key={index}>
               <Box
                 sx={{
                   position: "relative",
@@ -55,13 +53,13 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
                 >
                   <img
                     alt="voice_actor"
-                    src={actor.img.character}
+                    src={actor.character.images.webp.image_url}
                     height="100%"
                     width="auto"
                     style={{ borderRadius: 10 }}
                   />
                   <Box ml={2}>
-                    <Typography variant="body1">{actor.character}</Typography>
+                    <Typography variant="body1">{actor.character.name}</Typography>
                     <Typography variant="body2" sx={{ fontSize: 13 }}>
                       {actor.role}
                     </Typography>
@@ -71,25 +69,27 @@ const VoiceActors: React.FC<VoiceActorsProps> = ({ children }) => {
                   sx={{ height: "100%", display: "flex", alignItems: "center" }}
                 >
                   <Box mr={2} textAlign={"right"}>
-                    <Typography variant="body1">{actor.actor}</Typography>
+                    <Typography variant="body1">{VA.person.name}</Typography>
                     <Typography variant="body2" sx={{ fontSize: 13 }}>
-                      {actor.nationality}
+                      {VA.language}
                     </Typography>
                   </Box>
                   <img
                     alt="voice_actor"
-                    src={DETAIL_DATA.main_picture.medium}
+                    src={VA.person.images.jpg.image_url}
                     height="100%"
                     width="auto"
                     style={{ borderRadius: 10 }}
                   />
                 </Box>
               </Box>
-            </Grid>
+            </Grid>))
           ))}
         </Grid>
       </Grid>
     </Box>
+  ) : (
+    <Skeleton variant="rectangular" height="100%" />
   );
 };
 export default VoiceActors;

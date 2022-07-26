@@ -6,8 +6,8 @@ import styles from './styles.module.css'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { theme } from "theme";
-
 var Slider = require('react-slick').default
+
 const settings = {
   dots: false,
   infinite: true,
@@ -40,13 +40,9 @@ const settings = {
   }} />,
 };
 
-const Trailers = ({ trailer }: { trailer: any }) => {
+const Trailers = () => {
   const { id } = useParams();
   const { data } = useGetAnimeVideosQuery(id);
-
-  console.log(data);
-
-
   return data ? (
     <Box>
       <Grid
