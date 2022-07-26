@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, Grid, Link, Skeleton, Stack, Typography } from '@mui/material'
-import { useGetAnimeFilterRankingQuery, useGetAnimeTypeRankingQuery } from '../../redux/slices/animeSlice'
+import { useGetMangaFilterRankingQuery, useGetMangaTypeRankingQuery } from '../../redux/slices/mangaSlice'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 import { theme } from '../../theme'
@@ -82,7 +82,7 @@ const List = ({ data }: { data: Array<any> }) => {
 												{item.status}
 											</Typography>
 											<Typography variant='body1' sx={{ fontWeight: 600, opacity: 0.7 }} color={(theme) => theme.color._100}>
-												{item.type} ({item.episodes} eps)
+												{item.type} ({item.chapters} chaps)
 											</Typography>
 											<Typography variant='body1' sx={{ fontWeight: 600, opacity: 0.7 }} color={(theme) => theme.color._100}>
 												{format_number(item.members)} members
@@ -127,7 +127,7 @@ const List = ({ data }: { data: Array<any> }) => {
 }
 
 export const TypeRankingList = ({ type }: { type: string }) => {
-	const { data } = useGetAnimeTypeRankingQuery(type)
+	const { data } = useGetMangaTypeRankingQuery(type)
 	console.log(data)
 	return data ? (
 		<List data={data} />
@@ -143,7 +143,7 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 }
 
 export const FilterRankingList = ({ filter }: { filter: string }) => {
-	const { data } = useGetAnimeFilterRankingQuery(filter)
+	const { data } = useGetMangaFilterRankingQuery(filter)
 	console.log(data)
 	return data ? (
 		<List data={data} />
