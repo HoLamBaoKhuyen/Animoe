@@ -1,21 +1,31 @@
 import { useEffect, useState } from "react";
-import { Box, Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, Skeleton, Typography, Pagination } from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
-import { useGetAnimeEpisodesQuery } from "redux/slices/animeSlice";
 import { useParams } from "react-router";
-import { Pagination } from "@material-ui/lab";
 import usePagination from "./Pagination";
 import { theme } from "../../theme";
-import { DETAIL_DATA, VOICE_ACTORS as data } from "data/detail";
-
+import axios from 'axios'
 
 const Episodes = (props: any) => {
   const { id } = useParams();
-  // const { data } = useGetAnimeEpisodesQuery(id);
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    console.log(data);
+
+    const getData = async () => {
+      const result = await axios(
+        `https://api.jikan.moe/v4/anime/${id}/episodes`,
+      )
+      setData(result.data.data)
+    }
+    getData()
+  }, []);
+
   const total_eps = props.episodes ? props.episodes : "?"
 
   let [page, setPage] = useState(1);
-  const PER_PAGE = 2;
+  const PER_PAGE = 10;
 
   const count = Math.ceil(data.length / PER_PAGE);
   const dataPagi = usePagination(data, PER_PAGE);
@@ -24,6 +34,7 @@ const Episodes = (props: any) => {
     setPage(p);
     dataPagi.jump(p);
   };
+
 
 
 
@@ -37,18 +48,10 @@ const Episodes = (props: any) => {
             </Typography>
           </Box>
         </Grid>
-        <Pagination
-          count={count}
-          size="large"
-          page={page}
-          variant="outlined"
-          shape="rounded"
-          onChange={handleChange}
-        />
         {dataPagi.currentData().map((ep: any, index: number) => <Box key={index} width='100%' my={1}>
           <Grid container sx={{ background: theme.color._850, borderRadius: 3 }} alignItems='center'>
             <Grid item xs={1} textAlign='center'>
-              <Typography variant='h3'>{ep.mal_id}{index}</Typography>
+              <Typography variant='h3'>{ep.mal_id}</Typography>
             </Grid>
             <Grid item xs={7}>
               <Typography variant='subtitle1' sx={{ color: theme.color._100 }}>{ep.title}</Typography>
@@ -65,14 +68,19 @@ const Episodes = (props: any) => {
               </Box>
             </Grid>
           </Grid></Box>)}
-        <Pagination
-          count={count}
-          size="large"
-          page={page}
-          variant="outlined"
-          shape="rounded"
-          onChange={handleChange}
-        />
+        <Box sx={{ margin: 'auto', marginTop: 3 }}>
+          <Pagination
+            count={count}
+            page={page}
+            variant="outlined"
+            shape="rounded"
+            onChange={handleChange}
+            sx={{
+              "& .Mui-selected": {
+                background: theme.color._600
+              }
+            }}
+          /></Box>
       </Grid>
     </Box>
   ) : (
