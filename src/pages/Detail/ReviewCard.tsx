@@ -69,19 +69,12 @@ const ReviewCard: React.FC = (props: any) => {
             Read more
           </Button>} />
       </Box>
-      <Box
-        position={"absolute"}
-        bottom={20}
-        right={25}
-      >
-
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
-            {props.votes}
-          </Typography>
-          <Box sx={{ color: theme.color._400 }} ml={1}>
-            <ThumbUpIcon />
-          </Box>
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: 'flex-end' }}>
+        <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
+          {props.votes}
+        </Typography>
+        <Box sx={{ color: theme.color._400 }} ml={1}>
+          <ThumbUpIcon />
         </Box>
       </Box>
     </Box >
