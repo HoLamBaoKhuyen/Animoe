@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React from "react";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -6,8 +6,6 @@ var ReadMoreReact = require('read-more-react').default;
 
 
 const ReviewCard: React.FC = (props: any) => {
-  const [readMore, setReadMore] = useState<boolean>(false);
-
   return (
     <Box
       sx={{
@@ -49,9 +47,9 @@ const ReviewCard: React.FC = (props: any) => {
       }}>
         <ReadMoreReact
           text={props.review}
-          min={80}
-          ideal={400}
-          max={2000}
+          min={50}
+          ideal={200}
+          max={5000}
           readMoreText={<Button
             variant="outlined"
             disableRipple

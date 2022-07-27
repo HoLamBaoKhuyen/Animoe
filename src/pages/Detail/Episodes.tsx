@@ -1,32 +1,29 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { Box, Grid, Skeleton, Typography, Pagination } from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
-import { useParams } from "react-router";
-import usePagination from "./Pagination";
-import { theme } from "../../theme";
 import axios from 'axios'
+import usePagination from "./Pagination";
+import { BASE_API, EPISODES_PER_PAGE } from "./const ";
+import { theme } from "../../theme";
 
 const Episodes = (props: any) => {
+  const total_eps = props.episodes ? props.episodes : "?"
   const { id } = useParams();
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {
-    console.log(data);
-
     const getData = async () => {
       const result = await axios(
-        `https://api.jikan.moe/v4/anime/${id}/episodes`,
+        `${BASE_API}/anime/${id}/episodes`,
       )
       setData(result.data.data)
     }
     getData()
   }, []);
 
-  const total_eps = props.episodes ? props.episodes : "?"
-
   let [page, setPage] = useState(1);
-  const PER_PAGE = 10;
-
+  const PER_PAGE = EPISODES_PER_PAGE;
   const count = Math.ceil(data.length / PER_PAGE);
   const dataPagi = usePagination(data, PER_PAGE);
 
@@ -34,9 +31,6 @@ const Episodes = (props: any) => {
     setPage(p);
     dataPagi.jump(p);
   };
-
-
-
 
   return data ? (
     <Box>
