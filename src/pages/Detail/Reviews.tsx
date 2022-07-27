@@ -1,7 +1,10 @@
 import React, { ReactNode } from "react";
-import { Box, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Skeleton, Typography } from "@mui/material";
 import { REVIEWS } from "../../data/detail";
 import ReviewCard from "./ReviewCard";
+import { useGetAnimeReviewsQuery } from "redux/slices/animeSlice";
+import { useParams } from "react-router";
+
 
 type ReviewsProps = {
   children?: ReactNode;
@@ -11,7 +14,10 @@ type ReviewsProps = {
 };
 
 const Reviews: React.FC<ReviewsProps> = ({ children }) => {
-  return (
+  const { id } = useParams();
+  const { data } = useGetAnimeReviewsQuery(id);
+
+  return data ? (
     <Box>
       <Grid container columnSpacing={{ md: 15, xs: 3 }} rowSpacing={2}>
         <Grid item xs={12}>
@@ -19,25 +25,17 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
               Reviews
             </Typography>
-            <Box>
-              <Link
-                href="#"
-                sx={{
-                  fontSize: { md: 20, sm: 18, xs: 15 },
-                }}
-              >
-                View more
-              </Link>
-            </Box>
           </Box>
         </Grid>
-        {REVIEWS.map((review) => (
-          <Grid item xs={12} sm={6} key={review.id}>
+        {data.map((review: any, index: number) => (
+          <Grid item xs={12} sm={12} key={index}>
             <ReviewCard {...review} />
           </Grid>
         ))}
       </Grid>
     </Box>
+  ) : (
+    <Skeleton variant="rectangular" height="100%" />
   );
 };
 export default Reviews;

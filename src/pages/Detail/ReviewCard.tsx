@@ -2,41 +2,16 @@ import React, { ReactNode, useState } from "react";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+var ReadMoreReact = require('read-more-react').default;
 
-type ReviewCardProps = {
-  children?: ReactNode;
-  id?: number;
-  avatar?: string;
-  name?: string;
-  date?: string;
-  score?: number;
-  liked?: number;
-  review?: string;
-};
 
-const readLessStyle = {
-  color: theme.color._100,
-  textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
-  overflow: "hidden",
-};
-
-const ReviewCard: React.FC<ReviewCardProps> = ({
-  id,
-  avatar,
-  name,
-  date,
-  score,
-  liked,
-  review,
-}) => {
+const ReviewCard: React.FC = (props: any) => {
   const [readMore, setReadMore] = useState<boolean>(false);
-  const handleReadMore = () => {
-    setReadMore(!readMore);
-  };
+
   return (
     <Box
       sx={{
+        position: 'relative',
         minHeight: "200px",
         background: theme.color._850,
         p: 3,
@@ -47,69 +22,71 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Avatar
             alt="Avatar User"
-            src={avatar}
+            src={props.user.images.webp.image_url}
             sx={{ width: 60, height: 60 }}
           />
           <Box ml={2}>
             <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
-              {name}
+              {props.user.username}
             </Typography>
             <Typography
               variant="body2"
               sx={{ color: theme.color._100, fontSize: 13, fontWeight: 200 }}
             >
-              {date}
+              {props.date}
             </Typography>
           </Box>
         </Box>
         <Typography variant="h1" sx={{ color: theme.color.green_400 }}>
-          {score}
+          {props.scores.overall}
         </Typography>
       </Box>
-      {readMore ? (
-        <Typography sx={{ color: theme.color._100 }} mt={1}>
-          {review}
-        </Typography>
-      ) : (
-        <Typography sx={readLessStyle} mt={1}>
-          {review}
-        </Typography>
-      )}
-
-      <Box
-        display={"flex"}
-        justifyContent="space-between"
-        alignItems={"center"}
-      >
-        <Button
-          variant="outlined"
-          disableRipple
-          sx={{
-            color: theme.color._100,
-            border: 0,
-            p: 0,
-            fontSize: 17,
-            fontWeight: 600,
-            borderRadius: 1,
-            "&:hover": {
+      <Box sx={{
+        "& .display-text-group": {
+          color: theme.color._100,
+          fontFamily: 'Poppins'
+        }
+      }}>
+        <ReadMoreReact
+          text={props.review}
+          min={80}
+          ideal={400}
+          max={2000}
+          readMoreText={<Button
+            variant="outlined"
+            disableRipple
+            sx={{
+              color: theme.color._100,
               border: 0,
-              color: theme.color._400,
-            },
-          }}
-          onClick={handleReadMore}
-        >
-          {readMore ? "Read less" : "Read more"}
-        </Button>
+              p: 0,
+              fontSize: 17,
+              fontWeight: 600,
+              borderRadius: 1,
+              "&:hover": {
+                border: 0,
+                color: theme.color._400,
+              },
+            }}
+          >
+            Read more
+          </Button>} />
+      </Box>
+      <Box
+        position={"absolute"}
+        bottom={20}
+        right={25}
+      >
+
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
-            {liked}
+            {props.votes}
           </Typography>
           <Box sx={{ color: theme.color._400 }} ml={1}>
             <ThumbUpIcon />
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Box >
   );
 };
 export default ReviewCard;
