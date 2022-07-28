@@ -44,20 +44,20 @@ const Episodes = (props: any) => {
           </Box>
         </Grid>
         {dataPagi.currentData().map((ep: any, index: number) => <Box key={index} width='100%' my={1}>
-          <Grid container sx={{ background: theme.color._850, borderRadius: 3 }} alignItems='center'>
+          <Grid container sx={{ background: theme.color._850, borderRadius: 3, paddingY: 2 }} alignItems='center'>
             <Grid item xs={1} textAlign='center'>
               <Typography variant='h3'>{ep.mal_id}</Typography>
             </Grid>
             <Grid item xs={7}>
               <Typography variant='subtitle1' sx={{ color: theme.color._100 }}>{ep.title}</Typography>
               <Typography variant='body1' sx={{ color: theme.color._100 }}>{ep.title_romanji}</Typography>
-              <Typography variant='body1' sx={{ color: theme.color._100 }}>({ep.title_japanese})</Typography>
+              {/* <Typography variant='body1' sx={{ color: theme.color._100 }}>({ep.title_japanese})</Typography> */}
             </Grid>
             <Grid item xs={3}>
               <Typography variant='h4'>{format_date(ep.aired)}</Typography>
             </Grid>
             <Grid item xs={1} >
-              <Box display='flex' alignItems={'center'} justifyContent='center'>
+              <Box display='flex' alignItems={'center'} >
                 <Typography variant='h3'>{ep.score}</Typography>
                 <StarIcon sx={{ color: theme.color.yellow }} />
               </Box>
