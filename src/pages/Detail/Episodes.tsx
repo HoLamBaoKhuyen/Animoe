@@ -6,6 +6,7 @@ import axios from 'axios'
 import usePagination from "./Pagination";
 import { BASE_API, EPISODES_PER_PAGE } from "./const ";
 import { theme } from "../../theme";
+import { format_date } from "helpers/format";
 
 const Episodes = (props: any) => {
   const total_eps = props.episodes ? props.episodes : "?"
@@ -52,10 +53,10 @@ const Episodes = (props: any) => {
               <Typography variant='body1' sx={{ color: theme.color._100 }}>{ep.title_romanji}</Typography>
               <Typography variant='body1' sx={{ color: theme.color._100 }}>({ep.title_japanese})</Typography>
             </Grid>
-            <Grid item xs={2}>
-              <Typography variant='h3'>{ep.aired}</Typography>
+            <Grid item xs={3}>
+              <Typography variant='h4'>{format_date(ep.aired)}</Typography>
             </Grid>
-            <Grid item xs={2} >
+            <Grid item xs={1} >
               <Box display='flex' alignItems={'center'} justifyContent='center'>
                 <Typography variant='h3'>{ep.score}</Typography>
                 <StarIcon sx={{ color: theme.color.yellow }} />

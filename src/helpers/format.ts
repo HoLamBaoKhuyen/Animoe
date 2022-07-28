@@ -39,3 +39,6 @@ export const format_string_array = (sArray: string[]) => {
 };
 export const format_title = (s: string) =>
   s.length <= 35 ? s : s.slice(0, 34) + "...";
+export const format_date = (date: string) => {
+  return new Date(date).toDateString();
+};
