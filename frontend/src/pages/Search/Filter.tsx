@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import * as React from "react";
+import { ReactNode } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { FILTER } from "../../data/detail";

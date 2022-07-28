@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   Grid,
-  IconButton,
   Link,
   Skeleton,
   Stack,
@@ -16,7 +15,8 @@ import {
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { theme } from "../../theme";
-import { format_number } from "../../helpers/format";
+import { format_number, format_studios } from "../../helpers/format";
+import * as React from "react";
 
 const List = ({ data }: { data: Array<any> }) => {
   return (
@@ -97,6 +97,7 @@ const List = ({ data }: { data: Array<any> }) => {
                       alt="Poster"
                       src={item.images.jpg.image_url}
                       width="100%"
+                      height="auto"
                       style={{ borderRadius: 10 }}
                     />
                   </Link>
@@ -120,6 +121,13 @@ const List = ({ data }: { data: Array<any> }) => {
                         color={(theme) => theme.color._100}
                       >
                         {item.type} ({item.episodes} eps)
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        {format_studios(item.studios)}
                       </Typography>
                       <Typography
                         variant="body1"
@@ -181,7 +189,6 @@ const List = ({ data }: { data: Array<any> }) => {
 
 export const TypeRankingList = ({ type }: { type: string }) => {
   const { data } = useGetTypeRankingQuery(type);
-  console.log(data);
   return data ? (
     <List data={data} />
   ) : (
@@ -197,7 +204,6 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 
 export const FilterRankingList = ({ filter }: { filter: string }) => {
   const { data } = useGetFilterRankingQuery(filter);
-  console.log(data);
   return data ? (
     <List data={data} />
   ) : (

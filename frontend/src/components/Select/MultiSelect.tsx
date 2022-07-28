@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Theme, useTheme } from "@mui/material/styles";
 import {
   Checkbox,
@@ -51,10 +51,15 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
 type SelectProps = {
   placeholder?: string;
   list?: string[];
-  background?: string
-  width?: string | number
+  background?: string;
+  width?: string | number;
 };
-const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list, background, width }) => {
+const MultipleSelect: React.FC<SelectProps> = ({
+  placeholder,
+  list,
+  background,
+  width,
+}) => {
   const theme = useTheme();
   const [option, setOptionName] = React.useState<string[]>([]);
 
@@ -76,9 +81,13 @@ const MultipleSelect: React.FC<SelectProps> = ({ placeholder, list, background, 
           displayEmpty
           value={option}
           onChange={handleChange}
-          input={<StyledInput sx={{
-            "& .MuiInputBase-input": { background: background }
-          }} />}
+          input={
+            <StyledInput
+              sx={{
+                "& .MuiInputBase-input": { background: background },
+              }}
+            />
+          }
           renderValue={(selected) => {
             if (selected.length === 0) {
               return (
@@ -137,7 +146,7 @@ MultipleSelect.defaultProps = {
   placeholder: "Select",
   list: ["Item1", "Item2", "Item3"],
   background: "rgba(100, 111, 212, 0.67)",
-  width: 300
+  width: 300,
 };
 
 export default MultipleSelect;

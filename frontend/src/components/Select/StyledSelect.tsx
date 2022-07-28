@@ -1,6 +1,5 @@
-import React from "react";
+import * as React from "react";
 import {
-  InputLabel,
   MenuItem,
   FormControl,
   Select,
@@ -34,9 +33,14 @@ type SelectProps = {
   list?: string[];
   label?: string;
   placeHolder?: string;
-  width?: string | number
+  width?: string | number;
 };
-const StyledSelect: React.FC<SelectProps> = ({ list, label, placeHolder, width }) => {
+const StyledSelect: React.FC<SelectProps> = ({
+  list,
+  label,
+  placeHolder,
+  width,
+}) => {
   const [value, setValue] = React.useState("-1");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -81,6 +85,6 @@ StyledSelect.defaultProps = {
   list: ["Item1", "Item2", "Item3"],
   label: "Label",
   placeHolder: "Vui lòng chọn",
-  width: 200
+  width: 200,
 };
 export default StyledSelect;

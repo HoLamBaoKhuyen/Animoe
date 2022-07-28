@@ -47,7 +47,7 @@ export const animeApi = apiSlice.injectEndpoints({
     }),
     getTopFiveAnime: build.query({
       query: (filter) => ({
-        url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}&limit=4`,
+        url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}&limit=6`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {

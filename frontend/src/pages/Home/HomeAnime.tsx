@@ -1,5 +1,6 @@
-import React from "react";
+import * as React from "react";
 import {
+  alpha,
   Box,
   Button,
   Card,
@@ -9,13 +10,16 @@ import {
   Grid,
   Link,
   Popover,
+  Stack,
   Typography,
 } from "@mui/material";
 import { theme } from "../../theme";
-import { useGetAnimeEpisodesQuery } from "../../redux/slices/animeSlice";
 import { format_episode, format_studios } from "../../helpers/format";
+import { useEffect, useState } from "react";
+import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 
 const HomeAnime = ({ anime }: { anime: any }) => {
+  const [numOfCurrentEpisodes, setNumOfCurrentEpisodes] = useState<any>();
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -28,7 +32,25 @@ const HomeAnime = ({ anime }: { anime: any }) => {
 
   const open = Boolean(anchorEl);
 
-  const { data } = useGetAnimeEpisodesQuery(anime.mal_id);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (anime.status === "Currently Airing") {
+        fetch(`https://api.jikan.moe/v4/anime/${anime.mal_id}/episodes`)
+          .then((response) => response.json())
+          .then((json) => {
+            if (json.pagination.has_next_page) {
+              setNumOfCurrentEpisodes(
+                json.data.length * json.pagination.last_visible_page + 5
+              );
+            } else {
+              setNumOfCurrentEpisodes(json.data.length);
+            }
+          })
+          .catch(console.error);
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [numOfCurrentEpisodes]);
 
   return (
     <Grid
@@ -39,8 +61,8 @@ const HomeAnime = ({ anime }: { anime: any }) => {
       width={{ md: "15vw", xs: "16vw" }}
       onScroll={handlePopoverClose}
       xs={2}
-      sm={4}
-      md={3}
+      sm={3}
+      md={2}
     >
       <Link
         href={`/anime/${anime.mal_id}`}
@@ -60,17 +82,108 @@ const HomeAnime = ({ anime }: { anime: any }) => {
           aria-haspopup="true"
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}
+          sx={{
+            backgroundImage: `url(${anime.images.jpg.large_image_url})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            borderRadius: 4,
+            height: "40vh",
+            backgroundClip: "content-box",
+          }}
         >
-          <img
-            alt={anime.title}
-            src={anime.images.jpg.large_image_url}
-            height="auto"
-            width="100%"
-            style={{
-              borderRadius: 12,
-              objectFit: "cover",
-            }}
-          />
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            px={1}
+            pt={1}
+            gap={1}
+          >
+            {numOfCurrentEpisodes ? (
+              <Stack
+                spacing={{ md: 0.5, xs: 0 }}
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  bgcolor: alpha(theme.color._850, 0.9),
+                  borderRadius: 3,
+                  px: 1,
+                  py: 0.5,
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { md: 16, sm: 14, xs: 12 },
+                  }}
+                >
+                  Ep {numOfCurrentEpisodes}
+                </Typography>
+              </Stack>
+            ) : (
+              <></>
+            )}
+            {anime.episodes && !numOfCurrentEpisodes ? (
+              <Stack
+                spacing={{ md: 0.5, xs: 0 }}
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  bgcolor: alpha(theme.color._850, 0.9),
+                  borderRadius: 3,
+                  px: 1,
+                  py: 0.5,
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { md: 16, sm: 14, xs: 12 },
+                  }}
+                >
+                  Ep {anime.episodes}
+                </Typography>
+              </Stack>
+            ) : (
+              <></>
+            )}
+            {anime.score ? (
+              <Stack
+                spacing={{ md: 0.5, xs: 0 }}
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  bgcolor: alpha(theme.color._850, 0.9),
+                  borderRadius: 3,
+                  px: 1,
+                  py: 0.5,
+                }}
+              >
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { md: 16, sm: 14, xs: 12 },
+                  }}
+                >
+                  {anime.score}
+                </Typography>
+                <StarRateRoundedIcon
+                  fontSize="small"
+                  sx={{
+                    color: theme.color.yellow,
+                  }}
+                />
+              </Stack>
+            ) : (
+              <></>
+            )}
+          </Box>
         </Box>
 
         <Typography
@@ -78,7 +191,7 @@ const HomeAnime = ({ anime }: { anime: any }) => {
           variant="subtitle1"
           sx={{
             color: theme.color._100,
-            fontSize: { md: 16, sm: 12, xs: 8 },
+            fontSize: { md: 16, sm: 14, xs: 12 },
           }}
         >
           {anime.title}
@@ -105,7 +218,7 @@ const HomeAnime = ({ anime }: { anime: any }) => {
         disableRestoreFocus
       >
         <Card>
-          <CardContent sx={{ minWidth: { md: 320, sm: 120 } }}>
+          <CardContent sx={{ minWidth: { md: 250, sm: 100 } }}>
             <Box display="flex" justifyContent="space-between">
               <Typography
                 mr={2}
@@ -117,32 +230,25 @@ const HomeAnime = ({ anime }: { anime: any }) => {
               >
                 {anime.status}
               </Typography>
-
-              <Typography
-                sx={{
-                  fontSize: { md: 20, sm: 16 },
-                  fontWeight: 700,
-                }}
-              >
-                {anime.score}
-              </Typography>
             </Box>
             <Typography
               sx={{
-                fontSize: { md: 16, sm: 12 },
+                fontSize: { md: 16, sm: 14 },
                 fontWeight: 700,
                 color: theme.color._100,
               }}
             >
               {anime.type}{" "}
-              {data
-                ? format_episode(anime.episodes, data.length, anime.status)
-                : null}
+              {format_episode(
+                anime.episodes,
+                numOfCurrentEpisodes,
+                anime.status
+              )}
             </Typography>
             <Typography
               mt={0.25}
               sx={{
-                fontSize: { md: 16, sm: 12 },
+                fontSize: { md: 16, sm: 14 },
                 fontWeight: 600,
                 color: theme.color._400,
               }}
@@ -152,7 +258,7 @@ const HomeAnime = ({ anime }: { anime: any }) => {
           </CardContent>
           <CardActions>
             <Box display="flex">
-              {anime.genres.slice(0, 3).map((genre: any) => (
+              {anime.genres.slice(0, 2).map((genre: any) => (
                 <Button
                   variant="outlined"
                   disabled

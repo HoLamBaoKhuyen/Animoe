@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { theme } from "../../../theme";
@@ -121,7 +122,7 @@ const SearchBar = () => {
             "aria-label": "search",
           }}
           sx={{
-            fontSize: { md: 20, sm: 16, xs: 12 },
+            fontSize: { md: 20, sm: 18, xs: 16 },
             icon: theme.color._100,
           }}
         />
@@ -153,7 +154,7 @@ const SearchBar = () => {
               onChange={handleModeChange}
               displayEmpty
               sx={{
-                fontSize: { md: 20, sm: 16, xs: 12 },
+                fontSize: { md: 20, sm: 18, xs: 16 },
                 fontWeight: 600,
                 color: theme.color._100,
               }}
@@ -162,7 +163,7 @@ const SearchBar = () => {
                 key={defaultItem}
                 value={defaultItem}
                 sx={{
-                  fontSize: { md: 20, sm: 16, xs: 12 },
+                  fontSize: { md: 20, sm: 18, xs: 16 },
                 }}
               >
                 {defaultItem}
@@ -172,7 +173,7 @@ const SearchBar = () => {
                   key={item}
                   value={item}
                   sx={{
-                    fontSize: { md: 20, sm: 16, xs: 12 },
+                    fontSize: { md: 20, sm: 18, xs: 16 },
                   }}
                 >
                   {item}
@@ -221,7 +222,7 @@ const SearchBar = () => {
                       >
                         <Typography
                           sx={{
-                            fontSize: { md: 16, sm: 12, xs: 8 },
+                            fontSize: { md: 16, sm: 14, xs: 10 },
                             fontWeight: 600,
                             color: theme.color._100,
                           }}
@@ -230,7 +231,7 @@ const SearchBar = () => {
                         </Typography>
                         <Typography
                           sx={{
-                            fontSize: { md: 16, sm: 12, xs: 8 },
+                            fontSize: { md: 16, sm: 14, xs: 10 },
                             fontWeight: 600,
                             color: theme.color.green_400,
                           }}
@@ -239,7 +240,7 @@ const SearchBar = () => {
                         </Typography>
                         <Typography
                           sx={{
-                            fontSize: { md: 16, sm: 12, xs: 8 },
+                            fontSize: { md: 16, sm: 14, xs: 10 },
                             fontWeight: 600,
                             color: theme.color._100,
                           }}
@@ -248,7 +249,7 @@ const SearchBar = () => {
                         </Typography>
                         <Typography
                           sx={{
-                            fontSize: { md: 16, sm: 12, xs: 8 },
+                            fontSize: { md: 16, sm: 14, xs: 10 },
                             fontWeight: 600,
                             color: theme.color._100,
                           }}

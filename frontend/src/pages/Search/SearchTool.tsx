@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import * as React from "react";
 import { Box, Button, Grid, InputBase, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import SearchIcon from "@mui/icons-material/Search";

@@ -1,9 +1,7 @@
-import React, { ReactNode } from "react";
+import * as React from "react";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Grid,
   Link,
   Pagination,
@@ -12,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import { theme } from "../../theme";
-import { SEARCH_RESULTS } from "../../data/detail";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";

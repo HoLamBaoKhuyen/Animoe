@@ -14,9 +14,12 @@ import { CustomTabPanel } from "../../components/Tabs/CustomTabPanel";
 import { FilterRankingList, TypeRankingList } from "./RankingList";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useSearchParams } from "react-router-dom";
 
 export default function TopAnime() {
-  const [value, setValue] = React.useState("tv");
+  const [searchQuery] = useSearchParams();
+  const tabDefaultValue = searchQuery.get("tab") || "bypopularity";
+  const [value, setValue] = React.useState(tabDefaultValue);
   const [page, setPage] = React.useState(1);
 
   const handlePageChange = (
@@ -48,14 +51,14 @@ export default function TopAnime() {
                 <TabList onChange={handleTabChange} variant="scrollable">
                   <CustomTab label="Most Popular" value="bypopularity" />
                   <CustomTab label="Most Favorite" value="favorite" />
+                  <CustomTab label="Top Airing" value="airing" />
+                  <CustomTab label="Top Upcoming" value="upcoming" />
                   <CustomTab label="Top TVs" value="tv" />
                   <CustomTab label="Top Movies" value="movie" />
                   <CustomTab label="Top OVAs" value="ova" />
                   <CustomTab label="Top Specials" value="special" />
                   <CustomTab label="Top ONAs" value="ona" />
                   <CustomTab label="Top Musics" value="music" />
-                  <CustomTab label="Top Airing" value="airing" />
-                  <CustomTab label="Top Upcoming" value="upcoming" />
                 </TabList>
               </Box>
               <CustomTabPanel value="tv">

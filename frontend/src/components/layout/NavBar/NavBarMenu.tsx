@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { theme } from "../../../theme";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -68,7 +68,7 @@ const NavBarMenu = (props: BasicMenuProps) => {
                 fontSize: { md: 20, sm: 16, xs: 12 },
               }}
             >
-              <Link href={format_navlink(item)} underline="none">
+              <Link href={format_navlink(item, menuName)} underline="none">
                 {item}
               </Link>
             </NavBarMenuItem>

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { alpha, Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
 

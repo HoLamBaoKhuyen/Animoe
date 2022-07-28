@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { theme } from "../../../theme";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,18 +10,18 @@ import { Button, Container } from "@mui/material";
 import NavBarMenu from "./NavBarMenu";
 import { NavBarMenuItem } from "./NavBarMenuItem";
 import SearchBar from "./SearchBar";
+import CustomizedMenus from "./ProfileMenu";
+import { format_email } from "../../../helpers/format";
 
 const NavBar = () => {
+  const authToken = sessionStorage.getItem("Auth Token");
+  const email = sessionStorage.getItem("email");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -76,14 +76,26 @@ const NavBar = () => {
       <NavBarMenuItem>
         <NavBarMenu
           menuName="Anime"
-          menuItems={["Anime Search", "Top Anime", "Recommendations"]}
+          menuItems={[
+            "Anime Search",
+            "Top Anime",
+            "Most Popular",
+            "Most Favorite",
+            "Recommendations",
+          ]}
         />
       </NavBarMenuItem>
 
       <NavBarMenuItem>
         <NavBarMenu
           menuName="Manga"
-          menuItems={["Manga Search", "Top Manga", "Recommendations"]}
+          menuItems={[
+            "Manga Search",
+            "Top Manga",
+            "Most Popular",
+            "Most Favorite",
+            "Recommendations",
+          ]}
         />
       </NavBarMenuItem>
 
@@ -98,36 +110,41 @@ const NavBar = () => {
           Forum
         </Typography>
       </NavBarMenuItem>
+      {authToken ? (
+        <CustomizedMenus menuName={format_email(email)} />
+      ) : (
+        <>
+          <NavBarMenuItem>
+            <Typography
+              component="a"
+              href="/login"
+              sx={{
+                fontSize: { sm: 16, xs: 12 },
+                fontWeight: 600,
+                color: theme.color._100,
+                textDecoration: "none",
+              }}
+            >
+              Log In
+            </Typography>
+          </NavBarMenuItem>
 
-      <NavBarMenuItem>
-        <Typography
-          component="a"
-          href="/login"
-          sx={{
-            fontSize: { sm: 16, xs: 12 },
-            fontWeight: 600,
-            color: theme.color._100,
-            textDecoration: "none",
-          }}
-        >
-          Log In
-        </Typography>
-      </NavBarMenuItem>
-
-      <NavBarMenuItem>
-        <Typography
-          component="a"
-          href="/signup"
-          sx={{
-            fontSize: { sm: 16, xs: 12 },
-            fontWeight: 600,
-            color: theme.color._100,
-            textDecoration: "none",
-          }}
-        >
-          Sign Up
-        </Typography>
-      </NavBarMenuItem>
+          <NavBarMenuItem>
+            <Typography
+              component="a"
+              href="/signup"
+              sx={{
+                fontSize: { sm: 16, xs: 12 },
+                fontWeight: 600,
+                color: theme.color._100,
+                textDecoration: "none",
+              }}
+            >
+              Sign Up
+            </Typography>
+          </NavBarMenuItem>
+        </>
+      )}
     </Menu>
   );
 
@@ -167,11 +184,23 @@ const NavBar = () => {
           >
             <NavBarMenu
               menuName="Anime"
-              menuItems={["Anime Search", "Top Anime", "Recommendations"]}
+              menuItems={[
+                "Anime Search",
+                "Top Anime",
+                "Most Popular",
+                "Most Favorite",
+                "Recommendations",
+              ]}
             />
             <NavBarMenu
               menuName="Manga"
-              menuItems={["Manga Search", "Top Manga", "Recommendations"]}
+              menuItems={[
+                "Manga Search",
+                "Top Manga",
+                "Most Popular",
+                "Most Favorite",
+                "Recommendations",
+              ]}
             />
             <Typography
               sx={{
@@ -188,38 +217,50 @@ const NavBar = () => {
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              component="a"
-              href="/login"
+          {authToken ? (
+            <Box
               sx={{
-                px: { md: 3, sm: 2 },
-                fontSize: { md: 20, sm: 16 },
-                fontWeight: 600,
-                color: theme.color._100,
-                bgcolor: theme.color._900,
-                textDecoration: "none",
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
               }}
             >
-              Log In
-            </Typography>
-            <Button
-              href="/signup"
+              <CustomizedMenus menuName={format_email(email)} />
+            </Box>
+          ) : (
+            <Box
               sx={{
-                px: { md: 3, sm: 2 },
-                fontSize: { md: 20, sm: 16 },
-                fontWeight: 600,
-                color: theme.color.white,
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
               }}
             >
-              Sign Up
-            </Button>
-          </Box>
+              <Typography
+                component="a"
+                href="/login"
+                sx={{
+                  px: { md: 3, sm: 2 },
+                  fontSize: { md: 20, sm: 16 },
+                  fontWeight: 600,
+                  color: theme.color._100,
+                  bgcolor: theme.color._900,
+                  textDecoration: "none",
+                }}
+              >
+                Log In
+              </Typography>
+              <Button
+                href="/signup"
+                sx={{
+                  px: { md: 3, sm: 2 },
+                  fontSize: { md: 20, sm: 16 },
+                  fontWeight: 600,
+                  color: theme.color.white,
+                }}
+              >
+                Sign Up
+              </Button>
+            </Box>
+          )}
+
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
