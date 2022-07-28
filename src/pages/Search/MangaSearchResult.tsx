@@ -16,20 +16,19 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSearchMangaQuery } from "../../redux/slices/mangaSlice";
+import { useGetMangaSearchQuery } from "../../redux/slices/mangaSlice";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
 const SearchResults = ({ searchQuery }: any) => {
   const [page, setPage] = React.useState(1);
-  const { data } = useSearchMangaQuery({strQuery: searchQuery.get("q"),offset: (page-1)*5});
-
+  const { data } = useGetMangaSearchQuery({strQuery: searchQuery.get("q"),offset: (page-1)*5});
+  
   const handlePageChange = (
     event: any,
     value: number
   ) => {
     setPage(value);
-    console.log(page);
   };
 
 

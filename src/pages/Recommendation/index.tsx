@@ -1,13 +1,10 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
 import Layout from "../../components/layout";
-import RecommendPageHeader from "./RecommendPageHeader"
-import RecommendPageBody from "./RecommendPageBody"
-import { useSearchParams } from "react-router-dom";
+import RecommendationsPageHeader from "./RecommendationsPageHeader"
+import RecommendationsPageBody from "./RecommendationsPageBody"
 
-const RecommendationsPage = () => {
-  const [searchParams] = useSearchParams();
-
+const AnimeRecommendationsPage = () => {
   return (
     <Layout>
         <Container
@@ -20,13 +17,35 @@ const RecommendationsPage = () => {
             }}
         >
             <Box mt={0}>
-                <RecommendPageHeader/>
+                <RecommendationsPageHeader/>
             </Box>
             <Box mt={0}>
-                <RecommendPageBody/>
+                <RecommendationsPageBody/>
             </Box>
         </Container>
     </Layout>
   );
 };
-export default RecommendationsPage;
+const MangaRecommendationsPage = () => {
+    return (
+      <Layout>
+          <Container
+              disableGutters
+              sx={{
+              paddingX: {
+                  sm: 3,
+                  xs: 2,
+              },
+              }}
+          >
+              <Box mt={0}>
+                  <RecommendationsPageHeader/>
+              </Box>
+              <Box mt={0}>
+                  <RecommendationsPageBody/>
+              </Box>
+          </Container>
+      </Layout>
+    );
+};
+export {AnimeRecommendationsPage, MangaRecommendationsPage};

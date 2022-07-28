@@ -3,6 +3,7 @@ import { apiSlice } from "./apiSlice";
 import {
   GET_ANIME_RANKING_ENDPOINT,
   ANIME_ENDPOINT,
+  RECOMMENDATIONS_ENDPOINT
 } from "../../apis/endpoints";
 
 const initialState = {
@@ -54,9 +55,9 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
-    searchAnime: build.query({
-      query: (strQuery) => ({
-        url: `${ANIME_ENDPOINT}?q=${strQuery}&limit=5`,
+    getAnimeSearch: build.query({
+      query: (params) => ({
+        url: `${ANIME_ENDPOINT}?q=${params.strQuery}&limit=5&offset=${params.offset}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
@@ -81,6 +82,15 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
+    getRecentAnimeRecommendations: build.query({
+      query: (page) => ({
+        url: `${RECOMMENDATIONS_ENDPOINT}${ANIME_ENDPOINT}?page=${page}`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
   }),
 });
 
@@ -90,7 +100,8 @@ export const {
   useGetTypeRankingQuery,
   useGetFilterRankingQuery,
   useGetTopFiveAnimeQuery,
-  useSearchAnimeQuery,
+  useGetAnimeSearchQuery,
   useGetAnimeByIdQuery,
   useGetAnimeEpisodesQuery,
+  useGetRecentAnimeRecommendationsQuery,
 } = animeApi;

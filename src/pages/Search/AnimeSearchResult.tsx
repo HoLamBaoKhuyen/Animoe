@@ -16,19 +16,20 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSearchAnimeQuery } from "../../redux/slices/animeSlice";
+import { useGetAnimeSearchQuery } from "../../redux/slices/animeSlice";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
-const SearchResults = ({ searchQuery }: any) => {
+const SearchResults = ({ searchQuery, searchType }: any) => {
   const [page, setPage] = React.useState(1);
-  const { data } = useSearchAnimeQuery(searchQuery);
-
+  const { data } = useGetAnimeSearchQuery({strQuery: searchQuery.get("q"),offset: (page-1)*5});
+  
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    event: any,
     value: number
   ) => {
     setPage(value);
+    console.log(searchQuery.get("q"));
   };
 
 
@@ -38,7 +39,7 @@ const SearchResults = ({ searchQuery }: any) => {
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Result for "{searchQuery}"
+              Search Result for "{searchQuery.get("q")}"
             </Typography>
           </Box>
         </Grid>

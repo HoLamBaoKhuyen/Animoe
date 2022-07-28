@@ -4,12 +4,11 @@ import Layout from "../../components/layout";
 import AnimeSearchResult from "./AnimeSearchResult";
 import MangaSearchResult from "./MangaSearchResult";
 import SearchTool from "./SearchTool";
-import MangaSearchTool from "./MangaSearchTool";
 
 import { useSearchParams } from "react-router-dom";
 
 const AnimeSearchPage = () => {
-  const [searchQuery] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   return (
     <Layout>
@@ -31,7 +30,7 @@ const AnimeSearchPage = () => {
             },
           }}
         >
-          <SearchTool searchQuery={searchQuery.get("q")} />
+          <SearchTool searchQuery={searchParams.get("q")} searchType="/anime-search" />
         </Container>
       </Box>
       <Container
@@ -44,7 +43,7 @@ const AnimeSearchPage = () => {
         }}
       >
         <Box mt={4}>
-          <AnimeSearchResult searchQuery={searchQuery.get("q")} />
+          <AnimeSearchResult searchQuery={searchParams} />
         </Box>
       </Container>
     </Layout>
@@ -73,7 +72,7 @@ const MangaSearchPage = () => {
             },
           }}
         >
-          <MangaSearchTool searchQuery={searchParams.get("q")} />
+          <SearchTool searchQuery={searchParams.get("q")} searchType="/manga-search"/>
         </Container>
       </Box>
       <Container
@@ -86,7 +85,7 @@ const MangaSearchPage = () => {
         }}
       >
         <Box mt={4}>
-          <MangaSearchResult searchQuery={searchParams} />
+          <MangaSearchResult searchQuery={searchParams}/>
         </Box>
       </Container>
     </Layout>

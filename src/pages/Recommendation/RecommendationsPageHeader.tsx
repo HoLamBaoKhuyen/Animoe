@@ -24,7 +24,7 @@ const RecommendationsPageHeader = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} zIndex={10}>
+         <Grid item xs={12} zIndex={10}>
           <Box sx={{mt: 1}}>
                 <img
                     src="https://i.imgur.com/7LoShm4.png"

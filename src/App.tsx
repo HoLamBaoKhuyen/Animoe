@@ -5,7 +5,7 @@ import HomePage from "./pages/Home";
 import TopAnime from "./pages/TopAnime";
 import {AnimeSearchPage,MangaSearchPage} from './pages/Search';
 import ManagePage from "./pages/Manage";
-import RecommendationsPage from "./pages/Recommendation";
+import {AnimeRecommendationsPage,MangaRecommendationsPage} from "./pages/Recommendation";
 
 function App() {
 	return (
@@ -16,7 +16,8 @@ function App() {
 			<Route path="/manga-search" element={<MangaSearchPage />} />
 			<Route path='/top-anime' element={<TopAnime />} />
 			<Route path='/manage' element={<ManagePage />} />
-			<Route path="/recommendations" element={<RecommendationsPage />} />
+			<Route path="/anime-recommendations" element={<AnimeRecommendationsPage />} />
+			<Route path="/manga-recommendations" element={<MangaRecommendationsPage />} />
 		</Routes>
 	);
 }
