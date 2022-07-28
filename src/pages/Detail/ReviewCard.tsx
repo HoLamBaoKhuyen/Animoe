@@ -2,6 +2,7 @@ import React from "react";
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { format_date } from "helpers/format";
 var ReadMoreReact = require('read-more-react').default;
 
 
@@ -31,7 +32,7 @@ const ReviewCard: React.FC = (props: any) => {
               variant="body2"
               sx={{ color: theme.color._100, fontSize: 13, fontWeight: 200 }}
             >
-              {props.date}
+              {format_date(props.date)}
             </Typography>
           </Box>
         </Box>
