@@ -21,7 +21,7 @@ const Episodes = (props: any) => {
       setData(result.data.data)
     }
     getData()
-  }, []);
+  }, [id]);
 
   let [page, setPage] = useState(1);
   const PER_PAGE = EPISODES_PER_PAGE;
@@ -72,7 +72,7 @@ const Episodes = (props: any) => {
             onChange={handleChange}
             sx={{
               "& .Mui-selected": {
-                background: theme.color._600
+                background: `${theme.color._600} !important`
               }
             }}
           /></Box>

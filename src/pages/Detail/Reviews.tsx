@@ -26,7 +26,7 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
       setData(result.data.data)
     }
     getData()
-  }, []);
+  }, [id]);
 
   let [page, setPage] = useState(1);
   const PER_PAGE = REVIEWS_PER_PAGE;
@@ -63,7 +63,7 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
             onChange={handleChange}
             sx={{
               "& .Mui-selected": {
-                background: theme.color._600
+                background: `${theme.color._600} !important`
               }
             }}
           /></Box>
