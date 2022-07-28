@@ -18,7 +18,7 @@ function App() {
       <Route path="/anime/:id" element={<DetailPage />} />
       <Route path="/anime-search" element={<SearchPage />} />
       <Route path="/top-anime" element={<TopAnime />} />
-      <Route path="/manage" element={<ManagePage />} />
+      <Route path="/anime-list" element={<ManagePage />} />
       <Route path="*" element={<Error404Page />} />
     </Routes>
   );

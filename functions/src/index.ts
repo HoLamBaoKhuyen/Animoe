@@ -3,12 +3,6 @@ import * as admin from "firebase-admin";
 import * as express from "express";
 import * as cors from "cors";
 import { initializeApp } from "firebase/app";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signOut,
-} from "firebase/auth";
-import type * as TFA from "@firebase/auth-types";
 
 export type Anime = {
   id: number;
@@ -44,51 +38,9 @@ if (!admin.apps.length) {
   });
 }
 
-export const auth = getAuth(firebaseApp);
 export const db = admin.firestore();
 export const adminFirestore = admin.firestore;
 export const adminAuth = admin.auth();
-
-function isFirebaseAuthError(error: unknown): error is TFA.Error {
-  return typeof error === "object" && error !== null && "code" in error;
-}
-
-export async function signUp(email: string, password: string) {
-  const messages: Record<string, string> = {
-    "auth/email-already-in-use": "The email address is already in use!",
-  };
-  try {
-    const userCred = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCred.user;
-    if (!user || !user.email) {
-      throw new Error("Failed to create a new user for you");
-    }
-    return userCred;
-  } catch (error: unknown) {
-    if (isFirebaseAuthError(error)) {
-      console.log(error.code);
-      error.message = messages[error.code] ?? error.message;
-    }
-    throw error;
-  }
-}
-
-export async function getSessionToken(idToken: string) {
-  const decodedToken = await adminAuth.verifyIdToken(idToken);
-  if (new Date().getTime() / 1000 - decodedToken.auth_time > 5 * 60) {
-    throw new Error("Recent sign in required");
-  }
-  const twoWeeks = 60 * 60 * 24 * 14 * 1000;
-  return adminAuth.createSessionCookie(idToken, { expiresIn: twoWeeks });
-}
-
-export async function signOutFirebase() {
-  await signOut(auth);
-}
 
 export async function createUserIfNotExisted(email: string) {
   const userDocRef = db.collection("users").doc(email);

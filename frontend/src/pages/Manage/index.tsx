@@ -1,10 +1,12 @@
-import React from "react";
+import * as React from "react";
+import { useEffect } from "react";
 import Layout from "../../components/layout";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
 import StyledSelect from "../../components/Select/StyledSelect";
 import TableContent from "./TableContent";
+import { useNavigate } from "react-router-dom";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -23,11 +25,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ pt: 3 }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ pt: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -45,6 +43,15 @@ const ManagePage = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem("Auth Token");
+
+    if (!authToken) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <Layout>
@@ -66,33 +73,42 @@ const ManagePage = () => {
               <StyledTab label="Plan to watch" {...a11yProps(5)} />
             </StyledTabs>
             <Grid container spacing={3} mt={1}>
-              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select status" width={"100%"} /></Grid>
-              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select year" width={"100%"} /></Grid>
-              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select season" width={"100%"} /></Grid>
-              <Grid item xs={12} sm={4} md={2}><StyledSelect placeHolder="Select type" width={"100%"} /></Grid>
-              <Grid item xs={12} sm={8} md={4}><StyledSelect placeHolder="Select producer" width={"100%"} /></Grid>
+              <Grid item xs={12} sm={4} md={2}>
+                <StyledSelect placeHolder="Select status" width={"100%"} />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2}>
+                <StyledSelect placeHolder="Select year" width={"100%"} />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2}>
+                <StyledSelect placeHolder="Select season" width={"100%"} />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2}>
+                <StyledSelect placeHolder="Select type" width={"100%"} />
+              </Grid>
+              <Grid item xs={12} sm={8} md={4}>
+                <StyledSelect placeHolder="Select producer" width={"100%"} />
+              </Grid>
             </Grid>
           </Box>
           <TabPanel value={value} index={0}>
             <TableContent />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <Typography variant='body1'>Currently watching</Typography>
+            <Typography variant="body1">Currently watching</Typography>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <Typography variant='body1'>Completed</Typography>
+            <Typography variant="body1">Completed</Typography>
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <Typography variant='body1'>On hold</Typography>
+            <Typography variant="body1">On hold</Typography>
           </TabPanel>
           <TabPanel value={value} index={4}>
-            <Typography variant='body1'>Dropped</Typography>
+            <Typography variant="body1">Dropped</Typography>
           </TabPanel>
           <TabPanel value={value} index={5}>
-            <Typography variant='body1'>Plan to watch</Typography>
+            <Typography variant="body1">Plan to watch</Typography>
           </TabPanel>
         </Box>
-
       </Container>
     </Layout>
   );

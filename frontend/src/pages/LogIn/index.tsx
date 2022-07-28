@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/layout";
 import {
+  Alert,
   alpha,
   Box,
   Button,
@@ -11,6 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 import { theme } from "../../theme";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { firebaseApp } from "../../utils/firebase-config";
 
 export const CssTextField = styled(TextField)({
   backgroundColor: alpha(theme.color._900, 0.5),
@@ -39,6 +43,34 @@ export const CssTextField = styled(TextField)({
 });
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const emailIsValid = email.match(/.+@.+/);
+  const passwordIsValid = password.length >= 6;
+  const formIsValid = emailIsValid && passwordIsValid;
+
+  const handleClick = () => {
+    const authentication = getAuth(firebaseApp);
+    signInWithEmailAndPassword(authentication, email, password)
+      .then((response) => {
+        sessionStorage.setItem(
+          "Auth Token",
+          response._tokenResponse.refreshToken
+        );
+        sessionStorage.setItem("email", response.user.email);
+        navigate("/");
+      })
+      .catch((error) => {
+        if (error.code === "auth/user-not-found") {
+          setError("The account does not exist!");
+        } else if (error.code === "auth/wrong-password") {
+          setError("The input password is wrong!");
+        }
+      });
+  };
   return (
     <Layout>
       <Box
@@ -73,6 +105,20 @@ const LoginPage = () => {
                 px: { md: 6, sm: 4, xs: 3 },
               }}
             >
+              {error ? (
+                <Alert
+                  variant="filled"
+                  severity="error"
+                  sx={{
+                    bgcolor: theme.color.red_800,
+                    fontWeight: 500,
+                  }}
+                >
+                  {error}
+                </Alert>
+              ) : (
+                <></>
+              )}
               <Typography
                 sx={{
                   fontSize: { md: 24, sm: 20, xs: 14 },
@@ -82,7 +128,14 @@ const LoginPage = () => {
               >
                 Email
               </Typography>
-              <CssTextField fullWidth variant="outlined" required />
+              <CssTextField
+                id="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                fullWidth
+                variant="outlined"
+                required
+              />
               <Typography
                 sx={{
                   fontSize: { md: 24, sm: 20, xs: 14 },
@@ -93,6 +146,9 @@ const LoginPage = () => {
                 Password
               </Typography>
               <CssTextField
+                id="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
                 fullWidth
                 variant="outlined"
                 required
@@ -100,13 +156,17 @@ const LoginPage = () => {
               />
               <Box textAlign="center" mt={1}>
                 <Button
-                  type="submit"
+                  disabled={!formIsValid}
+                  onClick={handleClick}
                   sx={{
                     width: { md: 120, sm: 100, xs: 80 },
                     fontSize: { md: 24, sm: 20, xs: 14 },
                     fontWeight: 600,
                     color: theme.color.white,
                     marginBottom: 2,
+                    "&.Mui-disabled": {
+                      color: theme.color.grey_200,
+                    },
                   }}
                 >
                   Log In
