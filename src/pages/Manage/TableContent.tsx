@@ -1,10 +1,12 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, Box, Button, Stack, PaginationItem, Pagination } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, styled, Box, Button, Stack, PaginationItem, Pagination } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { theme } from '../../theme';
+import DeleteModal from './DeleteModal';
+import AddModal from './AddModal';
 
 const rows = [{
     id: 1,
@@ -78,6 +80,24 @@ export const StyledTableCell = styled(TableCell)({
 });
 export default function TableContent() {
     const [page, setPage] = React.useState(1);
+    const [openModal, setOpenModal] = React.useState<boolean>(false)
+    const [openAddModal, setOpenAddModal] = React.useState<boolean>(false)
+
+    const handleClickOpen = () => {
+        setOpenModal(true);
+    };
+
+    const handleClose = () => {
+        setOpenModal(false);
+    };
+
+    const handleClickOpenAddModal = () => {
+        setOpenAddModal(true);
+    };
+
+    const handleCloseAddModal = () => {
+        setOpenAddModal(false);
+    };
 
     const handlePageChange = (
 
@@ -88,7 +108,7 @@ export default function TableContent() {
     };
 
     return (
-        <TableContainer >
+        <>   <TableContainer >
             <Table sx={{ minWidth: 650, backgroundColor: theme.color._850, borderRadius: 2 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -115,7 +135,7 @@ export default function TableContent() {
                             <StyledTableCell width={120} align="center">{row.progress}</StyledTableCell>
                             <StyledTableCell width={150} align="center" >
                                 <Stack direction='row' spacing={3} justifyContent='center'>
-                                    <Button sx={{
+                                    <Button onClick={() => handleClickOpenAddModal()} sx={{
                                         minWidth: 0, p: 0, width: 35, height: 35, borderRadius: 1,
                                         backgroundColor: theme.color.green_800,
                                         transition: 'all 0.1s',
@@ -124,17 +144,24 @@ export default function TableContent() {
                                             opacity: 0.6
                                         }
                                     }}><CreateIcon fontSize='small' /></Button>
-                                    <Button sx={{
-                                        minWidth: 0, p: 0, width: 35, height: 35, borderRadius: 1,
-                                        backgroundColor: theme.color.red_800,
-                                        transition: 'all 0.1s',
-                                        "&:hover": {
+                                    <Button onClick={() => handleClickOpen()}
+                                        sx={{
+                                            minWidth: 0, p: 0, width: 35, height: 35, borderRadius: 1,
                                             backgroundColor: theme.color.red_800,
-                                            opacity: 0.6
-                                        }
-                                    }}> <DeleteIcon fontSize='small' /></Button>
+                                            transition: 'all 0.1s',
+
+                                            "&:hover": {
+                                                backgroundColor: theme.color.red_800,
+                                                opacity: 0.6
+                                            }
+                                        }}> <DeleteIcon fontSize='small' /></Button>
+
                                 </Stack>
+                                {/* Modal */}
+                                <DeleteModal open={openModal} onClose={handleClose} title={row.title} />
+                                <AddModal open={openAddModal} onClose={handleCloseAddModal} title={row.title} />
                             </StyledTableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>
@@ -166,5 +193,8 @@ export default function TableContent() {
                 />
             </Box>
         </TableContainer >
+
+
+        </>
     );
 }

@@ -22,6 +22,7 @@ const themeColors = {
     bronze: "#a77c88",
     yellow: "#ebc351",
     black: "#000000",
+    grey_300:"#4F5482"
   },
 } as const;
 
