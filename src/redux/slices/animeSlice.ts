@@ -57,7 +57,7 @@ export const animeApi = apiSlice.injectEndpoints({
     }),
     getAnimeSearch: build.query({
       query: (params) => ({
-        url: `${ANIME_ENDPOINT}?q=${params.strQuery}&limit=5&offset=${params.offset}`,
+        url: `${ANIME_ENDPOINT}?q=${params.strQuery}&limit=${params.limit}&page=${params.page}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
@@ -84,7 +84,7 @@ export const animeApi = apiSlice.injectEndpoints({
     }),
     getRecentAnimeRecommendations: build.query({
       query: (page) => ({
-        url: `${RECOMMENDATIONS_ENDPOINT}${ANIME_ENDPOINT}?page=${page}`,
+        url: `${RECOMMENDATIONS_ENDPOINT}${ANIME_ENDPOINT}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {

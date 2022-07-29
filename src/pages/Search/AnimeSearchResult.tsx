@@ -19,17 +19,14 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGetAnimeSearchQuery } from "../../redux/slices/animeSlice";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
-
 const SearchResults = ({ searchQuery, searchType }: any) => {
   const [page, setPage] = React.useState(1);
-  const { data } = useGetAnimeSearchQuery({strQuery: searchQuery.get("q"),offset: (page-1)*5});
-  
+  const { data } = useGetAnimeSearchQuery({strQuery: searchQuery.get("q"),limit: 5, page: page});
   const handlePageChange = (
     event: any,
     value: number
   ) => {
     setPage(value);
-    console.log(searchQuery.get("q"));
   };
 
 

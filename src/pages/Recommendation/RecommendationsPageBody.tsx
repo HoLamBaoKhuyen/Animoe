@@ -10,31 +10,32 @@ import { useGetRecentAnimeRecommendationsQuery } from "../../redux/slices/animeS
 import RecommendationCard from "./RecommendationCard";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import usePagination from "./RecommendationsPagePagination"
+import {currentPageData,maxPages} from "./RecommendationsPagePagination"
 const RecommendationsPageBody = () => {
   const [page, setPage] = React.useState(1);
   const {data} = useGetRecentAnimeRecommendationsQuery(0);
-  const dataPagi = usePagination(data, 4);
+  const currentData = currentPageData(data, 5, page);
+  const maxPage = maxPages(data, 5);
+
   const handlePageChange = (
     event: any,
     value: number
   ) => {
     setPage(value);
   };
-  console.log(data);
   return data ?  (
     <Box>
         <Grid container columnSpacing={{ md: 15, xs: 3 }} rowSpacing={2}>
-          {dataPagi.currentData(page).map((item: any) => (
+          {currentData.map((item: any) => (
             <Grid item xs={12} key={item.mal_id}>
               <RecommendationCard {...item} />
             </Grid>
           ))}
         </Grid>
-        <Grid item xs={12} zIndex={10}>
+        <Grid item xs={12} zIndex={10} sx={{mt: 5}}>
           <Box style={{ margin: "10px auto", width: "fit-content" }}>
             <Pagination
-              count={10}
+              count={maxPage}
               shape="rounded"
               variant="outlined"
               color="primary"

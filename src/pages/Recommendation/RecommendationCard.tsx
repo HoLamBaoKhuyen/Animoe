@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from "react";
 import { Avatar, Box, Button, Typography, Grid, Stack, Link } from "@mui/material";
 import { theme } from "../../theme";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-
+import {distance_between_two_dates} from "../../helpers/date"
 const readLessStyle = {
   color: theme.color._100,
   textOverflow: "ellipsis",
@@ -21,6 +21,7 @@ const RecommendationCard = ({
   const handleReadMore = () => {
     setReadMore(!readMore);
   };
+  const distanceTime = distance_between_two_dates(date ? new Date(date): new Date(),new Date())
   return (
     <Box
       sx={{
@@ -119,12 +120,20 @@ const RecommendationCard = ({
         >
           {readMore ? "Read less" : "Read more"}
         </Button>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="subtitle1" sx={{ color: theme.color._100 }}>
-              Anime rec by {user.username}
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "right", alignItems: "center", right: "0px" }}>
+          <Typography sx={{ color: theme.color._400, px: "5px", fontSize: "18px"}}>
+              Anime rec by 
+          </Typography>
+          <Link href={`#`}>
+            <Typography variant="subtitle1" sx={{ color: theme.color._400, fontWeight: "600", }}>
+              {user.username}
+            </Typography>
+          </Link>
+          <Typography sx={{ color: theme.color._400, px: "5px", fontSize: "18px"}}>
+              {distanceTime}
           </Typography>
         </Box>
-      </Box>
     </Box>
   );
 };
