@@ -30,3 +30,7 @@
 .styled_dots :global(li.slick-active) button {
   opacity: 1;
 }
+
+.slider_trailer {
+  width: 100%;
+}

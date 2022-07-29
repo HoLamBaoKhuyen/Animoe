@@ -1,43 +1,57 @@
-import { Box, Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { useGetAnimeVideosQuery } from "../../redux/slices/animeSlice";
 import styles from './styles.module.css'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { theme } from "theme";
+
+
 var Slider = require('react-slick').default
 
 const settings = {
-  dots: false,
+  centerPadding: 2,
+  dots: true,
+  arrows: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 2,
   slidesToScroll: 1,
-  centerMode: true,
-  className: `${styles.slider_container}`,
-  prevArrow:
+  className: `${styles.slider_trailer}`,
+  dotsClass: `${styles.styled_dots}`,
+  customPaging: function (i: any) {
+    return (
+      <IconButton>
+        <FiberManualRecordIcon sx={{ fontSize: 18 }} />
+      </IconButton>
 
-    <ArrowBackIosNewIcon sx={{
-      color: theme.color.white,
-      transition: 'all 0.2s',
-      fontSize: { md: 60, sm: 30, xs: 0 },
-      left: -50,
-      '&:hover': {
-        color: theme.color.grey_300
+    );
+  },
+  appendDots: (dots: any) => (
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', left: -30 }}
+    >
+      {dots}
+    </Box>
+  ),
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
       }
-    }} />
-
-  ,
-  nextArrow: <ArrowForwardIosIcon sx={{
-    color: theme.color.white,
-    transition: 'all 0.2s',
-    fontSize: { md: 60, sm: 30, xs: 0 },
-    right: -50,
-    '&:hover': {
-      color: theme.color.grey_300
-    }
-  }} />,
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+      }
+    },
+  ],
 };
 
 const Trailers = () => {
@@ -57,31 +71,27 @@ const Trailers = () => {
             </Typography>
           </Box>
         </Grid>
-        <Slider {...settings}>
-          {data.promo.map((video: any, index: number) => <Box key={index}
-          >
-            <Box sx={{
-              margin: 'auto',
-              padding: 1,
+        <Grid item xs={12}>
+          <Slider {...settings}>
+            {data.promo.map((video: any, index: number) => <Box key={index} sx={{
               width: { md: "500px", sm: "400px", xs: '300px' },
-              height: { md: "320px", sm: "250px", xs: "180px" },
-              borderRadius: 3,
-              overflow: "hidden",
-            }}>
+              height: { md: "280px", sm: "200px", xs: "180px" },
+              marginRight: { smdm: 3, xs: 0 }
+            }}
+            >
               <ReactPlayer
                 url={video.trailer.url}
-                width="100%"
+                width="95%"
                 height="100%"
                 playing={false}
                 controls={true}
                 poster={video.trailer.images.medium_image_url}
-              /></Box>
-          </Box>)}
-
-        </Slider>
-
+              />
+            </Box>)}
+          </Slider>
+        </Grid>
       </Grid>
-    </Box>
+    </Box >
   ) : (
     <Skeleton variant="rectangular" height="100%" />
   );
