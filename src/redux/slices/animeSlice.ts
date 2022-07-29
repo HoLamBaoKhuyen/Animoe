@@ -117,12 +117,21 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
-     getAnimeVideos: build.query({
+    getAnimeVideos: build.query({
       query: (id) => ({
         url: `${ANIME_ENDPOINT}/${id}/videos`,
         method: "GET",
       }),
-       transformResponse: (response: { data: any }, meta: any, arg: any) => {
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getAnimeRelations: build.query({
+      query: (id) => ({
+        url: `${ANIME_ENDPOINT}/${id}/relations`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
         return response.data;
       },
     }),
@@ -141,6 +150,7 @@ export const {
   useGetAnimeCharactersQuery,
   useGetAnimeStaffQuery,
   useGetAnimeReviewsQuery,
+  useGetAnimeRelationsQuery,
   useGetAnimeRecommendationsQuery,
   useGetAnimeVideosQuery,
 } = animeApi;

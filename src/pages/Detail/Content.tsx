@@ -24,7 +24,7 @@ const Content = ({ data }: { data: any }) => {
           {`${data.synopsis}`}
         </Typography>
       </Box>
-      <Box mt={3}>
+      {data.background ? (<Box mt={3}>
         <Typography
           variant="subtitle1"
           sx={{
@@ -43,7 +43,7 @@ const Content = ({ data }: { data: any }) => {
         >
           {`${data.background}`}
         </Typography>
-      </Box>
+      </Box>) : <></>}
       <Box mt={3}>
         <Typography
           variant="subtitle1"

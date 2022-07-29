@@ -10,6 +10,7 @@ import Staff from "./Staff";
 import Reviews from "./Reviews";
 import Recommendations from "./Recommendations";
 import Episodes from "./Episodes";
+import Relations from "./Relations";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -59,6 +60,9 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
       <TabPanel value={value} index={0}>
         <Score data={data} />
         <Content data={data} />
+        <Box mt={4}>
+          <Relations />
+        </Box>
         <Box mt={4}>
           <Trailers />
         </Box>
