@@ -2,8 +2,6 @@ import React, { ReactNode } from "react";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Grid,
   Link,
   Pagination,
@@ -22,7 +20,7 @@ import { format_number } from "../../helpers/format";
 
 const SearchResults = ({ searchQuery }: any) => {
   const [page, setPage] = React.useState(1);
-  const { data } = useGetMangaSearchQuery({strQuery: searchQuery.get("q"),offset: (page-1)*5});
+  const { data } = useGetMangaSearchQuery({strQuery: searchQuery.get("q"),limit: 5, page: page});
   
   const handlePageChange = (
     event: any,

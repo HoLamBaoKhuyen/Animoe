@@ -46,7 +46,7 @@ const mangaApi = apiSlice.injectEndpoints({
     }),
     getMangaSearch: build.query({
       query: (params) => ({
-        url: `${MANGA_ENDPOINT}?q=${params.strQuery}&limit=5&offset=${params.offset}`,
+        url: `${MANGA_ENDPOINT}?q=${params.strQuery}&limit=${params.limit}&page=${params.page}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
