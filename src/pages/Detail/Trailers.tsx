@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { useGetAnimeVideosQuery } from "../../redux/slices/animeSlice";
 import styles from './styles.module.css'
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 
 var Slider = require('react-slick').default
