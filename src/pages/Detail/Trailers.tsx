@@ -77,12 +77,11 @@ const Trailers = () => {
             {data.promo.map((video: any, index: number) => <Box key={index} sx={{
               width: { md: "500px", sm: "400px", xs: '300px' },
               height: { md: "280px", sm: "200px", xs: "180px" },
-              marginRight: { smdm: 3, xs: 0 }
             }}
             >
               <ReactPlayer
                 url={video.trailer.url}
-                width="95%"
+                width="90%"
                 height="100%"
                 playing={false}
                 controls={true}
