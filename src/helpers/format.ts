@@ -40,5 +40,15 @@ export const format_string_array = (sArray: string[]) => {
 export const format_title = (s: string) =>
   s.length <= 35 ? s : s.slice(0, 34) + "...";
 export const format_date = (date: string) => {
-  return new Date(date).toDateString();
+  const stringDate = new Date(date).toDateString();
+  const sArray: string[] = stringDate.split(" ");
+  let newDate: string = "";
+  for (let i = 1; i < sArray.length; i++) {
+    if (i === sArray.length - 2) {
+      newDate += sArray[i] + ", ";
+    } else {
+      newDate += sArray[i] + " ";
+    }
+  }
+  return newDate;
 };

@@ -53,8 +53,8 @@ const Episodes = (props: any) => {
               <Typography variant='body1' sx={{ color: theme.color._100 }}>{ep.title_romanji}</Typography>
               {/* <Typography variant='body1' sx={{ color: theme.color._100 }}>({ep.title_japanese})</Typography> */}
             </Grid>
-            <Grid item xs={3}>
-              <Typography variant='h4'>{format_date(ep.aired)}</Typography>
+            <Grid item xs={3} textAlign='center'>
+              <Typography variant='subtitle1' sx={{ color: theme.color._100, fontWeight: 500 }}>{format_date(ep.aired)}</Typography>
             </Grid>
             <Grid item xs={1} >
               <Box display='flex' alignItems={'center'} >
