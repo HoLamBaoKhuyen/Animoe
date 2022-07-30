@@ -63,7 +63,7 @@ const Episodes = (props: any) => {
               </Box>
             </Grid>
           </Grid></Box>)}
-        <Box sx={{ margin: 'auto', marginTop: 3 }}>
+        {dataPagi.currentData().length !== 0 ? <Box sx={{ margin: 'auto', marginTop: 3 }}>
           <Pagination
             count={count}
             page={page}
@@ -75,7 +75,7 @@ const Episodes = (props: any) => {
                 background: `${theme.color._600} !important`
               }
             }}
-          /></Box>
+          /></Box> : <Typography variant='h5' mt={2}>Chưa có dữ liệu</Typography>}
       </Grid>
     </Box>
   ) : (

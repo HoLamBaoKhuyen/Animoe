@@ -1,14 +1,12 @@
-import { Box, Button, Grid, Link, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Link, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
 import { theme } from "theme";
 import { RELATED_ANIME_PER_SECTION } from "./const ";
 
-
-
 const createList5Items = (list: any) => {
   var buffer = [];
   for (var i = 0; i < RELATED_ANIME_PER_SECTION; i++) {
-    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`}>
+    buffer.push(<Link key={i} href={`/${list[i].type}/${list[i].mal_id}`}>
       <Tooltip placement='right-start' title={list[i].name}><Typography variant='body2' sx={{
         whiteSpace: 'nowrap',
         overflow: 'hidden',
@@ -24,7 +22,7 @@ const createList5Items = (list: any) => {
 const createListFullItems = (list: any) => {
   var buffer = [];
   for (var i = 0; i < list.length; i++) {
-    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`}>
+    buffer.push(<Link key={i} href={`/${list[i].type}/${list[i].mal_id}`}>
       <Tooltip placement='right-start' title={list[i].name}><Typography variant='body2' sx={{
         whiteSpace: 'nowrap',
         overflow: 'hidden',

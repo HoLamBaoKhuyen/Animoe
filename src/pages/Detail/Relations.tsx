@@ -1,21 +1,12 @@
-import { Box, Grid, Link, Skeleton, Typography } from "@mui/material";
+import { Box, Grid, Skeleton, Typography } from "@mui/material";
 import { useParams } from "react-router";
 import { useGetAnimeRelationsQuery } from "redux/slices/animeSlice";
 import { theme } from "theme";
 import Relation from "./Relation";
 
-const createRelated = (list: any) => {
-  var buffer = [];
-  for (var i = 0; i < list.length; i++) {
-    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`}><Typography variant='body2'>{list[i].name}</Typography></Link>);
-  }
-  return buffer;
-}
-
 const Relations = () => {
   const { id } = useParams();
   const { data } = useGetAnimeRelationsQuery(id);
-
 
   return data ? (
     <Box>

@@ -73,7 +73,7 @@ const createVoiceActors = (list: any) => {
         </Box>
       </Box>
     ))
-  return (<></>)
+  return (<Typography variant='h5' mt={2}>Chưa có dữ liệu</Typography>)
 }
 const settings = {
   className: "center",

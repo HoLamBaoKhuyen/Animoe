@@ -58,7 +58,7 @@ const settings = {
 const Trailers = () => {
   const { id } = useParams();
   const { data } = useGetAnimeVideosQuery(id);
-  return data ? (
+  return data && data.promo.length !== 0 ? (
     <Box>
       <Grid
         container
