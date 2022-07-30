@@ -29,6 +29,9 @@ const createListFullItems = (list: any) => {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
+        "&:hover": {
+          fontWeight: 500
+        }
       }}>&nbsp;&nbsp;&nbsp;{list[i].name}
       </Typography></Tooltip>
     </Link>);
