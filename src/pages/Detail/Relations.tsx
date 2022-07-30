@@ -28,12 +28,14 @@ const Relations = () => {
           </Box>
         </Grid>
         <Box sx={{ width: '100%' }}>
-          {data.map((anime: any, index: number) =>
-          (<Box key={index}>
-            <Typography variant='subtitle1' sx={{ color: theme.color._100 }}>• {anime.relation}:</Typography>
-            <Relation data={anime.entry} />
-          </Box>))
-          }
+          <Grid container>
+            {data.map((anime: any, index: number) =>
+            (<Grid item xs={12} sm={4} md={3} key={index}>
+              <Typography variant='subtitle1' sx={{ color: theme.color._100 }}>• {anime.relation}:</Typography>
+              <Relation data={anime.entry} />
+            </Grid>))
+            }
+          </Grid>
         </Box>
       </Grid>
     </Box>

@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Link, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
 import { theme } from "theme";
 import { RELATED_ANIME_PER_SECTION } from "./const ";
@@ -8,7 +8,15 @@ import { RELATED_ANIME_PER_SECTION } from "./const ";
 const createList5Items = (list: any) => {
   var buffer = [];
   for (var i = 0; i < RELATED_ANIME_PER_SECTION; i++) {
-    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`}><Typography variant='body2'>&nbsp;&nbsp;&nbsp;{list[i].name}</Typography></Link>);
+    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`}>
+      <Tooltip placement='right-start' title={list[i].name}><Typography variant='body2' sx={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        "&:hover": {
+          fontWeight: 500
+        }
+      }}>&nbsp;&nbsp;&nbsp;{list[i].name}</Typography></Tooltip></Link>);
   }
   return buffer;
 }
@@ -16,11 +24,14 @@ const createList5Items = (list: any) => {
 const createListFullItems = (list: any) => {
   var buffer = [];
   for (var i = 0; i < list.length; i++) {
-    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`} sx={{
-      "&:hover .MuiTypography-root": {
-        textDecoration: 'underline'
-      }
-    }}><Typography variant='body2'>&nbsp;&nbsp;&nbsp;{list[i].name}</Typography></Link>);
+    buffer.push(<Link href={`/${list[i].type}/${list[i].mal_id}`}>
+      <Tooltip placement='right-start' title={list[i].name}><Typography variant='body2' sx={{
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      }}>&nbsp;&nbsp;&nbsp;{list[i].name}
+      </Typography></Tooltip>
+    </Link>);
   }
   return buffer;
 }
@@ -45,7 +56,12 @@ const Relation = (props: any) => {
   return data ? (
     <Box sx={{ width: '100%' }}>
       {displayList(data, viewMore)}
-      {data.length < RELATED_ANIME_PER_SECTION ? <></> : <Button variant='outlined' sx={{ color: theme.color._100, border: 0, }} onClick={handleChange}>{viewMore ? "View more" : "View less"}</Button>}
+      {data.length <= RELATED_ANIME_PER_SECTION ? <></> : <Button variant='outlined' sx={{
+        color: theme.color._100, border: 0, fontSize: 16, "&:hover": {
+          border: 0,
+          color: theme.color.white
+        }
+      }} onClick={handleChange}>{viewMore ? "View more" : "View less"}</Button>}
     </Box>
   ) : <></>
 }
