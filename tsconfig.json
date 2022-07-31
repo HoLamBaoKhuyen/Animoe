@@ -18,5 +18,4 @@
     "baseUrl": "src"
   },
   "include": ["src", "./global.d.ts"],
-  "files": ["global.d.ts"]
 }

@@ -1,20 +1,41 @@
-import { Box, Button, Link, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Link, styled, Tooltip, tooltipClasses, TooltipProps, Typography } from "@mui/material";
 import { useState } from "react";
 import { theme } from "theme";
 import { RELATED_ANIME_PER_SECTION } from "./const ";
+
+
+const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.color.grey_300,
+    color: theme.color.white,
+    boxShadow: theme.shadows[10],
+  },
+  [`& .${tooltipClasses.arrow}`]: {
+    color: theme.color.grey_300,
+  },
+}));
+
 
 const createList5Items = (list: any) => {
   var buffer = [];
   for (var i = 0; i < RELATED_ANIME_PER_SECTION; i++) {
     buffer.push(<Link key={i} href={`/${list[i].type}/${list[i].mal_id}`}>
-      <Tooltip placement='right-start' title={list[i].name}><Typography variant='body2' sx={{
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        "&:hover": {
-          fontWeight: 500
-        }
-      }}>&nbsp;&nbsp;&nbsp;{list[i].name}</Typography></Tooltip></Link>);
+      <StyledTooltip arrow placement='right-start' title={list[i].name}>
+        <Typography variant='h6'
+          sx={{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            color: theme.color._400,
+            textDecoration: 'underline',
+            textDecorationThickness: '0.1px',
+            transition: 'all 0.1s',
+            "&:hover": {
+              color: theme.color.white
+            }
+          }}>{list[i].name}</Typography></StyledTooltip></Link>);
   }
   return buffer;
 }
@@ -23,15 +44,21 @@ const createListFullItems = (list: any) => {
   var buffer = [];
   for (var i = 0; i < list.length; i++) {
     buffer.push(<Link key={i} href={`/${list[i].type}/${list[i].mal_id}`}>
-      <Tooltip placement='right-start' title={list[i].name}><Typography variant='body2' sx={{
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        "&:hover": {
-          fontWeight: 500
-        }
-      }}>&nbsp;&nbsp;&nbsp;{list[i].name}
-      </Typography></Tooltip>
+      <StyledTooltip arrow placement='right-start' title={list[i].name}>
+        <Typography variant='h6'
+          sx={{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            color: theme.color._400,
+            textDecoration: 'underline',
+            textDecorationThickness: '0.1px',
+            transition: 'all 0.1s',
+            "&:hover": {
+              color: theme.color.white
+            }
+          }}>{list[i].name}
+        </Typography></StyledTooltip>
     </Link>);
   }
   return buffer;
@@ -55,14 +82,25 @@ const Relation = (props: any) => {
   }
 
   return data ? (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }} pl={1}>
       {displayList(data, viewMore)}
-      {data.length <= RELATED_ANIME_PER_SECTION ? <></> : <Button variant='outlined' sx={{
-        color: theme.color._100, border: 0, fontSize: 16, "&:hover": {
-          border: 0,
-          color: theme.color.white
-        }
-      }} onClick={handleChange}>{viewMore ? "View more" : "View less"}</Button>}
+      {data.length <= RELATED_ANIME_PER_SECTION ? <></> :
+        <Button variant='outlined' disableRipple
+          sx={{
+            color: theme.color._100, border: 0,
+            fontSize: 16,
+            padding: 0,
+            fontWeight: 300,
+            textDecoration: 'underline',
+            textDecorationThickness: '0.1px',
+            "&:hover": {
+              border: 0,
+              fontWeight: 400,
+              textDecoration: 'underline',
+              textDecorationThickness: '0.1px',
+              color: theme.color._100
+            }
+          }} onClick={handleChange}>{viewMore ? "View more" : "View less"}</Button>}
     </Box>
   ) : <></>
 }

@@ -14,12 +14,12 @@ const Relations = () => {
         <Grid item xs={12}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Related
+              Related Anime
             </Typography>
           </Box>
         </Grid>
         <Box sx={{ width: '100%' }}>
-          <Grid container>
+          <Grid container columnSpacing={1} rowSpacing={5}>
             {data.map((anime: any, index: number) =>
             (<Grid item xs={12} sm={4} md={3} key={index}>
               <Typography variant='subtitle1' sx={{ color: theme.color._100 }}>• {anime.relation}:</Typography>
