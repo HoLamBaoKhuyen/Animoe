@@ -52,7 +52,7 @@ const Recommendations = () => {
                 <AddBoxIcon />
               </Button>
               <Link
-                href={`/anime/${item.entry.mal_id}`}
+                href={`${MANGA_ENDPOINT}/${item.entry.mal_id}`}
                 sx={{
                   ".title": {
                     transition: "all 0.2s",
