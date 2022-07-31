@@ -90,19 +90,20 @@ const Recommendations = () => {
             </Box>
           </Grid >
         ))}
-        <Box sx={{ margin: 'auto', marginTop: 3 }}>
-          <Pagination
-            count={count}
-            page={page}
-            variant="outlined"
-            shape="rounded"
-            onChange={handleChange}
-            sx={{
-              "& .Mui-selected": {
-                background: `${theme.color._600} !important`
-              }
-            }}
-          /></Box>
+        <Grid item xs={12}>
+          <Box sx={{ margin: 'auto', marginTop: 3, width: 'fit-content' }}>
+            <Pagination
+              count={count}
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handleChange}
+              sx={{
+                "& .Mui-selected": {
+                  background: `${theme.color._600} !important`
+                }
+              }}
+            /></Box></Grid>
       </Grid >
 
     </Box >
