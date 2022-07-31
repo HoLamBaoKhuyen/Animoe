@@ -2,9 +2,7 @@ import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { theme } from "../../theme";
 import styles from './styles.module.css'
-import { useGetAnimeStaffQuery } from "redux/slices/animeSlice";
 import { useParams } from "react-router";
-import { format_string_array } from "helpers/format";
 import { useGetMangaCharactersQuery } from "redux/slices/mangaSlice";
 var Slider = require('react-slick').default
 
