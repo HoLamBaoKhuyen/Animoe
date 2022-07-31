@@ -1,5 +1,7 @@
-export const format_number = (val: number) =>
-  val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export const format_number = (val: number) => {
+  if (val) return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return val;
+};
 export const format_string = (s: string) => {
   if (s) return s.charAt(0).toUpperCase() + s.slice(1);
   return s;
