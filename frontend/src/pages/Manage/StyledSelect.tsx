@@ -6,6 +6,7 @@ import {
   SelectChangeEvent,
   styled,
   InputBase,
+  Typography,
 } from "@mui/material";
 import { theme } from "../../theme";
 
@@ -17,10 +18,10 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
     position: "relative",
     color: theme.palette.common.white,
     fontSize: 16,
-    padding: "10px 26px 10px 12px",
-    height: '30px',
-    lineHeight: '30px',
-    borderRadius: '10px',
+    padding: "0 0 0 12px",
+    height: "30px",
+    lineHeight: "30px",
+    borderRadius: 3,
     transition: theme.transitions.create(["border-color", "box-shadow"]),
   },
 }));
@@ -68,15 +69,29 @@ const StyledSelect: React.FC<SelectProps> = ({
         value={value}
         label="Age"
         onChange={handleChange}
-        defaultValue={""}
+        defaultValue={"2"}
         sx={{
-          background: theme.color._850,
+          background: theme.color._950,
           borderRadius: 2,
           fontWeight: 500,
         }}
         input={<StyledInput />}
       >
-        {placeHolder && <MenuItem value="-1">{placeHolder}</MenuItem>}
+        {placeHolder && (
+          <MenuItem value={"-1"} disabled>
+            <Typography
+              sx={{
+                color: theme.palette.grey[400],
+                opacity: 0.6,
+                fontSize: 16,
+                lineHeight: "30px",
+                fontWeight: 500,
+              }}
+            >
+              {placeHolder}
+            </Typography>{" "}
+          </MenuItem>
+        )}
         {CreateList(list)}
       </Select>
     </FormControl>

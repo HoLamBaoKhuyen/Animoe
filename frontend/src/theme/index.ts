@@ -23,6 +23,7 @@ const themeColors = {
     yellow: "#ebc351",
     black: "#000000",
     grey_200: "#77808D",
+    grey_300:"#4F5482"
   },
 } as const;
 
