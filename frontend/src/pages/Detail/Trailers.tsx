@@ -1,16 +1,64 @@
-import React, { ReactNode } from "react";
-import { Box, Grid, Link, Typography } from "@mui/material";
-import { TRAILERS } from "../../data/detail";
+import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
 import ReactPlayer from "react-player";
+import { useParams } from "react-router-dom";
+import { useGetAnimeVideosQuery } from "../../redux/slices/animeSlice";
+import styles from './styles.module.css'
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
-type TrailersProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
+
+var Slider = require('react-slick').default
+
+const settings = {
+  centerPadding: 2,
+  dots: true,
+  arrows: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  className: `${styles.slider_trailer}`,
+  dotsClass: `${styles.styled_dots}`,
+  customPaging: function (i: any) {
+    return (
+      <IconButton>
+        <FiberManualRecordIcon sx={{ fontSize: 18 }} />
+      </IconButton>
+
+    );
+  },
+  appendDots: (dots: any) => (
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', left: -30 }}
+    >
+      {dots}
+    </Box>
+  ),
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+      }
+    },
+  ],
 };
-const Trailers: React.FC<TrailersProps> = ({ children }) => {
-  return (
+
+const Trailers = () => {
+  const { id } = useParams();
+  const { data } = useGetAnimeVideosQuery(id);
+  return data && data.promo.length !== 0 ? (
     <Box>
       <Grid
         container
@@ -22,83 +70,30 @@ const Trailers: React.FC<TrailersProps> = ({ children }) => {
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
               Trailers
             </Typography>
-            <Box>
-              <Link
-                href="#"
-                sx={{
-                  fontSize: { md: 20, sm: 18, xs: 15 },
-                }}
-              >
-                View more
-              </Link>
-            </Box>
           </Box>
         </Grid>
-        {TRAILERS.map((trailer) => (
-          <Grid item xs={12} sm={4} key={trailer.id}>
-            <Box
-              sx={{
-                position: "relative",
-                maxWidth: { md: "400px", xs: "300px" },
-                height: { md: "220px", sm: "150px", xs: "180px" },
-                borderRadius: 3,
-                overflow: "hidden",
-                // "&:hover": {
-                //   "& .bg-hover": { display: "block" },
-                // },
-              }}
+        <Grid item xs={12}>
+          <Slider {...settings}>
+            {data.promo.map((video: any, index: number) => <Box key={index} sx={{
+              width: { md: "500px", sm: "400px", xs: '300px' },
+              height: { md: "280px", sm: "200px", xs: "180px" },
+            }}
             >
               <ReactPlayer
-                url={trailer.src}
-                width="100%"
+                url={video.trailer.url}
+                width="90%"
                 height="100%"
                 playing={false}
                 controls={true}
+                poster={video.trailer.images.medium_image_url}
               />
-              {/* <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%,-50%)",
-                  color: theme.palette.common.white,
-                  display: "flex",
-                  alignItems: "center",
-                  border: `2px solid ${theme.palette.common.white}`,
-                  width: "fit-content",
-                  px: 3,
-                  py: 1,
-                  borderRadius: 2,
-                  background: `rgba(0,0,0,0.2)`,
-                  zIndex: 10,
-                }}
-              >
-                <PlayCircleOutlineIcon />
-                <Typography variant="subtitle2">Play</Typography>
-              </Box>
-              <Typography
-                variant="h4"
-                sx={{ position: "absolute", bottom: 10, left: 10, zIndex: 10 }}
-              >
-                PV1
-              </Typography>
-              <Box
-                className="bg-hover"
-                sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  background: `linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5))`,
-                  width: "100%",
-                  minHeight: "220px",
-                  display: "none",
-                }}
-              ></Box> */}
-            </Box>
-          </Grid>
-        ))}
+            </Box>)}
+          </Slider>
+        </Grid>
       </Grid>
-    </Box>
+    </Box >
+  ) : (
+    <Skeleton variant="rectangular" height="100%" />
   );
 };
 export default Trailers;

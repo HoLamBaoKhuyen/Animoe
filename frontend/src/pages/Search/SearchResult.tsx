@@ -19,7 +19,6 @@ import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
 const SearchResults = ({ searchQuery }: any) => {
-  const [value, setValue] = React.useState(0);
   const [page, setPage] = React.useState(1);
   const { data } = useSearchAnimeQuery(searchQuery);
 
@@ -28,10 +27,6 @@ const SearchResults = ({ searchQuery }: any) => {
     value: number
   ) => {
     setPage(value);
-  };
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
   };
 
   return data ? (

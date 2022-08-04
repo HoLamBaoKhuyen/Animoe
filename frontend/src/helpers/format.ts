@@ -46,6 +46,28 @@ export const format_studios = (studios: any[]) => {
   studios.forEach((studio) => (studiosList += ", " + studio.name));
   return studiosList.slice(2);
 };
+export const format_string_array = (sArray: string[]) => {
+  let list: string = "";
+  sArray.forEach((s) => (list += ", " + s));
+  return list.slice(2);
+};
 export const format_title = (s: string) =>
   s.length <= 35 ? s : s.slice(0, 34) + "...";
-export const format_email = (s: string) => s.slice(0, s.indexOf("@"));
+export const format_email = (s: string | null) => {
+  if (typeof s === "string") {
+    return s.slice(0, s.indexOf("@"));
+  }
+};
+export const format_date = (date: string) => {
+  const stringDate = new Date(date).toDateString();
+  const sArray: string[] = stringDate.split(" ");
+  let newDate: string = "";
+  for (let i = 1; i < sArray.length; i++) {
+    if (i === sArray.length - 2) {
+      newDate += sArray[i] + ", ";
+    } else {
+      newDate += sArray[i] + " ";
+    }
+  }
+  return newDate;
+};

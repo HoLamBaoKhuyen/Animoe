@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react";
 import Layout from "../../components/layout";
 import {
@@ -60,7 +61,10 @@ const LoginPage = () => {
           "Auth Token",
           response._tokenResponse.refreshToken
         );
-        sessionStorage.setItem("email", response.user.email);
+        const emailStr = response.user.email;
+        if (typeof emailStr === "string") {
+          sessionStorage.setItem("email", emailStr);
+        }
         navigate("/");
       })
       .catch((error) => {

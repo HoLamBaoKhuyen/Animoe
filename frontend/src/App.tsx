@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import DetailPage from "./pages/Detail";
+import DetailMangaPage from "./pages/DetailManga";
 import HomePage from "./pages/Home";
 import TopAnime from "./pages/TopAnime";
 import SearchPage from "./pages/Search";
@@ -16,6 +17,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/anime/:id" element={<DetailPage />} />
+      <Route path="/manga/:id" element={<DetailMangaPage />} />
       <Route path="/anime-search" element={<SearchPage />} />
       <Route path="/top-anime" element={<TopAnime />} />
       <Route path="/anime-list" element={<ManagePage />} />
