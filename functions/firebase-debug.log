@@ -1,0 +1,124 @@
+[debug] [2022-08-04T16:29:20.939Z] ----------------------------------------------------------------------
+[debug] [2022-08-04T16:29:20.941Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ADMIN\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2022-08-04T16:29:20.942Z] CLI Version:   11.4.2
+[debug] [2022-08-04T16:29:20.942Z] Platform:      win32
+[debug] [2022-08-04T16:29:20.942Z] Node Version:  v16.13.0
+[debug] [2022-08-04T16:29:20.943Z] Time:          Thu Aug 04 2022 23:29:20 GMT+0700 (Indochina Time)
+[debug] [2022-08-04T16:29:20.943Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-04T16:29:21.011Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-04T16:29:21.012Z] > authorizing via signed-in user (mingqiu1508@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project animoe-7b89b. This may result in unexpected behavior. 
+[debug] [2022-08-04T16:29:21.061Z] [hub] writing locator at C:\Users\ADMIN\AppData\Local\Temp\hub-animoe-7b89b.json
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[info] +  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
+[debug] [2022-08-04T16:29:21.092Z] defaultcredentials: writing to file C:\Users\ADMIN\AppData\Roaming\firebase\mingqiu1508_gmail_com_application_default_credentials.json
+[debug] [2022-08-04T16:29:21.093Z] Setting GAC to C:\Users\ADMIN\AppData\Roaming\firebase\mingqiu1508_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\ADMIN\\AppData\\Roaming\\firebase\\mingqiu1508_gmail_com_application_default_credentials.json"}}
+[debug] [2022-08-04T16:29:21.096Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/animoe-7b89b/adminSdkConfig [none]
+[debug] [2022-08-04T16:29:21.526Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/animoe-7b89b/adminSdkConfig 200
+[debug] [2022-08-04T16:29:21.526Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/animoe-7b89b/adminSdkConfig {"projectId":"animoe-7b89b","storageBucket":"animoe-7b89b.appspot.com","locationId":"asia-southeast1"}
+[warn] !  ui: Emulator UI unable to start on port 4000, starting on 4001 instead. {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI unable to start on port 4000, starting on 4001 instead."}}
+[debug] [2022-08-04T16:29:21.560Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-08-04T16:29:21.561Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-08-04T16:29:21.561Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\ADMIN\\.cache\\firebase\\emulators\\ui-v1.8.1\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\ADMIN\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.8.1\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-08-04T16:29:21.703Z] Web / API server started at localhost:4001
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4001\n"}}
+[info] i  functions: Watching "C:\Users\ADMIN\repos\Animoe\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\ADMIN\\repos\\Animoe\\functions\" for Cloud Functions..."}}
+[debug] [2022-08-04T16:29:21.829Z] Validating nodejs source
+[debug] [2022-08-04T16:29:24.809Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2022-08-04T16:29:24.809Z] Building nodejs source
+[debug] [2022-08-04T16:29:24.809Z] Analyzing nodejs backend spec
+[debug] [2022-08-04T16:29:24.812Z] Could not find functions.yaml. Must use http discovery
+[debug] [2022-08-04T16:29:25.185Z] Serving at port 9005
+
+[debug] [2022-08-04T16:29:25.462Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2022-08-04T16:29:25.470Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions[us-central1-app]: http function initialized (http://localhost:5001/animoe-7b89b/us-central1/app). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/animoe-7b89b/us-central1/app)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4001                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ localhost:5001 │ http://localhost:4001/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2022-08-04T16:29:37.281Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-08-04T16:29:37.281Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-08-04T16:29:37.281Z] Accepted request POST /animoe-7b89b/us-central1/app/api/user/ --> us-central1-app
+[debug] [2022-08-04T16:29:37.291Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2022-08-04T16:29:37.291Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2022-08-04T16:29:37.291Z] [worker-pool] submitWork(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-app)"}}
+[debug] [2022-08-04T16:29:37.291Z] [worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: BUSY"}}
+[debug] [2022-08-04T16:29:38.692Z] [runtime-status] [2624] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-08-04T16:29:38.695Z] [runtime-status] [2624] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.22.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.22.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-08-04T16:29:38.696Z] [runtime-status] [2624] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2022-08-04T16:29:38.697Z] [runtime-status] [2624] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.22.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.22.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-08-04T16:29:38.759Z] [runtime-status] [2624] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Checked functions.config() {\"config\":{}}"}}
+[debug] [2022-08-04T16:29:38.759Z] [runtime-status] [2624] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.22.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.22.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-08-04T16:29:38.760Z] [runtime-status] [2624] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.22.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.22.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-08-04T16:29:38.762Z] [runtime-status] [2624] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2022-08-04T16:29:38.762Z] [runtime-status] [2624] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.22.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.22.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2022-08-04T16:29:38.763Z] [runtime-status] [2624] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\ADMIN\\repos\\Animoe\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2022-08-04T16:29:38.763Z] [runtime-status] [2624] Functions runtime initialized. {"cwd":"C:\\Users\\ADMIN\\repos\\Animoe\\functions","node_version":"16.13.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\ADMIN\\\\repos\\\\Animoe\\\\functions\",\"node_version\":\"16.13.0\"}"}}
+[debug] [2022-08-04T16:29:38.899Z] [runtime-status] [2624] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"animoe-7b89b","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCzZju6oJsd435i\n+/mvGHVSu9kMPOunOqJRRh5fY+bfz5Of1lMXJ6uco8jMyEjAP5eAxyB24n4ZZtfs\nvDQtgoGbt4IBcdYTvnlTNYg5Zg50+YB+jsIuB38Z4GQHMLz3wp9D8Nx6N7K5Rruw\nJ28UOi/4pgR84cjUlrtbVJc9t0OVL6wlYYA4FbQgdbS8Wa0y1I+d+rhwFFA/rpBR\nh/TZvPup0gr6cBNXs1DbWaiO0VOeXqjZSqWEVPTJEA2xkx8gwtXjiq5cP26axS2j\nINoV0Sf08V0ZLSWbQ/Oc3zF4rmZcbmR7alFy00LQv+q0VBqz35W3pCvTVVKkGOOV\n4pugF8+fAgMBAAECgf92FFQ8AnoWsiX+ANvW48JVMk8qPu7cozszQ3O6VYcgyP/h\ntK/8DaBm+WaxYyJ/Z1vQ5z/3ABz/mzGEIFw3mC62z5JCYSsG09gHbLS9Eu9xDsgE\nhPJKWaTO42LzWKEIcpFhpqd3yjFYwbXHvCzgo2vvvVY23GXTh2LKOmNRu84/4oM5\nmYQWFLSNxFnEXcl0dsfOuWZ+YqdwLWswDoju5zt6pA42xnJpNz9xAaRYtH1JovyA\nE4Oz0mSig0FXb+xeFDdK/opqjJ9IuatJ7CgcdTmZYirP8lRVXc+CUvuxozoEoQnK\nuVFhBMl4TCwwbP1CoGberWiQThYtTqq4tu/olskCgYEA+05qqmPDDlyYjQnIX31c\n/6QnafLPY3rBBsyI+J/euoCVAHsEEXl9ryUtoTmbwimQYxo5P8G7o2SHUuNBoXS+\nqNQzAXJYyQi7PBNPCUmGy5y+aLnyH7uc1DZHEHT1P8jvCqwbMIJgIZsMdKaHM1Xx\nLS8yGErQv3C3r6cQus9631kCgYEAtsABGqysmip1OqMLhjGq3EmUszDe6Hq9Iywn\nqvWYHaL5YVFXQKK1xS0MwatIDIea9caRwUDyz483nWa24XtlSJoJr1QdSGMsMt6u\n9HM876D1x0FudqKVbpfEMzf0hg4E9mqjSEjREss48SLrxy3lzlSrYu38XtAHCt5J\nqSx9f7cCgYBMOjoCmyYkahPf3BLKXDVkWb+W1I7xpt98F3iIqb2eprgLoETYpBhq\nkwVnPRkw6PiiBudMnpAy/KBLlSFoPwhCH7OlAbFKsXpRu62irInVoyLik1yNIZRt\njlU5+bAWe/V+MDxDF5jfOK+rhoPGH5B7WzB/y9nL5/3fqvZZI+wqaQKBgBWiz76n\nuNubsTta+E9P7AmekINSguGFPoU+ggfEgdjoZZv29FyLpveMKNl4/NO27kqw0qrN\nlLGsJAp3kalKYahhzEm8rKbYTvBK2u3IAuvf45lOjtRu1UA9qZXixwlj+YRvBZvW\nOyJ9euVZnA59yZpO/ed9g4Z6HItV2+Syhr0rAoGBAITlmOk7fH/zYCNWR5TUhUxl\nOVps09jAZhqWTmbm1hvjkG6l3ooDuH7KFpd7O/i//VhHaT+jWuWclAgdDm4BF1ZD\nQah+D9kSgzG4orJYeoLc6gsqOJlDEcfvsWRujlLzP0qjQPj4eCa1VJFBJXEwF+gu\nzvIKukGti05tFD+ywh0I\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-eld7o@animoe-7b89b.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"animoe-7b89b\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCzZju6oJsd435i\\n+/mvGHVSu9kMPOunOqJRRh5fY+bfz5Of1lMXJ6uco8jMyEjAP5eAxyB24n4ZZtfs\\nvDQtgoGbt4IBcdYTvnlTNYg5Zg50+YB+jsIuB38Z4GQHMLz3wp9D8Nx6N7K5Rruw\\nJ28UOi/4pgR84cjUlrtbVJc9t0OVL6wlYYA4FbQgdbS8Wa0y1I+d+rhwFFA/rpBR\\nh/TZvPup0gr6cBNXs1DbWaiO0VOeXqjZSqWEVPTJEA2xkx8gwtXjiq5cP26axS2j\\nINoV0Sf08V0ZLSWbQ/Oc3zF4rmZcbmR7alFy00LQv+q0VBqz35W3pCvTVVKkGOOV\\n4pugF8+fAgMBAAECgf92FFQ8AnoWsiX+ANvW48JVMk8qPu7cozszQ3O6VYcgyP/h\\ntK/8DaBm+WaxYyJ/Z1vQ5z/3ABz/mzGEIFw3mC62z5JCYSsG09gHbLS9Eu9xDsgE\\nhPJKWaTO42LzWKEIcpFhpqd3yjFYwbXHvCzgo2vvvVY23GXTh2LKOmNRu84/4oM5\\nmYQWFLSNxFnEXcl0dsfOuWZ+YqdwLWswDoju5zt6pA42xnJpNz9xAaRYtH1JovyA\\nE4Oz0mSig0FXb+xeFDdK/opqjJ9IuatJ7CgcdTmZYirP8lRVXc+CUvuxozoEoQnK\\nuVFhBMl4TCwwbP1CoGberWiQThYtTqq4tu/olskCgYEA+05qqmPDDlyYjQnIX31c\\n/6QnafLPY3rBBsyI+J/euoCVAHsEEXl9ryUtoTmbwimQYxo5P8G7o2SHUuNBoXS+\\nqNQzAXJYyQi7PBNPCUmGy5y+aLnyH7uc1DZHEHT1P8jvCqwbMIJgIZsMdKaHM1Xx\\nLS8yGErQv3C3r6cQus9631kCgYEAtsABGqysmip1OqMLhjGq3EmUszDe6Hq9Iywn\\nqvWYHaL5YVFXQKK1xS0MwatIDIea9caRwUDyz483nWa24XtlSJoJr1QdSGMsMt6u\\n9HM876D1x0FudqKVbpfEMzf0hg4E9mqjSEjREss48SLrxy3lzlSrYu38XtAHCt5J\\nqSx9f7cCgYBMOjoCmyYkahPf3BLKXDVkWb+W1I7xpt98F3iIqb2eprgLoETYpBhq\\nkwVnPRkw6PiiBudMnpAy/KBLlSFoPwhCH7OlAbFKsXpRu62irInVoyLik1yNIZRt\\njlU5+bAWe/V+MDxDF5jfOK+rhoPGH5B7WzB/y9nL5/3fqvZZI+wqaQKBgBWiz76n\\nuNubsTta+E9P7AmekINSguGFPoU+ggfEgdjoZZv29FyLpveMKNl4/NO27kqw0qrN\\nlLGsJAp3kalKYahhzEm8rKbYTvBK2u3IAuvf45lOjtRu1UA9qZXixwlj+YRvBZvW\\nOyJ9euVZnA59yZpO/ed9g4Z6HItV2+Syhr0rAoGBAITlmOk7fH/zYCNWR5TUhUxl\\nOVps09jAZhqWTmbm1hvjkG6l3ooDuH7KFpd7O/i//VhHaT+jWuWclAgdDm4BF1ZD\\nQah+D9kSgzG4orJYeoLc6gsqOJlDEcfvsWRujlLzP0qjQPj4eCa1VJFBJXEwF+gu\\nzvIKukGti05tFD+ywh0I\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-eld7o@animoe-7b89b.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2022-08-04T16:29:38.925Z] [runtime-status] [2624] Beginning invocation function app! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Beginning invocation function app!"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2022-08-04T16:29:38.926Z] [runtime-status] [2624] Running app in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Running app in signature http"}}
+[debug] [2022-08-04T16:29:38.931Z] [runtime-status] [2624] Listening to port: \\?\pipe\fire_emu_afb8203d1b3bb358 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Listening to port: \\\\?\\pipe\\fire_emu_afb8203d1b3bb358"}}
+[debug] [2022-08-04T16:29:39.043Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-08-04T16:29:39.046Z] [functions] Got req.url=/animoe-7b89b/us-central1/app/api/user/, mapping to path=/api/user/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/animoe-7b89b/us-central1/app/api/user/, mapping to path=/api/user/"}}
+[debug] [2022-08-04T16:29:39.068Z] [runtime-status] [2624] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Ephemeral server handling POST request"}}
+[debug] [2022-08-04T16:29:39.074Z] [runtime-status] [2624] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Ephemeral server survived."}}
+[info] i  functions: Finished "app" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in ~1s"}}
+[debug] [2022-08-04T16:29:39.615Z] [worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: IDLE"}}
+[debug] [2022-08-04T16:29:39.615Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-08-04T16:37:07.199Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-08-04T16:37:07.200Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-08-04T16:37:07.200Z] Accepted request POST /animoe-7b89b/us-central1/app/api/user/ --> us-central1-app
+[debug] [2022-08-04T16:37:07.200Z] [worker-pool] submitWork(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-app)"}}
+[debug] [2022-08-04T16:37:07.201Z] [worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: BUSY"}}
+[debug] [2022-08-04T16:37:07.202Z] [runtime-status] [2624] Beginning invocation function app! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Beginning invocation function app!"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2022-08-04T16:37:07.204Z] [runtime-status] [2624] Running app in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Running app in signature http"}}
+[debug] [2022-08-04T16:37:07.204Z] [runtime-status] [2624] Listening to port: \\?\pipe\fire_emu_afb8203d1b3bb358 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Listening to port: \\\\?\\pipe\\fire_emu_afb8203d1b3bb358"}}
+[debug] [2022-08-04T16:37:07.320Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-08-04T16:37:07.321Z] [functions] Got req.url=/animoe-7b89b/us-central1/app/api/user/, mapping to path=/api/user/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/animoe-7b89b/us-central1/app/api/user/, mapping to path=/api/user/"}}
+[debug] [2022-08-04T16:37:07.324Z] [runtime-status] [2624] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Ephemeral server handling POST request"}}
+[debug] [2022-08-04T16:37:07.326Z] [runtime-status] [2624] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [2624] Ephemeral server survived."}}
+[info] i  functions: Finished "app" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in ~1s"}}
+[debug] [2022-08-04T16:37:07.333Z] [worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-34f42597-d64b-457e-b23d-7c622b2cc0b8]: IDLE"}}
+[debug] [2022-08-04T16:37:07.334Z] [work-queue] {"queueLength":0,"workRunningCount":0}
