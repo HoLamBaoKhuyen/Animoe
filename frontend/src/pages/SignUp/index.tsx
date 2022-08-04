@@ -27,7 +27,21 @@ const SignUpPage = () => {
           response._tokenResponse.refreshToken
         );
         sessionStorage.setItem("email", response.user.email);
-        navigate("/");
+        fetch(
+          "http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/user",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+            }),
+          }
+        ).then((response) => {
+          navigate("/");
+        });
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
