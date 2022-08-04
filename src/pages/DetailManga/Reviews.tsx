@@ -6,6 +6,7 @@ import usePagination from "./Pagination";
 import ReviewCard from "./ReviewCard";
 import { BASE_API, REVIEWS_PER_PAGE } from "./const ";
 import { theme } from "theme";
+import { MANGA_ENDPOINT } from "apis/endpoints";
 
 type ReviewsProps = {
   children?: ReactNode;
@@ -21,7 +22,7 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios(
-        `${BASE_API}/anime/${id}/reviews`,
+        `${BASE_API}${MANGA_ENDPOINT}/${id}/reviews`,
       )
       setData(result.data.data)
     }

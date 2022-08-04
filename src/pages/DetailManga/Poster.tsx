@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { theme } from "../../theme";
-import { format_string, format_studios } from "../../helpers/format";
+import { format_studios } from "../../helpers/format";
 
 const Poster = ({ data }: { data: any }) => {
   return (
@@ -56,13 +56,26 @@ const Poster = ({ data }: { data: any }) => {
           variant="subtitle2"
           sx={{ color: theme.color._100, fontWeight: 700 }}
         >
-          Episodes:{" "}
+          Volumes:{" "}
           <Typography
             component="span"
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.episodes}
+            {data.volumes ? data.volumes : "Unknown"}
+          </Typography>
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
+          Chapters:{" "}
+          <Typography
+            component="span"
+            variant="body1"
+            sx={{ color: theme.color._100 }}
+          >
+            {data.chapters ? data.chapters : "Unknown"}
           </Typography>
         </Typography>
         <Typography
@@ -82,92 +95,13 @@ const Poster = ({ data }: { data: any }) => {
           variant="subtitle2"
           sx={{ color: theme.color._100, fontWeight: 700 }}
         >
-          Aired:{" "}
+          Published:{" "}
           <Typography
             component="span"
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.aired.string}
-          </Typography>
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          sx={{ color: theme.color._100, fontWeight: 700 }}
-        >
-          Premiered:{" "}
-          <Typography
-            component="span"
-            variant="body1"
-            sx={{ color: theme.color._100 }}
-          >
-            {format_string(data.season)} {data.year}
-          </Typography>
-        </Typography>
-        <Typography
-          variant="subtitle2"
-          sx={{ color: theme.color._100, fontWeight: 700 }}
-        >
-          Broadcast:{" "}
-          <Typography
-            component="span"
-            variant="body1"
-            sx={{ color: theme.color._100 }}
-          >
-            {data.broadcast.day} at {data.broadcast.time} (JST)
-          </Typography>
-        </Typography>
-        {data.producers.length !== 0 ? (<Typography
-          variant="subtitle2"
-          sx={{ color: theme.color._100, fontWeight: 700 }}
-        >
-          Producers:{" "}
-          <Typography
-            component="span"
-            variant="body1"
-            sx={{ color: theme.color._100 }}
-          >
-            {format_studios(data.producers)}
-          </Typography>
-        </Typography>) : <></>}
-        {data.licensors.length !== 0 ? (<Typography
-          variant="subtitle2"
-          sx={{ color: theme.color._100, fontWeight: 700 }}
-        >
-          Licensors:{" "}
-          <Typography
-            component="span"
-            variant="body1"
-            sx={{ color: theme.color._100 }}
-          >
-            {format_studios(data.licensors)}
-          </Typography>
-        </Typography>) : <></>}
-        {data.studios.length !== 0 ? (<Typography
-          variant="subtitle2"
-          sx={{ color: theme.color._100, fontWeight: 700 }}
-        >
-          Studios:{" "}
-          <Typography
-            component="span"
-            variant="body1"
-            sx={{ color: theme.color._100 }}
-          >
-            {format_studios(data.studios)}
-          </Typography>
-        </Typography>
-        ) : <></>}
-        <Typography
-          variant="subtitle2"
-          sx={{ color: theme.color._100, fontWeight: 700 }}
-        >
-          Source:{" "}
-          <Typography
-            component="span"
-            variant="body1"
-            sx={{ color: theme.color._100 }}
-          >
-            {data.source}
+            {data.published.string}
           </Typography>
         </Typography>
         {data.demographics.length !== 0 ? (<Typography
@@ -183,19 +117,32 @@ const Poster = ({ data }: { data: any }) => {
             {format_studios(data.demographics)}
           </Typography>
         </Typography>) : <></>}
-        <Typography
+        {data.serializations.length !== 0 ? <Typography
           variant="subtitle2"
           sx={{ color: theme.color._100, fontWeight: 700 }}
         >
-          Rating:{" "}
+          Serialization:{" "}
           <Typography
             component="span"
             variant="body1"
             sx={{ color: theme.color._100 }}
           >
-            {data.rating}
+            {format_studios(data.serializations)}
           </Typography>
-        </Typography>
+        </Typography> : <></>}
+        {data.authors.length !== 0 ? <Typography
+          variant="subtitle2"
+          sx={{ color: theme.color._100, fontWeight: 700 }}
+        >
+          Authors:{" "}
+          <Typography
+            component="span"
+            variant="body1"
+            sx={{ color: theme.color._100 }}
+          >
+            {format_studios(data.authors)}
+          </Typography>
+        </Typography> : <></>}
       </Box>
     </Box>
   );

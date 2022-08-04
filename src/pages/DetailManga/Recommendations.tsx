@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Box, Button, Grid, Link, Pagination, Skeleton, Typography } from "@mui/material";
 import axios from "axios";
@@ -6,6 +6,7 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import usePagination from "./Pagination";
 import { BASE_API, RECOMMENDATIONS_PER_PAGE } from "./const ";
 import { theme } from "../../theme";
+import { MANGA_ENDPOINT } from "apis/endpoints";
 
 const Recommendations = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const Recommendations = () => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios(
-        `${BASE_API}/anime/${id}/recommendations`,
+        `${BASE_API}${MANGA_ENDPOINT}/${id}/recommendations`,
       )
       setData(result.data.data)
     }
@@ -51,7 +52,7 @@ const Recommendations = () => {
                 <AddBoxIcon />
               </Button>
               <Link
-                href={`/anime/${item.entry.mal_id}`}
+                href={`${MANGA_ENDPOINT}/${item.entry.mal_id}`}
                 sx={{
                   ".title": {
                     transition: "all 0.2s",
