@@ -1,14 +1,14 @@
-import {  Container, Grid, Skeleton, Typography } from "@mui/material";
+import { Container, Grid, Skeleton, Typography } from "@mui/material";
 import Layout from "../../components/layout";
 import { theme } from "../../theme";
 import Poster from "./Poster";
 import Information from "./Information";
 import { useParams } from "react-router-dom";
-import { useGetAnimeByIdQuery } from "../../redux/slices/animeSlice";
+import { useGetMangaByIdQuery } from "redux/slices/mangaSlice";
 
-const DetailPage = () => {
+const DetailMangaPage = () => {
   const { id } = useParams();
-  const { data } = useGetAnimeByIdQuery(id);
+  const { data } = useGetMangaByIdQuery(id);
 
   return data ? (
     <Layout>
@@ -52,4 +52,4 @@ const DetailPage = () => {
     <Skeleton variant="rectangular" height="100%" />
   );
 };
-export default DetailPage;
+export default DetailMangaPage;

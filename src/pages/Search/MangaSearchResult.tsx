@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   Box,
   Button,
@@ -14,29 +14,28 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useGetMangaSearchQuery } from "../../redux/slices/mangaSlice";
+import { useSearchAnimeQuery } from "../../redux/slices/animeSlice";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
 const SearchResults = ({ searchQuery }: any) => {
   const [page, setPage] = React.useState(1);
-  const { data } = useGetMangaSearchQuery({strQuery: searchQuery.get("q"),limit: 5, page: page});
-  
+  const { data } = useSearchAnimeQuery(searchQuery);
+
   const handlePageChange = (
-    event: any,
+    event: React.ChangeEvent<unknown>,
     value: number
   ) => {
     setPage(value);
   };
-
 
   return data ? (
     <Box>
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-            <Typography variant="h3" sx={{ fontWeight: 700 }}>
-              Search Result for "{searchQuery.get("q")}"
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Search Result for "{searchQuery}"
             </Typography>
           </Box>
         </Grid>
@@ -70,7 +69,7 @@ const SearchResults = ({ searchQuery }: any) => {
                     my: "auto",
                   }}
                 >
-                  <Link href={`/manga/${item.mal_id}`}>
+                  <Link href={`/anime/${item.mal_id}`}>
                     <img
                       alt={item.mal_id}
                       src={item.images.jpg.image_url}
@@ -84,7 +83,7 @@ const SearchResults = ({ searchQuery }: any) => {
                       }}
                     />
                   </Link>
-                  <Link href={`/manga/${item.mal_id}`}>
+                  <Link href={`/anime/${item.mal_id}`}>
                     <Stack spacing={1} ml={2} width={"fit-content"}>
                       <Typography variant="h4" sx={{ fontWeight: 600 }}>
                         {item.title}

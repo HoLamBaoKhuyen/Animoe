@@ -1,0 +1,36 @@
+.slider_container {
+  width: 800px;
+  margin: auto;
+}
+@media only screen and (max-width: 900px) {
+  .slider_container {
+    width: 600px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .slider_container {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .slider_container {
+    width: 100%;
+  }
+}
+.slider_character {
+  width: 100%;
+}
+.styled_dots {
+  list-style-type: none;
+}
+.styled_dots li button {
+  opacity: 0.4;
+  color: #646fd4;
+}
+.styled_dots :global(li.slick-active) button {
+  opacity: 1;
+}
+
+.slider_trailer {
+  width: 100%;
+}
