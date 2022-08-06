@@ -54,8 +54,8 @@ const mangaApi = apiSlice.injectEndpoints({
       },
     }),
     getRecentMangaRecommendations: build.query({
-      query: (params) => ({
-        url: `${RECOMMENDATIONS_ENDPOINT}/${MANGA_ENDPOINT}`,
+      query: (page) => ({
+        url: `${RECOMMENDATIONS_ENDPOINT}${MANGA_ENDPOINT}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {

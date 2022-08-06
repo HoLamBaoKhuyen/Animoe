@@ -6,14 +6,13 @@ import {
     PaginationItem,
 
 } from "@mui/material";
-import { useGetRecentAnimeRecommendationsQuery } from "../../redux/slices/animeSlice";
 import RecommendationCard from "./RecommendationCard";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {currentPageData,maxPages} from "./RecommendationsPagePagination"
-const RecommendationsPageBody = () => {
+const RecommendationsPageBody = (props:any) => {
   const [page, setPage] = React.useState(1);
-  const {data} = useGetRecentAnimeRecommendationsQuery(0);
+  const {data} = props;
   const currentData = currentPageData(data, 5, page);
   const maxPage = maxPages(data, 5);
 

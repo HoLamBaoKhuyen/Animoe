@@ -72,7 +72,7 @@ const MangaSearchPage = () => {
             },
           }}
         >
-          <SearchTool searchQuery={searchParams.get("q")} searchType="/manga-search"/>
+          <SearchTool searchQuery={searchParams} searchType="/manga-search"/>
         </Container>
       </Box>
       <Container

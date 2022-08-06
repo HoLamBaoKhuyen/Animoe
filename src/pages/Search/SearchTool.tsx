@@ -8,10 +8,10 @@ import Slide from "@mui/material/Slide";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 const SearchTool = (props: any) => {
-  const { searchQuery, searchType } = props;
+  const { searchParams, searchType } = props;
 
   const [checked, setChecked] = React.useState(false);
-  const [wordEntered, setWordEntered] = React.useState(searchQuery);
+  const [wordEntered, setWordEntered] = React.useState(searchParams ? searchParams.get('q') : "");
 
   const handleChange = () => {
     setChecked((prev) => !prev);

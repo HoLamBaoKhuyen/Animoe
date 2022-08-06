@@ -54,7 +54,6 @@ const SearchResults = ({ searchQuery, searchType }: any) => {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  height: "150px",
                   background: theme.color._850,
                   borderRadius: 3,
                   display: "flex",
@@ -63,29 +62,28 @@ const SearchResults = ({ searchQuery, searchType }: any) => {
               >
                 <Box
                   sx={{
-                    height: "90%",
                     display: "flex",
                     alignItems: "center",
                     ml: "10px",
                     my: "auto",
                   }}
                 >
-                  <Link href={`/anime/${item.mal_id}`}>
-                    <img
-                      alt={item.mal_id}
-                      src={item.images.jpg.image_url}
-                      height="100%"
-                      width="auto"
-                      style={{
-                        borderRadius: 12,
-                        minWidth: 60,
-                        maxWidth: 80,
-                        maxHeight: 120,
-                      }}
-                    />
+                  <Link href={`/anime/${item.mal_id}`} >
+                    <Stack spacing={0.5} ml={1} my={1} width={"fit-content"}>
+                      <img
+                        alt={item.mal_id}
+                        src={item.images.jpg.image_url}
+                        height="100%"
+                        width="auto"
+                        style={{
+                          borderRadius: 12,
+                          width: 80,
+                        }}
+                      />
+                    </Stack>
                   </Link>
                   <Link href={`/anime/${item.mal_id}`}>
-                    <Stack spacing={1} ml={2} width={"fit-content"}>
+                    <Stack spacing={0.5} ml={2} my={1} width={"fit-content"}>
                       <Typography variant="h4" sx={{ fontWeight: 600 }}>
                         {item.title}
                       </Typography>
