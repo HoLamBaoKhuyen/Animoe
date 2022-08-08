@@ -55,7 +55,7 @@ const Content = ({ data }: { data: any }) => {
         </Typography>
         <Box>
           {data.genres.map((genre: any, key: number) => (
-            <Chip key={genre.id} label={genre.name} sx={{ marginRight: 1 }} />
+            <Chip key={key} label={genre.name} sx={{ marginRight: 1 }} />
           ))}
         </Box>
       </Box>
