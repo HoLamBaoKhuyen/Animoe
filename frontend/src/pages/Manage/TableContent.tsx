@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from "react";
 import {
   Table,
@@ -12,6 +13,7 @@ import {
   Stack,
   PaginationItem,
   Pagination,
+  Link,
 } from "@mui/material";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,65 +22,6 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { theme } from "../../theme";
 import DeleteModal from "./DeleteModal";
 import AddModal from "./AddModal";
-
-const rows = [
-  {
-    id: 1,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-  {
-    id: 2,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-  {
-    id: 3,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-  {
-    id: 4,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-  {
-    id: 5,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-  {
-    id: 6,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-  {
-    id: 7,
-    image: "https://cdn.myanimelist.net/images/anime/1889/123307.webp",
-    title: "Spy x Family",
-    score: 9,
-    type: "TV",
-    progress: "1/12",
-  },
-];
 
 export const StyledTableCell = styled(TableCell)({
   "&.MuiTableCell-root": {
@@ -92,10 +35,24 @@ export const StyledTableCell = styled(TableCell)({
     },
   },
 });
+
 export default function TableContent() {
+  const [rows, setRows] = React.useState([]);
   const [page, setPage] = React.useState(1);
   const [openModal, setOpenModal] = React.useState<boolean>(false);
   const [openAddModal, setOpenAddModal] = React.useState<boolean>(false);
+  const email = sessionStorage.getItem("email");
+
+  React.useEffect(() => {
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/anime/${email}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setRows(json.animes);
+      })
+      .catch(console.error);
+  }, [rows]);
 
   const handleClickOpen = () => {
     setOpenModal(true);
@@ -121,67 +78,66 @@ export default function TableContent() {
   };
 
   return (
-    <>
-      {" "}
-      <TableContainer>
-        <Table
-          sx={{
-            minWidth: 650,
-            backgroundColor: theme.color._850,
-            borderRadius: 2,
-          }}
-          aria-label="simple table"
-        >
-          <TableHead>
-            <TableRow>
-              <StyledTableCell
-                className="table-title"
-                width={150}
-                align="center"
-              ></StyledTableCell>
-              <StyledTableCell
-                className="table-title"
-                width={350}
-                sx={{ color: theme.color._100 }}
-              >
-                Title
-              </StyledTableCell>
-              <StyledTableCell
-                className="table-title"
-                width={120}
-                align="center"
-                sx={{ color: theme.color._100 }}
-              >
-                Score
-              </StyledTableCell>
-              <StyledTableCell
-                className="table-title"
-                width={120}
-                align="center"
-                sx={{ color: theme.color._100 }}
-              >
-                Type
-              </StyledTableCell>
-              <StyledTableCell
-                className="table-title"
-                width={120}
-                align="center"
-                sx={{ color: theme.color._100 }}
-              >
-                Progress
-              </StyledTableCell>
-              <StyledTableCell
-                className="table-title"
-                width={150}
-                align="center"
-                sx={{ color: theme.color._100 }}
-              >
-                Action
-              </StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
+    <TableContainer>
+      <Table
+        sx={{
+          minWidth: 650,
+          backgroundColor: theme.color._850,
+          borderRadius: 2,
+        }}
+        aria-label="simple table"
+      >
+        <TableHead>
+          <TableRow>
+            <StyledTableCell
+              className="table-title"
+              width={150}
+              align="center"
+            ></StyledTableCell>
+            <StyledTableCell
+              className="table-title"
+              width={350}
+              sx={{ color: theme.color._100 }}
+            >
+              Title
+            </StyledTableCell>
+            <StyledTableCell
+              className="table-title"
+              width={120}
+              align="center"
+              sx={{ color: theme.color._100 }}
+            >
+              Score
+            </StyledTableCell>
+            <StyledTableCell
+              className="table-title"
+              width={120}
+              align="center"
+              sx={{ color: theme.color._100 }}
+            >
+              Type
+            </StyledTableCell>
+            <StyledTableCell
+              className="table-title"
+              width={120}
+              align="center"
+              sx={{ color: theme.color._100 }}
+            >
+              Progress
+            </StyledTableCell>
+            <StyledTableCell
+              className="table-title"
+              width={150}
+              align="center"
+              sx={{ color: theme.color._100 }}
+            >
+              Action
+            </StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows ? (
+            rows.map((row) => (
               <TableRow key={row.id}>
                 <StyledTableCell
                   width={150}
@@ -189,15 +145,26 @@ export default function TableContent() {
                   component="th"
                   scope="row"
                 >
-                  <img
-                    alt="poster"
-                    src={row.image}
-                    height="100px"
-                    width="auto"
-                    style={{ borderRadius: 10 }}
-                  />
+                  <Link href={`/anime/${row.id}`}>
+                    <img
+                      alt="poster"
+                      src={row.image}
+                      height="100px"
+                      width="auto"
+                      style={{ borderRadius: 10 }}
+                    />
+                  </Link>
                 </StyledTableCell>
-                <StyledTableCell width={350}>{row.title}</StyledTableCell>
+
+                <StyledTableCell width={350}>
+                  <Link
+                    href={`/anime/${row.id}`}
+                    sx={{ color: theme.color.white }}
+                  >
+                    {row.title}{" "}
+                  </Link>
+                </StyledTableCell>
+
                 <StyledTableCell width={120} align="center">
                   {row.score}
                 </StyledTableCell>
@@ -244,7 +211,6 @@ export default function TableContent() {
                         },
                       }}
                     >
-                      {" "}
                       <DeleteIcon fontSize="small" />
                     </Button>
                   </Stack>
@@ -257,40 +223,42 @@ export default function TableContent() {
                   <AddModal
                     open={openAddModal}
                     onClose={handleCloseAddModal}
-                    title={row.title}
+                    data={row}
                   />
                 </StyledTableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <Box style={{ margin: "auto", width: "fit-content", marginTop: 20 }}>
-          <Pagination
-            count={10}
-            shape="rounded"
-            variant="outlined"
-            color="primary"
-            page={page}
-            onChange={handlePageChange}
-            renderItem={(item) => (
-              <PaginationItem
-                components={{
-                  previous: ArrowBackIosNewIcon,
-                  next: ArrowForwardIosIcon,
-                }}
-                {...item}
-                sx={{
-                  "&.Mui-selected": {
-                    backgroundColor: "#9BA3EB",
-                    color: "white",
-                    borderRadius: 0,
-                  },
-                }}
-              />
-            )}
-          />
-        </Box>
-      </TableContainer>
-    </>
+            ))
+          ) : (
+            <></>
+          )}
+        </TableBody>
+      </Table>
+      <Box style={{ margin: "auto", width: "fit-content", marginTop: 20 }}>
+        <Pagination
+          count={10}
+          shape="rounded"
+          variant="outlined"
+          color="primary"
+          page={page}
+          onChange={handlePageChange}
+          renderItem={(item) => (
+            <PaginationItem
+              components={{
+                previous: ArrowBackIosNewIcon,
+                next: ArrowForwardIosIcon,
+              }}
+              {...item}
+              sx={{
+                "&.Mui-selected": {
+                  backgroundColor: "#9BA3EB",
+                  color: "white",
+                  borderRadius: 0,
+                },
+              }}
+            />
+          )}
+        />
+      </Box>
+    </TableContainer>
   );
 }

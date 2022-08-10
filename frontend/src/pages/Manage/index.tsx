@@ -7,9 +7,6 @@ import { theme } from "../../theme";
 import StyledSelect from "../../components/Select/StyledSelect";
 import TableContent from "./TableContent";
 import { useNavigate } from "react-router-dom";
-import CustomModal from "./DeleteModal";
-import Delete from "@mui/icons-material/Delete";
-import DeleteModal from "./DeleteModal";
 
 interface TabPanelProps {
   children?: React.ReactNode;

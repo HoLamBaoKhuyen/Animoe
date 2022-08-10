@@ -27,7 +27,7 @@ export const mangaSlice = createSlice({
   reducers: {},
 });
 
-const mangaApi = apiSlice.injectEndpoints({
+export const mangaApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     getTypeRanking: build.query({
       query: (type) => ({

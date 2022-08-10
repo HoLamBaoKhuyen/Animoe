@@ -37,19 +37,17 @@ type SelectProps = {
   label?: string;
   placeHolder?: string;
   width?: string | number;
+  handleChange?: any;
+  value?: any;
 };
 const StyledSelect: React.FC<SelectProps> = ({
+  value,
   list,
   label,
   placeHolder,
   width,
+  handleChange,
 }) => {
-  const [value, setValue] = React.useState("-1");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setValue(event.target.value);
-  };
-
   return (
     <FormControl
       sx={{
@@ -101,7 +99,7 @@ const StyledSelect: React.FC<SelectProps> = ({
 StyledSelect.defaultProps = {
   list: ["Item1", "Item2", "Item3"],
   label: "Label",
-  placeHolder: "Vui lòng chọn",
+  placeHolder: "Select",
   width: 200,
 };
 export default StyledSelect;

@@ -9,6 +9,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+const adminFirestore = admin.firestore;
 const app = express();
 app.use(cors({ origin: true }));
 
@@ -29,10 +30,7 @@ app.post("/api/user/", async (req, res) => {
 
 app.post("/api/anime", async (req, res) => {
   try {
-    await db
-      .collection("animes")
-      .doc("/" + req.body.id + "/")
-      .create({});
+    await addAnimeToCollection(req.body.anime, req.body.email);
     return res.status(200).send();
   } catch (error) {
     console.log(error);
@@ -41,6 +39,32 @@ app.post("/api/anime", async (req, res) => {
 });
 
 // Read - GET
+app.get("/api/anime/:title/:email", async (req, res) => {
+  try {
+    const isAdded = await checkIfAnimeIsInCollection(
+      req.params.title,
+      req.params.email
+    );
+    return res.status(200).send({
+      isAdded: isAdded,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+});
+
+app.get("/api/list/anime/:email", async (req, res) => {
+  try {
+    const animeList = await getAnimeCollection(req.params.email);
+    return res.status(200).send({
+      animes: animeList,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+});
 
 // Update - PUT
 
@@ -61,7 +85,7 @@ class Anime {
     season,
     progress,
     score,
-    producer,
+    producers,
     plan,
     isAdded
   ) {
@@ -75,7 +99,7 @@ class Anime {
     this.season = season;
     this.progress = progress;
     this.score = score;
-    this.producer = producer;
+    this.producer = producers;
     this.plan = plan;
     this.isAdded = isAdded;
   }
@@ -93,15 +117,6 @@ async function createUserIfNotExisted(email) {
   });
 }
 
-async function createAnimeIfNotExisted(anime) {
-  const animeDocRef = db.collection("animes").doc(anime.title);
-  animeDocRef.get().then(async (doc) => {
-    if (!doc.exists) {
-      await animeDocRef.set(anime);
-    }
-  });
-}
-
 async function checkIfAnimeIsInCollection(animeTitle, email) {
   const userDocRef = db.collection("users").doc(email);
   const snapshot = await userDocRef.get();
@@ -111,8 +126,8 @@ async function checkIfAnimeIsInCollection(animeTitle, email) {
     if (animeList.length === 0) {
       return false;
     } else {
-      for (let anime of animeList) {
-        if (anime == animeTitle) {
+      for (let userAnime of animeList) {
+        if (userAnime.title === animeTitle) {
           return true;
         }
       }
@@ -123,8 +138,42 @@ async function checkIfAnimeIsInCollection(animeTitle, email) {
   }
 }
 
-async function getAnimeFromCollection(animeTitle) {
-  const animeDocRef = db.collection("animes").doc(animeTitle);
-  const snapshot = await animeDocRef.get();
-  return snapshot.data();
+async function getAnimeCollection(email) {
+  const userDocRef = db.collection("users").doc(email);
+  const snapshot = await userDocRef.get();
+  const user = snapshot.data();
+  const data = [];
+  if (user !== undefined) {
+    const animeList = user.animes;
+    if (animeList.length === 0) {
+      return animeList;
+    } else {
+      for (let anime of animeList) {
+        data.push(anime);
+      }
+    }
+  }
+  return data;
+}
+
+async function addAnimeToCollection(anime, email) {
+  const userDocRef = db.collection("users").doc(email);
+  await userDocRef.get().then(async (doc) => {
+    if (doc.exists) {
+      await userDocRef.update({
+        animes: adminFirestore.FieldValue.arrayUnion(anime),
+      });
+    }
+  });
+}
+
+async function deleteAnimeFromCollection(anime, email) {
+  const userDocRef = db.collection("users").doc(email);
+  await userDocRef.get().then(async (doc) => {
+    if (doc.exists) {
+      await userDocRef.update({
+        animes: adminFirestore.FieldValue.arrayRemove(anime),
+      });
+    }
+  });
 }
