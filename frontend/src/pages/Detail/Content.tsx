@@ -55,14 +55,7 @@ const Content = ({ data }: { data: any }) => {
         </Typography>
         <Box>
           {data.genres.map((genre: any, key: number) => (
-            <Button
-              variant="outlined"
-              disabled
-              sx={{ width: "fit-content", p: 0, border: 0, mr: 1, mb: 1 }}
-              key={key}
-            >
-              <Chip key={genre.id} label={genre.name} />
-            </Button>
+            <Chip key={key} label={genre.name} sx={{ marginRight: 1 }} />
           ))}
         </Box>
       </Box>
