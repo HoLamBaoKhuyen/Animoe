@@ -13,6 +13,7 @@ import {
 import { theme } from "../../theme";
 import ModalLayout from "./ModalLayout";
 import StyledSelect from "./StyledSelect";
+import { format_progress } from "../../helpers/format";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   "&.MuiTableCell-root": {
@@ -23,22 +24,24 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-type AddModalProps = {
+type EditModalProps = {
   open: true | false;
   data?: any;
   onClose: () => void;
   onSubmit?: any;
 };
 
-const AddModal: React.FC<AddModalProps> = ({
+const EditModal: React.FC<EditModalProps> = ({
   data,
   open,
   onClose,
   onSubmit,
 }) => {
-  const [status, setStatus] = React.useState<string>("-1");
-  const [progress, setProgress] = React.useState<number>();
-  const [score, setScore] = React.useState<string>("-1");
+  const [status, setStatus] = React.useState<string>(data.plan);
+  const [progress, setProgress] = React.useState<number>(
+    format_progress(data.progress)
+  );
+  const [score, setScore] = React.useState<string>(data.score);
 
   const handleStatus = (e: any) => {
     setStatus(e.target.value);
@@ -48,21 +51,25 @@ const AddModal: React.FC<AddModalProps> = ({
     setScore(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleEditSubmit = (e: any) => {
     e.preventDefault();
     const formData = {
       status: status,
       progress: `${progress}/${data.episodes}`,
       score: score,
     };
-    onSubmit(formData);
+    onSubmit(data, formData);
   };
 
   return (
     <div>
-      <ModalLayout open={open} title="Add anime to your list" onClose={onClose}>
+      <ModalLayout
+        open={open}
+        title="Edit anime in your list"
+        onClose={onClose}
+      >
         <Box sx={{ maxWidth: "900px", paddingX: { md: 4, xs: 0 } }}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleEditSubmit}>
             <Table size="small">
               <TableBody>
                 <TableRow>
@@ -106,6 +113,7 @@ const AddModal: React.FC<AddModalProps> = ({
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">
                     <TextField
+                      value={progress}
                       onChange={(e) => setProgress(parseInt(e.target.value))}
                       type="number"
                       size="small"
@@ -172,4 +180,4 @@ const AddModal: React.FC<AddModalProps> = ({
   );
 };
 
-export default AddModal;
+export default EditModal;

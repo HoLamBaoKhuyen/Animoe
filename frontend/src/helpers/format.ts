@@ -58,6 +58,11 @@ export const format_email = (s: string | null) => {
     return s.slice(0, s.indexOf("@"));
   }
 };
+export const format_progress = (s: string | undefined) => {
+  if (typeof s === "string") {
+    return parseInt(s.slice(0, s.indexOf("/")));
+  } else return 0;
+};
 export const format_date = (date: string) => {
   const stringDate = new Date(date).toDateString();
   const sArray: string[] = stringDate.split(" ");

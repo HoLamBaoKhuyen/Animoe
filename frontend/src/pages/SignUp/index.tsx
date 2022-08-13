@@ -23,13 +23,13 @@ const SignUpPage = () => {
     const authentication = getAuth(firebaseApp);
     createUserWithEmailAndPassword(authentication, email, password)
       .then((response) => {
-        sessionStorage.setItem(
+        localStorage.setItem(
           "Auth Token",
           response._tokenResponse.refreshToken
         );
         const emailStr = response.user.email;
         if (typeof emailStr === "string") {
-          sessionStorage.setItem("email", emailStr);
+          localStorage.setItem("email", emailStr);
         }
         fetch(
           "http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/user",

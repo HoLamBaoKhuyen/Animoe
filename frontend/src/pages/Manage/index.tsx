@@ -46,17 +46,17 @@ const ManagePage = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    let authToken = sessionStorage.getItem("Auth Token");
+    let authToken = localStorage.getItem("Auth Token");
 
     if (!authToken) {
       navigate("/login");
     }
-  }, []);
+  });
 
   return (
     <Layout>
       <Container sx={{ background: theme.color._800, borderRadius: 3 }}>
-        <Box sx={{ width: "100%" }} px={5} py={2}>
+        <Box sx={{ width: "100%" }} px={5} py={2} mb={4}>
           <Box>
             <StyledTabs
               value={value}

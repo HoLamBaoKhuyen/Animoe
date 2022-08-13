@@ -193,7 +193,7 @@ const SearchBar = () => {
           >
             {filteredData.map((item) => {
               return (
-                <NavBarMenuItem>
+                <NavBarMenuItem key={item.mal_id}>
                   <Link
                     title={item.title}
                     key={item.mal_id}

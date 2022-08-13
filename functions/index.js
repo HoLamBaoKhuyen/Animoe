@@ -67,8 +67,30 @@ app.get("/api/list/anime/:email", async (req, res) => {
 });
 
 // Update - PUT
+app.put("/api/anime", async (req, res) => {
+  try {
+    await updateAnimeInCollection(
+      req.body.oldAnime,
+      req.body.newAnime,
+      req.body.email
+    );
+    return res.status(200).send();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+});
 
 // Delete - DELETE
+app.delete("/api/anime", async (req, res) => {
+  try {
+    await deleteAnimeFromCollection(req.body.anime, req.body.email);
+    return res.status(200).send();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+});
 
 // Export the api to Firebase Cloud Functions
 exports.app = functions.region("asia-southeast1").https.onRequest(app);
@@ -173,6 +195,20 @@ async function deleteAnimeFromCollection(anime, email) {
     if (doc.exists) {
       await userDocRef.update({
         animes: adminFirestore.FieldValue.arrayRemove(anime),
+      });
+    }
+  });
+}
+
+async function updateAnimeInCollection(oldAnime, newAnime, email) {
+  const userDocRef = db.collection("users").doc(email);
+  await userDocRef.get().then(async (doc) => {
+    if (doc.exists) {
+      await userDocRef.update({
+        animes: adminFirestore.FieldValue.arrayRemove(oldAnime),
+      });
+      await userDocRef.update({
+        animes: adminFirestore.FieldValue.arrayUnion(newAnime),
       });
     }
   });

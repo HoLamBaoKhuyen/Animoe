@@ -73,8 +73,8 @@ export default function CustomizedMenus(props: CustomizedMenuProps) {
   };
 
   const handleLogOut = () => {
-    sessionStorage.removeItem("Auth Token");
-    sessionStorage.removeItem("email");
+    localStorage.removeItem("Auth Token");
+    localStorage.removeItem("email");
     navigate("/login");
   };
 

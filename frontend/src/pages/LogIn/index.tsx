@@ -57,13 +57,13 @@ const LoginPage = () => {
     const authentication = getAuth(firebaseApp);
     signInWithEmailAndPassword(authentication, email, password)
       .then((response) => {
-        sessionStorage.setItem(
+        localStorage.setItem(
           "Auth Token",
           response._tokenResponse.refreshToken
         );
         const emailStr = response.user.email;
         if (typeof emailStr === "string") {
-          sessionStorage.setItem("email", emailStr);
+          localStorage.setItem("email", emailStr);
         }
         navigate("/");
       })

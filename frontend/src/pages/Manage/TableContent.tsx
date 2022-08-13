@@ -21,7 +21,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { theme } from "../../theme";
 import DeleteModal from "./DeleteModal";
-import AddModal from "./AddModal";
+import EditModal from "./EditModal";
 
 export const StyledTableCell = styled(TableCell)({
   "&.MuiTableCell-root": {
@@ -37,37 +37,105 @@ export const StyledTableCell = styled(TableCell)({
 });
 
 export default function TableContent() {
-  const [rows, setRows] = React.useState([]);
+  const [rows, setRows] = React.useState<any[]>([]);
   const [page, setPage] = React.useState(1);
-  const [openModal, setOpenModal] = React.useState<boolean>(false);
-  const [openAddModal, setOpenAddModal] = React.useState<boolean>(false);
-  const email = sessionStorage.getItem("email");
+  const [openModal, setOpenModal] = React.useState<number>(-1);
+  const [openEditModal, setOpenEditModal] = React.useState<number>(-1);
+  const email = localStorage.getItem("email");
+
+  let authToken = localStorage.getItem("Auth Token");
+
+  const handleSubmit = (row: any) => {
+    console.log(row);
+    if (authToken) {
+      const email = localStorage.getItem("email");
+      fetch(
+        "http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/anime",
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            anime: row,
+            email: email,
+          }),
+        }
+      ).then((r) => {
+        const index = rows.indexOf(row);
+        if (index > -1) {
+          rows.splice(index, 1);
+        }
+        setRows(rows);
+      });
+    }
+  };
+
+  const handleEditSubmit = (data: any, formData: any) => {
+    if (authToken) {
+      const email = localStorage.getItem("email");
+      const anime = {
+        id: data.id,
+        image: data.image,
+        title: data.title,
+        status: data.status,
+        type: data.type,
+        episodes: data.episodes,
+        year: data.year,
+        season: data.season,
+        progress: formData.progress,
+        score: formData.score,
+        producers: data.producers,
+        plan: formData.status,
+        isAdded: data.isAdded,
+      };
+      fetch(
+        "http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/anime",
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            oldAnime: data,
+            newAnime: anime,
+            email: email,
+          }),
+        }
+      );
+    }
+  };
 
   React.useEffect(() => {
-    fetch(
-      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/anime/${email}`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setRows(json.animes);
-      })
-      .catch(console.error);
+    const timer = setTimeout(() => {
+      fetch(
+        `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/anime/${email}`
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          setRows(json.animes);
+        })
+        .catch(console.error);
+    }, 500);
+    return () => clearTimeout(timer);
   }, [rows]);
 
-  const handleClickOpen = () => {
-    setOpenModal(true);
+  const handleClickOpen = (id) => {
+    setOpenModal((showId) => (showId === id ? -1 : id));
   };
 
   const handleClose = () => {
-    setOpenModal(false);
+    setOpenModal(-1);
   };
 
-  const handleClickOpenAddModal = () => {
-    setOpenAddModal(true);
+  const handleClickOpenEditModal = (id) => {
+    setOpenEditModal((showId) => (showId === id ? -1 : id));
   };
 
-  const handleCloseAddModal = () => {
-    setOpenAddModal(false);
+  const handleCloseEditModal = () => {
+    setOpenEditModal(-1);
   };
 
   const handlePageChange = (
@@ -155,16 +223,14 @@ export default function TableContent() {
                     />
                   </Link>
                 </StyledTableCell>
-
                 <StyledTableCell width={350}>
                   <Link
                     href={`/anime/${row.id}`}
                     sx={{ color: theme.color.white }}
                   >
-                    {row.title}{" "}
+                    {row.title}
                   </Link>
                 </StyledTableCell>
-
                 <StyledTableCell width={120} align="center">
                   {row.score}
                 </StyledTableCell>
@@ -177,7 +243,7 @@ export default function TableContent() {
                 <StyledTableCell width={150} align="center">
                   <Stack direction="row" spacing={3} justifyContent="center">
                     <Button
-                      onClick={() => handleClickOpenAddModal()}
+                      onClick={() => handleClickOpenEditModal(row.id)}
                       sx={{
                         minWidth: 0,
                         p: 0,
@@ -195,7 +261,7 @@ export default function TableContent() {
                       <CreateIcon fontSize="small" />
                     </Button>
                     <Button
-                      onClick={() => handleClickOpen()}
+                      onClick={() => handleClickOpen(row.id)}
                       sx={{
                         minWidth: 0,
                         p: 0,
@@ -204,7 +270,6 @@ export default function TableContent() {
                         borderRadius: 1,
                         backgroundColor: theme.color.red_800,
                         transition: "all 0.1s",
-
                         "&:hover": {
                           backgroundColor: theme.color.red_800,
                           opacity: 0.6,
@@ -216,14 +281,17 @@ export default function TableContent() {
                   </Stack>
                   {/* Modal */}
                   <DeleteModal
-                    open={openModal}
+                    open={openModal == row.id}
                     onClose={handleClose}
-                    title={row.title}
-                  />
-                  <AddModal
-                    open={openAddModal}
-                    onClose={handleCloseAddModal}
                     data={row}
+                    onSubmit={handleSubmit}
+                  />
+
+                  <EditModal
+                    open={openEditModal == row.id}
+                    onClose={handleCloseEditModal}
+                    data={row}
+                    onSubmit={handleEditSubmit}
                   />
                 </StyledTableCell>
               </TableRow>

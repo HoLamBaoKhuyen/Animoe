@@ -1,10 +1,11 @@
-import {  Container, Grid, Skeleton, Typography } from "@mui/material";
+import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
 import Layout from "../../components/layout";
 import { theme } from "../../theme";
 import Poster from "./Poster";
 import Information from "./Information";
 import { useParams } from "react-router-dom";
 import { useGetAnimeByIdQuery } from "../../redux/slices/animeSlice";
+import * as React from "react";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -46,6 +47,7 @@ const DetailPage = () => {
             <Information data={data} />
           </Grid>
         </Grid>
+        <Box mb={4} />
       </Container>
     </Layout>
   ) : (

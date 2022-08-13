@@ -8,11 +8,11 @@ const Poster = ({ data }: { data: any }) => {
   const [isAddedAnime, setAddedAnime] = React.useState<boolean>();
   const [openAddModal, setOpenAddModal] = React.useState<boolean>(false);
 
-  let authToken = sessionStorage.getItem("Auth Token");
+  let authToken = localStorage.getItem("Auth Token");
 
   const getFormData = (formData: any) => {
     if (authToken) {
-      const email = sessionStorage.getItem("email");
+      const email = localStorage.getItem("email");
       const anime = {
         id: data.mal_id,
         image: data.images.jpg.image_url,
@@ -56,7 +56,7 @@ const Poster = ({ data }: { data: any }) => {
 
   React.useEffect(() => {
     if (authToken) {
-      const email = sessionStorage.getItem("email");
+      const email = localStorage.getItem("email");
       fetch(
         `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/anime/${data.title}/${email}`,
         {

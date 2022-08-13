@@ -15,8 +15,8 @@ import CustomizedMenus from "./ProfileMenu";
 import { format_email } from "../../../helpers/format";
 
 const NavBar = () => {
-  const authToken = sessionStorage.getItem("Auth Token");
-  const email = sessionStorage.getItem("email");
+  const authToken = localStorage.getItem("Auth Token");
+  const email = localStorage.getItem("email");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -100,17 +100,17 @@ const NavBar = () => {
         />
       </NavBarMenuItem>
 
-      <NavBarMenuItem>
-        <Typography
-          sx={{
-            fontSize: { sm: 16, xs: 12 },
-            fontWeight: 600,
-            color: theme.color._100,
-          }}
-        >
-          Forum
-        </Typography>
-      </NavBarMenuItem>
+      {/*<NavBarMenuItem>*/}
+      {/*  <Typography*/}
+      {/*    sx={{*/}
+      {/*      fontSize: { sm: 16, xs: 12 },*/}
+      {/*      fontWeight: 600,*/}
+      {/*      color: theme.color._100,*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    Forum*/}
+      {/*  </Typography>*/}
+      {/*</NavBarMenuItem>*/}
       {authToken ? (
         <CustomizedMenus menuName={format_email(email)} />
       ) : (
@@ -203,19 +203,19 @@ const NavBar = () => {
                 "Recommendations",
               ]}
             />
-            <Typography
-              sx={{
-                fontSize: { md: 20, sm: 16 },
-                fontWeight: 600,
-                color: theme.color._100,
-                cursor: "pointer",
-                "&:hover": {
-                  color: theme.color.white,
-                },
-              }}
-            >
-              Forum
-            </Typography>
+            {/*<Typography*/}
+            {/*  sx={{*/}
+            {/*    fontSize: { md: 20, sm: 16 },*/}
+            {/*    fontWeight: 600,*/}
+            {/*    color: theme.color._100,*/}
+            {/*    cursor: "pointer",*/}
+            {/*    "&:hover": {*/}
+            {/*      color: theme.color.white,*/}
+            {/*    },*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  Forum*/}
+            {/*</Typography>*/}
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           {authToken ? (
