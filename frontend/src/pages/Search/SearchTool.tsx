@@ -8,10 +8,11 @@ import Slide from "@mui/material/Slide";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 const SearchTool = (props: any) => {
-  const { searchQuery } = props;
-
+  const { searchParams, searchType } = props;
   const [checked, setChecked] = React.useState(false);
-  const [wordEntered, setWordEntered] = React.useState(searchQuery);
+  const [wordEntered, setWordEntered] = React.useState(
+    searchParams ? searchParams.get("q") : ""
+  );
 
   const handleChange = () => {
     setChecked((prev) => !prev);
@@ -34,7 +35,7 @@ const SearchTool = (props: any) => {
 
         <Grid item xs={12} zIndex={10} sx={{ mb: 5 }}>
           <Box>
-            <form action="/anime-search" method="get">
+            <form action={searchType} method="get">
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Box
                   sx={{

@@ -2,6 +2,8 @@ import * as React from "react";
 import {
   Box,
   Button,
+  Card,
+  CardContent,
   Grid,
   Link,
   Pagination,
@@ -14,18 +16,17 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSearchAnimeQuery } from "../../redux/slices/animeSlice";
+import { useGetAnimeSearchQuery } from "../../redux/slices/animeSlice";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
-
-const SearchResults = ({ searchQuery }: any) => {
+const SearchResults = ({ searchQuery, searchType }: any) => {
   const [page, setPage] = React.useState(1);
-  const { data } = useSearchAnimeQuery(searchQuery);
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
+  const { data } = useGetAnimeSearchQuery({
+    strQuery: searchQuery.get("q"),
+    limit: 5,
+    page: page,
+  });
+  const handlePageChange = (event: any, value: number) => {
     setPage(value);
   };
 
@@ -35,7 +36,7 @@ const SearchResults = ({ searchQuery }: any) => {
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Result for "{searchQuery}"
+              Search Results for "{searchQuery.get("q")}"
             </Typography>
           </Box>
         </Grid>
@@ -53,7 +54,6 @@ const SearchResults = ({ searchQuery }: any) => {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  height: "150px",
                   background: theme.color._850,
                   borderRadius: 3,
                   display: "flex",
@@ -62,7 +62,6 @@ const SearchResults = ({ searchQuery }: any) => {
               >
                 <Box
                   sx={{
-                    height: "90%",
                     display: "flex",
                     alignItems: "center",
                     ml: "10px",
@@ -70,21 +69,21 @@ const SearchResults = ({ searchQuery }: any) => {
                   }}
                 >
                   <Link href={`/anime/${item.mal_id}`}>
-                    <img
-                      alt={item.mal_id}
-                      src={item.images.jpg.image_url}
-                      height="100%"
-                      width="auto"
-                      style={{
-                        borderRadius: 12,
-                        minWidth: 60,
-                        maxWidth: 80,
-                        maxHeight: 120,
-                      }}
-                    />
+                    <Stack spacing={0.5} ml={1} my={1} width={"fit-content"}>
+                      <img
+                        alt={item.mal_id}
+                        src={item.images.jpg.image_url}
+                        height="100%"
+                        width="auto"
+                        style={{
+                          borderRadius: 12,
+                          width: 80,
+                        }}
+                      />
+                    </Stack>
                   </Link>
                   <Link href={`/anime/${item.mal_id}`}>
-                    <Stack spacing={1} ml={2} width={"fit-content"}>
+                    <Stack spacing={0.5} ml={2} my={1} width={"fit-content"}>
                       <Typography variant="h4" sx={{ fontWeight: 600 }}>
                         {item.title}
                       </Typography>
@@ -173,7 +172,7 @@ const SearchResults = ({ searchQuery }: any) => {
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Results for "{searchQuery}"
+              Search Results for "{searchQuery.get("q")}"
             </Typography>
           </Box>
         </Grid>

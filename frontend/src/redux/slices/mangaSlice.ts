@@ -3,6 +3,7 @@ import { apiSlice } from "./apiSlice";
 import {
   GET_MANGA_RANKING_ENDPOINT,
   MANGA_ENDPOINT,
+  RECOMMENDATIONS_ENDPOINT,
 } from "../../apis/endpoints";
 
 const initialState = {
@@ -119,6 +120,24 @@ export const mangaApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
+    getMangaSearch: build.query({
+      query: (params) => ({
+        url: `${MANGA_ENDPOINT}?q=${params.strQuery}&limit=${params.limit}&page=${params.page}`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getRecentMangaRecommendations: build.query({
+      query: (page) => ({
+        url: `${RECOMMENDATIONS_ENDPOINT}${MANGA_ENDPOINT}`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
   }),
 });
 
@@ -136,4 +155,6 @@ export const {
   useGetMangaRelationsQuery,
   useGetMangaRecommendationsQuery,
   useGetMangaVideosQuery,
+  useGetMangaSearchQuery,
+  useGetRecentMangaRecommendationsQuery,
 } = mangaApi;
