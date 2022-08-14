@@ -126,6 +126,7 @@ const ManagePage = () => {
         <Box sx={{ width: "100%" }} px={5} py={2} mb={4}>
           <Box>
             <StyledTabs
+              variant="scrollable"
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
