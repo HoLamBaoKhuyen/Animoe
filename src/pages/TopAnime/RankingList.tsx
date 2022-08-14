@@ -181,7 +181,6 @@ const List = ({ data }: { data: Array<any> }) => {
 
 export const TypeRankingList = ({ type }: { type: string }) => {
   const { data } = useGetTypeRankingQuery(type);
-  console.log(data);
   return data ? (
     <List data={data} />
   ) : (

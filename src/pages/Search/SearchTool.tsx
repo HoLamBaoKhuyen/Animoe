@@ -11,67 +11,76 @@ const SearchTool = (props: any) => {
   const { searchParams, searchType } = props;
 
   const [checked, setChecked] = React.useState(false);
-  const [wordEntered, setWordEntered] = React.useState(searchParams ? searchParams.get('q') : "");
+  const [wordEntered, setWordEntered] = React.useState(searchParams ? searchParams.params.get('q') : "");
 
   const handleChange = () => {
     setChecked((prev) => !prev);
   };
 
-  const handleInputChange = (event: any) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWordEntered(event.target.value);
+    if(event.target.value == ""){
+      searchParams.params.delete('q');
+    }else{
+      searchParams.params.set('q',event.target.value);
+    }
+    searchParams.params.setParams(searchParams.params);
   };
+  
+  const handleReloadPage = (event:any) => {
+    window.location.reload();
+  }
 
   return (
     <Box>
+      <form action={searchType}  method="get">
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
-            <Typography variant="h2" sx={{ fontWeight: 700 }}>
-              Enter Word, Enter World
+            <Typography variant="h2" sx={{fontWeight: 700 }}>
+              Enter Word, Enter World 
             </Typography>
           </Box>
         </Grid>
 
         <Grid item xs={12} zIndex={10} sx={{ mb: 5 }}>
           <Box>
-            <form action={searchType} method="get">
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
-                <Box
-                  sx={{
-                    py: "10px",
-                    position: "relative",
-                    left: 50,
-                    color: theme.color.white,
-                  }}
-                >
-                  <SearchIcon sx={{ fontSize: 40 }} />
-                </Box>
-                <Box sx={{ textAlign: "center" }}>
-                  <InputBase
-                    inputProps={{
-                      name: "q",
-                      id: "q",
-                      value: wordEntered,
-                      onChange: handleInputChange,
-                      "aria-label": "search",
-                    }}
-                    sx={{
-                      height: 60,
-                      width: { sm: 600, xs: "auto" },
-                      textIndent: 50,
-                      fontSize: 30,
-                      borderRadius: 2,
-                      background: "rgba(100, 111, 212, 0.47)",
-                      color: theme.color.white,
-                      pl: 7,
-                    }}
-                    id="header-search"
-                    type="text"
-                    placeholder="Search..."
-                  />
-                </Box>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Box
+                sx={{
+                  py: "10px",
+                  position: "relative",
+                  left: 50,
+                  color: theme.color.white,
+                }}
+              >
+                <SearchIcon sx={{ fontSize: 40 }} />
               </Box>
-            </form>
+              <Box sx={{ textAlign: "center" }}>
+                <InputBase
+                  inputProps={{
+                    name: "q",
+                    id: "q",
+                    value: wordEntered,
+                    "aria-label": "search",
+                  }}
+                  onChange={handleInputChange}
+                  sx={{
+                    height: 60,
+                    width: { sm: 600, xs: "auto" },
+                    textIndent: 50,
+                    fontSize: 30,
+                    borderRadius: 2,
+                    background: "rgba(100, 111, 212, 0.47)",
+                    color: theme.color.white,
+                    pl: 7,
+                  }}
+                  id="header-search"
+                  type="text"
+                  placeholder="Search..."
+                />
+              </Box>
+            </Box>
           </Box>
           <FormControlLabel
             control={
@@ -103,12 +112,12 @@ const SearchTool = (props: any) => {
 
         <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
           <Grid item xs={12} zIndex={10}>
-            <Filter />
+            <Filter searchParams={searchParams}/>
           </Grid>
         </Slide>
         <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
           <Grid item xs={12} zIndex={10}>
-            <ContentFilter />
+            <ContentFilter searchParams={searchParams}/>
           </Grid>
         </Slide>
         <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
@@ -126,6 +135,7 @@ const SearchTool = (props: any) => {
                     boxShadow: 0,
                   },
                 }}
+                onClick={handleReloadPage}  
               >
                 Search
               </Button>
@@ -159,6 +169,7 @@ const SearchTool = (props: any) => {
           </Grid>
         </Slide>
       </Grid>
+      </form>
     </Box>
   );
 };
