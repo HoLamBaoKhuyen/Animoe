@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 import Layout from "../../components/layout";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
@@ -7,6 +6,7 @@ import { theme } from "../../theme";
 import StyledSelect from "../../components/Select/StyledSelect";
 import TableContent from "./TableContent";
 import { useNavigate } from "react-router-dom";
+import { format_string } from "../../helpers/format";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -39,19 +39,86 @@ function a11yProps(index: number) {
 
 const ManagePage = () => {
   const [value, setValue] = React.useState(0);
+  const [types, setTypes] = React.useState<string[]>([]);
+  const [seasons, setSeasons] = React.useState<string[]>([]);
+  const [statuses, setStatuses] = React.useState<string[]>([]);
+  const [years, setYears] = React.useState<string[]>([]);
+  const [producers, setProducers] = React.useState<string[]>([]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
+  const getTypes = () => {
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/types/anime`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setTypes(json.types);
+      })
+      .catch(console.error);
+  };
+
+  const getSeasons = () => {
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/seasons/anime`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        const seasons = json.seasons;
+        setSeasons(seasons.map((season: string) => format_string(season)));
+      })
+      .catch(console.error);
+  };
+
+  const getStatuses = () => {
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/statuses/anime`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setStatuses(json.statuses);
+      })
+      .catch(console.error);
+  };
+
+  const getYears = (email: string | null) => {
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/years/anime/${email}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setYears(json.years);
+      })
+      .catch(console.error);
+  };
+
+  const getProducers = (email: string | null) => {
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/producers/anime/${email}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setProducers(json.producers);
+      })
+      .catch(console.error);
+  };
+
   const navigate = useNavigate();
-  useEffect(() => {
+  React.useEffect(() => {
     let authToken = localStorage.getItem("Auth Token");
 
     if (!authToken) {
       navigate("/login");
     }
-  });
+    let email = localStorage.getItem("email");
+    getTypes();
+    getSeasons();
+    getStatuses();
+    getProducers(email);
+    getYears(email);
+  }, []);
 
   return (
     <Layout>
@@ -74,19 +141,39 @@ const ManagePage = () => {
             </StyledTabs>
             <Grid container spacing={3} mt={1}>
               <Grid item xs={12} sm={4} md={2}>
-                <StyledSelect placeHolder="Select status" width={"100%"} />
+                <StyledSelect
+                  placeHolder="Select status"
+                  width={"100%"}
+                  list={statuses}
+                />
               </Grid>
               <Grid item xs={12} sm={4} md={2}>
-                <StyledSelect placeHolder="Select year" width={"100%"} />
+                <StyledSelect
+                  placeHolder="Select year"
+                  width={"100%"}
+                  list={years}
+                />
               </Grid>
               <Grid item xs={12} sm={4} md={2}>
-                <StyledSelect placeHolder="Select season" width={"100%"} />
+                <StyledSelect
+                  placeHolder="Select season"
+                  width={"100%"}
+                  list={seasons}
+                />
               </Grid>
               <Grid item xs={12} sm={4} md={2}>
-                <StyledSelect placeHolder="Select type" width={"100%"} />
+                <StyledSelect
+                  placeHolder="Select type"
+                  width={"100%"}
+                  list={types}
+                />
               </Grid>
               <Grid item xs={12} sm={8} md={4}>
-                <StyledSelect placeHolder="Select producer" width={"100%"} />
+                <StyledSelect
+                  placeHolder="Select producer"
+                  width={"100%"}
+                  list={producers}
+                />
               </Grid>
             </Grid>
           </Box>

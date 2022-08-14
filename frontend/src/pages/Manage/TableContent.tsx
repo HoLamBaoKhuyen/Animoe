@@ -14,6 +14,7 @@ import {
   PaginationItem,
   Pagination,
   Link,
+  Typography,
 } from "@mui/material";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -41,12 +42,12 @@ export default function TableContent() {
   const [page, setPage] = React.useState(1);
   const [openModal, setOpenModal] = React.useState<number>(-1);
   const [openEditModal, setOpenEditModal] = React.useState<number>(-1);
+  const [refreshKey, setRefreshKey] = React.useState<number>(0);
   const email = localStorage.getItem("email");
 
   let authToken = localStorage.getItem("Auth Token");
 
   const handleSubmit = (row: any) => {
-    console.log(row);
     if (authToken) {
       const email = localStorage.getItem("email");
       fetch(
@@ -68,6 +69,7 @@ export default function TableContent() {
           rows.splice(index, 1);
         }
         setRows(rows);
+        setRefreshKey((oldKey) => oldKey + 1);
       });
     }
   };
@@ -104,23 +106,22 @@ export default function TableContent() {
             email: email,
           }),
         }
-      );
+      ).then((r) => {
+        setRefreshKey((oldKey) => oldKey + 1);
+      });
     }
   };
 
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      fetch(
-        `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/anime/${email}`
-      )
-        .then((response) => response.json())
-        .then((json) => {
-          setRows(json.animes);
-        })
-        .catch(console.error);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, [rows]);
+    fetch(
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/anime/${email}`
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setRows(json.animes);
+      })
+      .catch(console.error);
+  }, [refreshKey]);
 
   const handleClickOpen = (id) => {
     setOpenModal((showId) => (showId === id ? -1 : id));
@@ -155,178 +156,216 @@ export default function TableContent() {
         }}
         aria-label="simple table"
       >
-        <TableHead>
-          <TableRow>
-            <StyledTableCell
-              className="table-title"
-              width={150}
-              align="center"
-            ></StyledTableCell>
-            <StyledTableCell
-              className="table-title"
-              width={350}
-              sx={{ color: theme.color._100 }}
-            >
-              Title
-            </StyledTableCell>
-            <StyledTableCell
-              className="table-title"
-              width={120}
-              align="center"
-              sx={{ color: theme.color._100 }}
-            >
-              Score
-            </StyledTableCell>
-            <StyledTableCell
-              className="table-title"
-              width={120}
-              align="center"
-              sx={{ color: theme.color._100 }}
-            >
-              Type
-            </StyledTableCell>
-            <StyledTableCell
-              className="table-title"
-              width={120}
-              align="center"
-              sx={{ color: theme.color._100 }}
-            >
-              Progress
-            </StyledTableCell>
-            <StyledTableCell
-              className="table-title"
-              width={150}
-              align="center"
-              sx={{ color: theme.color._100 }}
-            >
-              Action
-            </StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows ? (
-            rows.map((row) => (
-              <TableRow key={row.id}>
+        {rows.length !== 0 ? (
+          <>
+            <TableHead>
+              <TableRow>
                 <StyledTableCell
+                  className="table-title"
                   width={150}
                   align="center"
-                  component="th"
-                  scope="row"
+                ></StyledTableCell>
+                <StyledTableCell
+                  className="table-title"
+                  width={350}
+                  sx={{ color: theme.color._100 }}
                 >
-                  <Link href={`/anime/${row.id}`}>
-                    <img
-                      alt="poster"
-                      src={row.image}
-                      height="100px"
-                      width="auto"
-                      style={{ borderRadius: 10 }}
-                    />
-                  </Link>
+                  Title
                 </StyledTableCell>
-                <StyledTableCell width={350}>
-                  <Link
-                    href={`/anime/${row.id}`}
-                    sx={{ color: theme.color.white }}
-                  >
-                    {row.title}
-                  </Link>
+                <StyledTableCell
+                  className="table-title"
+                  width={120}
+                  align="center"
+                  sx={{ color: theme.color._100 }}
+                >
+                  Score
                 </StyledTableCell>
-                <StyledTableCell width={120} align="center">
-                  {row.score}
+                <StyledTableCell
+                  className="table-title"
+                  width={120}
+                  align="center"
+                  sx={{ color: theme.color._100 }}
+                >
+                  Type
                 </StyledTableCell>
-                <StyledTableCell width={120} align="center">
-                  {row.type}
+                <StyledTableCell
+                  className="table-title"
+                  width={120}
+                  align="center"
+                  sx={{ color: theme.color._100 }}
+                >
+                  Progress
                 </StyledTableCell>
-                <StyledTableCell width={120} align="center">
-                  {row.progress}
-                </StyledTableCell>
-                <StyledTableCell width={150} align="center">
-                  <Stack direction="row" spacing={3} justifyContent="center">
-                    <Button
-                      onClick={() => handleClickOpenEditModal(row.id)}
-                      sx={{
-                        minWidth: 0,
-                        p: 0,
-                        width: 35,
-                        height: 35,
-                        borderRadius: 1,
-                        backgroundColor: theme.color.green_800,
-                        transition: "all 0.1s",
-                        "&:hover": {
-                          backgroundColor: theme.color.green_800,
-                          opacity: 0.6,
-                        },
-                      }}
-                    >
-                      <CreateIcon fontSize="small" />
-                    </Button>
-                    <Button
-                      onClick={() => handleClickOpen(row.id)}
-                      sx={{
-                        minWidth: 0,
-                        p: 0,
-                        width: 35,
-                        height: 35,
-                        borderRadius: 1,
-                        backgroundColor: theme.color.red_800,
-                        transition: "all 0.1s",
-                        "&:hover": {
-                          backgroundColor: theme.color.red_800,
-                          opacity: 0.6,
-                        },
-                      }}
-                    >
-                      <DeleteIcon fontSize="small" />
-                    </Button>
-                  </Stack>
-                  {/* Modal */}
-                  <DeleteModal
-                    open={openModal == row.id}
-                    onClose={handleClose}
-                    data={row}
-                    onSubmit={handleSubmit}
-                  />
-
-                  <EditModal
-                    open={openEditModal == row.id}
-                    onClose={handleCloseEditModal}
-                    data={row}
-                    onSubmit={handleEditSubmit}
-                  />
+                <StyledTableCell
+                  className="table-title"
+                  width={150}
+                  align="center"
+                  sx={{ color: theme.color._100 }}
+                >
+                  Action
                 </StyledTableCell>
               </TableRow>
-            ))
-          ) : (
-            <></>
-          )}
-        </TableBody>
-      </Table>
-      <Box style={{ margin: "auto", width: "fit-content", marginTop: 20 }}>
-        <Pagination
-          count={10}
-          shape="rounded"
-          variant="outlined"
-          color="primary"
-          page={page}
-          onChange={handlePageChange}
-          renderItem={(item) => (
-            <PaginationItem
-              components={{
-                previous: ArrowBackIosNewIcon,
-                next: ArrowForwardIosIcon,
-              }}
-              {...item}
-              sx={{
-                "&.Mui-selected": {
-                  backgroundColor: "#9BA3EB",
-                  color: "white",
-                  borderRadius: 0,
-                },
-              }}
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.id}>
+                  <StyledTableCell
+                    width={150}
+                    align="center"
+                    component="th"
+                    scope="row"
+                  >
+                    <Link href={`/anime/${row.id}`}>
+                      <img
+                        alt="poster"
+                        src={row.image}
+                        height="100px"
+                        width="auto"
+                        style={{ borderRadius: 10 }}
+                      />
+                    </Link>
+                  </StyledTableCell>
+                  <StyledTableCell width={350}>
+                    <Link
+                      href={`/anime/${row.id}`}
+                      sx={{ color: theme.color.white }}
+                    >
+                      {row.title}
+                    </Link>
+                  </StyledTableCell>
+                  <StyledTableCell width={120} align="center">
+                    {row.score}
+                  </StyledTableCell>
+                  <StyledTableCell width={120} align="center">
+                    {row.type}
+                  </StyledTableCell>
+                  <StyledTableCell width={120} align="center">
+                    {row.progress}
+                  </StyledTableCell>
+                  <StyledTableCell width={150} align="center">
+                    <Stack direction="row" spacing={3} justifyContent="center">
+                      <Button
+                        onClick={() => handleClickOpenEditModal(row.id)}
+                        sx={{
+                          minWidth: 0,
+                          p: 0,
+                          width: 35,
+                          height: 35,
+                          borderRadius: 1,
+                          backgroundColor: theme.color.green_800,
+                          transition: "all 0.1s",
+                          "&:hover": {
+                            backgroundColor: theme.color.green_800,
+                            opacity: 0.6,
+                          },
+                        }}
+                      >
+                        <CreateIcon fontSize="small" />
+                      </Button>
+                      <Button
+                        onClick={() => handleClickOpen(row.id)}
+                        sx={{
+                          minWidth: 0,
+                          p: 0,
+                          width: 35,
+                          height: 35,
+                          borderRadius: 1,
+                          backgroundColor: theme.color.red_800,
+                          transition: "all 0.1s",
+                          "&:hover": {
+                            backgroundColor: theme.color.red_800,
+                            opacity: 0.6,
+                          },
+                        }}
+                      >
+                        <DeleteIcon fontSize="small" />
+                      </Button>
+                    </Stack>
+                    {/* Modal */}
+                    <DeleteModal
+                      open={openModal == row.id}
+                      onClose={handleClose}
+                      data={row}
+                      onSubmit={handleSubmit}
+                    />
+
+                    <EditModal
+                      open={openEditModal == row.id}
+                      onClose={handleCloseEditModal}
+                      data={row}
+                      onSubmit={handleEditSubmit}
+                    />
+                  </StyledTableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        ) : (
+          <Box display="flex" justifyContent="flex-end">
+            <Box
+              flexDirection="column"
+              display="flex"
+              textAlign="center"
+              justifyContent="center"
+              ml={6}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  fontSize: { md: 40, sm: 32, xs: 24 },
+                }}
+              >
+                Nothing here!
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  fontSize: { md: 40, sm: 32, xs: 24 },
+                }}
+              >
+                Try to add some animes to your list.
+              </Typography>
+            </Box>
+            <img
+              alt="kohaku"
+              width="42%"
+              height="auto"
+              src="https://i.imgur.com/YtthJbA.png"
+              style={{ borderRadius: 10 }}
             />
-          )}
-        />
-      </Box>
+          </Box>
+        )}
+      </Table>
+      {rows.length !== 0 ? (
+        <Box style={{ margin: "auto", width: "fit-content", marginTop: 20 }}>
+          <Pagination
+            count={10}
+            shape="rounded"
+            variant="outlined"
+            color="primary"
+            page={page}
+            onChange={handlePageChange}
+            renderItem={(item) => (
+              <PaginationItem
+                components={{
+                  previous: ArrowBackIosNewIcon,
+                  next: ArrowForwardIosIcon,
+                }}
+                {...item}
+                sx={{
+                  "&.Mui-selected": {
+                    backgroundColor: "#9BA3EB",
+                    color: "white",
+                    borderRadius: 0,
+                  },
+                }}
+              />
+            )}
+          />
+        </Box>
+      ) : (
+        <></>
+      )}
     </TableContainer>
   );
 }
