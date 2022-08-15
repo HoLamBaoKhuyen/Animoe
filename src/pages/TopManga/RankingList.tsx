@@ -113,7 +113,7 @@ const List = ({ data }: { data: Array<any> }) => {
 								</Button>
 								<Stack spacing={{ md: 1, xs: 0 }} direction='row' alignItems='center' style={{ position: 'absolute', bottom: -10, right: 0 }}>
 									<Typography variant='h5' sx={{ fontWeight: 600, fontSize: 30 }} color={(theme) => theme.color._100}>
-										{item.score}
+										{item.score.toFixed(2)}
 									</Typography>
 									<StarRateRoundedIcon fontSize='large' sx={{ color: theme.color.yellow }} />
 								</Stack>
