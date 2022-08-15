@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, Grid, Link, Skeleton, Stack, Typography } from '@mui/material'
-import { useGetAnimeFilterRankingQuery, useGetAnimeTypeRankingQuery } from '../../redux/slices/animeSlice'
+import { useGetMangaFilterRankingQuery, useGetMangaTypeRankingQuery } from '../../redux/slices/mangaSlice'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 import { theme } from '../../theme'
@@ -68,12 +68,12 @@ const List = ({ data }: { data: Array<any> }) => {
 									)}
 								</Grid>
 								<Grid item xs={12} sm={2} md={1}>
-									<Link href={`/anime/${item.mal_id}`}>
+									<Link href={`/manga/${item.mal_id}`}>
 										<img alt='Poster' src={item.images.jpg.image_url} width='100%' style={{ borderRadius: 10 }} />
 									</Link>
 								</Grid>
 								<Grid item xs={12} sm={7} md={9} textAlign='left'>
-									<Link href={`/anime/${item.mal_id}`}>
+									<Link href={`/manga/${item.mal_id}`}>
 										<Stack spacing={1} width={'fit-content'}>
 											<Typography variant='h4' sx={{ fontWeight: 600 }}>
 												{item.title}
@@ -82,7 +82,7 @@ const List = ({ data }: { data: Array<any> }) => {
 												{item.status}
 											</Typography>
 											<Typography variant='body1' sx={{ fontWeight: 600, opacity: 0.7 }} color={(theme) => theme.color._100}>
-												{item.type} ({item.episodes} eps)
+												{item.type} ({item.chapters} chaps)
 											</Typography>
 											<Typography variant='body1' sx={{ fontWeight: 600, opacity: 0.7 }} color={(theme) => theme.color._100}>
 												{format_number(item.members)} members
@@ -113,7 +113,7 @@ const List = ({ data }: { data: Array<any> }) => {
 								</Button>
 								<Stack spacing={{ md: 1, xs: 0 }} direction='row' alignItems='center' style={{ position: 'absolute', bottom: -10, right: 0 }}>
 									<Typography variant='h5' sx={{ fontWeight: 600, fontSize: 30 }} color={(theme) => theme.color._100}>
-										{item.score}
+										{item.score.toFixed(2)}
 									</Typography>
 									<StarRateRoundedIcon fontSize='large' sx={{ color: theme.color.yellow }} />
 								</Stack>
@@ -127,7 +127,7 @@ const List = ({ data }: { data: Array<any> }) => {
 }
 
 export const TypeRankingList = ({ type }: { type: string }) => {
-	const { data } = useGetAnimeTypeRankingQuery(type)
+	const { data } = useGetMangaTypeRankingQuery(type)
 	console.log(data)
 	return data ? (
 		<List data={data} />
@@ -143,7 +143,7 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 }
 
 export const FilterRankingList = ({ filter }: { filter: string }) => {
-	const { data } = useGetAnimeFilterRankingQuery(filter)
+	const { data } = useGetMangaFilterRankingQuery(filter)
 	console.log(data)
 	return data ? (
 		<List data={data} />

@@ -1,50 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { apiSlice } from "./apiSlice";
-import {
-  GET_ANIME_RANKING_ENDPOINT,
-  ANIME_ENDPOINT,
-} from "../../apis/endpoints";
+import { createSlice } from '@reduxjs/toolkit'
+import { apiSlice } from './apiSlice'
+import { GET_ANIME_RANKING_ENDPOINT, ANIME_ENDPOINT } from '../../apis/endpoints'
 
 const initialState = {
-  ranking: {
-    ona: [],
-    airing: [],
-    upcoming: [],
-    tv: [],
-    ova: [],
-    movie: [],
-    special: [],
-    popularity: [],
-    favorite: [],
-  },
-};
+	ranking: {
+		ona: [],
+		airing: [],
+		upcoming: [],
+		tv: [],
+		ova: [],
+		movie: [],
+		special: [],
+		popularity: [],
+		favorite: [],
+	},
+}
 
 export const animeSlice = createSlice({
-  name: "anime",
-  initialState,
-  reducers: {},
-});
+	name: 'anime',
+	initialState,
+	reducers: {},
+})
 
 export const animeApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getTypeRanking: build.query({
-      query: (type) => ({
-        url: `${GET_ANIME_RANKING_ENDPOINT}?type=${type}`,
-        method: "GET",
-      }),
-      transformResponse: (response: { data: any }, meta: any, arg: any) => {
-        return response.data;
-      },
-    }),
-    getFilterRanking: build.query({
-      query: (filter) => ({
-        url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}`,
-        method: "GET",
-      }),
-      transformResponse: (response: { data: any }, meta: any, arg: any) => {
-        return response.data;
-      },
-    }),
+    getAnimeTypeRanking: build.query({
+			query: (type) => ({
+				url: `${GET_ANIME_RANKING_ENDPOINT}?type=${type}`,
+				method: 'GET',
+			}),
+			transformResponse: (response: { data: any }, meta: any, arg: any) => {
+				return response.data
+			},
+		}),
+		getAnimeFilterRanking: build.query({
+			query: (filter) => ({
+				url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}`,
+				method: 'GET',
+			}),
+			transformResponse: (response: { data: any }, meta: any, arg: any) => {
+				return response.data
+			},
+		}),
     getTopFiveAnime: build.query({
       query: (filter) => ({
         url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}&limit=4`,
@@ -138,11 +135,12 @@ export const animeApi = apiSlice.injectEndpoints({
   }),
 });
 
-export default animeSlice.reducer;
+
+export default animeSlice.reducer
 
 export const {
-  useGetTypeRankingQuery,
-  useGetFilterRankingQuery,
+  useGetAnimeTypeRankingQuery,
+  useGetAnimeFilterRankingQuery,
   useGetTopFiveAnimeQuery,
   useSearchAnimeQuery,
   useGetAnimeByIdQuery,
@@ -154,3 +152,4 @@ export const {
   useGetAnimeRecommendationsQuery,
   useGetAnimeVideosQuery,
 } = animeApi;
+
