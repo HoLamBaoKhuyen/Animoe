@@ -68,12 +68,12 @@ const List = ({ data }: { data: Array<any> }) => {
 									)}
 								</Grid>
 								<Grid item xs={12} sm={2} md={1}>
-									<Link href={`/anime/${item.mal_id}`}>
+									<Link href={`/manga/${item.mal_id}`}>
 										<img alt='Poster' src={item.images.jpg.image_url} width='100%' style={{ borderRadius: 10 }} />
 									</Link>
 								</Grid>
 								<Grid item xs={12} sm={7} md={9} textAlign='left'>
-									<Link href={`/anime/${item.mal_id}`}>
+									<Link href={`/manga/${item.mal_id}`}>
 										<Stack spacing={1} width={'fit-content'}>
 											<Typography variant='h4' sx={{ fontWeight: 600 }}>
 												{item.title}
