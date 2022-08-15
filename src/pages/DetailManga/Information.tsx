@@ -4,13 +4,10 @@ import { CustomTab } from "../../components/Tabs/CustomTab";
 import { CustomTabs } from "../../components/Tabs/CustomTabs";
 import Score from "./Score";
 import Content from "./Content";
-import Trailers from "./Trailers";
-import VoiceActors from "./VoiceActors";
-import Staff from "./Staff";
 import Reviews from "./Reviews";
 import Recommendations from "./Recommendations";
-import Episodes from "./Episodes";
 import Relations from "./Relations";
+import Characters from "./Characters";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -52,8 +49,7 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
         aria-label="scrollable auto tabs example"
       >
         <CustomTab label="Details" />
-        <CustomTab label="Characters & Staff" />
-        <CustomTab label="Episodes" />
+        <CustomTab label="Characters" />
         <CustomTab label="Reviews" />
         <CustomTab label="Recommendations" />
       </CustomTabs>
@@ -63,29 +59,18 @@ export default function ScrollableTabsButtonAuto({ data }: { data: any }) {
         <Box mt={4}>
           <Relations />
         </Box>
-        <Box mt={4}>
-          <Trailers />
-        </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Box mt={4}>
-          <VoiceActors />
-        </Box>
-        <Box mt={4}>
-          <Staff />
+          <Characters />
         </Box>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Box mt={4}>
-          <Episodes episodes={data.episodes} />
-        </Box>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <Box mt={4}>
           <Reviews />
         </Box>
       </TabPanel>
-      <TabPanel value={value} index={4}>
+      <TabPanel value={value} index={3}>
         <Box mt={4}>
           <Recommendations />
         </Box>

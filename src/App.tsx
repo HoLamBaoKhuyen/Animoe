@@ -6,6 +6,8 @@ import TopAnime from './pages/TopAnime'
 import TopManga from './pages/TopManga'
 import SearchPage from './pages/Search'
 import ManagePage from './pages/Manage'
+import DetailMangaPage from "pages/DetailManga";
+
 
 function App() {
 	return (
@@ -13,10 +15,12 @@ function App() {
 			<Route path='/' element={<HomePage />} />
 			<Route path='/anime/:id' element={<DetailPage />} />
 			<Route path='/anime-search' element={<SearchPage />} />
+			<Route path="/anime/:id" element={<DetailPage />} />
+			<Route path="/manga/:id" element={<DetailMangaPage />} />
 			<Route path='/top-anime' element={<TopAnime />} />
 			<Route path='/top-manga' element={<TopManga />} />
 			<Route path='/manage' element={<ManagePage />} />
-		</Routes>
+		</Routes >
 	)
 }
 

@@ -1,9 +1,7 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Grid,
   Link,
   Pagination,
@@ -12,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import { theme } from "../../theme";
-import { SEARCH_RESULTS } from "../../data/detail";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -22,7 +19,6 @@ import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
 const SearchResults = ({ searchQuery }: any) => {
-  const [value, setValue] = React.useState(0);
   const [page, setPage] = React.useState(1);
   const { data } = useSearchAnimeQuery(searchQuery);
 
@@ -31,10 +27,6 @@ const SearchResults = ({ searchQuery }: any) => {
     value: number
   ) => {
     setPage(value);
-  };
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
   };
 
   return data ? (

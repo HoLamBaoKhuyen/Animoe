@@ -2,14 +2,13 @@ import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { theme } from "../../theme";
 import styles from './styles.module.css'
-import { useGetAnimeStaffQuery } from "redux/slices/animeSlice";
 import { useParams } from "react-router";
-import { format_string_array } from "helpers/format";
+import { useGetMangaCharactersQuery } from "redux/slices/mangaSlice";
 var Slider = require('react-slick').default
 
-const createStaff = (list: any) => {
+const createCharacter = (list: any) => {
   if (list.length !== 0)
-    return list.slice(0, 30).map((staff: any, index: number) => (
+    return list.slice(0, 30).map((char: any, index: number) => (
       <Box py={1} pr={4} key={index}>
         <Box
           sx={{
@@ -26,17 +25,17 @@ const createStaff = (list: any) => {
             sx={{ height: "100%", display: "flex", alignItems: "center" }}
           >
             <img
-              alt="staff"
-              src={staff.person.images.jpg.image_url}
+              alt="character"
+              src={char.character.images.webp.image_url}
               height="100%"
               width="70px"
               object-fit={"cover"}
               style={{ borderRadius: 10, objectFit: 'cover' }}
             />
             <Box ml={2}>
-              <Typography variant="body1">{staff.person.name}</Typography>
+              <Typography variant="body1">{char.character.name}</Typography>
               <Typography variant="body2" sx={{ fontSize: 13 }}>
-                {format_string_array(staff.positions)}
+                {char.role}
               </Typography>
             </Box>
           </Box>
@@ -96,9 +95,9 @@ const settings = {
 }
 
 
-const Staff = () => {
+const Characters = () => {
   const { id } = useParams();
-  const { data } = useGetAnimeStaffQuery(id);
+  const { data } = useGetMangaCharactersQuery(id);
 
 
   return data ? (
@@ -107,13 +106,13 @@ const Staff = () => {
         <Grid item xs={12}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Staff
+              Characters
             </Typography>
           </Box>
         </Grid>
         <Box sx={{ width: '100%' }}>
           <Slider {...settings}>
-            {createStaff(data)}
+            {createCharacter(data)}
           </Slider>
         </Box>
       </Grid>
@@ -122,4 +121,4 @@ const Staff = () => {
     <Skeleton variant="rectangular" height="100%" />
   );
 };
-export default Staff;
+export default Characters;
