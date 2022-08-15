@@ -39,13 +39,13 @@ const Score = ({ data }: { data: any }) => {
             variant="h1"
             sx={{ fontSize: { md: 45, sm: 26, xs: 20 } }}
           >
-            {data.score}
+            {data.score ? data.score : "?"}
           </Typography>
           <Typography
             variant="body2"
             sx={{ fontSize: { md: 15, xs: 0 }, fontWeight: 200 }}
           >
-            {format_number(data.scored_by)} users
+            {data.scored_by ? `${format_number(data.scored_by)} users` : "0 user"}
           </Typography>
         </Box>
       </Box>

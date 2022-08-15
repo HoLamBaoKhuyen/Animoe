@@ -91,7 +91,7 @@ const Recommendations = () => {
             </Box>
           </Grid >
         ))}
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Box sx={{ margin: 'auto', marginTop: 3, width: 'fit-content' }}>
             <Pagination
               count={count}
@@ -104,7 +104,22 @@ const Recommendations = () => {
                   background: `${theme.color._600} !important`
                 }
               }}
-            /></Box></Grid>
+            /></Box></Grid> */}
+        {dataPagi.currentData().length !== 0 ? <Grid item xs={12}>
+          <Box sx={{ margin: 'auto', marginTop: 3, width: 'fit-content' }}>
+            <Pagination
+              count={count}
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handleChange}
+              sx={{
+                "& .Mui-selected": {
+                  background: `${theme.color._600} !important`
+                }
+              }}
+            /></Box></Grid> : <Grid item xs={12}> <Typography variant='h5'>Chưa có dữ liệu</Typography></Grid>}
+
       </Grid >
 
     </Box >

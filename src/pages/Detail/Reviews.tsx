@@ -54,7 +54,7 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
             <ReviewCard {...review} />
           </Grid>
         ))}
-        <Box sx={{ margin: 'auto', marginTop: 3 }}>
+        {dataPagi.currentData().length !== 0 ? <Box sx={{ margin: 'auto', marginTop: 3 }}>
           <Pagination
             count={count}
             page={page}
@@ -66,7 +66,7 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
                 background: `${theme.color._600} !important`
               }
             }}
-          /></Box>
+          /></Box> : <Grid item xs={12}> <Typography variant='h5'>Chưa có dữ liệu</Typography></Grid>}
       </Grid>
     </Box>
   ) : (
