@@ -7,7 +7,7 @@ import { useGetAnimeSearchQuery } from "../../redux/slices/animeSlice";
 import { useGetMangaSearchQuery } from "redux/slices/mangaSlice";
 import { useSearchParams } from "react-router-dom";
 
-const SearchPage = (props: any) => {
+const SearchPageUnit = (props: any) => {
   const { searchParams, searchType, searchData} = props;
   
   return (
@@ -53,14 +53,17 @@ const SearchPage = (props: any) => {
 const AnimeSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
-    <SearchPage searchParams={{params: searchParams, setParams: setSearchParams}} searchType="/anime-search" searchData={useGetAnimeSearchQuery} />
+    <SearchPageUnit searchParams={{params: searchParams, setParams: setSearchParams}} searchType="/anime-search" searchData={useGetAnimeSearchQuery} />
   );
 };
 const MangaSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <SearchPage searchParams={{params: searchParams, setParams: setSearchParams}} searchType="/manga-search" searchData={useGetMangaSearchQuery} />
+    <SearchPageUnit searchParams={{params: searchParams, setParams: setSearchParams}} searchType="/manga-search" searchData={useGetMangaSearchQuery} />
   );
 };
-export {AnimeSearchPage,MangaSearchPage};
+const SearchPage = ({type}:any) => {
+  return type == "anime" ? ( <AnimeSearchPage></AnimeSearchPage> ) : ( <MangaSearchPage></MangaSearchPage> );
+};
+export default SearchPage;

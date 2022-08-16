@@ -140,7 +140,7 @@ export default function TopAnime() {
               </CustomTabPanel>
             </TabContext>
           </Box>
-          <Box style={{ margin: "10px auto" }}>
+          {/* <Box style={{ margin: "10px auto" }}>
             <Pagination
               count={10}
               shape="rounded"
@@ -165,7 +165,7 @@ export default function TopAnime() {
                 />
               )}
             />
-          </Box>
+          </Box> */}
         </Stack>
       </Container>
     </Layout>
