@@ -50,7 +50,7 @@ const SearchResults = ({ searchParams, searchData } : any) => {
   ) => {
     setPage(value);
   };
-
+  console.log(currentData);
   return currentData ? (
     <Box>
       <Grid container rowSpacing={2}>
@@ -127,7 +127,8 @@ const SearchResults = ({ searchParams, searchData } : any) => {
                         sx={{ fontWeight: 600, opacity: 0.7 }}
                         color={(theme) => theme.color._100}
                       >
-                        {item.producers.map( (producer: any, index: any) => (index !== item.producers.length-1 ? producer.name+", " : producer.name+"") )}
+                        { item.producers ? item.producers.map( (producer: any, index: any) => (index !== item.producers.length-1 ? producer.name+", " : producer.name+"") )
+                        : item.authors.map( (author: any, index: any) => (index !== item.authors.length-1 ? author.name+", " : author.name+"") )}
                       </Typography>
                       <Typography
                         variant="body1"

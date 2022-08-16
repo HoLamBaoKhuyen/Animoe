@@ -64,6 +64,6 @@ const MangaSearchPage = () => {
   );
 };
 const SearchPage = ({type}:any) => {
-  return type == "anime" ? ( <AnimeSearchPage></AnimeSearchPage> ) : ( <MangaSearchPage></MangaSearchPage> );
+  return type === "anime" ? ( <AnimeSearchPage></AnimeSearchPage> ) : ( <MangaSearchPage></MangaSearchPage> );
 };
 export default SearchPage;

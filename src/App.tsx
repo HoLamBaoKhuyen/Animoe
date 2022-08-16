@@ -5,7 +5,7 @@ import HomePage from './pages/Home'
 import TopAnime from './pages/TopAnime'
 import TopManga from './pages/TopManga'
 import SearchPage from './pages/Search';
-import {AnimeRecommendationsPage,MangaRecommendationsPage} from "./pages/Recommendation";
+import RecommendationsPage from "./pages/Recommendation";
 import ManagePage from './pages/Manage'
 import DetailMangaPage from "pages/DetailManga";
 
@@ -22,8 +22,8 @@ function App() {
 			<Route path='/top-anime' element={<TopAnime />} />
 			<Route path='/top-manga' element={<TopManga />} />
 			<Route path='/manage' element={<ManagePage />} />
-			<Route path="/anime-recommendations" element={<AnimeRecommendationsPage />} />
-			<Route path="/manga-recommendations" element={<MangaRecommendationsPage />} />
+			<Route path="/anime-recommendations" element={<RecommendationsPage type="anime"/>} />
+			<Route path="/manga-recommendations" element={<RecommendationsPage type="manga"/>} />
 		</Routes >
 	)
 }

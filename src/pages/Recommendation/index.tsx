@@ -46,4 +46,4 @@ const RecommendationsPage = ({type}:any) => {
         <AnimeRecommendationsPage></AnimeRecommendationsPage>
     ) : ( <MangaRecommendationsPage></MangaRecommendationsPage>);
 };
-export {AnimeRecommendationsPage, MangaRecommendationsPage};
+export default RecommendationsPage;
