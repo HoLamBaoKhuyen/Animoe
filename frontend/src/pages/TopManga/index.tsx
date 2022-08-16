@@ -14,12 +14,9 @@ import { CustomTabPanel } from "../../components/Tabs/CustomTabPanel";
 import { FilterRankingList, TypeRankingList } from "./RankingList";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSearchParams } from "react-router-dom";
 
 export default function TopAnime() {
-  const [searchQuery] = useSearchParams();
-  const tabDefaultValue = searchQuery.get("tab") || "bypopularity";
-  const [value, setValue] = React.useState(tabDefaultValue);
+  const [value, setValue] = React.useState("bypopularity");
   const [page, setPage] = React.useState(1);
 
   const handlePageChange = (
@@ -51,76 +48,85 @@ export default function TopAnime() {
                 <TabList onChange={handleTabChange} variant="scrollable">
                   <CustomTab label="Most Popular" value="bypopularity" />
                   <CustomTab label="Most Favorite" value="favorite" />
-                  <CustomTab label="Top Airing" value="airing" />
+                  <CustomTab label="Top Manga" value="manga" />
+                  <CustomTab label="Top Novel" value="novel" />
+                  <CustomTab label="Top Lightnovel" value="lightnovel" />
+                  <CustomTab label="Top Oneshot" value="oneshot" />
+                  <CustomTab label="Top Doujin" value="doujin" />
+                  <CustomTab label="Top Manhwa" value="manhwa" />
+                  <CustomTab label="Top Manhua" value="manhua" />
+                  <CustomTab label="Top Publishing" value="publishing" />
                   <CustomTab label="Top Upcoming" value="upcoming" />
-                  <CustomTab label="Top TVs" value="tv" />
-                  <CustomTab label="Top Movies" value="movie" />
-                  <CustomTab label="Top OVAs" value="ova" />
-                  <CustomTab label="Top Specials" value="special" />
-                  <CustomTab label="Top ONAs" value="ona" />
-                  <CustomTab label="Top Musics" value="music" />
                 </TabList>
               </Box>
-              <CustomTabPanel value="tv">
+              <CustomTabPanel value="manga">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top TVs
+                    Top Manga
                   </Typography>
                   <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
-              <CustomTabPanel value="movie">
+              <CustomTabPanel value="novel">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top Movies
+                    Top Novel
                   </Typography>
                   <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
-              <CustomTabPanel value="ova">
+              <CustomTabPanel value="lightnovel">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top OVAs
+                    Top Lightnovel
                   </Typography>
                   <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
-              <CustomTabPanel value="special">
+              <CustomTabPanel value="oneshot">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top Specials
+                    Top Oneshot
                   </Typography>
                   <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
-              <CustomTabPanel value="ona">
+              <CustomTabPanel value="doujin">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top ONAs
+                    Top Doujin
                   </Typography>
                   <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
-              <CustomTabPanel value="music">
+              <CustomTabPanel value="manhwa">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top Musics
+                    Top Manhwa
                   </Typography>
                   <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
-              <CustomTabPanel value="airing">
+              <CustomTabPanel value="manhua">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
-                    Top Airing
+                    Top Manhua
                   </Typography>
-                  <FilterRankingList filter={value} />
+                  <TypeRankingList type={value} />
                 </Stack>
               </CustomTabPanel>
               <CustomTabPanel value="upcoming">
                 <Stack spacing={1}>
                   <Typography variant="h3" my={2}>
                     Top Upcoming
+                  </Typography>
+                  <FilterRankingList filter={value} />
+                </Stack>
+              </CustomTabPanel>
+              <CustomTabPanel value="publishing">
+                <Stack spacing={1}>
+                  <Typography variant="h3" my={2}>
+                    Top Publishing
                   </Typography>
                   <FilterRankingList filter={value} />
                 </Stack>
@@ -143,32 +149,32 @@ export default function TopAnime() {
               </CustomTabPanel>
             </TabContext>
           </Box>
-          {/* <Box style={{ margin: "10px auto" }}>
-            <Pagination
-              count={10}
-              shape="rounded"
-              variant="outlined"
-              color="primary"
-              page={page}
-              onChange={handlePageChange}
-              renderItem={(item) => (
-                <PaginationItem
-                  components={{
-                    previous: ArrowBackIcon,
-                    next: ArrowForwardIcon,
-                  }}
-                  {...item}
-                  sx={{
-                    "&.Mui-selected": {
-                      backgroundColor: "#9BA3EB",
-                      color: "white",
-                      borderRadius: 0,
-                    },
-                  }}
-                />
-              )}
-            />
-          </Box> */}
+          {/* <Box style={{ margin: '10px auto' }}>
+						<Pagination
+							count={10}
+							shape='rounded'
+							variant='outlined'
+							color='primary'
+							page={page}
+							onChange={handlePageChange}
+							renderItem={(item) => (
+								<PaginationItem
+									components={{
+										previous: ArrowBackIcon,
+										next: ArrowForwardIcon,
+									}}
+									{...item}
+									sx={{
+										'&.Mui-selected': {
+											backgroundColor: '#9BA3EB',
+											color: 'white',
+											borderRadius: 0,
+										},
+									}}
+								/>
+							)}
+						/>
+					</Box> */}
           <Box mb={8}></Box>
         </Stack>
       </Container>

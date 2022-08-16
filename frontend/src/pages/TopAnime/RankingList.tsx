@@ -8,15 +8,15 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import {
-  useGetFilterRankingQuery,
-  useGetTypeRankingQuery,
-} from "../../redux/slices/animeSlice";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { theme } from "../../theme";
 import { format_number, format_studios } from "../../helpers/format";
 import * as React from "react";
+import {
+  useGetAnimeFilterRankingQuery,
+  useGetAnimeTypeRankingQuery,
+} from "../../redux/slices/animeSlice";
 
 const List = ({ data }: { data: Array<any> }) => {
   return (
@@ -171,7 +171,7 @@ const List = ({ data }: { data: Array<any> }) => {
                     sx={{ fontWeight: 600, fontSize: 30 }}
                     color={(theme) => theme.color._100}
                   >
-                    {item.score}
+                    {item.score.toFixed(2)}
                   </Typography>
                   <StarRateRoundedIcon
                     fontSize="large"
@@ -188,7 +188,7 @@ const List = ({ data }: { data: Array<any> }) => {
 };
 
 export const TypeRankingList = ({ type }: { type: string }) => {
-  const { data } = useGetTypeRankingQuery(type);
+  const { data } = useGetAnimeTypeRankingQuery(type);
   return data ? (
     <List data={data} />
   ) : (
@@ -203,7 +203,7 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 };
 
 export const FilterRankingList = ({ filter }: { filter: string }) => {
-  const { data } = useGetFilterRankingQuery(filter);
+  const { data } = useGetAnimeFilterRankingQuery(filter);
   return data ? (
     <List data={data} />
   ) : (

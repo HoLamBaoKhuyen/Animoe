@@ -45,7 +45,7 @@ const Score = ({ data }: { data: any }) => {
             variant="body2"
             sx={{ fontSize: { md: 15, xs: 0 }, fontWeight: 200 }}
           >
-            {format_number(data.scored_by)} users
+            {data.scored_by ? `${format_number(data.scored_by)} users` : "0 user"}
           </Typography>
         </Box>
       </Box>

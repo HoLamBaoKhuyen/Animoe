@@ -58,7 +58,7 @@ const Episodes = (props: any) => {
             </Grid>
             <Grid item xs={1} >
               <Box display='flex' alignItems={'center'} >
-                <Typography variant='h3'>{ep.score}</Typography>
+                <Typography variant='h3'>{ep.score.toFixed(1)}</Typography>
                 <StarIcon sx={{ color: theme.color.yellow }} />
               </Box>
             </Grid>

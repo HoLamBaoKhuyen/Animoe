@@ -1,4 +1,4 @@
-import { Box, Button, Chip, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import { theme } from "../../theme";
 
 const Content = ({ data }: { data: any }) => {

@@ -28,7 +28,7 @@ export const animeSlice = createSlice({
 
 export const animeApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getTypeRanking: build.query({
+    getAnimeTypeRanking: build.query({
       query: (type) => ({
         url: `${GET_ANIME_RANKING_ENDPOINT}?type=${type}`,
         method: "GET",
@@ -37,7 +37,7 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
-    getFilterRanking: build.query({
+    getAnimeFilterRanking: build.query({
       query: (filter) => ({
         url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}`,
         method: "GET",
@@ -151,8 +151,8 @@ export const animeApi = apiSlice.injectEndpoints({
 export default animeSlice.reducer;
 
 export const {
-  useGetTypeRankingQuery,
-  useGetFilterRankingQuery,
+  useGetAnimeTypeRankingQuery,
+  useGetAnimeFilterRankingQuery,
   useGetTopFiveAnimeQuery,
   useGetAnimeSearchQuery,
   useGetAnimeByIdQuery,
