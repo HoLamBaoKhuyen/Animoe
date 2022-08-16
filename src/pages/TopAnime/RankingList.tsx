@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, Grid, Link, Skeleton, Stack, Typography } from '@mui/material'
-import { useGetAnimeFilterRankingQuery, useGetAnimeTypeRankingQuery } from '../../redux/slices/animeSlice'
+import { useGetFilterRankingQuery, useGetTypeRankingQuery } from '../../redux/slices/animeSlice'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
 import { theme } from '../../theme'
@@ -127,7 +127,7 @@ const List = ({ data }: { data: Array<any> }) => {
 }
 
 export const TypeRankingList = ({ type }: { type: string }) => {
-  const { data } = useGetAnimeTypeRankingQuery(type)
+  const { data } = useGetTypeRankingQuery(type)
   console.log(data)
   return data ? (
     <List data={data} />
@@ -143,7 +143,7 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 }
 
 export const FilterRankingList = ({ filter }: { filter: string }) => {
-  const { data } = useGetAnimeFilterRankingQuery(filter)
+  const { data } = useGetFilterRankingQuery(filter)
   console.log(data)
   return data ? (
     <List data={data} />

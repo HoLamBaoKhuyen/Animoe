@@ -30,17 +30,23 @@ export const mangaSlice = createSlice({
 
 const mangaApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getTypeRanking: build.query({
+    getMangaTypeRanking: build.query({
       query: (type) => ({
         url: `${GET_MANGA_RANKING_ENDPOINT}?type=${type}`,
         method: "GET",
       }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
     }),
-    getFilterRanking: build.query({
+    getMangaFilterRanking: build.query({
       query: (filter) => ({
         url: `${GET_MANGA_RANKING_ENDPOINT}?filter=${filter}`,
         method: "GET",
       }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
     }),
     getTopFiveManga: build.query({
       query: (filter) => ({
@@ -59,7 +65,7 @@ const mangaApi = apiSlice.injectEndpoints({
     }),
     getMangaSearch: build.query({
       query: (params) => ({
-        url: `${MANGA_ENDPOINT}?q=${params.strQuery}&limit=${params.limit}&page=${params.page}`,
+        url: `${MANGA_ENDPOINT}?${params.params}&limit=${params.limit}&page=${params.page}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
@@ -143,8 +149,8 @@ const mangaApi = apiSlice.injectEndpoints({
 export default mangaSlice.reducer;
 
 export const {
-  useGetTypeRankingQuery,
-  useGetFilterRankingQuery,
+  useGetMangaTypeRankingQuery,
+  useGetMangaFilterRankingQuery,
   useGetTopFiveMangaQuery,
   useGetMangaByIdQuery,
   useGetMangaSearchQuery,

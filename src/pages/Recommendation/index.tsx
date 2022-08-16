@@ -5,7 +5,7 @@ import RecommendationsPageHeader from "./RecommendationsPageHeader"
 import RecommendationsPageBody from "./RecommendationsPageBody"
 import { useGetRecentAnimeRecommendationsQuery } from "../../redux/slices/animeSlice";
 import { useGetRecentMangaRecommendationsQuery } from "../../redux/slices/mangaSlice";
-const RecommendationsPage  = ({data}:any) => {
+const RecommendationsPageUnit  = ({data}:any) => {
     return (
         <Layout>
             <Container
@@ -32,13 +32,18 @@ const RecommendationsPage  = ({data}:any) => {
 const AnimeRecommendationsPage = () => {
   const {data} = useGetRecentAnimeRecommendationsQuery(0);
   return (
-    <RecommendationsPage data={data}></RecommendationsPage>
+    <RecommendationsPageUnit data={data}></RecommendationsPageUnit>
   );
 };
 const MangaRecommendationsPage = () => {
     const {data} = useGetRecentMangaRecommendationsQuery(0);
     return (
-        <RecommendationsPage data={data}></RecommendationsPage>
+        <RecommendationsPageUnit data={data}></RecommendationsPageUnit>
     );
+};
+const RecommendationsPage = ({type}:any) => {
+    return type === "anime" ? (
+        <AnimeRecommendationsPage></AnimeRecommendationsPage>
+    ) : ( <MangaRecommendationsPage></MangaRecommendationsPage>);
 };
 export {AnimeRecommendationsPage, MangaRecommendationsPage};
