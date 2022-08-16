@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -14,28 +14,50 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "../../components/css/search_result.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useSearchAnimeQuery } from "../../redux/slices/animeSlice";
+import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { Skeleton } from "@mui/lab";
 import { format_number } from "../../helpers/format";
 
-const SearchResults = ({ searchQuery }: any) => {
-  const [page, setPage] = React.useState(1);
-  const { data } = useSearchAnimeQuery(searchQuery);
+const createParamsObject = (searchParams: any, page: any) => {
+  return {
+    params: searchParams,
+    limit: 5,
+    page: page
+  }
+}
+const getCurrentData = (searchData:any, searchParams: any, page: any) =>{
+  const {data} =  searchData( createParamsObject(searchParams.params.toString(), page) );
+  return data ? data : [];
+}
 
+const SearchResults = ({ searchParams, searchData } : any) => {
+  const [page, setPage] = useState(1);
+  const currentData = searchParams.params.get("q") ? getCurrentData(searchData, searchParams, page) : [];
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   return () => {
+  //     const getData = async () => {
+  //       const result = await getCurrentData(searchData, searchParams, page);
+  //       setData(result);
+  //     };
+  //     getData()
+  //   };
+  // }, [searchParams.params]);
+  
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    event: any,
     value: number
   ) => {
     setPage(value);
   };
-
-  return data ? (
+  console.log(currentData);
+  return currentData ? (
     <Box>
       <Grid container rowSpacing={2}>
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Result for "{searchQuery}"
+              Search Result for "{searchParams.params.get("q")}"
             </Typography>
           </Box>
         </Grid>
@@ -47,13 +69,12 @@ const SearchResults = ({ searchQuery }: any) => {
           columnSpacing={{ md: 15, sm: 3 }}
           rowSpacing={{ md: 2, xs: 2 }}
         >
-          {data.map((item: any) => (
+          {currentData.map((item: any, index: any) => (
             <Grid item xs={12} key={item.mal_id}>
               <Box
                 sx={{
                   position: "relative",
                   width: "100%",
-                  height: "150px",
                   background: theme.color._850,
                   borderRadius: 3,
                   display: "flex",
@@ -62,29 +83,28 @@ const SearchResults = ({ searchQuery }: any) => {
               >
                 <Box
                   sx={{
-                    height: "90%",
                     display: "flex",
                     alignItems: "center",
                     ml: "10px",
                     my: "auto",
                   }}
                 >
-                  <Link href={`/anime/${item.mal_id}`}>
-                    <img
-                      alt={item.mal_id}
-                      src={item.images.jpg.image_url}
-                      height="100%"
-                      width="auto"
-                      style={{
-                        borderRadius: 12,
-                        minWidth: 60,
-                        maxWidth: 80,
-                        maxHeight: 120,
-                      }}
-                    />
+                  <Link href={`/anime/${item.mal_id}`} >
+                    <Stack spacing={0.5} ml={1} my={1} width={"fit-content"}>
+                      <img
+                        alt={item.mal_id}
+                        src={item.images.jpg.image_url}
+                        height="100%"
+                        width="auto"
+                        style={{
+                          borderRadius: 12,
+                          width: 100,
+                        }}
+                      />
+                    </Stack>
                   </Link>
                   <Link href={`/anime/${item.mal_id}`}>
-                    <Stack spacing={1} ml={2} width={"fit-content"}>
+                    <Stack spacing={0.5} ml={2} my={1} width={"fit-content"}>
                       <Typography variant="h4" sx={{ fontWeight: 600 }}>
                         {item.title}
                       </Typography>
@@ -101,6 +121,14 @@ const SearchResults = ({ searchQuery }: any) => {
                         color={(theme) => theme.color._100}
                       >
                         {item.type} ({item.episodes} eps)
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
+                        { item.producers ? item.producers.map( (producer: any, index: any) => (index !== item.producers.length-1 ? producer.name+", " : producer.name+"") )
+                        : item.authors.map( (author: any, index: any) => (index !== item.authors.length-1 ? author.name+", " : author.name+"") )}
                       </Typography>
                       <Typography
                         variant="body1"
@@ -132,6 +160,24 @@ const SearchResults = ({ searchQuery }: any) => {
                   >
                     <AddBoxIcon fontSize="large" />
                   </Button>
+                  <Stack
+                  spacing={{ md: 1, xs: 0 }}
+                  direction="row"
+                  alignItems="center"
+                  style={{ position: "absolute", bottom: 2, right: 2 }}
+                  >
+                    <Typography
+                      variant="h5"
+                      sx={{ fontWeight: 600, fontSize: 30 }}
+                      color={(theme) => theme.color._100}
+                    >
+                      {item.score}
+                    </Typography>
+                    <StarRateRoundedIcon
+                      fontSize="large"
+                      sx={{ color: theme.color.yellow }}
+                    />
+                  </Stack>
                 </Box>
               </Box>
             </Grid>
@@ -173,7 +219,7 @@ const SearchResults = ({ searchQuery }: any) => {
         <Grid item xs={12} zIndex={10}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
             <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Search Results for "{searchQuery}"
+              Search Results for "{searchParams.params.get("q")}"
             </Typography>
           </Box>
         </Grid>

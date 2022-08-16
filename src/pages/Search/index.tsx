@@ -1,13 +1,15 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
 import Layout from "../../components/layout";
-import SearchResults from "./SearchResult";
+import SearchResult from "./SearchResult";
 import SearchTool from "./SearchTool";
+import { useGetAnimeSearchQuery } from "../../redux/slices/animeSlice";
+import { useGetMangaSearchQuery } from "redux/slices/mangaSlice";
 import { useSearchParams } from "react-router-dom";
 
-const DetailPage = () => {
-  const [searchQuery] = useSearchParams();
-
+const SearchPageUnit = (props: any) => {
+  const { searchParams, searchType, searchData} = props;
+  
   return (
     <Layout>
       <Box
@@ -28,7 +30,7 @@ const DetailPage = () => {
             },
           }}
         >
-          <SearchTool searchQuery={searchQuery.get("q")} />
+          <SearchTool searchParams={searchParams} searchType={searchType}/>
         </Container>
       </Box>
       <Container
@@ -41,10 +43,27 @@ const DetailPage = () => {
         }}
       >
         <Box mt={4}>
-          <SearchResults searchQuery={searchQuery.get("q")} />
+          <SearchResult searchParams={searchParams} searchData={searchData}/>
         </Box>
       </Container>
     </Layout>
   );
+}
+
+const AnimeSearchPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  return (
+    <SearchPageUnit searchParams={{params: searchParams, setParams: setSearchParams}} searchType="/anime-search" searchData={useGetAnimeSearchQuery} />
+  );
 };
-export default DetailPage;
+const MangaSearchPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  return (
+    <SearchPageUnit searchParams={{params: searchParams, setParams: setSearchParams}} searchType="/manga-search" searchData={useGetMangaSearchQuery} />
+  );
+};
+const SearchPage = ({type}:any) => {
+  return type === "anime" ? ( <AnimeSearchPage></AnimeSearchPage> ) : ( <MangaSearchPage></MangaSearchPage> );
+};
+export default SearchPage;

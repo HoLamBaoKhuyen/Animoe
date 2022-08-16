@@ -12,17 +12,33 @@ import SquareRoundedIcon from "@mui/icons-material/SquareRounded";
 import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
 
-type SearchResultsProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
-  const [state, setState] = React.useState(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState(!state);
+const ContentFilter = ( {searchParams} : any) => {
+  const [option, setOptionName] = React.useState<string[]>([]);
+
+  const handleChange = (event: any) => {
+    const {
+      target: { name, value },
+    } = event;
+    const oldParam = searchParams.params.get('genres') ? searchParams.params.get('genres') : "";
+    var oldOptions = option;
+    if(option.indexOf(event.target.name) > -1){
+      oldOptions.splice(option.indexOf(event.target.name),1);
+      setOptionName(
+        oldOptions
+      );
+      searchParams.params.set('genres', oldParam.replace(event.target.value + ',' , ""));
+      if(oldParam.replace(event.target.value + ',' , "") == ""){
+        searchParams.params.delete('genres');
+      }
+    }else{
+      oldOptions.splice(option.length,0,event.target.name);
+      setOptionName(
+        oldOptions
+      );
+      searchParams.params.set('genres', oldParam + event.target.value + ',' );
+    }
+    searchParams.setParams(searchParams.params);
   };
   return (
     <Box>
@@ -72,28 +88,32 @@ const ContentFilter: React.FC<SearchResultsProps> = ({ children }) => {
                 </Box>
 
                 <FormControl
-                  sx={{ mx: 3 }}
+                  sx={{ mx: 3, overflowY: "scroll", height: 245 }}
                   component="fieldset"
                   variant="standard"
                 >
-                  {result.type.map((type) => (
+                  {result.options ? result.options.map((item,key) => (
                     <FormGroup>
                       <FormControlLabel
                         control={
                           <Checkbox
+                            checked={option.indexOf(item) > -1}
                             sx={{
                               color: `${theme.color._100} `,
                               "&.Mui-checked": {
                                 color: `${theme.color._800} !important`,
                               },
                             }}
+                            onChange={handleChange}
+                            name={item}
+                            value={result.typeOptions[key]}
                             icon={<SquareRoundedIcon />}
                           />
                         }
-                        label={type}
+                        label={item}
                       />
                     </FormGroup>
-                  ))}
+                  )) : ""}
                 </FormControl>
               </Box>
             </Grid>

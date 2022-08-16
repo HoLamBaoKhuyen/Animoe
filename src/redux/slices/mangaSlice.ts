@@ -3,6 +3,7 @@ import { apiSlice } from "./apiSlice";
 import {
   GET_MANGA_RANKING_ENDPOINT,
   MANGA_ENDPOINT,
+  RECOMMENDATIONS_ENDPOINT
 } from "../../apis/endpoints";
 
 const initialState = {
@@ -57,6 +58,23 @@ const mangaApi = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `${MANGA_ENDPOINT}/${id}/full`,
         method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getMangaSearch: build.query({
+      query: (params) => ({
+        url: `${MANGA_ENDPOINT}?${params.params}&limit=${params.limit}&page=${params.page}`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getRecentMangaRecommendations: build.query({
+      query: (page) => ({
+        url: `${RECOMMENDATIONS_ENDPOINT}${MANGA_ENDPOINT}`,
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
         return response.data;
@@ -135,6 +153,8 @@ export const {
   useGetMangaFilterRankingQuery,
   useGetTopFiveMangaQuery,
   useGetMangaByIdQuery,
+  useGetMangaSearchQuery,
+  useGetRecentMangaRecommendationsQuery,
   useGetMangaEpisodesQuery,
   useGetMangaCharactersQuery,
   useGetMangaStaffQuery,
