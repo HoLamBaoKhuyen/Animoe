@@ -34,7 +34,7 @@ export default function TopAnime() {
     <Layout>
       <Container maxWidth="md">
         <Stack spacing={2}>
-          <Typography variant="h3">Top Anime</Typography>
+          <Typography variant="h3">Top Manga</Typography>
           <Box height={200} overflow="hidden" borderRadius="10px">
             <img
               alt="Banners"

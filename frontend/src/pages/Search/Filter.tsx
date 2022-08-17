@@ -1,22 +1,13 @@
 import * as React from "react";
-import { ReactNode } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { FILTER } from "../../data/detail";
-import MultipleSelect from "../../components/Select/MultiSelect";
+import SingleSelect from "../../components/Select/SingleSelect";
 import CustomDatePicker from "./CustomDatePicker";
 
-type SearchResultsProps = {
-  children?: ReactNode;
-  title?: string;
-  englistTitle?: string;
-  image?: string;
-};
-const Filter: React.FC<SearchResultsProps> = ({ children }) => {
-  const [value, setValue] = React.useState("");
-  const handleChange = (event: { target: { value: string } }) => {
-    setValue(event.target.value);
-  };
+const Filter = (props: any) => {
+  const { searchParams } = props;
+
   return (
     <Box sx={{}}>
       <Box sx={{ display: "flex" }}>
@@ -49,9 +40,12 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
                 </Typography>
               </Grid>
               <Grid item xs={8}>
-                <MultipleSelect
+                <SingleSelect
                   placeholder={`Select ${result.typeName}`}
-                  list={result.typeOptions}
+                  list={result.options}
+                  searchParams={searchParams}
+                  param={result.typeName}
+                  paramList={result.typeOptions}
                 />
               </Grid>
             </Grid>
@@ -71,7 +65,10 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
               </Typography>
             </Grid>
             <Grid item xs={8}>
-              <CustomDatePicker />
+              <CustomDatePicker
+                searchParams={searchParams}
+                param="start_date"
+              />
             </Grid>
           </Grid>
           <Grid
@@ -89,7 +86,7 @@ const Filter: React.FC<SearchResultsProps> = ({ children }) => {
               </Typography>
             </Grid>
             <Grid item xs={8}>
-              <CustomDatePicker />
+              <CustomDatePicker searchParams={searchParams} param="end_date" />
             </Grid>
           </Grid>
         </Grid>

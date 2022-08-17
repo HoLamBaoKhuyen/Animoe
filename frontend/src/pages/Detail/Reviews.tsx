@@ -5,6 +5,7 @@ import axios from "axios";
 import usePagination from "./Pagination";
 import ReviewCard from "./ReviewCard";
 import { BASE_API, REVIEWS_PER_PAGE } from "./const ";
+import { USER_REVIEWS } from "./mock_data";
 import { theme } from "theme";
 
 type ReviewsProps = {
@@ -19,13 +20,14 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
   const [data, setData] = useState<any>([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const result = await axios(
-        `${BASE_API}/anime/${id}/reviews`,
-      )
-      setData(result.data.data)
-    }
-    getData()
+    // const getData = async () => {
+    //   const result = await axios(
+    //     `${BASE_API}/anime/${id}/reviews`,
+    //   )
+    //   setData(result.data.data)
+    // }
+    // getData()
+    setData(USER_REVIEWS)
   }, [id]);
 
   let [page, setPage] = useState(1);

@@ -28,7 +28,7 @@ export const animeSlice = createSlice({
 
 export const animeApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
-    getAnimeTypeRanking: build.query({
+    getTypeRanking: build.query({
       query: (type) => ({
         url: `${GET_ANIME_RANKING_ENDPOINT}?type=${type}`,
         method: "GET",
@@ -37,7 +37,7 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
-    getAnimeFilterRanking: build.query({
+    getFilterRanking: build.query({
       query: (filter) => ({
         url: `${GET_ANIME_RANKING_ENDPOINT}?filter=${filter}`,
         method: "GET",
@@ -57,8 +57,16 @@ export const animeApi = apiSlice.injectEndpoints({
     }),
     getAnimeSearch: build.query({
       query: (params) => ({
-        url: `${ANIME_ENDPOINT}?q=${params.strQuery}&limit=${params.limit}&page=${params.page}`,
+        url: `${ANIME_ENDPOINT}?${params.params}&limit=${params.limit}`,
         method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getRecentAnimeRecommendations: build.query({
+      query: (page) => ({
+        url: `${RECOMMENDATIONS_ENDPOINT}${ANIME_ENDPOINT}`,
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
         return response.data;
@@ -136,23 +144,14 @@ export const animeApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
-    getRecentAnimeRecommendations: build.query({
-      query: (page) => ({
-        url: `${RECOMMENDATIONS_ENDPOINT}${ANIME_ENDPOINT}`,
-        method: "GET",
-      }),
-      transformResponse: (response: { data: any }, meta: any, arg: any) => {
-        return response.data;
-      },
-    }),
   }),
 });
 
 export default animeSlice.reducer;
 
 export const {
-  useGetAnimeTypeRankingQuery,
-  useGetAnimeFilterRankingQuery,
+  useGetTypeRankingQuery,
+  useGetFilterRankingQuery,
   useGetTopFiveAnimeQuery,
   useGetAnimeSearchQuery,
   useGetAnimeByIdQuery,

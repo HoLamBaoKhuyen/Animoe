@@ -588,40 +588,55 @@ export const FILTER =  [
     id: 1,
     name: "Type",
     typeName: "type",
-    typeOptions: [
+    options: [
       "TV", "OVA", "Movie", "Special", "ONA", "Music"
+    ],
+    typeOptions: [
+      "tv", "ova", "movie", "special", "ona", "music"
     ]
   },
   {
     id: 2,
     name: "Score",
     typeName: "score",
+    options: [
+      "(1)", "(2)", "(3)", "(4)", "(5)", "(6)", "(7)", "(8)", "(9)", "(10)"
+    ],
     typeOptions: [
-      "(1)", "(2)", "(3)", "(4)", "(5)", "(6)", "(7)", "(8)", "(9)", "10"
+      "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
     ]
   },
   {
     id: 3,
     name: "Status",
     typeName: "status",
-    typeOptions: [
+    options: [
       "Finished Airing","Currently Airing","Not yet Aired"
+    ],
+    typeOptions: [
+      "airing","complete","upcoming"
     ]
   },
   {
     id: 4,
     name: "Rated",
     typeName: "rating",
-    typeOptions: [
+    options: [
       "G","PG","PG-13","R","R+", "Rx"
+    ],
+    typeOptions: [
+      "g","pg","pg13","r17","r", "rx"
     ]
   },
   {
     id: 5,
     name: "Producer",
-    typeName: "producer",
-    typeOptions: [
+    typeName: "producers",
+    options: [
       "Youth Film Studio","10 Gauge","1TheK","1st Place","12 Diary Holders"
+    ],
+    typeOptions: [
+      "1","2","3","4","5"
     ]
   }
 ];
@@ -629,29 +644,45 @@ export const CONTENT_FILTER =  [
   {
     id: 1,
     name: "Genres",
-    type: [
-      "Josei","Kids","Seinen","Shoujo","Shounen"
+    typeName: "genres",
+    options: [
+      "Action","Adventure","Boys Love","Comedy","Drama","Fantasy","Girls Love","Horror","Mystery","Romance","Sci-Fi","Slice of Life","Sports","Supernatural"
+    ],
+    typeOptions: [
+      "1","2","28","4","8","10","26","14","7","22","24","36","30","37"
     ]
   },
   {
     id: 2,
     name: "Explicit Genres",
-    type: [
-      "Josei","Kids","Seinen","Shoujo","Shounen"
+    typeName: "explicit_genres",
+    options: [
+      "Ecchi","Erotica"
+    ],
+    typeOptions: [
+      "9","49"
     ]
   },
   {
     id: 3,
     name: "Themes",
-    type: [
-      "Josei","Kids","Seinen","Shoujo","Shounen"
+    typeName: "themes",
+    options: [
+      "Childcare","Detective","Educational","Harem","Historical","Isekai","Martial Arts","Military","Music","Parody","Psychological","School","Survival","Vampire"
+    ],
+    typeOptions: [
+      "53","56","56","35","13","62","17","38","19","20","40","23","76","32"
     ]
   },
   {
     id: 4,
     name: "Demographics",
-    type: [
+    typeName: "demographics",
+    options: [
       "Josei","Kids","Seinen","Shoujo","Shounen"
+    ],
+    typeOptions: [
+      "43","15","42","25","27"
     ]
   }
 ];

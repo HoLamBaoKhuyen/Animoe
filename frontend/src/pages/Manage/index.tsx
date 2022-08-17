@@ -4,7 +4,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { StyledTab, StyledTabs } from "./CustomTabs";
 import { theme } from "../../theme";
 import StyledSelect from "../../components/Select/StyledSelect";
-import TableContent from "./TableContent";
+import AnimeTable from "./AnimeTable";
 import { useNavigate } from "react-router-dom";
 import { format_string } from "../../helpers/format";
 
@@ -179,22 +179,22 @@ const ManagePage = () => {
             </Grid>
           </Box>
           <TabPanel value={value} index={0}>
-            <TableContent />
+            <AnimeTable plan="All" />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <Typography variant="body1">Currently watching</Typography>
+            <AnimeTable plan="Watching" />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <Typography variant="body1">Completed</Typography>
+            <AnimeTable plan="Completed" />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <Typography variant="body1">On hold</Typography>
+            <AnimeTable plan="On-hold" />
           </TabPanel>
           <TabPanel value={value} index={4}>
-            <Typography variant="body1">Dropped</Typography>
+            <AnimeTable plan="Dropped" />
           </TabPanel>
           <TabPanel value={value} index={5}>
-            <Typography variant="body1">Plan to watch</Typography>
+            <AnimeTable plan="Plan to watch" />
           </TabPanel>
         </Box>
       </Container>

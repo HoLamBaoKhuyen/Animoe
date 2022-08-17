@@ -8,15 +8,14 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import {
+  useGetFilterRankingQuery,
+  useGetTypeRankingQuery,
+} from "../../redux/slices/animeSlice";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { theme } from "../../theme";
-import { format_number, format_studios } from "../../helpers/format";
-import * as React from "react";
-import {
-  useGetAnimeFilterRankingQuery,
-  useGetAnimeTypeRankingQuery,
-} from "../../redux/slices/animeSlice";
+import { format_number } from "../../helpers/format";
 
 const List = ({ data }: { data: Array<any> }) => {
   return (
@@ -97,7 +96,6 @@ const List = ({ data }: { data: Array<any> }) => {
                       alt="Poster"
                       src={item.images.jpg.image_url}
                       width="100%"
-                      height="auto"
                       style={{ borderRadius: 10 }}
                     />
                   </Link>
@@ -121,13 +119,6 @@ const List = ({ data }: { data: Array<any> }) => {
                         color={(theme) => theme.color._100}
                       >
                         {item.type} ({item.episodes} eps)
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{ fontWeight: 600, opacity: 0.7 }}
-                        color={(theme) => theme.color._100}
-                      >
-                        {format_studios(item.studios)}
                       </Typography>
                       <Typography
                         variant="body1"
@@ -188,7 +179,7 @@ const List = ({ data }: { data: Array<any> }) => {
 };
 
 export const TypeRankingList = ({ type }: { type: string }) => {
-  const { data } = useGetAnimeTypeRankingQuery(type);
+  const { data } = useGetTypeRankingQuery(type);
   return data ? (
     <List data={data} />
   ) : (
@@ -203,7 +194,7 @@ export const TypeRankingList = ({ type }: { type: string }) => {
 };
 
 export const FilterRankingList = ({ filter }: { filter: string }) => {
-  const { data } = useGetAnimeFilterRankingQuery(filter);
+  const { data } = useGetFilterRankingQuery(filter);
   return data ? (
     <List data={data} />
   ) : (

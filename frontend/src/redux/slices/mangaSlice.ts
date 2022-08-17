@@ -63,6 +63,23 @@ export const mangaApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
+    getMangaSearch: build.query({
+      query: (params) => ({
+        url: `${MANGA_ENDPOINT}?${params.params}&limit=${params.limit}&page=${params.page}`,
+        method: "GET",
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
+    getRecentMangaRecommendations: build.query({
+      query: (page) => ({
+        url: `${RECOMMENDATIONS_ENDPOINT}${MANGA_ENDPOINT}`,
+      }),
+      transformResponse: (response: { data: any }, meta: any, arg: any) => {
+        return response.data;
+      },
+    }),
     getMangaEpisodes: build.query({
       query: (id) => ({
         url: `${MANGA_ENDPOINT}/${id}/episodes`,
@@ -126,24 +143,6 @@ export const mangaApi = apiSlice.injectEndpoints({
         return response.data;
       },
     }),
-    getMangaSearch: build.query({
-      query: (params) => ({
-        url: `${MANGA_ENDPOINT}?q=${params.strQuery}&limit=${params.limit}&page=${params.page}`,
-        method: "GET",
-      }),
-      transformResponse: (response: { data: any }, meta: any, arg: any) => {
-        return response.data;
-      },
-    }),
-    getRecentMangaRecommendations: build.query({
-      query: (page) => ({
-        url: `${RECOMMENDATIONS_ENDPOINT}${MANGA_ENDPOINT}`,
-        method: "GET",
-      }),
-      transformResponse: (response: { data: any }, meta: any, arg: any) => {
-        return response.data;
-      },
-    }),
   }),
 });
 
@@ -154,6 +153,8 @@ export const {
   useGetMangaFilterRankingQuery,
   useGetTopFiveMangaQuery,
   useGetMangaByIdQuery,
+  useGetMangaSearchQuery,
+  useGetRecentMangaRecommendationsQuery,
   useGetMangaEpisodesQuery,
   useGetMangaCharactersQuery,
   useGetMangaStaffQuery,
@@ -161,6 +162,4 @@ export const {
   useGetMangaRelationsQuery,
   useGetMangaRecommendationsQuery,
   useGetMangaVideosQuery,
-  useGetMangaSearchQuery,
-  useGetRecentMangaRecommendationsQuery,
 } = mangaApi;

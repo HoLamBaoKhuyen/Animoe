@@ -66,6 +66,25 @@ app.get("/api/list/anime/:email", async (req, res) => {
   }
 });
 
+app.get("/api/list/:plan/anime/:email", async (req, res) => {
+  try {
+    const plan = req.params.plan;
+    const email = req.params.email;
+    let animeList = [];
+    if (plan === "All") {
+      animeList = await getAnimeCollection(email);
+    } else {
+      animeList = await getAnimeCollectionBasedOnPlan(plan, email);
+    }
+    return res.status(200).send({
+      animes: animeList,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send(error);
+  }
+});
+
 app.get("/api/types/anime", async (req, res) => {
   try {
     const animeTypeList = await getAnimeTypeCollection();
@@ -243,6 +262,26 @@ async function getAnimeCollection(email) {
   return data;
 }
 
+async function getAnimeCollectionBasedOnPlan(plan, email) {
+  const userDocRef = db.collection("users").doc(email);
+  const snapshot = await userDocRef.get();
+  const user = snapshot.data();
+  const data = [];
+  if (user !== undefined) {
+    const animeList = user.animes;
+    if (animeList.length === 0) {
+      return animeList;
+    } else {
+      for (let anime of animeList) {
+        if (anime.plan === plan) {
+          data.push(anime);
+        }
+      }
+    }
+  }
+  return data;
+}
+
 async function getAnimeTypeCollection() {
   const filterDocRef = db.collection("filters").doc("animeTypes");
   const snapshot = await filterDocRef.get();
@@ -371,14 +410,22 @@ async function deleteAnimeFromCollection(anime, email) {
 
 async function updateAnimeInCollection(oldAnime, newAnime, email) {
   const userDocRef = db.collection("users").doc(email);
-  await userDocRef.get().then(async (doc) => {
-    if (doc.exists) {
-      await userDocRef.update({
-        animes: adminFirestore.FieldValue.arrayRemove(oldAnime),
-      });
-      await userDocRef.update({
-        animes: adminFirestore.FieldValue.arrayUnion(newAnime),
-      });
+  const snapshot = await userDocRef.get();
+  const user = snapshot.data();
+  let animeList = [];
+  if (user !== undefined) {
+    animeList = user.animes;
+    if (animeList.length === 0) {
+      return animeList;
+    } else {
+      for (let i = 0; i < animeList.length; i++) {
+        if (animeList[i].id === oldAnime.id) {
+          animeList[i] = newAnime;
+        }
+      }
     }
+  }
+  await userDocRef.update({
+    animes: animeList,
   });
 }

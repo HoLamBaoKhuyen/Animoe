@@ -11,18 +11,17 @@ import {
   Box,
   Button,
   Stack,
-  PaginationItem,
   Pagination,
   Link,
   Typography,
+  Grid,
 } from "@mui/material";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { theme } from "../../theme";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
+import usePagination from "../Detail/Pagination";
 
 export const StyledTableCell = styled(TableCell)({
   "&.MuiTableCell-root": {
@@ -37,14 +36,16 @@ export const StyledTableCell = styled(TableCell)({
   },
 });
 
-export default function TableContent() {
+export default function AnimeTable({ plan }: any) {
   const [rows, setRows] = React.useState<any[]>([]);
   const [page, setPage] = React.useState(1);
   const [openModal, setOpenModal] = React.useState<number>(-1);
   const [openEditModal, setOpenEditModal] = React.useState<number>(-1);
   const [refreshKey, setRefreshKey] = React.useState<number>(0);
   const email = localStorage.getItem("email");
-
+  const animesPerPage = 8;
+  const count = Math.ceil(rows.length / animesPerPage);
+  const rowsPagination = usePagination(rows, animesPerPage);
   let authToken = localStorage.getItem("Auth Token");
 
   const handleSubmit = (row: any) => {
@@ -114,11 +115,12 @@ export default function TableContent() {
 
   React.useEffect(() => {
     fetch(
-      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/anime/${email}`
+      `http://localhost:5001/animoe-7b89b/asia-southeast1/app/api/list/${plan}/anime/${email}`
     )
       .then((response) => response.json())
       .then((json) => {
         setRows(json.animes);
+        console.log(rows);
       })
       .catch(console.error);
   }, [refreshKey]);
@@ -139,11 +141,9 @@ export default function TableContent() {
     setOpenEditModal(-1);
   };
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
-    setPage(value);
+  const handlePageChange = (e: any, p: number) => {
+    setPage(p);
+    rowsPagination.jump(p);
   };
 
   return (
@@ -172,6 +172,18 @@ export default function TableContent() {
                 >
                   Title
                 </StyledTableCell>
+                {plan === "All" ? (
+                  <StyledTableCell
+                    className="table-title"
+                    width={200}
+                    sx={{ color: theme.color._100 }}
+                    align="center"
+                  >
+                    Status
+                  </StyledTableCell>
+                ) : (
+                  <></>
+                )}
                 <StyledTableCell
                   className="table-title"
                   width={120}
@@ -233,6 +245,13 @@ export default function TableContent() {
                       {row.title}
                     </Link>
                   </StyledTableCell>
+                  {plan === "All" ? (
+                    <StyledTableCell width={200} align="center">
+                      {row.plan}
+                    </StyledTableCell>
+                  ) : (
+                    <></>
+                  )}
                   <StyledTableCell width={120} align="center">
                     {row.score}
                   </StyledTableCell>
@@ -336,33 +355,23 @@ export default function TableContent() {
           </Box>
         )}
       </Table>
-      {rows.length !== 0 ? (
-        <Box style={{ margin: "auto", width: "fit-content", marginTop: 20 }}>
-          <Pagination
-            count={10}
-            shape="rounded"
-            variant="outlined"
-            color="primary"
-            page={page}
-            onChange={handlePageChange}
-            renderItem={(item) => (
-              <PaginationItem
-                components={{
-                  previous: ArrowBackIosNewIcon,
-                  next: ArrowForwardIosIcon,
-                }}
-                {...item}
-                sx={{
-                  "&.Mui-selected": {
-                    backgroundColor: "#9BA3EB",
-                    color: "white",
-                    borderRadius: 0,
-                  },
-                }}
-              />
-            )}
-          />
-        </Box>
+      {rowsPagination.currentData().length !== 0 ? (
+        <Grid item xs={12}>
+          <Box sx={{ margin: "auto", marginTop: 3, width: "fit-content" }}>
+            <Pagination
+              count={count}
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handlePageChange}
+              sx={{
+                "& .Mui-selected": {
+                  background: `${theme.color._600} !important`,
+                },
+              }}
+            />
+          </Box>
+        </Grid>
       ) : (
         <></>
       )}

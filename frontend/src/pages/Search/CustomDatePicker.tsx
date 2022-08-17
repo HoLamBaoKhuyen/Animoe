@@ -1,7 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { ThemeOptions as ThemeOptionsOld } from "@mui/material/styles/createTheme";
+import { ThemeProvider } from "@mui/material/styles";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -31,9 +30,9 @@ const StyledTextField = styled(TextField)(() => ({
   },
 }));
 
-export default function CustomDatePicker() {
-  const [value, setValue] = React.useState<Date | null>(null);
-
+export default function CustomDatePicker({searchParams,param}:any) {
+  const [value, setValue] = React.useState<Date | null>(searchParams.params.get(param) ? new Date(searchParams.params.get(param)) : null);
+  
   return (
     <ThemeProvider theme={datepickerTheme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -43,6 +42,8 @@ export default function CustomDatePicker() {
           mask="__/__/___"
           onChange={(newValue) => {
             setValue(newValue);
+            searchParams.params.set(param,newValue ? newValue.toISOString().split('T')[0] : "");
+            searchParams.setParams(searchParams.params);
           }}
           renderInput={(params) => (
             <StyledTextField
