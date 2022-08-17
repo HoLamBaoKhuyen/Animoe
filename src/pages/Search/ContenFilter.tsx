@@ -13,7 +13,7 @@ import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
 
 
-const ContentFilter = ( {searchParams} : any) => {
+const ContentFilter = ({ searchParams }: any) => {
   const [option, setOptionName] = React.useState<string[]>([]);
 
   const handleChange = (event: any) => {
@@ -22,21 +22,21 @@ const ContentFilter = ( {searchParams} : any) => {
     } = event;
     const oldParam = searchParams.params.get('genres') ? searchParams.params.get('genres') : "";
     var oldOptions = option;
-    if(option.indexOf(event.target.name) > -1){
-      oldOptions.splice(option.indexOf(event.target.name),1);
+    if (option.indexOf(event.target.name) > -1) {
+      oldOptions.splice(option.indexOf(event.target.name), 1);
       setOptionName(
         oldOptions
       );
-      searchParams.params.set('genres', oldParam.replace(event.target.value + ',' , ""));
-      if(oldParam.replace(event.target.value + ',' , "") == ""){
+      searchParams.params.set('genres', oldParam.replace(event.target.value + ',', ""));
+      if (oldParam.replace(event.target.value + ',', "") == "") {
         searchParams.params.delete('genres');
       }
-    }else{
-      oldOptions.splice(option.length,0,event.target.name);
+    } else {
+      oldOptions.splice(option.length, 0, event.target.name);
       setOptionName(
         oldOptions
       );
-      searchParams.params.set('genres', oldParam + event.target.value + ',' );
+      searchParams.params.set('genres', oldParam + event.target.value + ',');
     }
     searchParams.setParams(searchParams.params);
   };
@@ -88,11 +88,20 @@ const ContentFilter = ( {searchParams} : any) => {
                 </Box>
 
                 <FormControl
-                  sx={{ mx: 3, overflowY: "scroll", height: 245 }}
+                  className="123"
+                  sx={{
+                    px: 3, overflowY: "scroll", width: 222, height: 245, "&::-webkit-scrollbar": {
+                      width: "5px",
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                      background: 'rgba(223, 226, 255, 0.3)',
+                      borderRadius: "10px",
+                    }
+                  }}
                   component="fieldset"
                   variant="standard"
                 >
-                  {result.options ? result.options.map((item,key) => (
+                  {result.options ? result.options.map((item, key) => (
                     <FormGroup>
                       <FormControlLabel
                         control={
