@@ -1,10 +1,10 @@
 import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { theme } from "../../theme";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 import { useParams } from "react-router";
 import { useGetMangaCharactersQuery } from "redux/slices/mangaSlice";
-var Slider = require('react-slick').default
+var Slider = require("react-slick").default;
 
 const createCharacter = (list: any) => {
   if (list.length !== 0)
@@ -21,16 +21,14 @@ const createCharacter = (list: any) => {
             justifyContent: "space-between",
           }}
         >
-          <Box
-            sx={{ height: "100%", display: "flex", alignItems: "center" }}
-          >
+          <Box sx={{ height: "100%", display: "flex", alignItems: "center" }}>
             <img
               alt="character"
               src={char.character.images.webp.image_url}
               height="100%"
               width="70px"
               object-fit={"cover"}
-              style={{ borderRadius: 10, objectFit: 'cover' }}
+              style={{ borderRadius: 10, objectFit: "cover" }}
             />
             <Box ml={2}>
               <Typography variant="body1">{char.character.name}</Typography>
@@ -41,9 +39,13 @@ const createCharacter = (list: any) => {
           </Box>
         </Box>
       </Box>
-    ))
-  return (<Typography variant='h5' mt={2}>Chưa có dữ liệu</Typography>)
-}
+    ));
+  return (
+    <Typography variant="h5" mt={2}>
+      No data found.
+    </Typography>
+  );
+};
 
 const settings = {
   className: "center",
@@ -60,21 +62,24 @@ const settings = {
     {
       breakpoint: 1024,
       settings: {
-        slidesPerRow: 1, rows: 5,
-      }
+        slidesPerRow: 1,
+        rows: 5,
+      },
     },
     {
       breakpoint: 600,
       settings: {
-        slidesPerRow: 1, rows: 5,
-      }
+        slidesPerRow: 1,
+        rows: 5,
+      },
     },
     {
       breakpoint: 480,
       settings: {
-        slidesPerRow: 1, rows: 5,
-      }
-    }
+        slidesPerRow: 1,
+        rows: 5,
+      },
+    },
   ],
   dotsClass: `${styles.styled_dots}`,
   customPaging: function (i: any) {
@@ -82,23 +87,16 @@ const settings = {
       <IconButton>
         <FiberManualRecordIcon sx={{ fontSize: 18 }} />
       </IconButton>
-
     );
   },
   appendDots: (dots: any) => (
-    <Box
-      sx={{ display: 'flex', justifyContent: 'center' }}
-    >
-      {dots}
-    </Box>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>{dots}</Box>
   ),
-}
-
+};
 
 const Characters = () => {
   const { id } = useParams();
   const { data } = useGetMangaCharactersQuery(id);
-
 
   return data ? (
     <Box>
@@ -110,10 +108,8 @@ const Characters = () => {
             </Typography>
           </Box>
         </Grid>
-        <Box sx={{ width: '100%' }}>
-          <Slider {...settings}>
-            {createCharacter(data)}
-          </Slider>
+        <Box sx={{ width: "100%" }}>
+          <Slider {...settings}>{createCharacter(data)}</Slider>
         </Box>
       </Grid>
     </Box>

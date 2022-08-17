@@ -122,18 +122,23 @@ const Poster = ({ data }: { data: any }) => {
               </Typography>
             </Box>
           ) : (
-            <Button
-              onClick={handleClickOpenAddModal}
-              sx={{
-                px: { md: 5, sm: 2, xs: 3 },
-                fontSize: { md: 20, sm: 17 },
-                fontWeight: 600,
-              }}
-            >
-              Add to list
-            </Button>
+            <>
+              {authToken ? (
+                <Button
+                  onClick={handleClickOpenAddModal}
+                  sx={{
+                    px: { md: 5, sm: 2, xs: 3 },
+                    fontSize: { md: 20, sm: 17 },
+                    fontWeight: 600,
+                  }}
+                >
+                  Add to list
+                </Button>
+              ) : (
+                <></>
+              )}
+            </>
           )}
-
           <AddModal
             open={openAddModal}
             onClose={handleCloseAddModal}

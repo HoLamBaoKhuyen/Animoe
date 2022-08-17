@@ -21,12 +21,10 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await axios(
-        `${BASE_API}${MANGA_ENDPOINT}/${id}/reviews`,
-      )
-      setData(result.data.data)
-    }
-    getData()
+      const result = await axios(`${BASE_API}${MANGA_ENDPOINT}/${id}/reviews`);
+      setData(result.data.data);
+    };
+    getData();
   }, [id]);
 
   let [page, setPage] = useState(1);
@@ -68,19 +66,27 @@ const Reviews: React.FC<ReviewsProps> = ({ children }) => {
               }
             }}
           /></Box> */}
-        {dataPagi.currentData().length !== 0 ? <Box sx={{ margin: 'auto', marginTop: 3 }}>
-          <Pagination
-            count={count}
-            page={page}
-            variant="outlined"
-            shape="rounded"
-            onChange={handleChange}
-            sx={{
-              "& .Mui-selected": {
-                background: `${theme.color._600} !important`
-              }
-            }}
-          /></Box> : <Grid item xs={12}> <Typography variant='h5'>Chưa có dữ liệu</Typography></Grid>}
+        {dataPagi.currentData().length !== 0 ? (
+          <Box sx={{ margin: "auto", marginTop: 3 }}>
+            <Pagination
+              count={count}
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handleChange}
+              sx={{
+                "& .Mui-selected": {
+                  background: `${theme.color._600} !important`,
+                },
+              }}
+            />
+          </Box>
+        ) : (
+          <Grid item xs={12}>
+            {" "}
+            <Typography variant="h5">No data found.</Typography>
+          </Grid>
+        )}
       </Grid>
     </Box>
   ) : (

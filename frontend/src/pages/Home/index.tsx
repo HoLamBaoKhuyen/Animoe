@@ -9,7 +9,7 @@ const HomePage = () => {
         <HomeTopAnime title="TOP AIRING ANIME" filter="airing" />
         <HomeTopAnime title="MOST POPULAR ANIME" filter="bypopularity" />
         <HomeTopAnime title="MOST FAVORITE ANIME" filter="favorite" />
-        <Box mb={8} />
+        <Box mb={6} />
       </Container>
     </Layout>
   );

@@ -143,32 +143,6 @@ export default function TopAnime() {
               </CustomTabPanel>
             </TabContext>
           </Box>
-          {/* <Box style={{ margin: "10px auto" }}>
-            <Pagination
-              count={10}
-              shape="rounded"
-              variant="outlined"
-              color="primary"
-              page={page}
-              onChange={handlePageChange}
-              renderItem={(item) => (
-                <PaginationItem
-                  components={{
-                    previous: ArrowBackIcon,
-                    next: ArrowForwardIcon,
-                  }}
-                  {...item}
-                  sx={{
-                    "&.Mui-selected": {
-                      backgroundColor: "#9BA3EB",
-                      color: "white",
-                      borderRadius: 0,
-                    },
-                  }}
-                />
-              )}
-            />
-          </Box> */}
           <Box mb={8}></Box>
         </Stack>
       </Container>

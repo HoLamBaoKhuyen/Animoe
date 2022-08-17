@@ -4,6 +4,7 @@ import { Box, Button, Typography, Grid, Stack, Link } from "@mui/material";
 import { theme } from "../../theme";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { distance_between_two_dates } from "../../helpers/date";
+import AddModal from "../Manage/AddModal";
 const readLessStyle = {
   color: theme.color._100,
   textOverflow: "ellipsis",
@@ -12,7 +13,16 @@ const readLessStyle = {
 };
 
 const RecommendationCard = ({ mal_id, entry, content, date, user }: any) => {
+  let authToken = localStorage.getItem("Auth Token");
   const [readMore, setReadMore] = useState<boolean>(false);
+  const [openAddModal, setOpenAddModal] = React.useState<number>(-1);
+  const handleClickOpenAddModal = (id: any) => {
+    setOpenAddModal((showId) => (showId === id ? -1 : id));
+  };
+
+  const handleCloseAddModal = () => {
+    setOpenAddModal(-1);
+  };
   const handleReadMore = () => {
     setReadMore(!readMore);
   };
@@ -20,6 +30,7 @@ const RecommendationCard = ({ mal_id, entry, content, date, user }: any) => {
     date ? new Date(date) : new Date(),
     new Date()
   );
+
   return (
     <Box
       sx={{
@@ -60,27 +71,40 @@ const RecommendationCard = ({ mal_id, entry, content, date, user }: any) => {
                   </Typography>
                 </Stack>
               </Link>
-              <Button
-                variant="outlined"
-                sx={{
-                  position: "absolute",
-                  top: "135px",
-                  left: "135px",
-                  minWidth: 0,
-                  height: 35,
-                  width: 35,
-                  borderRadius: 1,
-                  color: theme.color._400,
-                  border: 0,
-                  transition: "all 0.2s",
-                  "&:hover": {
+              {authToken ? (
+                <Button
+                  onClick={() => handleClickOpenAddModal(item.mal_id)}
+                  variant="outlined"
+                  sx={{
+                    position: "absolute",
+                    top: "135px",
+                    left: "135px",
+                    minWidth: 0,
+                    height: 35,
+                    width: 35,
+                    borderRadius: 1,
+                    opacity: 0.5,
+                    color: theme.color._400,
                     border: 0,
-                    opacity: 0.7,
-                  },
-                }}
-              >
-                <AddBoxIcon fontSize="large" />
-              </Button>
+                    transition: "all 0.2s",
+                    "&:hover": {
+                      color: theme.color._400,
+                      border: 0,
+                      background: 0,
+                      opacity: 1,
+                    },
+                  }}
+                >
+                  <AddBoxIcon fontSize="large" />
+                </Button>
+              ) : (
+                <></>
+              )}
+              <AddModal
+                open={openAddModal == item.mal_id}
+                onClose={handleCloseAddModal}
+                data={item}
+              />
             </Box>
           </Grid>
         ))}
@@ -130,7 +154,7 @@ const RecommendationCard = ({ mal_id, entry, content, date, user }: any) => {
         <Typography
           sx={{ color: theme.color._400, px: "5px", fontSize: "18px" }}
         >
-          Anime rec by
+          Anime recommended by
         </Typography>
         <Link href={`#`}>
           <Typography

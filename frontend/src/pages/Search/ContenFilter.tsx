@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import {
   Box,
   Checkbox,
@@ -13,31 +12,31 @@ import SquareRoundedIcon from "@mui/icons-material/SquareRounded";
 import { theme } from "../../theme";
 import { CONTENT_FILTER } from "../../data/detail";
 
-
-const ContentFilter = ( {searchParams} : any) => {
+const ContentFilter = ({ searchParams }: any) => {
   const [option, setOptionName] = React.useState<string[]>([]);
 
   const handleChange = (event: any) => {
     const {
       target: { name, value },
     } = event;
-    const oldParam = searchParams.params.get('genres') ? searchParams.params.get('genres') : "";
+    const oldParam = searchParams.params.get("genres")
+      ? searchParams.params.get("genres")
+      : "";
     var oldOptions = option;
-    if(option.indexOf(event.target.name) > -1){
-      oldOptions.splice(option.indexOf(event.target.name),1);
-      setOptionName(
-        oldOptions
+    if (option.indexOf(event.target.name) > -1) {
+      oldOptions.splice(option.indexOf(event.target.name), 1);
+      setOptionName(oldOptions);
+      searchParams.params.set(
+        "genres",
+        oldParam.replace(event.target.value + ",", "")
       );
-      searchParams.params.set('genres', oldParam.replace(event.target.value + ',' , ""));
-      if(oldParam.replace(event.target.value + ',' , "") == ""){
-        searchParams.params.delete('genres');
+      if (oldParam.replace(event.target.value + ",", "") == "") {
+        searchParams.params.delete("genres");
       }
-    }else{
-      oldOptions.splice(option.length,0,event.target.name);
-      setOptionName(
-        oldOptions
-      );
-      searchParams.params.set('genres', oldParam + event.target.value + ',' );
+    } else {
+      oldOptions.splice(option.length, 0, event.target.name);
+      setOptionName(oldOptions);
+      searchParams.params.set("genres", oldParam + event.target.value + ",");
     }
     searchParams.setParams(searchParams.params);
   };
@@ -89,32 +88,47 @@ const ContentFilter = ( {searchParams} : any) => {
                 </Box>
 
                 <FormControl
-                  sx={{ mx: 3, overflowY: "scroll", height: 245 }}
+                  className="123"
+                  sx={{
+                    px: 3,
+                    overflowY: "scroll",
+                    width: 222,
+                    height: 245,
+                    "&::-webkit-scrollbar": {
+                      width: "5px",
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                      background: "rgba(223, 226, 255, 0.3)",
+                      borderRadius: "10px",
+                    },
+                  }}
                   component="fieldset"
                   variant="standard"
                 >
-                  {result.options ? result.options.map((item,key) => (
-                    <FormGroup>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={option.indexOf(item) > -1}
-                            sx={{
-                              color: `${theme.color._100} `,
-                              "&.Mui-checked": {
-                                color: `${theme.color._800} !important`,
-                              },
-                            }}
-                            onChange={handleChange}
-                            name={item}
-                            value={result.typeOptions[key]}
-                            icon={<SquareRoundedIcon />}
+                  {result.options
+                    ? result.options.map((item, key) => (
+                        <FormGroup>
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={option.indexOf(item) > -1}
+                                sx={{
+                                  color: `${theme.color._100} `,
+                                  "&.Mui-checked": {
+                                    color: `${theme.color._800} !important`,
+                                  },
+                                }}
+                                onChange={handleChange}
+                                name={item}
+                                value={result.typeOptions[key]}
+                                icon={<SquareRoundedIcon />}
+                              />
+                            }
+                            label={item}
                           />
-                        }
-                        label={item}
-                      />
-                    </FormGroup>
-                  )) : ""}
+                        </FormGroup>
+                      ))
+                    : ""}
                 </FormControl>
               </Box>
             </Grid>

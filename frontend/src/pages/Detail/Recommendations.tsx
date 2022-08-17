@@ -14,10 +14,21 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import usePagination from "./Pagination";
 import { BASE_API, RECOMMENDATIONS_PER_PAGE } from "./const ";
 import { theme } from "../../theme";
+import * as React from "react";
+import AddModal from "../Manage/AddModal";
 
 const Recommendations = () => {
+  let authToken = localStorage.getItem("Auth Token");
   const { id } = useParams();
   const [data, setData] = useState<any>([]);
+  const [openAddModal, setOpenAddModal] = React.useState<number>(-1);
+  const handleClickOpenAddModal = (id: any) => {
+    setOpenAddModal((showId) => (showId === id ? -1 : id));
+  };
+
+  const handleCloseAddModal = () => {
+    setOpenAddModal(-1);
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -53,27 +64,41 @@ const Recommendations = () => {
               width={{ md: "250px", xs: "200px" }}
               sx={{ position: "relative" }}
             >
-              <Button
-                variant="outlined"
-                sx={{
-                  zIndex: 10,
-                  position: "absolute",
-                  top: 5,
-                  right: 5,
-                  border: 0,
-                  padding: 0.5,
-                  minWidth: 0,
-                  borderRadius: 2,
-                  background: theme.color._850,
-                  "&:hover": {
+              {authToken ? (
+                <Button
+                  onClick={() => handleClickOpenAddModal(item.entry.mal_id)}
+                  variant="outlined"
+                  sx={{
+                    zIndex: 10,
+                    position: "absolute",
+                    top: 5,
+                    right: 5,
                     border: 0,
-                    background: theme.color._850,
+                    padding: 0.5,
+                    minWidth: 0,
+                    borderRadius: 2,
+                    opacity: 0.9,
                     color: theme.color._400,
-                  },
-                }}
-              >
-                <AddBoxIcon />
-              </Button>
+                    bgcolor: theme.color._850,
+                    transition: "all 0.2s",
+                    "&:hover": {
+                      color: theme.color._400,
+                      bgcolor: theme.color._850,
+                      border: 0,
+                      opacity: 1,
+                    },
+                  }}
+                >
+                  <AddBoxIcon />
+                </Button>
+              ) : (
+                <></>
+              )}
+              <AddModal
+                open={openAddModal == item.entry.mal_id}
+                onClose={handleCloseAddModal}
+                data={item.entry}
+              />
               <Link
                 href={`/anime/${item.entry.mal_id}`}
                 sx={{
@@ -140,7 +165,7 @@ const Recommendations = () => {
         ) : (
           <Grid item xs={12}>
             {" "}
-            <Typography variant="h5">Chưa có dữ liệu</Typography>
+            <Typography variant="h5">No data found.</Typography>
           </Grid>
         )}
       </Grid>

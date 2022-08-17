@@ -1,24 +1,29 @@
 import { Box, Grid, IconButton, Skeleton, Typography } from "@mui/material";
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { useParams } from "react-router";
 import { useGetAnimeCharactersQuery } from "redux/slices/animeSlice";
 import { theme } from "theme";
-import styles from './styles.module.css'
-var Slider = require('react-slick').default
+import styles from "./styles.module.css";
+var Slider = require("react-slick").default;
 
 const changeFormat = (list: any) => {
-  let newList: any = []
+  let newList: any = [];
   if (list && list.length !== 0) {
-    list.forEach((item: { voice_actors: any[]; character: any; role: any; }) => {
-      let voice_actor = item.voice_actors.filter((VA: any) => VA.language === "Japanese")
+    list.forEach((item: { voice_actors: any[]; character: any; role: any }) => {
+      let voice_actor = item.voice_actors.filter(
+        (VA: any) => VA.language === "Japanese"
+      );
       if (voice_actor.length !== 0) {
-        newList.push({ character: item.character, role: item.role, voice_actor: voice_actor[0] })
-
+        newList.push({
+          character: item.character,
+          role: item.role,
+          voice_actor: voice_actor[0],
+        });
       }
     });
   }
-  return newList
-}
+  return newList;
+};
 
 const createVoiceActors = (list: any) => {
   if (list.length !== 0)
@@ -34,16 +39,14 @@ const createVoiceActors = (list: any) => {
             justifyContent: "space-between",
           }}
         >
-          <Box
-            sx={{ height: "100%", display: "flex", alignItems: "center" }}
-          >
+          <Box sx={{ height: "100%", display: "flex", alignItems: "center" }}>
             <img
               alt="character"
               src={actor.character.images.webp.image_url}
               height="100%"
               width="70px"
               object-fit={"cover"}
-              style={{ borderRadius: 10, objectFit: 'cover' }}
+              style={{ borderRadius: 10, objectFit: "cover" }}
             />
             <Box ml={2}>
               <Typography variant="body1">{actor.character.name}</Typography>
@@ -52,11 +55,11 @@ const createVoiceActors = (list: any) => {
               </Typography>
             </Box>
           </Box>
-          <Box
-            sx={{ height: "100%", display: "flex", alignItems: "center" }}
-          >
+          <Box sx={{ height: "100%", display: "flex", alignItems: "center" }}>
             <Box mr={2} textAlign={"right"}>
-              <Typography variant="body1">{actor.voice_actor.person.name}</Typography>
+              <Typography variant="body1">
+                {actor.voice_actor.person.name}
+              </Typography>
               <Typography variant="body2" sx={{ fontSize: 13 }}>
                 {actor.voice_actor.language}
               </Typography>
@@ -67,14 +70,18 @@ const createVoiceActors = (list: any) => {
               height="100%"
               width="70px"
               object-fit={"cover"}
-              style={{ borderRadius: 10, objectFit: 'cover' }}
+              style={{ borderRadius: 10, objectFit: "cover" }}
             />
           </Box>
         </Box>
       </Box>
-    ))
-  return (<Typography variant='h5' mt={2}>Chưa có dữ liệu</Typography>)
-}
+    ));
+  return (
+    <Typography variant="h5" mt={2}>
+      No data found.
+    </Typography>
+  );
+};
 const settings = {
   className: "center",
   centerMode: true,
@@ -91,46 +98,42 @@ const settings = {
     {
       breakpoint: 1024,
       settings: {
-        slidesPerRow: 1, rows: 5,
-      }
+        slidesPerRow: 1,
+        rows: 5,
+      },
     },
     {
       breakpoint: 600,
       settings: {
-        slidesPerRow: 1, rows: 5,
-      }
+        slidesPerRow: 1,
+        rows: 5,
+      },
     },
     {
       breakpoint: 480,
       settings: {
-        slidesPerRow: 1, rows: 5,
-      }
-    }
+        slidesPerRow: 1,
+        rows: 5,
+      },
+    },
   ],
   customPaging: function (i: any) {
     return (
       <IconButton>
         <FiberManualRecordIcon sx={{ fontSize: 18 }} />
       </IconButton>
-
     );
   },
   appendDots: (dots: any) => (
-    <Box
-      sx={{ display: 'flex', justifyContent: 'center' }}
-    >
-      {dots}
-    </Box>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>{dots}</Box>
   ),
-}
+};
 
 const VoiceActors = () => {
   const { id } = useParams();
   const { data } = useGetAnimeCharactersQuery(id);
 
-  const listData = changeFormat(data)
-
-
+  const listData = changeFormat(data);
 
   return listData ? (
     <Box>
@@ -142,16 +145,14 @@ const VoiceActors = () => {
             </Typography>
           </Box>
         </Grid>
-        <Box sx={{ width: '100%' }}>
-          <Slider {...settings}>
-            {createVoiceActors(listData)}
-          </Slider>
+        <Box sx={{ width: "100%" }}>
+          <Slider {...settings}>{createVoiceActors(listData)}</Slider>
         </Box>
       </Grid>
     </Box>
   ) : (
     <Skeleton variant="rectangular" height="100%" />
   );
-}
+};
 
-export default VoiceActors 
+export default VoiceActors;

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { theme } from "../../theme";
 import { FILTER } from "../../data/detail";

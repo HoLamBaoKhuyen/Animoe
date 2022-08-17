@@ -15,9 +15,21 @@ import {
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import { theme } from "../../theme";
-import { format_number } from "../../helpers/format";
+import { format_number, format_studios } from "../../helpers/format";
+import * as React from "react";
+import AddModal from "../Manage/AddModal";
 
 const List = ({ data }: { data: Array<any> }) => {
+  let authToken = localStorage.getItem("Auth Token");
+  const [openAddModal, setOpenAddModal] = React.useState<number>(-1);
+  const handleClickOpenAddModal = (id: any) => {
+    setOpenAddModal((showId) => (showId === id ? -1 : id));
+  };
+
+  const handleCloseAddModal = () => {
+    setOpenAddModal(-1);
+  };
+
   return (
     <Stack spacing={2}>
       {data.map((item: any, index: number) => {
@@ -125,32 +137,51 @@ const List = ({ data }: { data: Array<any> }) => {
                         sx={{ fontWeight: 600, opacity: 0.7 }}
                         color={(theme) => theme.color._100}
                       >
+                        {format_studios(item.studios)}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{ fontWeight: 600, opacity: 0.7 }}
+                        color={(theme) => theme.color._100}
+                      >
                         {format_number(item.members)} members
                       </Typography>
                     </Stack>
                   </Link>
                 </Grid>
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: theme.color._400,
-                    border: 0,
-                    minWidth: 0,
-                    padding: 0,
-                    borderRadius: 1,
-                    opacity: 0.5,
-                    transition: "all 0.2s",
-                    "&:hover": {
-                      color: theme.color._400,
-                      border: 0,
-                      background: 0,
-                      opacity: 1,
-                    },
-                  }}
-                  style={{ position: "absolute", top: 5, right: -10 }}
-                >
-                  <AddBoxIcon fontSize="large" />
-                </Button>
+                {authToken ? (
+                  <>
+                    <Button
+                      onClick={() => handleClickOpenAddModal(item.mal_id)}
+                      variant="outlined"
+                      sx={{
+                        color: theme.color._400,
+                        border: 0,
+                        minWidth: 0,
+                        padding: 0,
+                        borderRadius: 1,
+                        opacity: 0.5,
+                        transition: "all 0.2s",
+                        "&:hover": {
+                          color: theme.color._400,
+                          border: 0,
+                          background: 0,
+                          opacity: 1,
+                        },
+                      }}
+                      style={{ position: "absolute", top: 5, right: -10 }}
+                    >
+                      <AddBoxIcon fontSize="large" />
+                    </Button>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <AddModal
+                  open={openAddModal == item.mal_id}
+                  onClose={handleCloseAddModal}
+                  data={item}
+                />
                 <Stack
                   spacing={{ md: 1, xs: 0 }}
                   direction="row"
@@ -162,7 +193,7 @@ const List = ({ data }: { data: Array<any> }) => {
                     sx={{ fontWeight: 600, fontSize: 30 }}
                     color={(theme) => theme.color._100}
                   >
-                    {item.score.toFixed(2)}
+                    {item.score ? item.score.toFixed(2) : null}
                   </Typography>
                   <StarRateRoundedIcon
                     fontSize="large"

@@ -57,7 +57,7 @@ export const animeApi = apiSlice.injectEndpoints({
     }),
     getAnimeSearch: build.query({
       query: (params) => ({
-        url: `${ANIME_ENDPOINT}?${params.params}&limit=${params.limit}`,
+        url: `${ANIME_ENDPOINT}?${params.params}&limit=${params.limit}&page=${params.page}`,
         method: "GET",
       }),
       transformResponse: (response: { data: any }, meta: any, arg: any) => {
